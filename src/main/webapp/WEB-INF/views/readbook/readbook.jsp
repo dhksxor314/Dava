@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!doctype html>
 <html>
 <head>
@@ -75,9 +76,11 @@ body{
 </style>
 </head>
 <body>
+<jsp:include page="/WEB-INF/views/include/header.jsp"/>
 <!-- 커버 -->
-<div id="book">
-	<div class="cover"><h1>The Bible</h1></div>
+<div class="container">
+	<div id="book">
+	<div class="cover"><!-- <img src="/resources/cover.png"/> --><h1>가나다라마사</h1></div>
 </div>
 <button id="prev">이전</button><button id="next">다음</button>
 <div id="controls">
@@ -159,6 +162,9 @@ body{
 	});
 
 </script>
+<jsp:include page="/WEB-INF/views/include/footer.jsp"/>
+
+</div>
 
 
 </body>

@@ -13,7 +13,7 @@ public class ReadBookController {
 	@RequestMapping(value = "/readbook/read", method = RequestMethod.GET)
 	public String home() {
 
-		return "/readbook/home";
+		return "/readbook/readbook";
 	}
 	
 }
