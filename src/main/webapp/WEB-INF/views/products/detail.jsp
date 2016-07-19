@@ -26,12 +26,12 @@
 				<div style="border: solid 1px;">
 					<div class="row" style="height: 40%; ">
 						<div class="col-md-offset-1"style="margin-top: 20px">
-							<p>제 목 : </p>
-							<p>저 자 :</p>
-							<p>출 판 사 :</p>
-							<p>판 매 일 :</p>
-							<p>가 격 :</p>
-							<p>줄 거 리 :</p>
+							<p>제 목 : ${bookVO.title}  </p>
+							<p>저 자 :${bookVO.author }</p>
+							<p>출 판 사 : ${bookVO.publisher}</p>
+							<p>판 매 일 : ${bookVO.pub_date}</p>
+							<p>가 격 : ${bookVO.price }</p>
+							<p>줄 거 리 : ${bookVO.summary }</p>
 						</div>
 					</div>
 

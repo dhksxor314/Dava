@@ -27,7 +27,7 @@
 
 
 <div class="container" style="margin-top: 50px">
-	<div class="col-md-3 " style="background-color: black;"> <a href="../home">로고</a></div>
+	<div class="col-md-3 " style="background-color: black;"> <a href="/">로고</a></div>
 
 	<div class="col-md-6 col-md-offset-3">
 		<div class="row">

@@ -9,6 +9,7 @@ CREATE TABLE BOOK
 	PRICE                INTEGER not NULL,
     sal integer not null,
     img varchar(150) null,
+    summary text,
     primary key(booknum)
 );
 
