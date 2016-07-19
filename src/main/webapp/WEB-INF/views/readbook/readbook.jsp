@@ -1,3 +1,6 @@
+<%@page import="java.io.BufferedReader"%>
+<%@page import="java.io.File"%>
+<%@page import="java.io.FileReader"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
@@ -54,6 +57,7 @@ body{
 	text-align:center;
 	margin:20px 0px;
 	font:30px arial;
+	margin-left: 20%;
 }
 
 #controls input, #controls label{
@@ -78,17 +82,42 @@ body{
 <body>
 
 <%@ include file="/WEB-INF/views/include/header.jsp" %>
+<%
+	/*
+	String path = request.getContextPath();
+	System.out.println(path);
+	int totalPage=4;
+	
+	File[] f = new File[totalPage];
+	//FileReader fr = new FileReader(new File("/resources/books/moon/1.txt"));
+	FileReader[] fr = new FileReader[totalPage];
+	//BufferedReader[] br = new BufferedReader[totalPage];
+	
+	for(int i=0;i<totalPage;i++){
+		f[i] = new File(path+"/resources/books/moon/"+(i+1)+".txt");
+		fr[i] = new FileReader(f[i]);
+		//br[i] = new BufferedReader(fr[i]);
+	}
+	
+	char[] buffer = new char[1024];
+	String total = "";
+	while(fr[0].read(buffer)!=-1){
+		System.out.println(buffer);
+	}
+	*/
 
+%>
 <!-- 커버 -->
-<div class="container">
+<div class="container" style="margin-top:50px">
 	<div id="book">
-	<div class="cover"><img src="<%=cp %>/resources/cover.png"/></div>
+		<div class="cover"><img src="/resources/cover.png" style="width: 100%; height: 100%"/>
+	</div>
 </div>
-<button id="prev">이전</button><button id="next">다음</button>
+<div align="center" style="margin-top:30px"><button id="prev" class="btn">이전</button>&nbsp;&nbsp;<button id="next" class="btn">다음</button></div>
 <div id="controls">
-	<label for="page-number">Page:</label> <input type="text" size="3" id="page-number"> of <span id="number-pages"></span>
+	<label for="page-number">현재 페이지 :</label> <input type="text" size="3" id="page-number"> of <span id="number-pages"></span>
 </div>
-
+<output></output>
 <script type="text/javascript">
 
 	// Sample using dynamic pages with turn.js
@@ -164,8 +193,9 @@ body{
 	});
 
 </script>
-<jsp:include page="/WEB-INF/views/include/footer.jsp"/>
 
+<%@ include file="/WEB-INF/views/include/footer.jsp" %>
+<script src="<%=cp%>/resources/bootstrap/js/bootstrap.min.js"></script>
 </div>
 
 
