@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.dava.mappers.BookMapper">
+
+
+ <select id="select" resultType="com.dava.myapp.domain.BookVO">
+ select 
+ 	booknum , title, author , publisher , pub_date , price , sal , img , summary 
+ from 
+   book 
+ where booknum = #{booknum}
+ </select>
+
+
+
+ <select id="listAll" resultType="com.dava.myapp.domain.BookVO">
+ <![CDATA[
+ select 
+   bno, title, content, writer, regdate, viewcnt 
+ from 
+   tbl_board 
+ where bno > 0 
+ order by bno desc, regdate desc
+ ]]>  
+ </select>
+ 
+  
+</mapper>
