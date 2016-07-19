@@ -76,11 +76,13 @@ body{
 </style>
 </head>
 <body>
-<jsp:include page="/WEB-INF/views/include/header.jsp"/>
+
+<%@ include file="/WEB-INF/views/include/header.jsp" %>
+
 <!-- 커버 -->
 <div class="container">
 	<div id="book">
-	<div class="cover"><!-- <img src="/resources/cover.png"/> --><h1>가나다라마사</h1></div>
+	<div class="cover"><img src="<%=cp %>/resources/cover.png"/></div>
 </div>
 <button id="prev">이전</button><button id="next">다음</button>
 <div id="controls">
@@ -104,7 +106,7 @@ body{
 			book.turn('addPage', element, page);
 			// Let's assum that the data is comming from the server and the request takes 1s.
 			setTimeout(function(){
-					element.html('<div class="data">가나다라마</div>');
+					element.html('<div class="data">sdadsfdsfds</div>');
 			}, 1000);
 		}
 	}
