@@ -3,6 +3,7 @@
 <%@ page session="true"%>
 
 
+<script src="https://code.jquery.com/jquery-1.9.1.min.js"></script>
 <html>
 <head>
 <title>DAVA</title>
@@ -35,7 +36,7 @@
 		</div>
 		<div class="row" style="margin-top: 20px;">
 			<div class="col-xs-6 col-md-3">
-				<a href="#" class="thumbnail"> <img
+				<a href="products/detail?booknum=1" class="thumbnail"> <img
 					src="<%=cp%>/resources/imgs/Chrysanthemum.jpg">
 				</a>
 			</div>
@@ -103,7 +104,7 @@
 
 					</div>
 					<div class="item">
-						<div class="row">
+						<div class="row"  style="margin-top: 15px;margin-bottom: 15px;">
 							<img src="<%=cp%>/resources/imgs/Chrysanthemum.jpg"
 								class="imgs_size"> <img
 								src="<%=cp%>/resources/imgs/Chrysanthemum.jpg" class="imgs_size">
