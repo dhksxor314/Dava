@@ -10,7 +10,7 @@
 </head>
 <body>
 
-	<%@ include file="include/header.jsp" %>
+	<%@ include file="include/header.jsp"%>
 
 	<style>
 .t_center {
@@ -18,7 +18,6 @@
 }
 
 .imgs_size {
-
 	margin-left: 10px;
 	margin-right: 10px;
 	padding-left: 5px;
@@ -35,55 +34,27 @@
 			<h2>인기 도서</h2>
 		</div>
 		<div class="row" style="margin-top: 20px;">
-			<div class="col-xs-6 col-md-3">
-				<a href="products/detail?booknum=5" class="thumbnail"> <img
-					src="<%=cp%>/resources/imgs/Chrysanthemum.jpg">
-				</a>
-			</div>
-			<div class="col-xs-6 col-md-3">
-				<a href="#" class="thumbnail"> <img
-					src="<%=cp%>/resources/imgs/Chrysanthemum.jpg">
-				</a>
-			</div>
-			<div class="col-xs-6 col-md-3">
-				<a href="#" class="thumbnail"> <img
-					src="<%=cp%>/resources/imgs/Chrysanthemum.jpg">
-				</a>
-			</div>
-			<div class="col-xs-6 col-md-3">
-				<a href="#" class="thumbnail"> <img
-					src="<%=cp%>/resources/imgs/Chrysanthemum.jpg">
-				</a>
-			</div>
+
+			<c:forEach items="${list}" var="bookVO">
+
+				<div class="col-xs-6 col-md-3">
+					<a href="products/detail?booknum=${bookVO.booknum}"
+						class="thumbnail"> <img
+						src="<%=cp%>/resources/imgs/${bookVO.img}">
+					</a>
+				</div>
+				
+			</c:forEach>
+
+
 		</div>
-		<div class="row" style="margin-top: 20px;">
-			<div class="col-xs-6 col-md-3">
-				<a href="#" class="thumbnail"> <img
-					src="<%=cp%>/resources/imgs/Chrysanthemum.jpg">
-				</a>
-			</div>
-			<div class="col-xs-6 col-md-3">
-				<a href="#" class="thumbnail"> <img
-					src="<%=cp%>/resources/imgs/Chrysanthemum.jpg">
-				</a>
-			</div>
-			<div class="col-xs-6 col-md-3">
-				<a href="#" class="thumbnail"> <img
-					src="<%=cp%>/resources/imgs/Chrysanthemum.jpg">
-				</a>
-			</div>
-			<div class="col-xs-6 col-md-3">
-				<a href="#" class="thumbnail"> <img
-					src="<%=cp%>/resources/imgs/Chrysanthemum.jpg">
-				</a>
-			</div>
-		</div>
+
 	</div>
 	<div class="container"
 		style="margin-top: 5px; border: solid 0.5px silver; padding-bottom: 30px;">
-				<div class="row" style="text-align: center;">
-				<h2>최신 도서</h2>
-			</div>
+		<div class="row" style="text-align: center;">
+			<h2>최신 도서</h2>
+		</div>
 		<div class="col-md-2"></div>
 		<div class="row col-md-8">
 			<div id="carousel-example-generic" class="carousel slide"
@@ -94,7 +65,7 @@
 				<!-- Wrapper for slides -->
 				<div class="carousel-inner t_center" role="listbox">
 					<div class="item active">
-						<div class="row" style="margin-top: 15px;margin-bottom: 15px;">
+						<div class="row" style="margin-top: 15px; margin-bottom: 15px;">
 							<img src="<%=cp%>/resources/imgs/Chrysanthemum.jpg"
 								class="imgs_size"> <img
 								src="<%=cp%>/resources/imgs/Chrysanthemum.jpg" class="imgs_size">
@@ -104,7 +75,7 @@
 
 					</div>
 					<div class="item">
-						<div class="row"  style="margin-top: 15px;margin-bottom: 15px;">
+						<div class="row" style="margin-top: 15px; margin-bottom: 15px;">
 							<img src="<%=cp%>/resources/imgs/Chrysanthemum.jpg"
 								class="imgs_size"> <img
 								src="<%=cp%>/resources/imgs/Chrysanthemum.jpg" class="imgs_size">
@@ -138,9 +109,9 @@
 
 
 
-<script src="<%=cp%>/resources/bootstrap/js/bootstrap.min.js"></script>
+	<script src="<%=cp%>/resources/bootstrap/js/bootstrap.min.js"></script>
 
 
-	<%@ include file="include/footer.jsp" %>
+	<%@ include file="include/footer.jsp"%>
 </body>
 </html>

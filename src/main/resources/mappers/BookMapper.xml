@@ -14,14 +14,13 @@
 
 
 
- <select id="listAll" resultType="com.dava.myapp.domain.BookVO">
+ <select id="issue" resultType="com.dava.myapp.domain.BookVO">
  <![CDATA[
- select 
-   bno, title, content, writer, regdate, viewcnt 
- from 
-   tbl_board 
- where bno > 0 
- order by bno desc, regdate desc
+select 
+booknum,img,sal 
+from 
+book 
+order by sal desc,rand() limit 8 ;
  ]]>  
  </select>
  

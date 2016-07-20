@@ -20,7 +20,13 @@ public class ProductsController {
 	private BookService service;
 
 	@RequestMapping(value = "/detail", method = RequestMethod.GET)
-	public void home(@RequestParam("booknum") int booknum,Model model ) throws Exception {
+	public void detail(@RequestParam("booknum") int booknum,Model model ) throws Exception {
+
+	    model.addAttribute(service.select(booknum));
+	}
+	
+	@RequestMapping(value = "/payment", method = RequestMethod.GET)
+	public void payment(@RequestParam("booknum") int booknum,Model model ) throws Exception {
 
 	    model.addAttribute(service.select(booknum));
 	}

@@ -14,11 +14,10 @@ public class BookServiceImpl implements BookService, BookDAO {
 	@Inject
 	private BookDAO dao;
 	
-	@Override
-	public List<BookVO> listAll() throws Exception {
-		// TODO Auto-generated method stub
-		return null;
-	}
+	  @Override
+	  public List<BookVO> issue() throws Exception {
+	    return dao.issue();
+	  }
 
 	@Override
 	public BookVO select(Integer booknum) throws Exception {

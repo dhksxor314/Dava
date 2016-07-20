@@ -18,9 +18,9 @@ public class BookDAOImpl implements BookDAO {
 	private static final String namespace = "com.dava.mappers.BookMapper";
 	
 	@Override
-	public List<BookVO> listAll() throws Exception {
+	public List<BookVO> issue() throws Exception {
 		// TODO Auto-generated method stub
-		return null;
+		return SqlSession.selectList(namespace + ".issue");
 	}
 
 	@Override
