@@ -65,13 +65,13 @@
 
 </div>
 
-<div class="container" style="background-color: lime;">
+<div class="container" style="background-color: #23b300;">
 	<ul class="nav nav-pills col-md-9"
 		style="text-align: center; margin-top: 4px; margin-bottom: -10px">
-		<li role="presentation" class="col-md-2"><a href="#">무협</a></li>
-		<li role="presentation" class="col-md-2"><a href="#">판타지</a></li>
-		<li role="presentation" class="col-md-2"><a href="#">소설</a></li>
-		<li role="presentation" class="col-md-2"><a href="#">기타</a></li>
+		<li role="presentation" class="col-md-2"><a href="#" style="color: #dfef00;">무협</a></li>
+		<li role="presentation" class="col-md-2"><a href="#" style="color: #dfef00;">판타지</a></li>
+		<li role="presentation" class="col-md-2"><a href="#" style="color: #dfef00;">소설</a></li>
+		<li role="presentation" class="col-md-2"><a href="#" style="color: #dfef00;">기타</a></li>
 	</ul>
 
 

@@ -47,7 +47,7 @@
 <body>
 
 	<div class="container">
-		<div class="row" style="background-color: lime;">
+		<div class="row" style="background-color: #23b300;">
 			<div class=" col-xs-2" style="background-color: black;">로고</div>
 			<div class="col-xs-2">
 				<h3>결제</h3>
