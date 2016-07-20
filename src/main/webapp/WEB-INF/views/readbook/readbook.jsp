@@ -7,9 +7,6 @@
 <head>
 <script type="text/javascript" src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
 <script type="text/javascript" src="/resources/turn/turn.js"></script>
-<script type="text/javascript" src="/resources/turn/zoom.js"></script>
-
-
 <style>
 body{
 	background:#ccc;
@@ -23,11 +20,11 @@ body{
 	
 }
 #flipbook{
-  -webkit-transition:margin-left 0.2s ease-in-out;
-  -moz-transition:margin-left 0.2s ease-in-out;
-  -o-transition:margin-left 0.2s ease-in-out;
-  -ms-transition:margin-left 0.2s ease-in-out;
-  transition:margin-left 0.2s ease-in-out;
+  -webkit-transition:margin-left 1.0s ease-in-out;
+  -moz-transition:margin-left 1.0s ease-in-out;
+  -o-transition:margin-left 1.0s ease-in-out;
+  -ms-transition:margin-left 1.0s ease-in-out;
+  transition:margin-left 1.0s ease-in-out;
 }
 </style>
 </head>
@@ -36,17 +33,16 @@ body{
 <%@ include file="/WEB-INF/views/include/header.jsp" %>
 
 <!-- 커버 -->
-<div class="container" style="margin-top:50px">
-	<div class=".magazine-viewport">
-	<div id="flipbook">
-		<div class="hard"><img src="/resources/books/moon/cover.png" width="100%" height="100%"/></div>
+<div class="container" style="margin-top:50px;">
+	
+	<div id="flipbook" style="margin-left:5%">
+		<div class="hard"><img src="/resources/books/moon/cover.png" width="100%" height="100%" style="border-radius:20px"/></div>
 		   <c:forEach items="${content }" var="c">
-		   	 <div><p style="margin:5% 5% 5% 5%">${c }</p> </div>
+		   	 <div style="background-image: url('/resources/books/p2.jpg') ; background-repeat: no-repeat; background-size:100% 100%; border-radius:20px"><p style="margin:5% 5% 5% 5%">${c }</p> </div>
 		   </c:forEach>
-		<div class="hard"></div>
-		
+		<div class="hard" style="border-radius:20px"></div>
 	</div>
-	</div>
+	
 	
 	<br/><br/>
 	<div align="center"><button id="prev" class="btn">이전</button>&nbsp;&nbsp;&nbsp;<button id="next" class="btn">다음</button>
@@ -99,15 +95,10 @@ body{
 			$('#flipbook').turn('next');
 	});
 	
-	
-
 </script>
-
+</div>
 <%@ include file="/WEB-INF/views/include/footer.jsp" %>
 <script src="/resources/bootstrap/js/bootstrap.min.js"></script>
-
-</div>
-
 
 </body>
 </html>
