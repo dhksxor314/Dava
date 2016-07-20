@@ -13,7 +13,7 @@ body{
 }
 #flipbook{
 	width:1000px;
-	height:800px;
+	height:700px;
 }
 #flipbook .turn-page{
 	background-color:#ccc;
@@ -36,20 +36,30 @@ body{
 <div class="container" style="margin-top:50px;">
 	
 	<div id="flipbook" style="margin-left:5%">
-		<div class="hard"><img src="/resources/books/moon/cover.png" width="100%" height="100%" style="border-radius:20px"/></div>
+		<div class="hard" style="border-radius:20px"><img src="/resources/books/moon/cover.png" width="100%" height="100%" /></div>
 		   <c:forEach items="${content }" var="c">
-		   	 <div style="background-image: url('/resources/books/p2.jpg') ; background-repeat: no-repeat; background-size:100% 100%; border-radius:20px"><p style="margin:5% 5% 5% 5%">${c }</p> </div>
+		   	 <div style="background-image: url('/resources/books/p2.jpg') ; background-repeat: no-repeat; background-size:100% 100%; border-radius:20px">
+		   		 <p style="margin:5% 5% 5% 5%">${c }</p> 
+		   	 </div>
 		   </c:forEach>
 		<div class="hard" style="border-radius:20px"></div>
 	</div>
 	
 	
-	<br/><br/>
-	<div align="center"><button id="prev" class="btn">이전</button>&nbsp;&nbsp;&nbsp;<button id="next" class="btn">다음</button>
-	<button id="zoomInBtn">확대</button><button id="zoomOutBtn">축소</button></div><br/>
-	<div id="controls">
-		<label for="page-number">Page:</label> <input type="text" size="3" id="page-number"> of <span id="number-pages"></span>
+	<br/>
+	<div class="row">
+	  <div class="col-md-5"></div>
+	  <div class="btn-group col-md-4" role="group" aria-label="...">
+		  <button type="button" class="btn btn-default" id="prev">이전 페이지</button>
+		  <button type="button" class="btn btn-default" id="next">다음 페이지</button>
+	  </div>
 	</div>
+	<br/>
+	
+	<div id="controls" align="center">
+		<label for="page-number">현재 페이지:</label> <input type="text" size="3" id="page-number"> of <span id="number-pages"></span>
+	</div>
+	
 <script type="text/javascript">
 	
 	var numberOfPages = '${totalPage+2}';
@@ -65,12 +75,10 @@ body{
 							autoCenter: true,
 							when: {
 								turned: function(e, page) {
-									$('#page-number').val(page);								}
+									$('#page-number').val(page);								
+								}
 							}
 						});
-		
-		
-		
 		
 		$('#number-pages').html(numberOfPages);
 		
@@ -85,6 +93,8 @@ body{
 		$("#next").click(function(){
 			$('#flipbook').turn('next');
 		});
+		
+		$('#bookflip').zoom({ on:'click' });
 		
 	});
 
