@@ -16,9 +16,15 @@ CREATE TABLE BOOK
 );
 
 
-insert into book(title,author,publisher,pub_date,price,sal,img,genre,summary) values('달빛조각사1','남희성','로크미디어','2007-01-15',4000,0,'이미지이름','판타지','달빛을 조각조각조각달빛을 조각조각조각달빛을 조각조각조각달빛을 조각조각조각달빛을 조각조각조각     달빛을 조각조각조각달빛을 조각조각조각달빛을 조각조각조각달빛을 조각조각조각달빛을 조각조각조각달빛을 조각조각조각')
-insert into book(title,author,publisher,pub_date,price,sal,img,genre,summary) values('달빛조각사2','남희성','로크미디어','2007-01-15',4000,0,'이미지이름','판타지','달빛을 조각조각조각달빛을 조각조각조각달빛을 조각조각조각달빛을 조각조각조각달빛을 조각조각조각     달빛을 조각조각조각달빛을 조각조각조각달빛을 조각조각조각달빛을 조각조각조각달빛을 조각조각조각달빛을 조각조각조각')
-insert into book(title,author,publisher,pub_date,price,sal,img,genre,summary) values('달빛조각사3','남희성','로크미디어','2007-01-15',4000,0,'이미지이름','판타지','달빛을 조각조각조각달빛을 조각조각조각달빛을 조각조각조각달빛을 조각조각조각달빛을 조각조각조각     달빛을 조각조각조각달빛을 조각조각조각달빛을 조각조각조각달빛을 조각조각조각달빛을 조각조각조각달빛을 조각조각조각');
+insert into book(title,author,publisher,pub_date,price,sal,img,genre,summary) values('달빛조각사1','남희성','로크미디어','2007-01-15',4000,100,'Chrysanthemum.jpg','판타지','달빛을 조각조각조각달빛을 조각조각조각달빛을 조각조각조각달빛을 조각조각조각달빛을 조각조각조각     달빛을 조각조각조각달빛을 조각조각조각달빛을 조각조각조각달빛을 조각조각조각달빛을 조각조각조각달빛을 조각조각조각');
+insert into book(title,author,publisher,pub_date,price,sal,img,genre,summary) values('달빛조각사2','남희성','로크미디어','2007-01-15',4000,90,'Desert.jpg','판타지','달빛을 조각조각조각달빛을 조각조각조각달빛을 조각조각조각달빛을 조각조각조각달빛을 조각조각조각     달빛을 조각조각조각달빛을 조각조각조각달빛을 조각조각조각달빛을 조각조각조각달빛을 조각조각조각달빛을 조각조각조각');
+insert into book(title,author,publisher,pub_date,price,sal,img,genre,summary) values('달빛조각사3','남희성','로크미디어','2007-01-15',4000,80,'Chrysanthemum.jpg','판타지','달빛을 조각조각조각달빛을 조각조각조각달빛을 조각조각조각달빛을 조각조각조각달빛을 조각조각조각     달빛을 조각조각조각달빛을 조각조각조각달빛을 조각조각조각달빛을 조각조각조각달빛을 조각조각조각달빛을 조각조각조각');
+insert into book(title,author,publisher,pub_date,price,sal,img,genre,summary) values('달빛조각사4','남희성','로크미디어','2007-01-15',4000,70,'Desert.jpg','판타지','달빛을 조각조각조각달빛을 조각조각조각달빛을 조각조각조각달빛을 조각조각조각달빛을 조각조각조각     달빛을 조각조각조각달빛을 조각조각조각달빛을 조각조각조각달빛을 조각조각조각달빛을 조각조각조각달빛을 조각조각조각');
+insert into book(title,author,publisher,pub_date,price,sal,img,genre,summary) values('달빛조각사5','남희성','로크미디어','2007-01-15',4000,60,'Chrysanthemum.jpg','판타지','달빛을 조각조각조각달빛을 조각조각조각달빛을 조각조각조각달빛을 조각조각조각달빛을 조각조각조각     달빛을 조각조각조각달빛을 조각조각조각달빛을 조각조각조각달빛을 조각조각조각달빛을 조각조각조각달빛을 조각조각조각');
+insert into book(title,author,publisher,pub_date,price,sal,img,genre,summary) values('달빛조각사6','남희성','로크미디어','2007-01-15',4000,50,'Desert.jpg','판타지','달빛을 조각조각조각달빛을 조각조각조각달빛을 조각조각조각달빛을 조각조각조각달빛을 조각조각조각     달빛을 조각조각조각달빛을 조각조각조각달빛을 조각조각조각달빛을 조각조각조각달빛을 조각조각조각달빛을 조각조각조각');
+insert into book(title,author,publisher,pub_date,price,sal,img,genre,summary) values('달빛조각사7','남희성','로크미디어','2007-01-15',4000,30,'Chrysanthemum.jpg','판타지','달빛을 조각조각조각달빛을 조각조각조각달빛을 조각조각조각달빛을 조각조각조각달빛을 조각조각조각     달빛을 조각조각조각달빛을 조각조각조각달빛을 조각조각조각달빛을 조각조각조각달빛을 조각조각조각달빛을 조각조각조각');
+insert into book(title,author,publisher,pub_date,price,sal,img,genre,summary) values('달빛조각사8','남희성','로크미디어','2007-01-15',4000,40,'Desert.jpg','판타지','달빛을 조각조각조각달빛을 조각조각조각달빛을 조각조각조각달빛을 조각조각조각달빛을 조각조각조각     달빛을 조각조각조각달빛을 조각조각조각달빛을 조각조각조각달빛을 조각조각조각달빛을 조각조각조각달빛을 조각조각조각');
+insert into book(title,author,publisher,pub_date,price,sal,img,genre,summary) values('달빛조각사9','남희성','로크미디어','2007-01-15',4000,20,'Chrysanthemum.jpg','판타지','달빛을 조각조각조각달빛을 조각조각조각달빛을 조각조각조각달빛을 조각조각조각달빛을 조각조각조각     달빛을 조각조각조각달빛을 조각조각조각달빛을 조각조각조각달빛을 조각조각조각달빛을 조각조각조각달빛을 조각조각조각');
 
 CREATE TABLE BUY
 (
