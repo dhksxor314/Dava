@@ -637,7 +637,7 @@ turnMethods = {
 					this.turn('stop').
 						css({'overflow': 'hidden'});
 					data.pageObjs[0] = $('<div />', {'class': 'turn-page p-temporal'}).
-									css({width: this.width(), height: this.height()}).
+									css({width: this.width(), height: this.height()*0.8}).
 										appendTo(this);
 				}
 			} else {
