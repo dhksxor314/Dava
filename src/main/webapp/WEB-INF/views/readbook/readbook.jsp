@@ -43,7 +43,6 @@ body{
 		   <c:forEach items="${content }" var="c">
 		   	 <div><p style="margin:5% 5% 5% 5%">${c }</p> </div>
 		   </c:forEach>
-		   
 		<div class="hard"></div>
 		
 	</div>
@@ -92,92 +91,21 @@ body{
 		});
 		
 	});
-	
-	
+
 	$(window).bind('keydown', function(e){
-		
 		if (e.keyCode==37)
 			$('#flipbook').turn('previous');
 		else if (e.keyCode==39)
 			$('#flipbook').turn('next');
-			
 	});
 	
-	// Zoom.js
-	/*
-	$('.magazine-viewport').zoom({
-		flipbook: $('#flipbook'),
-
-		max: function() { 
-			
-			return largeMagazineWidth()/$('#flipbook').width();
-
-		}, 
-
-		when: {
-
-			swipeLeft: function() {
-
-				$(this).zoom('flipbook').turn('next');
-
-			},
-
-			swipeRight: function() {
-				
-				$(this).zoom('flipbook').turn('previous');
-
-			},
-
-			resize: function(event, scale, page, pageElement) {
-
-				if (scale==1)
-					loadSmallPage(page, pageElement);
-				else
-					loadLargePage(page, pageElement);
-
-			},
-
-			zoomIn: function () {
-
-				//$('.thumbnails').hide();
-				$('.made').hide();
-				$('#flipbook').removeClass('animated').addClass('zoom-in');
-				$('.zoom-icon').removeClass('zoom-icon-in').addClass('zoom-icon-out');
-				
-				if (!window.escTip && !$.isTouch) {
-					escTip = true;
-
-					$('<div />', {'class': 'exit-message'}).
-						html('<div>Press ESC to exit</div>').
-							appendTo($('body')).
-							delay(2000).
-							animate({opacity:0}, 500, function() {
-								$(this).remove();
-							});
-				}
-			},
-
-			zoomOut: function () {
-
-				$('.exit-message').hide();
-				//$('.thumbnails').fadeIn();
-				$('.made').fadeIn();
-				$('.zoom-icon').removeClass('zoom-icon-out').addClass('zoom-icon-in');
-
-				setTimeout(function(){
-					$('#flipbook').addClass('animated').removeClass('zoom-in');
-					resizeViewport();
-				}, 0);
-
-			}
-		}
-	});
-	*/
+	
 
 </script>
 
 <%@ include file="/WEB-INF/views/include/footer.jsp" %>
-<script src="<%=cp%>/resources/bootstrap/js/bootstrap.min.js"></script>
+<script src="/resources/bootstrap/js/bootstrap.min.js"></script>
+
 </div>
 
 
