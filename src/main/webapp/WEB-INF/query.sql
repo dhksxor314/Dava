@@ -9,15 +9,16 @@ CREATE TABLE BOOK
 	PRICE                INTEGER not NULL,
     sal integer not null,
     img varchar(150) null,
+    genre varchar(100) not null,
     summary text,
+    
     primary key(booknum)
 );
 
 
-insert into book(title,author,publisher,pub_date,price,sal,img,summary) values('달빛조각사2','남희성','로크미디어','2007-01-15',4000,0,'이미지이름','~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~.~~~~~~~~~~~~~~~~~~~~~~.`~.2@!>3!@>43!@>$!@>$1$>>ㅁㄴㅇㅁㄴㄹㄴㅇㄹㅇ니ㅏ런아ㅣ러ㅏㅣㄴㅇ');
-insert into book(title,author,publisher,pub_date,price,sal,img,summary) values('달빛조각사3','남희성','로크미디어','2007-01-15',4000,0,'이미지이름','~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~.~~~~~~~~~~~~~~~~~~~~~~.`~.2@!>3!@>43!@>$!@>$1$>>ㅁㄴㅇㅁㄴㄹㄴㅇㄹㅇ니ㅏ런아ㅣ러ㅏㅣㄴㅇ');
-insert into book(title,author,publisher,pub_date,price,sal,img,summary) values('달빛조각사4','남희성','로크미디어','2007-01-15',4000,0,'이미지이름','~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~.~~~~~~~~~~~~~~~~~~~~~~.`~.2@!>3!@>43!@>$!@>$1$>>ㅁㄴㅇㅁㄴㄹㄴㅇㄹㅇ니ㅏ런아ㅣ러ㅏㅣㄴㅇ');
-insert into book(title,author,publisher,pub_date,price,sal,img,summary) values('달빛조각사5','남희성','로크미디어','2007-01-15',4000,0,'이미지이름','~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~.~~~~~~~~~~~~~~~~~~~~~~.`~.2@!>3!@>43!@>$!@>$1$>>ㅁㄴㅇㅁㄴㄹㄴㅇㄹㅇ니ㅏ런아ㅣ러ㅏㅣㄴㅇ');
+insert into book(title,author,publisher,pub_date,price,sal,img,genre,summary) values('달빛조각사1','남희성','로크미디어','2007-01-15',4000,0,'이미지이름','판타지','달빛을 조각조각조각달빛을 조각조각조각달빛을 조각조각조각달빛을 조각조각조각달빛을 조각조각조각     달빛을 조각조각조각달빛을 조각조각조각달빛을 조각조각조각달빛을 조각조각조각달빛을 조각조각조각달빛을 조각조각조각')
+insert into book(title,author,publisher,pub_date,price,sal,img,genre,summary) values('달빛조각사2','남희성','로크미디어','2007-01-15',4000,0,'이미지이름','판타지','달빛을 조각조각조각달빛을 조각조각조각달빛을 조각조각조각달빛을 조각조각조각달빛을 조각조각조각     달빛을 조각조각조각달빛을 조각조각조각달빛을 조각조각조각달빛을 조각조각조각달빛을 조각조각조각달빛을 조각조각조각')
+insert into book(title,author,publisher,pub_date,price,sal,img,genre,summary) values('달빛조각사3','남희성','로크미디어','2007-01-15',4000,0,'이미지이름','판타지','달빛을 조각조각조각달빛을 조각조각조각달빛을 조각조각조각달빛을 조각조각조각달빛을 조각조각조각     달빛을 조각조각조각달빛을 조각조각조각달빛을 조각조각조각달빛을 조각조각조각달빛을 조각조각조각달빛을 조각조각조각');
 
 CREATE TABLE BUY
 (

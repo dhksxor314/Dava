@@ -6,7 +6,7 @@
 
  <select id="select" resultType="com.dava.myapp.domain.BookVO">
  select 
- 	booknum , title, author , publisher , pub_date , price , sal , img , summary 
+ 	booknum , title, author , publisher , pub_date , price , sal , img , summary ,genre
  from 
    book 
  where booknum = #{booknum}

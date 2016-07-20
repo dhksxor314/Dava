@@ -13,6 +13,7 @@ public class BookVO {
 	private int sal;
 	private String img;
 	private String summary;
+	private String genre;
 
 	public Integer getBooknum() {
 		return booknum;
@@ -84,6 +85,14 @@ public class BookVO {
 
 	public void setSummary(String summary) {
 		this.summary = summary;
+	}
+
+	public String getGenre() {
+		return genre;
+	}
+
+	public void setGenre(String genre) {
+		this.genre = genre;
 	}
 
 }

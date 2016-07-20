@@ -28,6 +28,7 @@
 						<div class="col-md-offset-1"style="margin-top: 20px">
 							<p>제 목 : ${bookVO.title}  </p>
 							<p>저 자 :${bookVO.author }</p>
+							<p>장 르 : ${bookVO.genre}</p>
 							<p>출 판 사 : ${bookVO.publisher}</p>
 							<p>판 매 일 : ${bookVO.pub_date}</p>
 							<p>가 격 : ${bookVO.price }</p>

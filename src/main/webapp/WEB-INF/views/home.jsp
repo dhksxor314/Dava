@@ -36,7 +36,7 @@
 		</div>
 		<div class="row" style="margin-top: 20px;">
 			<div class="col-xs-6 col-md-3">
-				<a href="products/detail?booknum=1" class="thumbnail"> <img
+				<a href="products/detail?booknum=5" class="thumbnail"> <img
 					src="<%=cp%>/resources/imgs/Chrysanthemum.jpg">
 				</a>
 			</div>
