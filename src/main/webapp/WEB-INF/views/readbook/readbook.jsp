@@ -91,16 +91,6 @@ body{
 			$('#flipbook').turn('next');
 		});
 		
-		$(".zoom-viewport").zoom({
-			flipbook: $("#flipbook"),
-			max:2
-		});
-		
-		$("#zoomInBtn").click(function(){
-			$('.magazine-viewport').zoom('zoomIn');
-		});
-		
-		
 	});
 	
 	
