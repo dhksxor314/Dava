@@ -28,36 +28,42 @@ insert into book(title,author,publisher,pub_date,price,sal,img,genre,summary) va
 
 CREATE TABLE BUY
 (
-	BUYNUM               INTEGER NOT NULL,
+	BUYNUM               INTEGER NOT NULL auto_increment,
 	MEMNUM               INTEGER NOT NULL,
 	BOOKNUM              INTEGER NOT NULL,
-	BUY_DATE             DATE NULL
+	BUY_DATE             DATE NULL,
+	p_way 				varchar(20) not null,
+	final_pay			INTEGER NOT NULL,
+	primary key(buynum)
 );
-
-ALTER TABLE BUY
-ADD CONSTRAINT XPKBUY PRIMARY KEY (BUYNUM);
-
-CREATE TABLE MANAGER
-(
-	MANAGERNUM           INTEGER NOT NULL,
-	ID                   VARCHAR(20) NULL,
-	PASSWORD             VARCHAR(20) NULL,
-	NICKNAME             VARCHAR(20) NULL
-);
-
-ALTER TABLE MANAGER
-ADD CONSTRAINT XPKMANAGER PRIMARY KEY (MANAGERNUM);
 
 CREATE TABLE MEMBER
 (
-	MEMNUM               INTEGER NOT NULL,
+	MEMNUM               INTEGER NOT NULL auto_increment,
 	ID                   VARCHAR(20) NULL,
 	NICKNAME             VARCHAR(20) NULL,
-	PASSWORD             VARCHAR(20) NULL
+	PASSWORD             VARCHAR(20) NULL,
+	POINT				INTEGER NOT NULL,
+	
+	primary key(memnum)
 );
 
-ALTER TABLE MEMBER
-ADD CONSTRAINT XPKMEMBER PRIMARY KEY (MEMNUM);
+insert into member(id, nickname, password, point) values('user00@naver.com', 'dava0', 'user00', 0);
+insert into member(id, nickname, password, point) values('user11@naver.com', 'dava1', 'user11', 0);
+insert into member(id, nickname, password, point) values('user22@naver.com', 'dava2', 'user22', 0);
+insert into member(id, nickname, password, point) values('user33@naver.com', 'dava3', 'user33', 0);
+
+
+CREATE TABLE MANAGER
+(
+	MANAGERNUM           INTEGER NOT NULL auto_increment,
+	ID                   VARCHAR(20) NULL,
+	PASSWORD             VARCHAR(20) NULL,
+	NICKNAME             VARCHAR(20) NULL,
+
+	primary key(managernum)
+);
+
 
 CREATE TABLE MYBOOK
 (
