@@ -8,7 +8,7 @@ import org.springframework.stereotype.Repository;
 public class MyBookDaoImpl implements MyBookDao {
 	
 	@Autowired
-	private SqlSession SqlSession;
+	private SqlSession sqlSession;
 	
 	private static final String namespace = "com.dava.mappers.MyBookMapper";
 	@Override

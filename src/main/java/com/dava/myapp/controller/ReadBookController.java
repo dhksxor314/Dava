@@ -28,7 +28,7 @@ public class ReadBookController {
 		int totalLine=1;
 		String[] content=null;
 		BufferedReader br=null;
-		String path="J:\\final\\Dava\\src\\main\\webapp\\resources\\books\\moon\\moon1.txt";
+		String path="J:\\final\\Dava\\src\\main\\webapp\\resources\\books\\moon\\´ÞºûÁ¶°¢»ç1.txt";
 		
 		try {
 			br=new BufferedReader(new FileReader(new File(path)));
