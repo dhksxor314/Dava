@@ -33,7 +33,7 @@
 				alert("디비내용");
 				$("#form1").submit();
 				alert('${param.p_way}');
-				//	window.close();
+				window.close();
 			}
 		});
 

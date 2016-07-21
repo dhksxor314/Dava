@@ -11,7 +11,7 @@ import com.dava.myapp.domain.BuyVO;
 public class BuyDAOImpl implements BuyDAO {
 	@Inject
 	private SqlSession SqlSession;
-	private static final String NAMESPACE = "com.dava.mappers.buyMapper";
+	private static final String NAMESPACE = "com.dava.mappers.BuyMapper";
 
 	@Override
 	public void buy(BuyVO vo) {
