@@ -1,6 +1,6 @@
 /*
  * 설명 : 책 읽는 페이지로 이동하면서 해당 책에 맞는 책 정보를 불러온다.
- * 
+ * 작성자 : 전현영
  */
 
 package com.dava.myapp.controller;
