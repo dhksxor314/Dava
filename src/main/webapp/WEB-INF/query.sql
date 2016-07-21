@@ -31,7 +31,7 @@ CREATE TABLE BUY
 	BUYNUM               INTEGER NOT NULL auto_increment,
 	MEMNUM               INTEGER NOT NULL,
 	BOOKNUM              INTEGER NOT NULL,
-	BUY_DATE             DATE NULL,
+	BUY_DATE             DATETIME NULL,
 	p_way 				varchar(20) not null,
 	final_pay			INTEGER NOT NULL,
 	primary key(buynum)
@@ -49,9 +49,9 @@ CREATE TABLE MEMBER
 );
 
 insert into member(id, nickname, password, point) values('user00@naver.com', 'dava0', 'user00', 0);
-insert into member(id, nickname, password, point) values('user11@naver.com', 'dava1', 'user11', 0);
-insert into member(id, nickname, password, point) values('user22@naver.com', 'dava2', 'user22', 0);
-insert into member(id, nickname, password, point) values('user33@naver.com', 'dava3', 'user33', 0);
+insert into member(id, nickname, password, point) values('user11@naver.com', 'dava1', 'user11', 10);
+insert into member(id, nickname, password, point) values('user22@naver.com', 'dava2', 'user22', 20);
+insert into member(id, nickname, password, point) values('user33@naver.com', 'dava3', 'user33', 30);
 
 
 CREATE TABLE MANAGER
