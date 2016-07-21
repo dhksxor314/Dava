@@ -1,6 +1,6 @@
 /*
  * 설명 : 책 읽는 페이지로 이동하면서 해당 책에 맞는 책 정보를 불러온다.
- * 
+ * 작성자 : 전현영
  */
 
 package com.dava.myapp.controller;
@@ -22,37 +22,50 @@ public class ReadBookController {
 
 	@RequestMapping(value = "/readbook/read", method = RequestMethod.GET)
 	public String home(Model model) {
-		
-		String title="moon";
-		int totalPage = 4;
-		String path="";
-		String[] content = new String[totalPage];
-		BufferedReader[] br = new BufferedReader[totalPage];
+
+		int pageCutline=30;//한 페이지당 라인 수
+		int totalPage = 0;
+		int totalLine=1;
+		String[] content=null;
+		BufferedReader br=null;
+		String path="J:\\final\\Dava\\src\\main\\webapp\\resources\\books\\moon\\달빛조각사1.txt";
 		
 		try {
-			for(int i=0;i<totalPage;i++){
-				content[i]="";
-				path = "J:\\final\\Dava\\src\\main\\webapp\\resources\\books\\"+title+"\\"+(i+1)+".txt";
-
-				br[i] = new BufferedReader(new FileReader(new File(path)));
-				String a="";
-				while((a=br[i].readLine())!=null){
-					content[i]+=a+"<br/>";
-				}
-
+			br=new BufferedReader(new FileReader(new File(path)));
+			String a="";
+			
+			while(br.readLine()!=null){//책 한권의 총 라인 수를 먼저 구한다.  
+				totalLine++;
 			}
 			
-		} catch(FileNotFoundException e){
-			System.out.println("파일이 없습니다");
+			totalPage=(int)Math.ceil(((double)totalLine/(double)pageCutline));//올림 함수를 써서 총 페이지를 구함
+			
+			
+			content=new String[totalPage];//content배열을 페이지 수 만큼 초기화하기 위해서
+			for(int i=0;i<totalPage;i++){//이 작업이 없을 시 첫글자에 null이 들어감
+				content[i]="";
+			}
+			
+			br=new BufferedReader(new FileReader(new File(path)));//다시 책을 불러온다.
+			int cnt=0;//페이지 번호
+			int line=1;//pageCutline을 맞추기 위해서 사용
+
+			while((a=br.readLine())!=null){//30라인을 1페이지로 잡고 데이터를 넣어준다.
+				content[cnt]+=a+"<br/>";
+				if(line==pageCutline){line=1;cnt++;}
+				else{line++;}
+			}
+			
+		} catch (FileNotFoundException e) {
+			System.out.println("파일이 존재하지 않습니다");
 		} catch (IOException e) {
 			System.out.println("입출력 에러");
-		} finally {
-			for(int i=0;i<totalPage;i++){
-				try {br[i].close();} catch (IOException e) {e.printStackTrace();}
-			}
+		} finally {		
+			try {br.close();} catch (IOException e) {e.printStackTrace();}
 		}
-		
+
 		model.addAttribute("totalPage", totalPage);
+		//model.addAttribute("markedPage", markedPage);
 		model.addAttribute("content", content);
 		
 		return "/readbook/readbook";

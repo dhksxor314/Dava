@@ -37,6 +37,16 @@ CREATE TABLE BUY
 	primary key(buynum)
 );
 
+insert into buy(memnum, booknum, buy_date, p_way, final_pay) values(1, 1, curdate(), '≥Û«˘', 4000);
+insert into buy(memnum, booknum, buy_date, p_way, final_pay) values(1, 2, curdate(), 'π´≈Î¿Â¿‘±›', 5000);
+insert into buy(memnum, booknum, buy_date, p_way, final_pay) values(1, 3, curdate(), '∞Ë¡¬¿Ã√º', 2000);
+insert into buy(memnum, booknum, buy_date, p_way, final_pay) values(1, 4, curdate(), '±ππŒ', 3000);
+insert into buy(memnum, booknum, buy_date, p_way, final_pay) values(2, 1, curdate(), 'ø‹»Ø', 4000);
+insert into buy(memnum, booknum, buy_date, p_way, final_pay) values(2, 4, curdate(), '≥Û«˘', 5500);
+insert into buy(memnum, booknum, buy_date, p_way, final_pay) values(2, 6, curdate(), '«œ≥™', 6000);
+insert into buy(memnum, booknum, buy_date, p_way, final_pay) values(2, 3, curdate(), '±ππŒ', 5000);
+
+
 CREATE TABLE MEMBER
 (
 	MEMNUM               INTEGER NOT NULL auto_increment,
@@ -72,6 +82,15 @@ CREATE TABLE MYBOOK
 	BUYNUM               INTEGER NOT NULL,
 	primary key(mybooknum)
 );
+
+insert into mybook(bookmark, buynum) values(1, 1);
+insert into mybook(bookmark, buynum) values(1, 2);
+insert into mybook(bookmark, buynum) values(1, 3);
+insert into mybook(bookmark, buynum) values(1, 4);
+insert into mybook(bookmark, buynum) values(1, 5);
+insert into mybook(bookmark, buynum) values(1, 6);
+insert into mybook(bookmark, buynum) values(1, 7);
+insert into mybook(bookmark, buynum) values(1, 8);
 
 
 ALTER TABLE BUY

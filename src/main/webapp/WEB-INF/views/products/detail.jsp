@@ -16,7 +16,7 @@
 		$("#payment").click(function(event){
 			var wsize = 770;
 			var hsize = 500;
-			window.open('payment?booknum=${bookVO.booknum}','payment','width ='+wsize+',height='+hsize+',top='+(screen.height-hsize)/2+', left='+(screen.width-wsize)/2);
+			window.open('payment?booknum=${bookVO.booknum}&memnum=1','payment','width ='+wsize+',height='+hsize+',top='+(screen.height-hsize)/2+', left='+(screen.width-wsize)/2);
 		});
 		
 		

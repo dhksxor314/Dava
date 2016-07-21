@@ -1,16 +1,17 @@
 
 <%@ page contentType="text/html; charset=UTF-8"%>
 <%@ page session="true"%>
-
+<%@ include file="include/header.jsp"%>
 
 <script src="https://code.jquery.com/jquery-1.9.1.min.js"></script>
 <html>
 <head>
 <title>DAVA</title>
+<link rel="shortcut icon" type="image/x-icon" href="<%=cp%>/resources/imgs/favicon.ico" />
 </head>
 <body>
 
-	<%@ include file="include/header.jsp"%>
+	
 
 	<style>
 .t_center {
