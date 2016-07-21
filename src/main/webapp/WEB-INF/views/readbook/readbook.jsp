@@ -50,8 +50,10 @@ body {
 				</div>
 			</c:forEach>
 			<div class="hard" style="border-radius: 20px"></div>
+			<c:if test="${totalPage%2!=0 }">
+				<div class="hard" style="border-radius: 20px"></div>
+			</c:if>
 		</div>
-
 
 		<br />
 		<div class="row">
