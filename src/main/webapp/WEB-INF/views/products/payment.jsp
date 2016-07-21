@@ -16,9 +16,11 @@
 
 <script>
 	$(document).ready(function() {
-
+		if('${bookVO.title}' == ""){
+			window.close();
+		}
 		$("#cancel").click(function(event) {
-
+		
 			var con = confirm("취소하시면 입력한 모든 정보가 취소됩니다.\n결제를 취소하시겠습니까?");
 			if (con == true) {
 				window.close();
@@ -29,11 +31,10 @@
 
 			var con = confirm("정말로 결제 하시겠습니까?");
 			if (con == true) {
-
-				alert("디비내용");
 				$("#form1").submit();
-				alert('${param.p_way}');
-				window.close();
+			}
+			else{
+				return false;
 			}
 		});
 
@@ -81,7 +82,7 @@
 
 				<div class="row">
 					<div class="col-xs-offset-1 col-xs-6" style="text-align: left;">
-						<h4>[${bookVO.genre}] ${bookVO.title }</h4>
+						<h4>[${bookVO.genre}] ${bookVO.title}</h4>
 					</div>
 					<div class="col-xs-offset-1 col-xs-3 col-xs-offset-1"
 						style="text-align: right;">

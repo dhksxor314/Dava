@@ -43,13 +43,7 @@ public class ProductsController {
 
 	@RequestMapping(value = "/payment", method = RequestMethod.POST)
 	public void buy(BuyVO vo) throws Exception {
-		System.out.println("ÀÌ°Å³Ä?");
 
-		System.out.println("book:"+vo.getBooknum());
-		System.out.println("mem:"+vo.getMemnum());
-		System.out.println("p_way:"+vo.getP_way());
-		System.out.println("final:"+vo.getFinal_pay());
-		
 		buy_service.buy(vo);
 		
 	}
