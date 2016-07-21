@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.dava.mappers.BuyMapper">
+
+	<insert id="buy">
+		insert into buy
+		(memnum,booknum,buy_date,p_way,final_pay)
+		values(#{memnum},#{booknum},now(),#{p_way},#{final_pay});
+	</insert>
+
+</mapper>
