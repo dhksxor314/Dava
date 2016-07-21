@@ -25,6 +25,7 @@ public class ReadBookController {
 		
 		String title="moon";
 		int totalPage = 4;
+		int markedPage = 1;
 		String path="";
 		String[] content = new String[totalPage];
 		BufferedReader[] br = new BufferedReader[totalPage];
@@ -53,6 +54,7 @@ public class ReadBookController {
 		}
 		
 		model.addAttribute("totalPage", totalPage);
+		model.addAttribute("markedPage", markedPage);
 		model.addAttribute("content", content);
 		
 		return "/readbook/readbook";
