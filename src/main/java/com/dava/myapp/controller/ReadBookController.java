@@ -11,6 +11,9 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 
+import javax.servlet.ServletRequest;
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -21,17 +24,19 @@ import org.springframework.web.bind.annotation.RequestMethod;
 public class ReadBookController {
 
 	@RequestMapping(value = "/readbook/read", method = RequestMethod.GET)
-	public String home(Model model) {
-
+	public String home(Model model, HttpServletRequest req) {
+		String path = req.getServletContext().getRealPath("resources");
+		
+		String title = "달빛조각사1";
 		int pageCutline=30;//한 페이지당 라인 수
 		int totalPage = 0;
 		int totalLine=1;
 		String[] content=null;
 		BufferedReader br=null;
-		String path="J:\\final\\Dava\\src\\main\\webapp\\resources\\books\\moon\\달빛조각사1.txt";
+		
 		
 		try {
-			br=new BufferedReader(new FileReader(new File(path)));
+			br=new BufferedReader(new FileReader(new File(path+"\\books\\"+title+".txt")));
 			String a="";
 			
 			while(br.readLine()!=null){//책 한권의 총 라인 수를 먼저 구한다.  
@@ -46,7 +51,7 @@ public class ReadBookController {
 				content[i]="";
 			}
 			
-			br=new BufferedReader(new FileReader(new File(path)));//다시 책을 불러온다.
+			br=new BufferedReader(new FileReader(new File(path+"\\books\\"+title+".txt")));//다시 책을 불러온다.
 			int cnt=0;//페이지 번호
 			int line=1;//pageCutline을 맞추기 위해서 사용
 
