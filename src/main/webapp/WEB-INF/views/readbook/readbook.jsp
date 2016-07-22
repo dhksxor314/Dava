@@ -1,19 +1,18 @@
 
+
+
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ include file="/WEB-INF/views/include/header.jsp" %>
 <!doctype html>
 <html>
 <head>
 <script type="text/javascript"
 	src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
 <script type="text/javascript" src="/resources/turn/turn.js"></script>
-<link href="/resources/bootstrap/css/bootstrap.min.css"
-	rel="stylesheet">
+<link href="/resources/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 <style>
-body {
-	background: #ccc;
-}
 
 #flipbook {
 	width: 1000px;
@@ -34,7 +33,6 @@ body {
 </style>
 </head>
 <body>
-
 	<!-- 커버 -->
 	<div class="container" style="margin-top: 50px;">
 
@@ -65,10 +63,10 @@ body {
 					페이지</button>
 			</div>
 			<div class="btn-group col-md-3" role="group" aria-label="...">
-				<button type="button" class="btn btn-default" id="mark" data-target="#myModal1" data-toggle="modal">책갈피
-					등록</button>
-				<button type="button" class="btn btn-default" id="move" data-target="#myModal2" data-toggle="modal">책갈피
-					이동</button>
+				<button type="button" class="btn btn-default" id="mark"
+					data-target="#myModal1" data-toggle="modal">책갈피 등록</button>
+				<button type="button" class="btn btn-default" id="move"
+					data-target="#myModal2" data-toggle="modal">책갈피 이동</button>
 			</div>
 		</div>
 
@@ -76,56 +74,65 @@ body {
 		<div class="row">
 			<div class="col-md-3"></div>
 			<div class="col-md-3">
-				<label for="page-number">현재 페이지:</label> <input type="text" size="3"
-					id="page-number"> of <span id="number-pages"></span>
+				<form action="/readbook/setmark" id="markForm" method="post">
+					<label for="page-number">현재 페이지:</label> <input type="text"
+						size="3" id="page-number" name="page-number"> of <span
+						id="number-pages"></span>
+				</form>
+			</div>
+
+		</div>
+
+		<div class="modal fade" id="myModal1" tabindex="-1" role="dialog"
+			aria-labelledby="myModalLabel">
+			<div class="modal-dialog" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal"
+							aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+						<h4 class="modal-title" id="myModalLabel">책갈피 등록</h4>
+					</div>
+					<div class="modal-body">
+						현재 페이지(<span id="nowPage">1</span>페이지)를 책갈피로 등록하시겠습니까?
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-default" data-dismiss="modal">취소</button>
+						<button type="button" class="btn btn-primary" id="mark">등록</button>
+					</div>
+				</div>
 			</div>
 		</div>
 
-		<div class="modal fade" id="myModal1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-		  <div class="modal-dialog" role="document">
-		    <div class="modal-content">
-		      <div class="modal-header">
-		        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-		        <h4 class="modal-title" id="myModalLabel">책갈피 등록</h4>
-		      </div>
-		      <div class="modal-body">
-		      	현재 페이지(<span id="nowPage">1</span>페이지)를 책갈피로 등록하시겠습니까?
-		      </div>
-		      <div class="modal-footer">
-		        <button type="button" class="btn btn-default" data-dismiss="modal">취소</button>
-		        <button type="button" class="btn btn-primary">등록</button>
-		      </div> 
-		    </div>
-		  </div>
+		<div class="modal fade" id="myModal2" tabindex="-1" role="dialog"
+			aria-labelledby="myModalLabel">
+			<div class="modal-dialog" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal"
+							aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+						<h4 class="modal-title" id="myModalLabel">Modal title</h4>
+					</div>
+					<div class="modal-body">책갈피로 저장된 페이지(${markedPage}페이지)로
+						이동하시겠습니까?</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-default" data-dismiss="modal">취소</button>
+						<button type="button" class="btn btn-primary">이동</button>
+					</div>
+				</div>
+			</div>
 		</div>
-		
-		<div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-		  <div class="modal-dialog" role="document">
-		    <div class="modal-content">
-		      <div class="modal-header">
-		        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-		        <h4 class="modal-title" id="myModalLabel">Modal title</h4>
-		      </div>
-		      <div class="modal-body">
-		      
-		      	책갈피로 저장된 페이지(${markedPage}페이지)로 이동하시겠습니까?
 
-		      </div>
-		      <div class="modal-footer">
-		        <button type="button" class="btn btn-default" data-dismiss="modal">취소</button>
-		        <button type="button" class="btn btn-primary">이동</button>
-		      </div>
-		    </div>
-		  </div>
-		</div>
-		
 		<script type="text/javascript">
 			var numberOfPages = '${totalPage+2}';
-			if(numberOfPages%2!=0){//페이지가 짝수가 아닐경우 커버페이지를 하나 더 추가했으므로 페이지 수 추가
+			if (numberOfPages % 2 != 0) {//페이지가 짝수가 아닐경우 커버페이지를 하나 더 추가했으므로 페이지 수 추가
 				numberOfPages++;
 			}
 			var startPage = 1;
-			
+
 			$(window).ready(function() {
 
 				$('#flipbook').turn({
@@ -148,7 +155,7 @@ body {
 				$('#page-number').keydown(function(e) {
 					if (e.keyCode == 13)
 						$('#flipbook').turn('page', $('#page-number').val());
-						$('#nowPage').text($('#flipbook').turn("page"));
+					$('#nowPage').text($('#flipbook').turn("page"));
 				});
 
 				$("#prev").click(function() {
@@ -160,20 +167,25 @@ body {
 					$('#nowPage').text($('#flipbook').turn("page"));
 				});
 
+				$("#mark").click(function() {
+					$("#markForm").submit();
+				});
+				/*
+				$("#load").click(function(){
+					location.href="redirect:/readbook/read";
+				});
+				 */
 			});
 
 			$(window).bind('keydown', function(e) {
-				if (e.keyCode == 37){
+				if (e.keyCode == 37) {
 					$('#flipbook').turn('previous');
 					$('#nowPage').text($('#flipbook').turn("page"));
-				}
-				else if (e.keyCode == 39){
+				} else if (e.keyCode == 39) {
 					$('#flipbook').turn('next');
 					$('#nowPage').text($('#flipbook').turn("page"));
 				}
 			});
-
-			
 		</script>
 	</div>
 	<script src="/resources/bootstrap/js/bootstrap.min.js"></script>
