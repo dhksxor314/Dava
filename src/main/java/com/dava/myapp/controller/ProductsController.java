@@ -1,7 +1,6 @@
 package com.dava.myapp.controller;
 
 import javax.inject.Inject;
-import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -49,12 +48,17 @@ public class ProductsController {
 
 	}
 
-	@RequestMapping(value = "/shop_bag", method = RequestMethod.POST)
-	public void shop_bag(ShopBagVO vo) throws Exception {
-		
-		
+	@RequestMapping(value = "/detail", method = RequestMethod.POST)
+	public String shop_bag(ShopBagVO vo) throws Exception {
+		System.out.println("d");
 		buy_service.shop_bag(vo);
+		
+		return "redirect:/products/shop_bag";
 
 	}
+	
+
+
+	
 
 }
