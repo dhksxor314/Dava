@@ -2,5 +2,24 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.dava.mappers.MyBookMapper">
-
+	<select id="getBookmark" resultType="Integer">
+		select bookmark from mybook where mybooknum=${mybooknum}
+	</select>
+	
+	<update id="setBookmark">
+		update mybook set bookmark=#{bookmark} where mybooknum=${mybooknum}
+	</update>
+	
+	<select id="getImage">
+		select img 
+		from buy bu, book b, mybook m 
+		where bu.buynum=m.buynum and bu.booknum=b.booknum and m.mybooknum=${mybooknum};
+	</select>
+	
+	<select id="getTitle">
+		select title 
+		from buy bu, book b, mybook m 
+		where bu.buynum=m.buynum and bu.booknum=b.booknum and m.mybooknum=${mybooknum};
+	</select>
+	
 </mapper>

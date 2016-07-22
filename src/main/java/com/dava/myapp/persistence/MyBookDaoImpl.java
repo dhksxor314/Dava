@@ -13,14 +13,26 @@ public class MyBookDaoImpl implements MyBookDao {
 	private static final String namespace = "com.dava.mappers.MyBookMapper";
 	@Override
 	public int getBookmark() {
-		
+		sqlSession.selectOne(namespace+".getBookmark");
 		return 0;
 	}
 
 	@Override
 	public String getTitle() {
-
+		sqlSession.selectOne(namespace+".getTitle");
 		return null;
 	}
+
+	@Override
+	public String getImage() {
+		return sqlSession.selectOne(namespace+".getImage");
+	}
+
+	@Override
+	public String setBookmark(int bookmark) {		
+		return sqlSession.selectOne(namespace+".setBookmark", bookmark);
+	}
+
+
 
 }
