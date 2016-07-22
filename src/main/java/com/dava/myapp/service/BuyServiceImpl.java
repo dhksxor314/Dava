@@ -13,6 +13,8 @@ import com.dava.myapp.persistence.MemberDAO;
 public class BuyServiceImpl implements BuyService {
 	@Inject
 	private BuyDAO dao;
+	
+
 
 	@Override
 	public void buy(BuyVO vo) {
@@ -26,6 +28,13 @@ public class BuyServiceImpl implements BuyService {
 		dao.shop_bag(vo);
 	}
 
+
+	@Override
+	public ShopBagVO bag_select(ShopBagVO vo) throws Exception {
+		// TODO Auto-generated method stub
+		return dao.bag_select(vo);
+
+	}
 
 	
 }

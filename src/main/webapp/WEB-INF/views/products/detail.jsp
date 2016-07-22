@@ -13,6 +13,7 @@
 
 <script>
 	$(document).ready(function() {
+
 		$("#payment").click(function(event) {
 			var wsize = 770;
 			var hsize = 550;
@@ -20,15 +21,27 @@
 					+ wsize+ ',height='+ hsize+ ',top='+ (screen.height - hsize)/ 2+ ', left='+ (screen.width - wsize)/ 2);
 			});
 		$("#shop_bag").click(function() {
-				$("#form1").submit();	
+				
+			
+				$("#form1").submit();
+				
+				var check = '${check}';
+				
+				if(check == "true"){
+					alert('${bookVO.title}'+"을 장바구니에 담았습니다.");
+				}else{
+					alert("이미 장바구니에 담겨져 있습니다.");
+				}
+				
+				
 			});
 		});
 </script>
 
 <body>
-
+zzz${check}Zzzz
 	<%@ include file="../include/header.jsp"%>
-
+	
 	<form method="post" id="form1">
 		<div class="container" style="border: solid 0.5px silver;">
 
@@ -42,6 +55,8 @@
 					<div style="border: solid 1px;">
 						<div class="row" style="height: 40%;">
 							<div class="col-md-offset-1" style="margin-top: 20px">
+								<input type="hidden" name="memnum" value="1">
+								<input type="hidden" name="booknum" value="${bookVO.booknum}">
 								<p>제 목 : ${bookVO.title}</p>
 								<p>저 자 :${bookVO.author }</p>
 								<p>장 르 : ${bookVO.genre}</p>

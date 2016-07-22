@@ -27,4 +27,10 @@ public class BuyDAOImpl implements BuyDAO {
 		SqlSession.insert(NAMESPACE + ".shop_bag", vo);
 	}
 
+	@Override
+	public ShopBagVO bag_select(ShopBagVO vo) throws Exception {
+		// TODO Auto-generated method stub
+		return SqlSession.selectOne(NAMESPACE+".bag_select",vo);
+	}
+
 }

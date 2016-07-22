@@ -18,10 +18,7 @@
 
 
 	<select id="bag_select" resultType="com.dava.myapp.domain.ShopBagVO">
-		SELECT
-		bagnum,booknum,memnum
-		FROM
-		shop_bag;
+		SELECT bagnum,booknum,memnum FROM shop_bag where booknum = #{booknum} and memnum = 1;
 	</select>
 
 </mapper>

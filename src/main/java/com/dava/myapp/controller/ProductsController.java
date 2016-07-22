@@ -7,6 +7,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.dava.myapp.domain.BuyVO;
 import com.dava.myapp.domain.ShopBagVO;
@@ -28,9 +29,19 @@ public class ProductsController {
 	private BuyService buy_service;
 
 	@RequestMapping(value = "/detail", method = RequestMethod.GET)
-	public void detail(@RequestParam("booknum") int booknum, Model model) throws Exception {
+	public void detail(@RequestParam("booknum") int booknum, Model model,ShopBagVO shop_vo) throws Exception {
 
-		model.addAttribute(book_service.select(booknum));
+	
+		try {
+			model.addAttribute(book_service.select(booknum));
+			model.addAttribute(buy_service.bag_select(shop_vo));
+			model.addAttribute("check",false);
+		} catch (Exception e) {
+			// TODO: handle exception
+			model.addAttribute(book_service.select(booknum));
+			model.addAttribute("check",true);
+		}
+
 	}
 
 	@RequestMapping(value = "/payment", method = RequestMethod.GET)
@@ -49,16 +60,14 @@ public class ProductsController {
 	}
 
 	@RequestMapping(value = "/detail", method = RequestMethod.POST)
-	public String shop_bag(ShopBagVO vo) throws Exception {
-		System.out.println("d");
-		buy_service.shop_bag(vo);
-		
-		return "redirect:/products/shop_bag";
+	public void shop_bag(ShopBagVO shop_vo, @RequestParam("booknum") int booknum, Model model) throws Exception {
 
+		try {
+			buy_service.shop_bag(shop_vo);
+			model.addAttribute(book_service.select(booknum));
+		} catch (Exception e) {
+			model.addAttribute(book_service.select(booknum));
+		}
 	}
-	
-
-
-	
 
 }
