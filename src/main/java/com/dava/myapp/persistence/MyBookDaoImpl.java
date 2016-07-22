@@ -4,6 +4,8 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.dava.myapp.domain.MyBookVO;
+
 @Repository
 public class MyBookDaoImpl implements MyBookDao {
 	
@@ -12,25 +14,25 @@ public class MyBookDaoImpl implements MyBookDao {
 	
 	private static final String namespace = "com.dava.mappers.MyBookMapper";
 	@Override
-	public int getBookmark() {
-		sqlSession.selectOne(namespace+".getBookmark");
+	public int getBookmark(int booknum) {
+		sqlSession.selectOne(namespace+".getBookmark", booknum);
 		return 0;
 	}
 
 	@Override
-	public String getTitle() {
-		sqlSession.selectOne(namespace+".getTitle");
+	public String getTitle(int booknum) {
+		sqlSession.selectOne(namespace+".getTitle", booknum);
 		return null;
 	}
 
 	@Override
-	public String getImage() {
-		return sqlSession.selectOne(namespace+".getImage");
+	public String getImage(int booknum) {
+		return sqlSession.selectOne(namespace+".getImage", booknum);
 	}
 
 	@Override
-	public String setBookmark(int bookmark) {		
-		return sqlSession.selectOne(namespace+".setBookmark", bookmark);
+	public String setBookmark(MyBookVO vo) {		
+		return sqlSession.selectOne(namespace+".setBookmark", vo);
 	}
 
 
