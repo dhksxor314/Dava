@@ -8,6 +8,8 @@
 <script type="text/javascript"
 	src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
 <script type="text/javascript" src="/resources/turn/turn.js"></script>
+<link href="/resources/bootstrap/css/bootstrap.min.css"
+	rel="stylesheet">
 <style>
 body {
 	background: #ccc;
@@ -32,8 +34,6 @@ body {
 </style>
 </head>
 <body>
-
-	<%@ include file="/WEB-INF/views/include/header.jsp"%>
 
 	<!-- 커버 -->
 	<div class="container" style="margin-top: 50px;">
@@ -121,6 +121,9 @@ body {
 		
 		<script type="text/javascript">
 			var numberOfPages = '${totalPage+2}';
+			if(numberOfPages%2!=0){//페이지가 짝수가 아닐경우 커버페이지를 하나 더 추가했으므로 페이지 수 추가
+				numberOfPages++;
+			}
 			var startPage = 1;
 			
 			$(window).ready(function() {
@@ -135,6 +138,7 @@ body {
 					when : {
 						turned : function(e, page) {
 							$('#page-number').val(page);
+							$('#nowPage').text($('#flipbook').turn("page"));
 						}
 					}
 				});
@@ -172,7 +176,6 @@ body {
 			
 		</script>
 	</div>
-	<%@ include file="/WEB-INF/views/include/footer.jsp"%>
 	<script src="/resources/bootstrap/js/bootstrap.min.js"></script>
 
 </body>
