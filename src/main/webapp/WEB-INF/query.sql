@@ -68,7 +68,8 @@ create table shop_bag
 	bagnum integer not null auto_increment,
 	booknum integer not null,
 	memnum integer not null,
-	primary key(bagnum)
+	primary key(bagnum),
+    unique key (booknum,memnum)
 );
 
 

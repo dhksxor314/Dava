@@ -28,7 +28,7 @@
 				var check = '${check}';
 				
 				if(check == "true"){
-					alert('${bookVO.title}'+"을 장바구니에 담았습니다.");
+					alert('${bookVO.title}'+"을(를) 장바구니에 담았습니다.");
 				}else{
 					alert("이미 장바구니에 담겨져 있습니다.");
 				}
@@ -39,7 +39,6 @@
 </script>
 
 <body>
-zzz${check}Zzzz
 	<%@ include file="../include/header.jsp"%>
 	
 	<form method="post" id="form1">
