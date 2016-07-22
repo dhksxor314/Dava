@@ -1,15 +1,16 @@
 package com.dava.myapp.controller;
 
 import javax.inject.Inject;
+import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.dava.myapp.domain.BuyVO;
+import com.dava.myapp.domain.ShopBagVO;
 import com.dava.myapp.service.BookService;
 import com.dava.myapp.service.BuyService;
 import com.dava.myapp.service.MemberService;
@@ -45,7 +46,15 @@ public class ProductsController {
 	public void buy(BuyVO vo) throws Exception {
 
 		buy_service.buy(vo);
+
+	}
+
+	@RequestMapping(value = "/shop_bag", method = RequestMethod.POST)
+	public void shop_bag(ShopBagVO vo) throws Exception {
 		
+		
+		buy_service.shop_bag(vo);
+
 	}
 
 }

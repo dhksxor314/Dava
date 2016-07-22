@@ -9,18 +9,18 @@
 <head>
 
 <script src="https://code.jquery.com/jquery-1.9.1.min.js"></script>
-<link href="<%=cp%>/resources/bootstrap/css/bootstrap.min.css"
+<link href="/resources/bootstrap/css/bootstrap.min.css"
 	rel="stylesheet">
 <title>Insert title here</title>
 
 
 <script>
 	$(document).ready(function() {
-		if('${bookVO.title}' == ""){
+		if ('${bookVO.title}' == "") {
 			window.close();
 		}
 		$("#cancel").click(function(event) {
-		
+
 			var con = confirm("취소하시면 입력한 모든 정보가 취소됩니다.\n결제를 취소하시겠습니까?");
 			if (con == true) {
 				window.close();
@@ -29,11 +29,21 @@
 
 		$("#payment").click(function(event) {
 
+			var p_way = $(':radio[name="p_way"]:checked').val();
+			var agree = $(':checkbox[name="agree"]:checked').val();
+
+			if (p_way == null) {
+				alert("결제 수단을 선택해주세요");
+				return false;
+			} else if (agree == null) {
+				alert("결제진행에 동의해 주세요");
+				return false;
+			}
+
 			var con = confirm("정말로 결제 하시겠습니까?");
 			if (con == true) {
 				$("#form1").submit();
-			}
-			else{
+			} else {
 				return false;
 			}
 		});
@@ -72,7 +82,7 @@
 		<div class="container">
 			<div class="row" style="background-color: #23b300;">
 				<div class=" col-xs-2">
-					<img src="<%=cp%>/resources/imgs/pay_logo.png" width="100%">
+					<img src="/resources/imgs/pay_logo.png" width="100%">
 				</div>
 				<div class="col-xs-2">
 					<h3 style="color: white;">결제</h3>
@@ -108,7 +118,7 @@
 							금액</div>
 						<div class="col-xs-offset-1">
 							<input type="text" id="final_pay"
-								style="border: none; border-right: 0px;background-color: #ffffc2; border-top: 0px; boder-left: 0px; boder-bottom: 0px; width: 50%; font: bold; font-size: x-large;"
+								style="border: none; border-right: 0px; background-color: #ffffc2; border-top: 0px; boder-left: 0px; boder-bottom: 0px; width: 50%; font: bold; font-size: x-large;"
 								name="final_pay" value="${bookVO.price}" readonly="readonly" />
 							원
 						</div>
@@ -201,8 +211,8 @@
 						</div>
 						<hr />
 						<div class="row checkbox">
-							<label> <input type="checkbox" /> 위 상품의 구매조건 확인 및 결제진행
-								동의</<label>
+							<label> <input type="checkbox" checked="checked"
+								name="agree" /> 위 상품의 구매조건 확인 및 결제진행 동의</<label>
 						</div>
 
 					</div>
@@ -236,5 +246,5 @@
 
 
 </body>
-<script src="<%=cp%>/resources/bootstrap/js/bootstrap.min.js"></script>
+<script src="/resources/bootstrap/js/bootstrap.min.js"></script>
 </html>

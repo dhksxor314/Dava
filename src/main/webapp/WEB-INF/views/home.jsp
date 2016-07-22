@@ -4,10 +4,11 @@
 <%@ include file="include/header.jsp"%>
 
 <script src="https://code.jquery.com/jquery-1.9.1.min.js"></script>
+<script src="https://code.jquery.com/jquery-2.2.3.min.js"></script>
 <html>
 <head>
 <title>DAVA</title>
-<link rel="shortcut icon" type="image/x-icon" href="<%=cp%>/resources/imgs/favicon.ico" />
+<link rel="shortcut icon" type="image/x-icon" href="/resources/imgs/favicon.ico" />
 </head>
 <body>
 
@@ -30,7 +31,7 @@
 
 
 	<div class="container"
-		style="margin-top: 5px; border: solid 0.5px silver;">
+		style="border: solid 0.5px silver;">
 		<div class="row" style="text-align: center;">
 			<h2>인기 도서</h2>
 		</div>
@@ -41,7 +42,7 @@
 				<div class="col-xs-6 col-md-3">
 					<a href="products/detail?booknum=${bookVO.booknum}"
 						class="thumbnail"> <img
-						src="<%=cp%>/resources/imgs/${bookVO.img}">
+						src="/resources/imgs/${bookVO.img}">
 					</a>
 				</div>
 				
@@ -67,20 +68,20 @@
 				<div class="carousel-inner t_center" role="listbox">
 					<div class="item active">
 						<div class="row" style="margin-top: 15px; margin-bottom: 15px;">
-							<img src="<%=cp%>/resources/imgs/Chrysanthemum.jpg"
+							<img src="/resources/imgs/Chrysanthemum.jpg"
 								class="imgs_size"> <img
-								src="<%=cp%>/resources/imgs/Chrysanthemum.jpg" class="imgs_size">
-							<img src="<%=cp%>/resources/imgs/Chrysanthemum.jpg"
+								src="/resources/imgs/Chrysanthemum.jpg" class="imgs_size">
+							<img src="/resources/imgs/Chrysanthemum.jpg"
 								class="imgs_size">
 						</div>
 
 					</div>
 					<div class="item">
 						<div class="row" style="margin-top: 15px; margin-bottom: 15px;">
-							<img src="<%=cp%>/resources/imgs/Chrysanthemum.jpg"
+							<img src="/resources/imgs/Chrysanthemum.jpg"
 								class="imgs_size"> <img
-								src="<%=cp%>/resources/imgs/Chrysanthemum.jpg" class="imgs_size">
-							<img src="<%=cp%>/resources/imgs/Chrysanthemum.jpg"
+								src="/resources/imgs/Chrysanthemum.jpg" class="imgs_size">
+							<img src="/resources/imgs/Chrysanthemum.jpg"
 								class="imgs_size">
 
 						</div>
@@ -110,7 +111,7 @@
 
 
 
-	<script src="<%=cp%>/resources/bootstrap/js/bootstrap.min.js"></script>
+	<script src="/resources/bootstrap/js/bootstrap.min.js"></script>
 
 
 	<%@ include file="include/footer.jsp"%>

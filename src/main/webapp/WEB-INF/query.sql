@@ -63,6 +63,15 @@ insert into member(id, nickname, password, point) values('user11@naver.com', 'da
 insert into member(id, nickname, password, point) values('user22@naver.com', 'dava2', 'user22', 20);
 insert into member(id, nickname, password, point) values('user33@naver.com', 'dava3', 'user33', 30);
 
+create table shop_bag
+(
+	bagnum integer not null auto_increment,
+	booknum integer not null,
+	memnum integer not null,
+	primary key(bagnum)
+);
+
+
 
 CREATE TABLE MANAGER
 (

@@ -9,4 +9,19 @@
 		values(#{memnum},#{booknum},now(),#{p_way},#{final_pay});
 	</insert>
 
+
+	<insert id="shop_bag">
+		insert into shop_bag
+		(booknum,memnum)
+		values(#{booknum},#{memnum});
+	</insert>
+
+
+	<select id="bag_select" resultType="com.dava.myapp.domain.ShopBagVO">
+		SELECT
+		bagnum,booknum,memnum
+		FROM
+		shop_bag;
+	</select>
+
 </mapper>

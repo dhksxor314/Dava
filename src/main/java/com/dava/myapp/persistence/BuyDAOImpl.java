@@ -6,6 +6,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
 import com.dava.myapp.domain.BuyVO;
+import com.dava.myapp.domain.ShopBagVO;
 
 @Repository
 public class BuyDAOImpl implements BuyDAO {
@@ -17,6 +18,13 @@ public class BuyDAOImpl implements BuyDAO {
 	public void buy(BuyVO vo) {
 		// TODO Auto-generated method stub
 		SqlSession.insert(NAMESPACE + ".buy", vo);
+	}
+
+	@Override
+	public void shop_bag(ShopBagVO vo) {
+		// TODO Auto-generated method stub
+
+		SqlSession.insert(NAMESPACE + ".shop_bag", vo);
 	}
 
 }

@@ -5,6 +5,7 @@
 
 
 <script src="https://code.jquery.com/jquery-1.9.1.min.js"></script>
+
 <html>
 <head>
 <title>Detail</title>
@@ -15,11 +16,25 @@
 			
 		$("#payment").click(function(event){
 			var wsize = 770;
-			var hsize = 500;
+			var hsize = 550;
 			window.open('payment?booknum=${bookVO.booknum}&memnum=1','payment','width ='+wsize+',height='+hsize+',top='+(screen.height-hsize)/2+', left='+(screen.width-wsize)/2);
 		});
 		
 		
+		$("#shop_bag").click(function(){
+			
+			 $.ajax({
+			      type: "POST", 
+			      url: "shop_bag", 
+			      contentType: "application/x-www-form-urlencoded; charset=utf-8",  
+			      data: { "memnum": 1, "booknum":'${bookVO.booknum}'}
+			    }).success(function(o) {
+			    
+				    	alert("성공");
+			
+			    });
+			
+		});
 	});
 </script>
 
@@ -29,11 +44,11 @@
 
 
 	<div class="container"
-		style="margin-top: 5px; border: solid 0.5px silver; ">
+		style="border: solid 0.5px silver; ">
 
 		<div class="row" style="margin-top: 20px">
 			<div class="col-md-offset-1 col-md-3">
-				<img src="<%=cp%>/resources/imgs/Chrysanthemum.jpg"
+				<img src="/resources/imgs/Chrysanthemum.jpg"
 					style="width: 100%; height: 40%">
 			</div>
 			<div class="col-md-offset-1 col-md-6 col-md-offset-1">
@@ -64,7 +79,10 @@
 		<div class="row">
 			<div class="col-md-offset-8 col-md-3" style="text-align: right;">
 				<button id="payment">결제</button>
-				<button>장바구니</button>
+				<button id="shop_bag">장바구니</button>
+				<form action="shop_bag" method="post">
+				<input type="submit"/>
+				</form>
 				<button>바로보기</button>
 			</div>
 		</div>
@@ -73,7 +91,7 @@
 
 
 
-	<script src="<%=cp%>/resources/bootstrap/js/bootstrap.min.js"></script>
+	<script src="/resources/bootstrap/js/bootstrap.min.js"></script>
 
 
 	<%@ include file="../include/footer.jsp"%>

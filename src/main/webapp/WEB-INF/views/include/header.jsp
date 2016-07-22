@@ -3,9 +3,6 @@
 
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
-<%
-	String cp = request.getContextPath();
-%>
 
 <script src="https://code.jquery.com/jquery-1.9.1.min.js"></script>
 
@@ -49,13 +46,13 @@
 
 
 
-<link href="<%=cp%>/resources/bootstrap/css/bootstrap.min.css"
+<link href="/resources/bootstrap/css/bootstrap.min.css"
 	rel="stylesheet">
 
 
 <div class="container" style="margin-top: 50px">
 	<div class="col-md-3 ">
-		<a href="/"><img src="<%=cp%>/resources/imgs/logo.png" width="80%"></a>
+		<a href="/"><img src="/resources/imgs/logo.png" width="80%"></a>
 	</div>
 	<!-- 로그인-->
 	<c:if test="${param.id eq null}">
@@ -100,7 +97,7 @@
 			<div class="row" style="text-align: right;">
 
 				<div class="col-xs-offset-6 col-xs-2" >
-					<img src="<%=cp%>/resources/imgs/login.png" class="img-circle"
+					<img src="/resources/imgs/login.png" class="img-circle"
 						style="width: 50px; height: 50px">
 				</div>
 				<div class="col-xs-4" style="text-align:left;">
@@ -123,7 +120,7 @@
 
 </div>
 
-<div class="container" style="background-color: #23b300;">
+<div class="container" style="background-color: #23b300; margin-bottom: 5px">
 	<ul class="nav nav-pills col-md-9"
 		style="text-align: center; margin-top: 4px; margin-bottom: -10px">
 		<li role="presentation" class="col-md-2"><a href="#"
