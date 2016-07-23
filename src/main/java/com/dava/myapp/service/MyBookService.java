@@ -1,8 +1,8 @@
 package com.dava.myapp.service;
 
 public interface MyBookService {
-	public int getBookmark(int booknum);
-	public String getTitle(int booknum);
-	public String getImage(int booknum);
-	public String setBookmark(int mybooknum, int bookmark);
+	public int getBookmark(Integer mybooknum);
+	public String getTitle(Integer mybooknum);
+	public String getImage(Integer mybooknum);
+	public void setBookmark(Integer bookmark, Integer mybooknum);
 }

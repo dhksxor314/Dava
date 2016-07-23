@@ -1,5 +1,8 @@
 package com.dava.myapp.persistence;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -14,26 +17,27 @@ public class MyBookDaoImpl implements MyBookDao {
 	
 	private static final String namespace = "com.dava.mappers.MyBookMapper";
 	@Override
-	public int getBookmark(int booknum) {
-		sqlSession.selectOne(namespace+".getBookmark", booknum);
-		return 0;
+	public int getBookmark(Integer mybooknum) {
+		return sqlSession.selectOne(namespace+".getBookmark", mybooknum);
 	}
 
 	@Override
-	public String getTitle(int booknum) {
-		sqlSession.selectOne(namespace+".getTitle", booknum);
-		return null;
+	public String getTitle(Integer mybooknum) {
+		return sqlSession.selectOne(namespace+".getTitle", mybooknum);
 	}
 
 	@Override
-	public String getImage(int booknum) {
-		return sqlSession.selectOne(namespace+".getImage", booknum);
+	public String getImage(Integer mybooknum) {
+		return sqlSession.selectOne(namespace+".getImage", mybooknum);
 	}
 
 	@Override
-	public String setBookmark(int mybooknum, int bookmark) {
-		int mybook[] = {mybooknum, bookmark};
-		return sqlSession.selectOne(namespace+".setBookmark", mybook);
+	public void setBookmark(Integer bookmark, Integer mybooknum) {
+		Map<String, Object> paramMap = new HashMap<String, Object>();
+		paramMap.put("bookmark", bookmark);
+		paramMap.put("mybooknum", mybooknum);
+		
+		sqlSession.selectOne(namespace+".setBookmark", paramMap);
 	}
 
 

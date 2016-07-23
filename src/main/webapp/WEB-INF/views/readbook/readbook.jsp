@@ -2,9 +2,10 @@
 
 
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8" isELIgnored="false"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ include file="/WEB-INF/views/include/header.jsp" %>
+
 <!doctype html>
 <html>
 <head>
@@ -33,6 +34,7 @@
 </style>
 </head>
 <body>
+
 	<!-- 커버 -->
 	<div class="container" style="margin-top: 50px;">
 
@@ -75,13 +77,13 @@
 			<div class="col-md-3"></div>
 			<div class="col-md-3">
 					<label for="page-number">현재 페이지:</label> <input type="text"
-						size="3" id="page-number" name="page_number"> of <span
-						id="number-pages"></span>
+						size="3" id="page-number" name="page-number"> of <span
+						id="number-pages"><c:if test="${bookmark==null }">1</c:if><c:if test="${bookmark!=null }">${bookmark }</c:if></span>
 				<form action="/readbook/setmark" id="markForm" method="post">
 					<input type="hidden"
-						size="3" id="page_number" name="page_number">
+						size="3" id="page_number" name="page_number" value='<c:if test="${bookmark==null }">1</c:if><c:if test="${bookmark!=null }">${bookmark }</c:if>'>
 					<input type="hidden"
-						size="3" id="bookmark" name="bookmark">
+						size="3" id="mybooknum" name="mybooknum" value="${param.mybooknum }">
 				</form>
 			</div>
 
@@ -99,7 +101,7 @@
 						<h4 class="modal-title" id="myModalLabel">책갈피 등록</h4>
 					</div>
 					<div class="modal-body">
-						현재 페이지(<span id="nowPage">1</span>페이지)를 책갈피로 등록하시겠습니까?
+						현재 페이지(<span id="nowPage"><c:if test="${bookmark==null }">1</c:if><c:if test="${bookmark!=null }">${bookmark }</c:if></span>페이지)를 책갈피로 등록하시겠습니까?
 					</div>
 					<div class="modal-footer">
 						<button type="button" class="btn btn-default" data-dismiss="modal">취소</button>
@@ -150,7 +152,8 @@
 						turned : function(e, page) {
 							$('#page-number').val(page);
 							$('#nowPage').text($('#flipbook').turn("page"));
-							$('#bookmark').val(page);
+							$('#bookmark').val($('#flipbook').turn("page"));
+							$('#page_number').val($('#flipbook').turn("page"));
 						}
 					}
 				});
@@ -161,21 +164,24 @@
 					if (e.keyCode == 13)
 						$('#flipbook').turn('page', $('#page-number').val());
 					$('#nowPage').text($('#flipbook').turn("page"));
-					$('#bookmark').val(page);
+					$('#bookmark').val($('#flipbook').turn("page"));
+					$('#page_number').val($('#flipbook').turn("page"));
 				});
 
 				$("#prev").click(function() {
 					$('#flipbook').turn('previous');
 					$('#nowPage').text($('#flipbook').turn("page"));
-					$('#bookmark').val(page);
+					$('#bookmark').val($('#flipbook').turn("page"));
+					$('#page_number').val($('#flipbook').turn("page"));
 				});
 				$("#next").click(function() {
 					$('#flipbook').turn('next');
 					$('#nowPage').text($('#flipbook').turn("page"));
-					$('#bookmark').val(page);
+					$('#bookmark').val($('#flipbook').turn("page"));
+					$('#page_number').val($('#flipbook').turn("page"));
 				});
 
-				$("mark").click(function(){
+				$("#mark").click(function(){
 					$('#markForm').submit();
 				});
 				
@@ -185,11 +191,13 @@
 				if (e.keyCode == 37) {
 					$('#flipbook').turn('previous');
 					$('#nowPage').text($('#flipbook').turn("page"));
-					$('#bookmark').val(page);
+					$('#bookmark').val($('#flipbook').turn("page"));
+					$('#page_number').val($('#flipbook').turn("page"));
 				} else if (e.keyCode == 39) {
 					$('#flipbook').turn('next');
 					$('#nowPage').text($('#flipbook').turn("page"));
-					$('#bookmark').val(page);
+					$('#bookmark').val($('#flipbook').turn("page"));
+					$('#page_number').val($('#flipbook').turn("page"));
 				}
 			});
 		</script>

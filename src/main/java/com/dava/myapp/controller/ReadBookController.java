@@ -11,7 +11,6 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 
-import javax.servlet.ServletRequest;
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,7 +19,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.servlet.ModelAndView;
 
 import com.dava.myapp.service.MyBookService;
 
@@ -30,20 +28,20 @@ public class ReadBookController {
 	
 	@Autowired
 	private MyBookService service;
-
+	
+	
+	//구매한 책에서 보기를 선택했을 시에 책을 보여주기 위한 로직을 가진 핸들러
 	@RequestMapping(value = "/readbook/read", method = RequestMethod.GET)
-	public String home(Model model, HttpServletRequest req) {
-		
+	public String home(@RequestParam("mybooknum") int mybooknum, HttpServletRequest req, Model model) {
 		
 		String path = req.getServletContext().getRealPath("resources");
-		
-		String title = "달빛조각사1";
+
+		String title = service.getTitle(mybooknum);
 		int pageCutline=30;//한 페이지당 라인 수
 		int totalPage = 0;
 		int totalLine=1;
 		String[] content=null;
 		BufferedReader br=null;
-		
 		
 		try {
 			br=new BufferedReader(new FileReader(new File(path+"\\books\\"+title+".txt")));
@@ -78,22 +76,21 @@ public class ReadBookController {
 		} finally {		
 			try {br.close();} catch (IOException e) {e.printStackTrace();}
 		}
-		if(req.getAttribute("bookmark")==null){
-			model.addAttribute("markedPage", 1);
-		}
-		else{
-			model.addAttribute("markedPage", (Integer)req.getAttribute("bookmark"));
-		}
+
 		model.addAttribute("totalPage", totalPage);
 		model.addAttribute("content", content);
 		
 		return "/readbook/readbook";
 	}
 	
+	
+	//책갈피 등록을 처리하는 핸들러
 	@RequestMapping(value = "/readbook/setmark", method = RequestMethod.POST)
-	public String markHandler(@RequestParam("page_number") int bookmark, @RequestParam("mybooknum") int mybooknum, Model model){
-		model.addAttribute("bookmark", bookmark);
-		service.setBookmark(bookmark, mybooknum);
+	public String markHandler(@RequestParam("page_number") int page_number, @RequestParam("mybooknum") int mybooknum, Model model){
+
+		model.addAttribute("mybooknum", mybooknum);
+		model.addAttribute("bookmark", page_number);
+		service.setBookmark(page_number, mybooknum);
 		return "redirect:/readbook/read";
 	}
 	

@@ -13,27 +13,26 @@ public class MyBookServiceImpl implements MyBookService {
 	private MyBookDao dao;
 	
 	@Override
-	public int getBookmark(int booknum) {
+	public int getBookmark(Integer mybooknum) {
 		
-		return dao.getBookmark(booknum);
+		return dao.getBookmark(mybooknum);
 	}
 
 	@Override
-	public String getTitle(int booknum) {
-		
-		return dao.getTitle(booknum);
+	public String getTitle(Integer mybooknum) {
+		return dao.getTitle(mybooknum);
 	}
 
 	@Override
-	public String getImage(int booknum) {
+	public String getImage(Integer mybooknum) {
 		
-		return dao.getImage(booknum);
+		return dao.getImage(mybooknum);
 	}
 
 	@Override
-	public String setBookmark(int mybooknum, int bookmark) {
+	public void setBookmark(Integer bookmark, Integer mybooknum) {
 
-		return dao.setBookmark(mybooknum, bookmark);
+		dao.setBookmark(bookmark, mybooknum);
 	}
 
 }
