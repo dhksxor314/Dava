@@ -31,8 +31,9 @@ public class MyBookDaoImpl implements MyBookDao {
 	}
 
 	@Override
-	public String setBookmark(MyBookVO vo) {		
-		return sqlSession.selectOne(namespace+".setBookmark", vo);
+	public String setBookmark(int mybooknum, int bookmark) {
+		int mybook[] = {mybooknum, bookmark};
+		return sqlSession.selectOne(namespace+".setBookmark", mybook);
 	}
 
 

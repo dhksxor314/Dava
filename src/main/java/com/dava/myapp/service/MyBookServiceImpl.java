@@ -31,9 +31,9 @@ public class MyBookServiceImpl implements MyBookService {
 	}
 
 	@Override
-	public String setBookmark(MyBookVO vo) {
+	public String setBookmark(int mybooknum, int bookmark) {
 
-		return dao.setBookmark(vo);
+		return dao.setBookmark(mybooknum, bookmark);
 	}
 
 }

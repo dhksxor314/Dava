@@ -14,18 +14,27 @@ import java.io.IOException;
 import javax.servlet.ServletRequest;
 import javax.servlet.http.HttpServletRequest;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.ModelAndView;
+
+import com.dava.myapp.service.MyBookService;
 
 
 @Controller
 public class ReadBookController {
+	
+	@Autowired
+	private MyBookService service;
 
 	@RequestMapping(value = "/readbook/read", method = RequestMethod.GET)
 	public String home(Model model, HttpServletRequest req) {
+		
+		
 		String path = req.getServletContext().getRealPath("resources");
 		
 		String title = "´ÞºûÁ¶°¢»ç1";
@@ -69,17 +78,23 @@ public class ReadBookController {
 		} finally {		
 			try {br.close();} catch (IOException e) {e.printStackTrace();}
 		}
-
+		if(req.getAttribute("bookmark")==null){
+			model.addAttribute("markedPage", 1);
+		}
+		else{
+			model.addAttribute("markedPage", (Integer)req.getAttribute("bookmark"));
+		}
 		model.addAttribute("totalPage", totalPage);
-		//model.addAttribute("markedPage", markedPage);
 		model.addAttribute("content", content);
 		
 		return "/readbook/readbook";
 	}
 	
-	@RequestMapping(value = "/readbook/setmark", method = RequestMethod.GET)
-	public void markHandler(@RequestParam("page-number") int num){
-		
+	@RequestMapping(value = "/readbook/setmark", method = RequestMethod.POST)
+	public String markHandler(@RequestParam("page_number") int bookmark, @RequestParam("mybooknum") int mybooknum, Model model){
+		model.addAttribute("bookmark", bookmark);
+		service.setBookmark(bookmark, mybooknum);
+		return "redirect:/readbook/read";
 	}
 	
 

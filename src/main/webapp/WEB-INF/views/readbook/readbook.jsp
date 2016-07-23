@@ -63,9 +63,9 @@
 					페이지</button>
 			</div>
 			<div class="btn-group col-md-3" role="group" aria-label="...">
-				<button type="button" class="btn btn-default" id="mark"
+				<button type="button" class="btn btn-default" 
 					data-target="#myModal1" data-toggle="modal">책갈피 등록</button>
-				<button type="button" class="btn btn-default" id="move"
+				<button type="button" class="btn btn-default" 
 					data-target="#myModal2" data-toggle="modal">책갈피 이동</button>
 			</div>
 		</div>
@@ -74,10 +74,14 @@
 		<div class="row">
 			<div class="col-md-3"></div>
 			<div class="col-md-3">
-				<form action="/readbook/setmark" id="markForm" method="post">
 					<label for="page-number">현재 페이지:</label> <input type="text"
-						size="3" id="page-number" name="page-number"> of <span
+						size="3" id="page-number" name="page_number"> of <span
 						id="number-pages"></span>
+				<form action="/readbook/setmark" id="markForm" method="post">
+					<input type="hidden"
+						size="3" id="page_number" name="page_number">
+					<input type="hidden"
+						size="3" id="bookmark" name="bookmark">
 				</form>
 			</div>
 
@@ -120,7 +124,7 @@
 						이동하시겠습니까?</div>
 					<div class="modal-footer">
 						<button type="button" class="btn btn-default" data-dismiss="modal">취소</button>
-						<button type="button" class="btn btn-primary">이동</button>
+						<button type="button" class="btn btn-primary" id="move">이동</button>
 					</div>
 				</div>
 			</div>
@@ -131,7 +135,7 @@
 			if (numberOfPages % 2 != 0) {//페이지가 짝수가 아닐경우 커버페이지를 하나 더 추가했으므로 페이지 수 추가
 				numberOfPages++;
 			}
-			var startPage = 1;
+			var startPage = '${markedPage}';
 
 			$(window).ready(function() {
 
@@ -146,6 +150,7 @@
 						turned : function(e, page) {
 							$('#page-number').val(page);
 							$('#nowPage').text($('#flipbook').turn("page"));
+							$('#bookmark').val(page);
 						}
 					}
 				});
@@ -156,34 +161,35 @@
 					if (e.keyCode == 13)
 						$('#flipbook').turn('page', $('#page-number').val());
 					$('#nowPage').text($('#flipbook').turn("page"));
+					$('#bookmark').val(page);
 				});
 
 				$("#prev").click(function() {
 					$('#flipbook').turn('previous');
 					$('#nowPage').text($('#flipbook').turn("page"));
+					$('#bookmark').val(page);
 				});
 				$("#next").click(function() {
 					$('#flipbook').turn('next');
 					$('#nowPage').text($('#flipbook').turn("page"));
+					$('#bookmark').val(page);
 				});
 
-				$("#mark").click(function() {
-					$("#markForm").submit();
+				$("mark").click(function(){
+					$('#markForm').submit();
 				});
-				/*
-				$("#load").click(function(){
-					location.href="redirect:/readbook/read";
-				});
-				 */
+				
 			});
 
 			$(window).bind('keydown', function(e) {
 				if (e.keyCode == 37) {
 					$('#flipbook').turn('previous');
 					$('#nowPage').text($('#flipbook').turn("page"));
+					$('#bookmark').val(page);
 				} else if (e.keyCode == 39) {
 					$('#flipbook').turn('next');
 					$('#nowPage').text($('#flipbook').turn("page"));
+					$('#bookmark').val(page);
 				}
 			});
 		</script>

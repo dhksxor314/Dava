@@ -1,10 +1,8 @@
 package com.dava.myapp.persistence;
 
-import com.dava.myapp.domain.MyBookVO;
-
 public interface MyBookDao {
-	public int getBookmark(int booknum);
-	public String getTitle(int booknum);
-	public String getImage(int booknum);
-	public String setBookmark(MyBookVO vo);
+	public int getBookmark(int mybooknum);
+	public String getTitle(int mybooknum);
+	public String getImage(int mybooknum);
+	public String setBookmark(int mybooknum, int bookmark);
 }
