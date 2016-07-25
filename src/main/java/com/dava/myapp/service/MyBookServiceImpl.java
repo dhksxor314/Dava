@@ -13,7 +13,6 @@ public class MyBookServiceImpl implements MyBookService {
 	
 	@Override
 	public int getBookmark(Integer mybooknum) {
-		System.out.println("service");
 		return dao.getBookmark(mybooknum);
 	}
 

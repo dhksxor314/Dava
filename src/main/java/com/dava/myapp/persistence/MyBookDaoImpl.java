@@ -16,7 +16,6 @@ public class MyBookDaoImpl implements MyBookDao {
 	private static final String namespace = "com.dava.mappers.MyBookMapper";
 	@Override
 	public int getBookmark(Integer mybooknum) {
-		System.out.println("dao");
 		return sqlSession.selectOne(namespace+".getBookmark", mybooknum);
 	}
 

@@ -58,7 +58,6 @@ public class ReadBookController {
 			
 			totalPage=(int)Math.ceil(((double)totalLine/(double)pageCutline));//올림 함수를 써서 총 페이지를 구함
 			
-			
 			content=new String[totalPage];//content배열을 페이지 수 만큼 초기화하기 위해서
 			for(int i=0;i<totalPage;i++){//이 작업이 없을 시 첫글자에 null이 들어감
 				content[i]="";
@@ -81,6 +80,8 @@ public class ReadBookController {
 		} finally {		
 			try {br.close();} catch (IOException e) {e.printStackTrace();}
 		}
+		
+		model.addAttribute("img", service.getImage(mybooknum));
 		model.addAttribute("startPage", startPage);
 		model.addAttribute("totalPage", totalPage);
 		model.addAttribute("content", content);
