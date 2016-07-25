@@ -5,11 +5,11 @@
 
 package com.dava.myapp.controller;
 
-import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.io.FileReader;
 import java.io.IOException;
+import java.io.StringWriter;
+import java.io.Writer;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -19,6 +19,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+
+import com.argo.hwp.HwpTextExtractor;
 import com.dava.myapp.service.MyBookService;
 
 
@@ -31,7 +33,7 @@ public class ReadBookController {
 	
 	//구매한 책에서 보기를 선택했을 시에 책을 보여주기 위한 로직을 가진 핸들러
 	@RequestMapping(value = "/readbook/read", method = RequestMethod.GET)
-	public String home(@RequestParam("mybooknum") int mybooknum, HttpServletRequest req, Model model) {
+	public String home(@RequestParam("mybooknum") int mybooknum, HttpServletRequest req, Model model) throws FileNotFoundException, IOException {
 		
 		int startPage=1;
 		
@@ -42,51 +44,52 @@ public class ReadBookController {
 		String path = req.getServletContext().getRealPath("resources");
 
 		String title = service.getTitle(mybooknum);
-		int pageCutline=30;//한 페이지당 라인 수
+		int pageCutline=25;//한 페이지당 라인 수
 		int totalPage = 0;
 		int totalLine=1;
 		String[] content=null;
-		BufferedReader br=null;
 		
-		try {
-			br=new BufferedReader(new FileReader(new File(path+"\\books\\"+title+".txt")));
-			String a="";
-			
-			while(br.readLine()!=null){//책 한권의 총 라인 수를 먼저 구한다.  
-				totalLine++;
-			}
-			
-			totalPage=(int)Math.ceil(((double)totalLine/(double)pageCutline));//올림 함수를 써서 총 페이지를 구함
-			
-			content=new String[totalPage];//content배열을 페이지 수 만큼 초기화하기 위해서
-			for(int i=0;i<totalPage;i++){//이 작업이 없을 시 첫글자에 null이 들어감
-				content[i]="";
-			}
-			
-			br=new BufferedReader(new FileReader(new File(path+"\\books\\"+title+".txt")));//다시 책을 불러온다.
-			int cnt=0;//페이지 번호
-			int line=1;//pageCutline을 맞추기 위해서 사용
-
-			while((a=br.readLine())!=null){//30라인을 1페이지로 잡고 데이터를 넣어준다.
-				content[cnt]+=a+"<br/>";
-				if(line==pageCutline){line=1;cnt++;}
-				else{line++;}
-			}
-			
-		} catch (FileNotFoundException e) {
-			System.out.println("파일이 존재하지 않습니다");
-		} catch (IOException e) {
-			System.out.println("입출력 에러");
-		} finally {		
-			try {br.close();} catch (IOException e) {e.printStackTrace();}
-		}
-		
+		File hwp = new File(path+"\\books\\"+title+".hwp"); // 텍스트를 추출할 HWP 파일
+	    Writer writer = new StringWriter(); // 추출된 텍스트를 출력할 버퍼
+	    HwpTextExtractor.extract(hwp, writer); // 파일로부터 텍스트 추출
+	    String text = writer.toString(); // 추출된 텍스트
+	    String c="";
+	    int cnt=1;
+	    for(int i=1;i<=text.length();i++){
+	    	c+=text.charAt(i-1);
+	    	if(text.charAt(i-1)=='\n'){
+	    		c+='\n';
+	    		cnt=1;
+	    	}
+	    	else{
+	    		cnt++;
+	    	}
+		    if(cnt%40==0){c+="\n";}	    	
+	    }
+	    
+	    String cline[] = c.split("\n");
+	    totalLine=cline.length;
+	    totalPage=(int)Math.ceil(((double)totalLine/(double)pageCutline));
+	    content = new String[totalPage];
+	    System.out.println(totalPage);
+	    System.out.println(totalLine);
+	    for(int i=0;i<totalPage;i++){
+	    	content[i]="";
+	    }
+	    
+	    int j=0;
+	    for(int i=0;i<totalLine;i++){
+	    	content[j]+=cline[i]+"<br/>";
+	    	if(((i+1)%pageCutline)==0){j++;}
+	    }
+	    		
 		model.addAttribute("img", service.getImage(mybooknum));
 		model.addAttribute("startPage", startPage);
 		model.addAttribute("totalPage", totalPage);
 		model.addAttribute("content", content);
 		
 		return "/readbook/readbook";
+		
 	}
 	
 	
