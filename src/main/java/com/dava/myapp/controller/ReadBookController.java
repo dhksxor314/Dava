@@ -19,7 +19,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-
 import com.dava.myapp.service.MyBookService;
 
 
@@ -34,6 +33,12 @@ public class ReadBookController {
 	@RequestMapping(value = "/readbook/read", method = RequestMethod.GET)
 	public String home(@RequestParam("mybooknum") int mybooknum, HttpServletRequest req, Model model) {
 		
+		int startPage=1;
+		
+		if(service.getBookmark(mybooknum)!=1){
+			startPage=service.getBookmark(mybooknum);
+		}
+
 		String path = req.getServletContext().getRealPath("resources");
 
 		String title = service.getTitle(mybooknum);
@@ -76,7 +81,7 @@ public class ReadBookController {
 		} finally {		
 			try {br.close();} catch (IOException e) {e.printStackTrace();}
 		}
-
+		model.addAttribute("startPage", startPage);
 		model.addAttribute("totalPage", totalPage);
 		model.addAttribute("content", content);
 		
@@ -87,9 +92,8 @@ public class ReadBookController {
 	//책갈피 등록을 처리하는 핸들러
 	@RequestMapping(value = "/readbook/setmark", method = RequestMethod.POST)
 	public String markHandler(@RequestParam("page_number") int page_number, @RequestParam("mybooknum") int mybooknum, Model model){
-
+		
 		model.addAttribute("mybooknum", mybooknum);
-		model.addAttribute("bookmark", page_number);
 		service.setBookmark(page_number, mybooknum);
 		return "redirect:/readbook/read";
 	}

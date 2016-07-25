@@ -7,8 +7,6 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import com.dava.myapp.domain.MyBookVO;
-
 @Repository
 public class MyBookDaoImpl implements MyBookDao {
 	
@@ -18,6 +16,7 @@ public class MyBookDaoImpl implements MyBookDao {
 	private static final String namespace = "com.dava.mappers.MyBookMapper";
 	@Override
 	public int getBookmark(Integer mybooknum) {
+		System.out.println("dao");
 		return sqlSession.selectOne(namespace+".getBookmark", mybooknum);
 	}
 

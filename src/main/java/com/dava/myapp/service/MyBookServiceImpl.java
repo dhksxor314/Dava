@@ -3,7 +3,6 @@ package com.dava.myapp.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.dava.myapp.domain.MyBookVO;
 import com.dava.myapp.persistence.MyBookDao;
 
 @Service
@@ -14,7 +13,7 @@ public class MyBookServiceImpl implements MyBookService {
 	
 	@Override
 	public int getBookmark(Integer mybooknum) {
-		
+		System.out.println("service");
 		return dao.getBookmark(mybooknum);
 	}
 

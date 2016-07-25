@@ -77,16 +77,14 @@
 			<div class="col-md-3"></div>
 			<div class="col-md-3">
 					<label for="page-number">현재 페이지:</label> <input type="text"
-						size="3" id="page-number" name="page-number"> of <span
-						id="number-pages"><c:if test="${bookmark==null }">1</c:if><c:if test="${bookmark!=null }">${bookmark }</c:if></span>
+						size="3" id="page-number" name="page-number"> of <span id="number-pages"></span>
 				<form action="/readbook/setmark" id="markForm" method="post">
 					<input type="hidden"
-						size="3" id="page_number" name="page_number" value='<c:if test="${bookmark==null }">1</c:if><c:if test="${bookmark!=null }">${bookmark }</c:if>'>
+						size="3" id="page_number" name="page_number">
 					<input type="hidden"
 						size="3" id="mybooknum" name="mybooknum" value="${param.mybooknum }">
 				</form>
 			</div>
-
 		</div>
 
 		<div class="modal fade" id="myModal1" tabindex="-1" role="dialog"
@@ -101,7 +99,7 @@
 						<h4 class="modal-title" id="myModalLabel">책갈피 등록</h4>
 					</div>
 					<div class="modal-body">
-						현재 페이지(<span id="nowPage"><c:if test="${bookmark==null }">1</c:if><c:if test="${bookmark!=null }">${bookmark }</c:if></span>페이지)를 책갈피로 등록하시겠습니까?
+						현재 페이지(<span id="nowPage">${startPage }</span>페이지)를 책갈피로 등록하시겠습니까?
 					</div>
 					<div class="modal-footer">
 						<button type="button" class="btn btn-default" data-dismiss="modal">취소</button>
@@ -137,7 +135,7 @@
 			if (numberOfPages % 2 != 0) {//페이지가 짝수가 아닐경우 커버페이지를 하나 더 추가했으므로 페이지 수 추가
 				numberOfPages++;
 			}
-			var startPage = '${markedPage}';
+			var startPage = '${startPage}';
 
 			$(window).ready(function() {
 
