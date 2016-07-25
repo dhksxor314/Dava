@@ -18,7 +18,18 @@
 
 
 	<select id="bag_select" resultType="com.dava.myapp.domain.ShopBagVO">
-		SELECT bagnum,booknum,memnum FROM shop_bag where booknum = #{booknum} and memnum = 1;
+		SELECT bagnum,booknum,memnum
+		FROM shop_bag where booknum = #{booknum} and memnum = 1;
 	</select>
+
+	<select id="my_shop" resultType="com.dava.myapp.domain.BookVO">
+		 <![CDATA[
+		 select b.booknum,b.img ,b.title, b.price from shop_bag s join book b on s.booknum = b.booknum where s.memnum=1;
+		 ]]>
+	</select>
+	
+	<delete id="shop_drop">
+ 		delete from shop_bag where memnum= 1 and booknum =#{booknum};
+	</delete>
 
 </mapper>

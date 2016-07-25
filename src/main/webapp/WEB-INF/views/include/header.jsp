@@ -20,7 +20,7 @@
 		});
 
 		$("#login").click(function() {
-			
+
 			alert("로그인처리");
 			$("#loginForm").submit();
 
@@ -40,14 +40,18 @@
 			alert("페이지 이동 들어갈곳")
 
 		});
+		$("#test").click(function() {
+
+			location.href="/products/shop_bag";			
+
+		});
 
 	});
 </script>
 
 
 
-<link href="/resources/bootstrap/css/bootstrap.min.css"
-	rel="stylesheet">
+<link href="/resources/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
 
 <div class="container" style="margin-top: 50px">
@@ -96,14 +100,15 @@
 		<div class="col-md-6 col-md-offset-3">
 			<div class="row" style="text-align: right;">
 
-				<div class="col-xs-offset-6 col-xs-2" >
+				<div class="col-xs-offset-6 col-xs-2">
 					<img src="/resources/imgs/login.png" class="img-circle"
 						style="width: 50px; height: 50px">
 				</div>
-				<div class="col-xs-4" style="text-align:left;">
+				<div class="col-xs-4" style="text-align: left;">
 					<div class="row" style="margin-top: 5px">${param.id}</div>
 					<div class="row" style="margin-top: 5px">
 						<a href="" id="mypage">me</a> | <a id="logout" href="">로그아웃</a>
+						<button id="test">장바구니</button>
 					</div>
 				</div>
 
@@ -120,7 +125,8 @@
 
 </div>
 
-<div class="container" style="background-color: #23b300; margin-bottom: 5px">
+<div class="container"
+	style="background-color: #23b300; margin-bottom: 5px">
 	<ul class="nav nav-pills col-md-9"
 		style="text-align: center; margin-top: 4px; margin-bottom: -10px">
 		<li role="presentation" class="col-md-2"><a href="#"

@@ -28,7 +28,10 @@
 				var check = '${check}';
 				
 				if(check == "true"){
-					alert('${bookVO.title}'+"을(를) 장바구니에 담았습니다.");
+					var con = confirm('${bookVO.title}'+"을(를) 장바구니에 담았습니다.");
+					if (con == true) {
+						window.close();
+					}
 				}else{
 					alert("이미 장바구니에 담겨져 있습니다.");
 				}

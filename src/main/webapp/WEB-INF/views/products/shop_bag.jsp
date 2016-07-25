@@ -8,6 +8,17 @@
 
 <script src="https://code.jquery.com/jquery-1.9.1.min.js"></script>
 
+<script>
+	$(document).ready(function() {
+
+		
+	});
+</script>
+
+
+
+
+
 <div class="container" style="margin-top: 25px">
 	<div class="row">
 		나의 장바구니
@@ -46,24 +57,40 @@
 				<button>선택상품 삭제</button>
 			</div>
 
-			
+
 		</div>
-		<div class="row">
-			<div class="col-md-offset-1 col-md-5">
-				<input type="checkbox"><img>이미지 이름
-			</div>
-			<div class="col-md-offset-3 col-md-3">
-				<div class="col-xs-offset-4 col-xs-4">가격</div>
-				<div class="col-xs-4">
-					<a>X</a>
+
+		<c:set var="total" value="0" />
+		<c:set var="total_price" value="0" />
+		<c:forEach items="${list}" var="bookVO">
+
+			<hr />
+			<input type="hidden" id="booknum_${total}" value="${bookVO.booknum}">
+			<div class="row">
+				<div class="col-md-offset-1 col-md-5">
+					<input type="checkbox"><img>이미지 ${bookVO.title}
+				</div>
+				<div class="col-md-offset-3 col-md-3">
+					<div class="col-xs-offset-4 col-xs-4">${bookVO.price}</div>
+					<div class="col-xs-4">
+						<a href="shop_drop?booknum=${bookVO.booknum }">X</a>
+					</div>
 				</div>
 			</div>
-		</div>
+			<c:set var="total" value="${total+1}" />
+			<input type="hidden" id="booknum${total}">
+			<c:set var="total_price" value="${total_price + bookVO.price}" />
+		</c:forEach>
+
+
 	</div>
-	
+
 	<div class="row" style="margin-top: 5px; border: solid 0.5px silver;">
 		<div class="col-md-offset-10 col-md-2">
-			<div class="row"> 총 결제 금액(x건)  :   xx원</div>
+			<div class="row">
+				총 결제 금액( <label id="total">${total}</label>건) : <label
+					id="total_price">${total_price }</label> 원
+			</div>
 		</div>
 	</div>
 </div>
