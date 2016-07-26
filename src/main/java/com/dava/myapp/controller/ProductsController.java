@@ -81,19 +81,29 @@ public class ProductsController {
 	}
 
 	@RequestMapping(value = "/total_payment", method = RequestMethod.POST)
-	public void total_buy(List<BuyVO> vo,HttpSession session) throws Exception {
-		System.out.println(session.getAttribute("total_list"));
-		List<BuyVO> total_list = (List)session.getAttribute("total_list");
-		System.out.println(total_list.get(0).getBooknum());
-		System.out.println(">");
-		System.out.println(vo.get(0).getBooknum() );
-		System.out.println(vo.get(1).getBooknum() );
-		
+	public void total_buy(HttpSession session, BuyVO vo, int use_point, String p_way, int final_pay, ShopBagVO shop_vo,
+			Model model) throws Exception {
+		int memnum = Integer.parseInt(session.getAttribute("memnum").toString());
 
-		
-		//buy_service.use_point(vo);
-		//buy_service.point_update(vo);
+		int size = buy_service.my_shop(memnum).size();
 
+		for (int i = 0; i < size; i++) {
+			vo.setMemnum(memnum);
+			vo.setBooknum(buy_service.my_shop(memnum).get(i).getBooknum());
+			vo.setFinal_pay(buy_service.my_shop(memnum).get(i).getPrice() - (use_point / size));
+			vo.setP_way(p_way);
+			vo.setUse_point(use_point);
+			buy_service.buy(vo);
+
+		}
+
+		shop_vo.setMemnum(memnum);
+		buy_service.shop_drop_all(shop_vo);
+		
+		vo.setFinal_pay(final_pay);
+		buy_service.use_point(vo);
+		buy_service.point_update(vo);
+		
 	}
 
 	@RequestMapping(value = "/detail", method = RequestMethod.POST)

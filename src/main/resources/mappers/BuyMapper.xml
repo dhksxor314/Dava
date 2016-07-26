@@ -33,6 +33,10 @@
  		delete from shop_bag where memnum= #{memnum} and booknum =#{booknum};
 	</delete>
 	
+	<delete id="shop_drop_all">
+ 		delete from shop_bag where memnum= #{memnum};
+	</delete>
+	
 	<update id="point_update" parameterType="com.dava.myapp.domain.BuyVO">
 		update member set point = point + (#{final_pay}/10) where memnum = #{memnum};		
 	</update>

@@ -67,5 +67,11 @@ public class BuyDAOImpl implements BuyDAO {
 		SqlSession.insert(NAMESPACE + ".total_buy", vo);
 	}
 
+	@Override
+	public void shop_drop_all(ShopBagVO vo) {
+		// TODO Auto-generated method stub
+		SqlSession.delete(NAMESPACE + ".shop_drop_all", vo);
+	}
+
 
 }

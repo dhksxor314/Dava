@@ -69,6 +69,12 @@ public class BuyServiceImpl implements BuyService {
 
 		dao.total_buy(vo);
 	}
+
+	@Override
+	public void shop_drop_all(ShopBagVO vo) {
+		// TODO Auto-generated method stub
+		dao.shop_drop_all(vo);
+	}
 	
 	
 
