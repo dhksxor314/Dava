@@ -1,3 +1,4 @@
+<%@page import="java.util.ArrayList"%>
 <%@ page contentType="text/html; charset=UTF-8" isELIgnored="false"%>
 <%@ page session="true"%>
 
@@ -94,8 +95,14 @@
 		<c:set var="total" value="${total + bookVO.price}"/>
 	</c:forEach>
 
-	<form method="POST" id="form1" name="form1">
+<%
+	session.setAttribute("total_list", request.getAttribute("list"));
 	
+%>
+
+	<form method="POST" id="form1" name="form1">
+	<input type="hidden" value="5" name="booknum">
+	<input type="hidden" value="6" name="booknum">
 		<div class="container">
 			<div class="row" style="background-color: #23b300;">
 				<div class=" col-xs-2">

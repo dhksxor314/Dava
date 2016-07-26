@@ -16,7 +16,7 @@
 			var hsize = 550;
 			window.open('total_payment','total_payment','width ='
 					+ wsize+ ',height='+ hsize+ ',top='+ (screen.height - hsize)/ 2+ ', left='+ (screen.width - wsize)/ 2);
-			$("#list").submit();
+
 		});
 		
 	});
@@ -89,10 +89,9 @@
 			</div>
 			<c:set var="total_price" value="${total_price + bookVO.price}" />
 		</c:forEach>
-		
-
-
 	</div>
+
+
 
 	<div class="row" style="margin-top: 5px; border: solid 0.5px silver;">
 		<div class="col-md-offset-10 col-md-2" style="margin-top: 10px; margin-bottom: 10px;">

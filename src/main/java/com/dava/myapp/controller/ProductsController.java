@@ -6,14 +6,12 @@ import java.util.List;
 import javax.inject.Inject;
 import javax.servlet.http.HttpSession;
 
-import org.omg.CORBA.Object;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.dava.myapp.domain.BookVO;
 import com.dava.myapp.domain.BuyVO;
 import com.dava.myapp.domain.ShopBagVO;
 import com.dava.myapp.service.BookService;
@@ -78,16 +76,23 @@ public class ProductsController {
 		int memnum = Integer.parseInt(session.getAttribute("memnum").toString());
 
 		model.addAttribute("list", buy_service.my_shop(memnum));
+		model.addAttribute(mem_service.mem_info(memnum));
 
 	}
 
 	@RequestMapping(value = "/total_payment", method = RequestMethod.POST)
-	public void total_buy(BuyVO vo) throws Exception {
+	public void total_buy(List<BuyVO> vo,HttpSession session) throws Exception {
+		System.out.println(session.getAttribute("total_list"));
+		List<BuyVO> total_list = (List)session.getAttribute("total_list");
+		System.out.println(total_list.get(0).getBooknum());
+		System.out.println(">");
+		System.out.println(vo.get(0).getBooknum() );
+		System.out.println(vo.get(1).getBooknum() );
+		
 
-		buy_service.total_buy(vo);
-
-		buy_service.use_point(vo);
-		buy_service.point_update(vo);
+		
+		//buy_service.use_point(vo);
+		//buy_service.point_update(vo);
 
 	}
 

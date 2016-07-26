@@ -8,10 +8,8 @@ import org.springframework.stereotype.Repository;
 
 import com.dava.myapp.domain.BookVO;
 import com.dava.myapp.domain.BuyVO;
-import com.dava.myapp.domain.MemberVO;
 import com.dava.myapp.domain.ShopBagVO;
 import com.dava.myapp.persistence.BuyDAO;
-import com.dava.myapp.persistence.MemberDAO;
 
 @Repository
 public class BuyServiceImpl implements BuyService {
