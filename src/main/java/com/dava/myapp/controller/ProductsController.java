@@ -8,9 +8,9 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.dava.myapp.domain.BuyVO;
+import com.dava.myapp.domain.MemberVO;
 import com.dava.myapp.domain.ShopBagVO;
 import com.dava.myapp.service.BookService;
 import com.dava.myapp.service.BuyService;
@@ -93,7 +93,7 @@ public class ProductsController {
 		model.addAttribute("list", buy_service.my_shop(memnum));
 		return "/products/shop_bag";
 
-	}	
-
+	}
+	
 
 }
