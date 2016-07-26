@@ -1,6 +1,7 @@
 package com.dava.myapp.controller;
 
 import javax.inject.Inject;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -52,9 +53,19 @@ public class ProductsController {
 	}
 
 	@RequestMapping(value = "/payment", method = RequestMethod.POST)
-	public void buy(BuyVO vo) throws Exception {
-
-		buy_service.buy(vo);
+	public void buy(BuyVO vo,Model model) throws Exception {
+		
+		try {
+			buy_service.buy(vo);
+			buy_service.use_point(vo);
+			buy_service.point_update(vo);
+		
+		
+		} catch (Exception e) {
+			// TODO: handle exception
+			model.addAttribute("msg","이미 구입한 물품입니다.");
+		}
+		
 
 	}
 
@@ -70,15 +81,16 @@ public class ProductsController {
 	}
 
 	@RequestMapping(value = "/shop_bag", method = RequestMethod.GET)
-	public void shop_bag(Model model) throws Exception {
-
-		model.addAttribute("list", buy_service.my_shop());
+	public void shop_bag(Model model,HttpSession session) throws Exception {
+		int memnum = Integer.parseInt(session.getAttribute("memnum").toString());
+		model.addAttribute("list", buy_service.my_shop(memnum));
 
 	}	
 	@RequestMapping(value = "/shop_drop", method = RequestMethod.GET)
-	public String shop_drop(Model model,@RequestParam("booknum") int booknum) throws Exception {
-		buy_service.shop_drop(booknum);
-		model.addAttribute("list", buy_service.my_shop());
+	public String shop_drop(Model model,ShopBagVO vo,HttpSession session) throws Exception {
+		int memnum = Integer.parseInt(session.getAttribute("memnum").toString());
+		buy_service.shop_drop(vo);
+		model.addAttribute("list", buy_service.my_shop(memnum));
 		return "/products/shop_bag";
 
 	}	

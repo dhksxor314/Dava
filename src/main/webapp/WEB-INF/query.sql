@@ -34,7 +34,9 @@ CREATE TABLE BUY
 	BUY_DATE             DATETIME NULL,
 	p_way 				varchar(20) not null,
 	final_pay			INTEGER NOT NULL,
-	primary key(buynum)
+	primary key(buynum),
+	
+    unique key (MEMNUM,BOOKNUM)
 );
 
 insert into buy(memnum, booknum, buy_date, p_way, final_pay) values(1, 1, curdate(), '³óÇù', 4000);
@@ -55,7 +57,8 @@ CREATE TABLE MEMBER
 	PASSWORD             VARCHAR(20) NULL,
 	POINT				INTEGER NOT NULL,
 	
-	primary key(memnum)
+	primary key(memnum),
+    unique key (ID)
 );
 
 insert into member(id, nickname, password, point) values('user00@naver.com', 'dava0', 'user00', 0);

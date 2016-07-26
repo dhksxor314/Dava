@@ -13,8 +13,20 @@
 
 		
 	});
+	
+	
 </script>
 
+<style>
+.imgs_size {
+	margin-left: 10px;
+	margin-right: 10px;
+	padding-left: 5px;
+	padding-right: 5px;
+	width: 110px;
+	height: 140px;
+}
+</style>
 
 
 
@@ -50,7 +62,7 @@
 			</div>
 		</div>
 	</div>
-	<div class="row" style="margin-top: 5px; border: solid 0.5px silver;">
+	<div class="row" style="margin-top: 5px;  border: solid 0.5px silver;  padding-bottom: 15px">
 		<div class="row" style="margin-top: 10px;">
 			<div class="col-md-offset-1 col-md-11">
 				<input type="checkbox">
@@ -66,14 +78,15 @@
 
 			<hr />
 			<input type="hidden" id="booknum_${total}" value="${bookVO.booknum}">
-			<div class="row">
+			<div class="row" >
 				<div class="col-md-offset-1 col-md-5">
-					<input type="checkbox"><img>이미지 ${bookVO.title}
+					<input type="checkbox"><img src="/resources/imgs/Chrysanthemum.jpg"
+								class="imgs_size">이미지 ${bookVO.title}
 				</div>
-				<div class="col-md-offset-3 col-md-3">
+				<div class="col-md-offset-3 col-md-3 " style="padding-top: 5%" >
 					<div class="col-xs-offset-4 col-xs-4">${bookVO.price}</div>
 					<div class="col-xs-4">
-						<a href="shop_drop?booknum=${bookVO.booknum }">X</a>
+						<a href="shop_drop?booknum=${bookVO.booknum}&memnum=${memnum}">X</a>
 					</div>
 				</div>
 			</div>

@@ -17,7 +17,7 @@
 		$("#payment").click(function(event) {
 			var wsize = 770;
 			var hsize = 550;
-			window.open('payment?booknum=${bookVO.booknum}&memnum=1','payment','width ='
+			window.open('payment?booknum=${bookVO.booknum}&memnum=${memnum}','payment','width ='
 					+ wsize+ ',height='+ hsize+ ',top='+ (screen.height - hsize)/ 2+ ', left='+ (screen.width - wsize)/ 2);
 			});
 		$("#shop_bag").click(function() {
@@ -57,7 +57,7 @@
 					<div style="border: solid 1px;">
 						<div class="row" style="height: 40%;">
 							<div class="col-md-offset-1" style="margin-top: 20px">
-								<input type="hidden" name="memnum" value="1">
+								<input type="hidden" name="memnum" value="${memnum}">
 								<input type="hidden" name="booknum" value="${bookVO.booknum}">
 								<p>제 목 : ${bookVO.title}</p>
 								<p>저 자 :${bookVO.author }</p>

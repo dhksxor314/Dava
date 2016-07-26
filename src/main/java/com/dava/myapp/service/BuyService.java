@@ -15,8 +15,11 @@ public interface BuyService {
 
 	public ShopBagVO bag_select(ShopBagVO vo) throws Exception;
 	
-	public List<BookVO> my_shop() throws Exception;
+	public List<BookVO> my_shop(int memnum) throws Exception;
 	
 
-	public void shop_drop(int booknum);
+	public void shop_drop(ShopBagVO vo);
+
+	public void point_update(BuyVO vo) throws Exception;
+	public void use_point(BuyVO vo) throws Exception;
 }

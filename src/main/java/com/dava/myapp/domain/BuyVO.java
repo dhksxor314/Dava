@@ -10,6 +10,16 @@ public class BuyVO {
 	private Date buydate;
 	private String p_way;
 	private int final_pay;
+	private int use_point;
+	
+
+	public int getUse_point() {
+		return use_point;
+	}
+
+	public void setUse_point(int use_point) {
+		this.use_point = use_point;
+	}
 
 	public int getBuynum() {
 		return buynum;

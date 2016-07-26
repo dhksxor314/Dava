@@ -1,21 +1,26 @@
 package com.dava.myapp.domain;
 
-import java.util.Date;
-
 public class MemberVO {
 
-	private int membernum;
+	private int memnum;
 	private String id;
 	private String nickname;
 	private String password;
+	private String password_check;
 	private int point;
 	
 	
-	public int getMembernum() {
-		return membernum;
+	public String getPassword_check() {
+		return password_check;
 	}
-	public void setMembernum(int membernum) {
-		this.membernum = membernum;
+	public void setPassword_check(String password_check) {
+		this.password_check = password_check;
+	}
+	public int getmemnum() {
+		return memnum;
+	}
+	public void setmemnum(int memnum) {
+		this.memnum = memnum;
 	}
 	public String getId() {
 		return id;

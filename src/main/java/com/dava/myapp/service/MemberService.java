@@ -6,6 +6,10 @@ import com.dava.myapp.domain.BookVO;
 import com.dava.myapp.domain.MemberVO;
 
 public interface MemberService {
+
+	public MemberVO mem_info(Integer memnum) throws Exception;
+
+	public void join(MemberVO vo) throws Exception;
 	
-	  public MemberVO mem_info(Integer memnum) throws Exception;
+	  public MemberVO login(MemberVO vo)throws Exception;
 }

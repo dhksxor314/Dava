@@ -8,6 +8,7 @@ import org.springframework.stereotype.Repository;
 
 import com.dava.myapp.domain.BookVO;
 import com.dava.myapp.domain.BuyVO;
+import com.dava.myapp.domain.MemberVO;
 import com.dava.myapp.domain.ShopBagVO;
 import com.dava.myapp.persistence.BuyDAO;
 import com.dava.myapp.persistence.MemberDAO;
@@ -40,16 +41,31 @@ public class BuyServiceImpl implements BuyService {
 	}
 
 	@Override
-	public List<BookVO> my_shop() throws Exception {
+	public List<BookVO> my_shop(int memnum) throws Exception {
 		// TODO Auto-generated method stub
-		 return dao.my_shop();
+		 return dao.my_shop(memnum);
 	}
 
 	@Override
-	public void shop_drop(int booknum) {
+	public void shop_drop(ShopBagVO vo) {
 		// TODO Auto-generated method stub
-		dao.shop_drop(booknum);
+		dao.shop_drop(vo);
 	}
+
+	@Override
+	public void point_update(BuyVO vo) throws Exception {
+		// TODO Auto-generated method stub
+		dao.point_update(vo);
+		
+	}
+
+	@Override
+	public void use_point(BuyVO vo) throws Exception {
+		// TODO Auto-generated method stub
+		dao.use_point(vo);
+	}
+	
+	
 
 	
 }

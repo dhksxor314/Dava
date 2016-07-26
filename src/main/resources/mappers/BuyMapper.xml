@@ -19,17 +19,26 @@
 
 	<select id="bag_select" resultType="com.dava.myapp.domain.ShopBagVO">
 		SELECT bagnum,booknum,memnum
-		FROM shop_bag where booknum = #{booknum} and memnum = 1;
+		FROM shop_bag where booknum = #{booknum} and memnum = #{memnum};
 	</select>
 
+	
 	<select id="my_shop" resultType="com.dava.myapp.domain.BookVO">
 		 <![CDATA[
-		 select b.booknum,b.img ,b.title, b.price from shop_bag s join book b on s.booknum = b.booknum where s.memnum=1;
+		 select b.booknum,b.img ,b.title, b.price from shop_bag s join book b on s.booknum = b.booknum where s.memnum=#{memnum};
 		 ]]>
 	</select>
 	
 	<delete id="shop_drop">
- 		delete from shop_bag where memnum= 1 and booknum =#{booknum};
+ 		delete from shop_bag where memnum= #{memnum} and booknum =#{booknum};
 	</delete>
+	
+	<update id="point_update" parameterType="com.dava.myapp.domain.BuyVO">
+		update member set point = point + (#{final_pay}/10) where memnum = #{memnum};		
+	</update>
+	
+	<update id="use_point" parameterType="com.dava.myapp.domain.BuyVO">
+		update member set point = point - #{use_point} where memnum = #{memnum};		
+	</update>
 
 </mapper>

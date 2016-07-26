@@ -1,9 +1,6 @@
 <%@ page contentType="text/html; charset=UTF-8" isELIgnored="false"%>
 <!DOCTYPE html>
 
-<%
-	String cp = request.getContextPath();
-%>
 
 <html>
 <head>
@@ -16,6 +13,10 @@
 
 <script>
 	$(document).ready(function() {
+		if('${msg}'!= ""){
+			alert('${msg}')
+		}
+		
 		if ('${bookVO.title}' == "") {
 			window.close();
 		}
@@ -110,7 +111,7 @@
 							<div class="col-xs-5">
 								<input type="text"
 									style="border: none; border-right: 0px; border-top: 0px; boder-left: 0px; boder-bottom: 0px; text-align: right; width: 50%"
-									placeholder="0" id="point"> 원
+									placeholder="0" id="point" name="use_point" value="0"> 원
 							</div>
 
 						</div>

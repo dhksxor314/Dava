@@ -13,6 +13,9 @@
 
 <script>
 	$(document).ready(function() {
+		if('${msg}'!=""){
+			alert('${msg}')	
+		}
 
 		$("li[role='presentation']").click(function(event) {
 			$("li[role='presentation']").removeClass("active");
@@ -20,19 +23,11 @@
 		});
 
 		$("#login").click(function() {
-
-			alert("로그인처리");
 			$("#loginForm").submit();
 
 		});
 
-		$("#logout").click(function() {
 
-			alert("로그아웃")
-
-			alert("세션지우기 들어갈곳");
-
-		});
 
 		$("#mypage").click(function() {
 
@@ -43,6 +38,15 @@
 		$("#test").click(function() {
 
 			location.href="/products/shop_bag";			
+
+		});
+		
+		$("#join").click(function() {
+
+			var wsize = 350;
+			var hsize = 280;
+			window.open('/member/join','join','width ='
+					+ wsize+ ',height='+ hsize+ ',top='+ (screen.height - hsize)/ 2+ ', left='+ (screen.width - wsize)/ 2);
 
 		});
 
@@ -59,12 +63,12 @@
 		<a href="/"><img src="/resources/imgs/logo.png" width="80%"></a>
 	</div>
 	<!-- 로그인-->
-	<c:if test="${param.id eq null}">
+	<c:if test="${nickname eq null}">
 		<!-- param.id 대신 세션 -->
 		<div class="col-md-6 col-md-offset-3">
 			<div class="row">
 
-				<form class="form-inline" id="loginForm" name="loginForm" action="/">
+				<form class="form-inline" id="loginForm" name="loginForm" action="/" method="POST">
 					<div class="form-group">
 						<div class="input-group">
 							<div class="input-group-addon">
@@ -88,14 +92,14 @@
 				</form>
 			</div>
 			<div class="row" style="text-align: right;">
-
-				<a href="#">회원가입</a><a href="#" class="col-md-offset-1"
+				
+				<a href="" id="join">회원가입</a><a href="#" class="col-md-offset-1"
 					style="margin-right: 30px;">아이디 / 비밀번호 찾기</a>
 			</div>
 		</div>
 	</c:if>
 	<!-- 로그아웃-->
-	<c:if test="${param.id != null}">
+	<c:if test="${nickname != null}">
 		<!-- param.id 대신 세션 -->
 		<div class="col-md-6 col-md-offset-3">
 			<div class="row" style="text-align: right;">
@@ -105,9 +109,9 @@
 						style="width: 50px; height: 50px">
 				</div>
 				<div class="col-xs-4" style="text-align: left;">
-					<div class="row" style="margin-top: 5px">${param.id}</div>
+					<div class="row" style="margin-top: 5px">${nickname}</div>
 					<div class="row" style="margin-top: 5px">
-						<a href="" id="mypage">me</a> | <a id="logout" href="">로그아웃</a>
+						<a href="" id="mypage">me</a> | <a id="logout" href="/logout">로그아웃</a>
 						<button id="test">장바구니</button>
 					</div>
 				</div>
