@@ -95,11 +95,6 @@
 		<c:set var="total" value="${total + bookVO.price}"/>
 	</c:forEach>
 
-<%
-	session.setAttribute("total_list", request.getAttribute("list"));
-	
-%>
-
 	<form method="POST" id="form1" name="form1">
 	<input type="hidden" value="5" name="booknum">
 	<input type="hidden" value="6" name="booknum">
