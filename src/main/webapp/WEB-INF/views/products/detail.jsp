@@ -23,7 +23,7 @@
 		$("#shop_bag").click(function() {
 				
 			
-				$("#form1").submit();
+				$("#form2").submit();
 				
 				var check = '${check}';
 				
@@ -36,7 +36,6 @@
 					alert("이미 장바구니에 담겨져 있습니다.");
 				}
 				
-				
 			});
 		});
 </script>
@@ -44,7 +43,7 @@
 <body>
 	<%@ include file="../include/header.jsp"%>
 	
-	<form method="post" id="form1">
+	<form method="post" id="form2">
 		<div class="container" style="border: solid 0.5px silver;">
 
 			<div class="row" style="margin-top: 20px">
@@ -83,9 +82,10 @@
 
 			<div class="row">
 				<div class="col-md-offset-8 col-md-3" style="text-align: right;">
-					<button id="payment">결제</button>
-					<button id="shop_bag">장바구니</button>
-					<button>바로보기</button>
+					<input type="button" id="payment" value="결제"/>  
+					<input type="button" id="shop_bag" value="장바구니"/>
+					<input type="button" value="바로보기"/>
+					
 				</div>
 			</div>
 

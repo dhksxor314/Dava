@@ -25,7 +25,7 @@
 	
 	<select id="my_shop" resultType="com.dava.myapp.domain.BookVO">
 		 <![CDATA[
-		 select b.booknum,b.img ,b.title, b.price from shop_bag s join book b on s.booknum = b.booknum where s.memnum=#{memnum};
+		 select b.booknum,b.img ,b.title, b.price,b.genre from shop_bag s join book b on s.booknum = b.booknum where s.memnum=#{memnum};
 		 ]]>
 	</select>
 	
@@ -37,8 +37,18 @@
 		update member set point = point + (#{final_pay}/10) where memnum = #{memnum};		
 	</update>
 	
+
 	<update id="use_point" parameterType="com.dava.myapp.domain.BuyVO">
 		update member set point = point - #{use_point} where memnum = #{memnum};		
 	</update>
+	
+	
+	<insert id="total_buy">
+		insert into buy
+		(memnum,booknum,buy_date,p_way,final_pay)
+		values(#{memnum},#{booknum},now(),#{p_way},#{final_pay});
+	</insert>
+
+	
 
 </mapper>

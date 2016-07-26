@@ -1,16 +1,20 @@
 package com.dava.myapp.controller;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.inject.Inject;
 import javax.servlet.http.HttpSession;
 
+import org.omg.CORBA.Object;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.dava.myapp.domain.BookVO;
 import com.dava.myapp.domain.BuyVO;
-import com.dava.myapp.domain.MemberVO;
 import com.dava.myapp.domain.ShopBagVO;
 import com.dava.myapp.service.BookService;
 import com.dava.myapp.service.BuyService;
@@ -53,19 +57,37 @@ public class ProductsController {
 	}
 
 	@RequestMapping(value = "/payment", method = RequestMethod.POST)
-	public void buy(BuyVO vo,Model model) throws Exception {
-		
+	public void buy(BuyVO vo, Model model) throws Exception {
+
 		try {
 			buy_service.buy(vo);
+
 			buy_service.use_point(vo);
+
 			buy_service.point_update(vo);
-		
-		
+
 		} catch (Exception e) {
 			// TODO: handle exception
-			model.addAttribute("msg","이미 구입한 물품입니다.");
+			model.addAttribute("msg", "이미 구입한 물품입니다.");
 		}
-		
+
+	}
+
+	@RequestMapping(value = "/total_payment", method = RequestMethod.GET)
+	public void total_payment(Model model, HttpSession session) throws Exception {
+		int memnum = Integer.parseInt(session.getAttribute("memnum").toString());
+
+		model.addAttribute("list", buy_service.my_shop(memnum));
+
+	}
+
+	@RequestMapping(value = "/total_payment", method = RequestMethod.POST)
+	public void total_buy(BuyVO vo) throws Exception {
+
+		buy_service.total_buy(vo);
+
+		buy_service.use_point(vo);
+		buy_service.point_update(vo);
 
 	}
 
@@ -74,26 +96,29 @@ public class ProductsController {
 
 		try {
 			buy_service.shop_bag(shop_vo);
+
 			model.addAttribute(book_service.select(booknum));
+
 		} catch (Exception e) {
 			model.addAttribute(book_service.select(booknum));
+
 		}
 	}
 
 	@RequestMapping(value = "/shop_bag", method = RequestMethod.GET)
-	public void shop_bag(Model model,HttpSession session) throws Exception {
+	public void shop_bag(Model model, HttpSession session) throws Exception {
 		int memnum = Integer.parseInt(session.getAttribute("memnum").toString());
 		model.addAttribute("list", buy_service.my_shop(memnum));
 
-	}	
+	}
+
 	@RequestMapping(value = "/shop_drop", method = RequestMethod.GET)
-	public String shop_drop(Model model,ShopBagVO vo,HttpSession session) throws Exception {
+	public String shop_drop(Model model, ShopBagVO vo, HttpSession session) throws Exception {
 		int memnum = Integer.parseInt(session.getAttribute("memnum").toString());
 		buy_service.shop_drop(vo);
 		model.addAttribute("list", buy_service.my_shop(memnum));
 		return "/products/shop_bag";
 
 	}
-	
 
 }

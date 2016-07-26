@@ -22,4 +22,6 @@ public interface BuyService {
 
 	public void point_update(BuyVO vo) throws Exception;
 	public void use_point(BuyVO vo) throws Exception;
+
+	public void total_buy(BuyVO vo);
 }

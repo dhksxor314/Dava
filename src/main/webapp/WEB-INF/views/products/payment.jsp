@@ -17,7 +17,7 @@
 			alert('${msg}')
 		}
 		
-		if ('${bookVO.title}' == "") {
+		if ('${}' == "") {
 			window.close();
 		}
 		$("#cancel").click(function(event) {

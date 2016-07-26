@@ -10,7 +10,14 @@
 
 <script>
 	$(document).ready(function() {
-
+		$("#total_payment").click(function(){
+			
+			var wsize = 770;
+			var hsize = 550;
+			window.open('total_payment','total_payment','width ='
+					+ wsize+ ',height='+ hsize+ ',top='+ (screen.height - hsize)/ 2+ ', left='+ (screen.width - wsize)/ 2);
+			$("#list").submit();
+		});
 		
 	});
 	
@@ -23,7 +30,6 @@
 	margin-right: 10px;
 	padding-left: 5px;
 	padding-right: 5px;
-	width: 110px;
 	height: 140px;
 }
 </style>
@@ -63,16 +69,7 @@
 		</div>
 	</div>
 	<div class="row" style="margin-top: 5px;  border: solid 0.5px silver;  padding-bottom: 15px">
-		<div class="row" style="margin-top: 10px;">
-			<div class="col-md-offset-1 col-md-11">
-				<input type="checkbox">
-				<button>선택상품 삭제</button>
-			</div>
 
-
-		</div>
-
-		<c:set var="total" value="0" />
 		<c:set var="total_price" value="0" />
 		<c:forEach items="${list}" var="bookVO">
 
@@ -80,36 +77,33 @@
 			<input type="hidden" id="booknum_${total}" value="${bookVO.booknum}">
 			<div class="row" >
 				<div class="col-md-offset-1 col-md-5">
-					<input type="checkbox"><img src="/resources/imgs/Chrysanthemum.jpg"
-								class="imgs_size">이미지 ${bookVO.title}
+				<img src="/resources/imgs/Chrysanthemum.jpg"
+								class="imgs_size"/> ${bookVO.title}
 				</div>
 				<div class="col-md-offset-3 col-md-3 " style="padding-top: 5%" >
-					<div class="col-xs-offset-4 col-xs-4">${bookVO.price}</div>
+					<div class="col-xs-offset-4 col-xs-4"><span style="color: green">${bookVO.price}</span> 원 </div>
 					<div class="col-xs-4">
 						<a href="shop_drop?booknum=${bookVO.booknum}&memnum=${memnum}">X</a>
 					</div>
 				</div>
 			</div>
-			<c:set var="total" value="${total+1}" />
-			<input type="hidden" id="booknum${total}">
 			<c:set var="total_price" value="${total_price + bookVO.price}" />
 		</c:forEach>
+		
 
 
 	</div>
 
 	<div class="row" style="margin-top: 5px; border: solid 0.5px silver;">
-		<div class="col-md-offset-10 col-md-2">
-			<div class="row">
+		<div class="col-md-offset-10 col-md-2" style="margin-top: 10px; margin-bottom: 10px;">
+			<div class="row" >
 				총 결제 금액( <label id="total">${total}</label>건) : <label
-					id="total_price">${total_price }</label> 원
+					id="total_price" style="color: green">${total_price}</label> 원
 			</div>
+			<div class="row"> <input type="button" id="total_payment" value="구매하기" class="col-xs-10 btn btn-success"/></div>
 		</div>
 	</div>
 </div>
-
-
-
 
 
 

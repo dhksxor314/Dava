@@ -64,6 +64,13 @@ public class BuyServiceImpl implements BuyService {
 		// TODO Auto-generated method stub
 		dao.use_point(vo);
 	}
+
+	@Override
+	public void total_buy(BuyVO vo) {
+		// TODO Auto-generated method stub
+
+		dao.total_buy(vo);
+	}
 	
 	
 

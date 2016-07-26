@@ -61,5 +61,11 @@ public class BuyDAOImpl implements BuyDAO {
 		SqlSession.update(NAMESPACE+".use_point",vo);
 	}
 
+	@Override
+	public void total_buy(BuyVO vo) {
+		// TODO Auto-generated method stub
+		SqlSession.insert(NAMESPACE + ".total_buy", vo);
+	}
+
 
 }
