@@ -10,7 +10,6 @@ public class BuyVO {
 	private Date buydate;
 	private String p_way;
 	private int final_pay;
-	private int count;
 	private int use_point;
 	
 
@@ -68,14 +67,6 @@ public class BuyVO {
 
 	public void setFinal_pay(int final_pay) {
 		this.final_pay = final_pay;
-	}
-
-	public int getCount() {
-		return count;
-	}
-
-	public void setCount(int count) {
-		this.count = count;
 	}
 
 }
