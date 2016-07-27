@@ -22,7 +22,9 @@ public class MypageController {
 	private MemberService mem_service;
 
 	@RequestMapping(value = "/mypage_main", method = RequestMethod.GET)
-	public String mypage_main() throws Exception {
+	public String mypage_main(HttpSession session, Model model) throws Exception {
+		int memnum = Integer.parseInt(session.getAttribute("memnum").toString());
+		model.addAttribute("meminfo", mem_service.mem_info(memnum));
 		return "/mypage/mypage_main";
 	}
 

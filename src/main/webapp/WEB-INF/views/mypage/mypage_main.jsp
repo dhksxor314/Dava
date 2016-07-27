@@ -31,7 +31,7 @@
 	<%@ include file="../include/header.jsp"%>
 	<div class="container">
 		<div class="row" style="margin-top: 10px">
-			<div class="col-xs-offset-8 col-xs-4">보유한 포인트 : XXXXXX</div>
+			<div class="col-xs-offset-8 col-xs-4">보유한 포인트 : ${meminfo.point }</div>
 		</div>
 
 
