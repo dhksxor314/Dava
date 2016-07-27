@@ -71,8 +71,7 @@ public class ReadBookController {
 	    totalLine=cline.length;
 	    totalPage=(int)Math.ceil(((double)totalLine/(double)pageCutline));
 	    content = new String[totalPage];
-	    System.out.println(totalPage);
-	    System.out.println(totalLine);
+
 	    for(int i=0;i<totalPage;i++){
 	    	content[i]="";
 	    }
