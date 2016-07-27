@@ -22,6 +22,7 @@
 		}
 		
 		if ('${list}' == "") {
+			opener.location.reload();
 			window.close();
 		}
 		
@@ -30,8 +31,6 @@
 			var con = confirm("취소하시면 입력한 모든 정보가 취소됩니다.\n결제를 취소하시겠습니까?");
 			if (con == true) {
 				window.close();
-			}else{
-				
 			}
 		});
 
