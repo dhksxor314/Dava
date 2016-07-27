@@ -53,6 +53,12 @@
 		values(#{memnum},#{booknum},now(),#{p_way},#{final_pay});
 	</insert>
 
+
+	
+	<select id="buy_select" resultType="com.dava.myapp.domain.BuyVO">
+		SELECT booknum,memnum
+		FROM buy where memnum = #{memnum};
+	</select>
 	
 
 </mapper>

@@ -73,5 +73,13 @@ public class BuyDAOImpl implements BuyDAO {
 		SqlSession.delete(NAMESPACE + ".shop_drop_all", vo);
 	}
 
+	@Override
+	public List<BuyVO> buy_select(int memnum) throws Exception {
+		// TODO Auto-generated method stub
+		return SqlSession.selectList(NAMESPACE + ".buy_select",memnum);
+	}
+
+
+
 
 }

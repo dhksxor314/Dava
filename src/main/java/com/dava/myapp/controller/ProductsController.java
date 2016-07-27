@@ -55,7 +55,7 @@ public class ProductsController {
 	}
 
 	@RequestMapping(value = "/payment", method = RequestMethod.POST)
-	public void buy(BuyVO vo, Model model) throws Exception {
+	public void buy(BuyVO vo, Model model,ShopBagVO shop_vo) throws Exception {
 
 		try {
 			buy_service.buy(vo);
@@ -63,6 +63,8 @@ public class ProductsController {
 			buy_service.use_point(vo);
 
 			buy_service.point_update(vo);
+			
+			buy_service.shop_drop(shop_vo);
 
 		} catch (Exception e) {
 			// TODO: handle exception
@@ -86,7 +88,26 @@ public class ProductsController {
 		int memnum = Integer.parseInt(session.getAttribute("memnum").toString());
 
 		int size = buy_service.my_shop(memnum).size();
+		int buy_size = buy_service.buy_select(memnum).size();
+		System.out.println("size:" +buy_size);
+		
+		for(int i=0 ; i<size; i++){
+			for(int j=0; j<buy_size; j++){
+				if(	buy_service.my_shop(memnum).get(i).getBooknum() == buy_service.buy_select(memnum).get(j).getBooknum()){
+					
+					model.addAttribute("msg", "선택하신 상품을 이미 보유중입니다 \\n 마이페이지에서 확인해 주세요.");
+					return;
+					
+				}
+			}
+		}
+		
+		
+		
+		
+		
 
+		
 		for (int i = 0; i < size; i++) {
 			vo.setMemnum(memnum);
 			vo.setBooknum(buy_service.my_shop(memnum).get(i).getBooknum());

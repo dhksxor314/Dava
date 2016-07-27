@@ -75,6 +75,12 @@ public class BuyServiceImpl implements BuyService {
 		// TODO Auto-generated method stub
 		dao.shop_drop_all(vo);
 	}
+
+	@Override
+	public List<BuyVO> buy_select(int memnum) throws Exception {
+		// TODO Auto-generated method stub
+		 return dao.buy_select(memnum);
+	}
 	
 	
 
