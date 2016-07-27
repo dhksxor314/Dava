@@ -62,10 +62,4 @@
 		FROM buy, book where book.booknum=buy.booknum and  memnum = #{memnum};
 	</select>
 
-
-	<select id="mypage_buy" resultType="com.dava.myapp.domain.BuyVO">
-		SELECT buy.booknum, book.img, book.title
-		FROM buy, book where book.booknum=buy.booknum and  memnum = #{memnum};
-	</select>
-
 </mapper>
