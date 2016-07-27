@@ -49,7 +49,7 @@ public class BuyVO {
 		return buydate;
 	}
 
-	public void setBuydate(Date buydate) {
+	public void setBuy_date(Date buydate) {
 		this.buydate = buydate;
 	}
 

@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 마음대로. 단 파일 경로-이름으로하면 겹칠일이 없음 -->
+<mapper namespace="mappers.adminMapper">
+
+	<!-- 도서 등록 -->
+	<insert id="registBook">
+		insert into book(title, author, publisher, pub_date, price, genre, img, sal, summary)
+		value(#{title}, #{author}, #{publisher}, #{pub_date}, #{price}, #{genre}, #{img}, #{sal}, #{summary})
+	</insert>
+	
+	<!-- 도서관리에서 사용 -->
+	<select id="readBook" resultType="BookVO">
+		select * from book where booknum=#{booknum}
+	</select>
+	
+	<!-- 도서 수정 -->
+	<update id="updateBook">
+		update book set 
+		title=#{title}, 
+		genre=#{genre},
+		author=#{author}, 
+		publisher=#{publisher}, 
+		pub_date=#{pub_date}, 
+		price=#{price},
+		img=#{img},
+		summary=#{summary} where booknum=#{booknum}
+	</update>
+	
+	<!-- 도서 삭제 -->
+	<delete id="deleteBook">
+		delete from book where booknum = #{booknum}
+	</delete>
+	
+	<!-- 회원삭제 -->
+	<delete id="deleteMember">
+		delete from member where memnum = #{memnum}
+	</delete>
+	
+	<!-- 회원목록 -->
+	<select id="listMember" resultType="MemberVO">
+		select * from member
+	</select>
+	
+	<!-- 도서목록 -->
+	<select id="listBook" resultType="BookVO">
+		select * from book
+	</select>
+	
+	<!-- 결제관리에서 사용하는 회원 정보확인 -->
+	<select id="readMember" resultType="MemberVO">
+		select * from member where memnum=#{memnum}
+	</select>
+	
+	
+	<!-- 페이징 -->
+	<select id="listPage" resultType="BookVO">
+	 <![CDATA[
+		select *
+		from book order by booknum limit #{page}, 5;
+	 ]]>  
+ 	</select>
+	<select id="listCriteria" resultType="BookVO">
+	 <![CDATA[
+		select *
+		from book order by booknum limit #{pageStart}, #{perPageNum};
+	 ]]>  
+ 	</select>
+ 	
+ 	<select id="listBuy" resultType="BuyVO">
+ 		select * from buy
+ 	</select>
+ 	<delete id="deleteBuy">
+ 		delete from buy where buynum = #{buynum}
+ 	</delete>
+
+</mapper>
