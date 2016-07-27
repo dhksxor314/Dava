@@ -1,15 +1,22 @@
 package com.dava.myapp.controller;
 
+import java.io.File;
+import java.io.IOException;
+import java.util.Date;
+
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.util.FileCopyUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.dava.myapp.domain.BookVO;
 import com.dava.myapp.domain.Criteria;
@@ -22,14 +29,36 @@ public class AdminController {
 
 	@Inject
 	private AdminService service;
-
+	
+	@Inject
+	private BookVO bvo;
+	
 	// 책 등록
 	@RequestMapping(value = "/registBook", method = RequestMethod.POST)
-	public String registBook(BookVO bvo, HttpServletRequest req) throws Exception {
-		service.registBook(bvo);
+	public String registBook(MultipartFile img, MultipartFile hwp, Model model, HttpServletRequest req,
+			String title, String genre, String author, String publisher, String pub_date, String summary) throws Exception {
+		bvo.setTitle(title);
+		bvo.setAuthor(author);
+		bvo.setGenre(genre);
+		bvo.setPublisher(publisher);
+		//bvo.setPub_date(pub_date);
+		bvo.setSummary(summary);
+		uploadFile(img.getOriginalFilename(), img.getBytes(), req.getServletContext().getRealPath("resources/covers"));
+		uploadFile(hwp.getOriginalFilename(), hwp.getBytes(), req.getServletContext().getRealPath("resources/books"));
+		
+		
+		//service.registBook(bvo);
 
 		return "redirect:/admin/listBook";
 	}
+	
+	private String uploadFile(String originalName, byte[] fileData, String path) throws IOException{
+		logger.info(path);
+		File target = new File(path, originalName);
+		FileCopyUtils.copy(fileData, target);
+		return originalName;
+	}
+	
 	// 등록된 도서
 	@RequestMapping(value = "/listBook")
 	public String listBook(Model model) throws Exception {

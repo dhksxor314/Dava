@@ -26,6 +26,8 @@
 		<constructor-arg name="sqlSessionFactory" ref="sqlSessionFactory"/>
 	</bean>
 	
+	<bean id="BookVo" class="com.dava.myapp.domain.BookVO"></bean>
+	
 		
 		
 		

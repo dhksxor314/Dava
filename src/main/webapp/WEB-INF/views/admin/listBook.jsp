@@ -148,14 +148,14 @@
 								<div class="modal-body">
 
 									<form method="post" id="registBook" name="registBook"
-										action="/admin/registBook">
+										action="/admin/registBook" enctype="multipart/form-data">
 										<table style="width: 550px;">
 											<!-- 도서정보 입력 필드 -->
 
 											<tr>
 												<td>제 목</td>
 												<td align="left"><input type="text" id="title"
-													name="title" maxlength="15" /></td>
+													name="title" maxlength="25" /></td>
 											</tr>
 
 											<tr>
@@ -167,9 +167,9 @@
 											<tr>
 												<td>작 가</td>
 												<td align="left"><input type="text" name="author"
-													id="author" maxlength="15" /></td>
+													id="author" maxlength="30" /></td>
 											</tr>
-
+											
 											<!-- 출판사 입력 필드-->
 											<tr>
 												<td>출판사</td>
@@ -180,8 +180,8 @@
 											<!-- 출판일 -->
 											<tr>
 												<td>출판일</td>
-												<td><input type="text" name="pub_date" id="pub_date"
-													maxlength="8" size="8" placeholder="20160309" /></td>
+												<td><input type="date" name="pub_date" id="pub_date"
+													/></td>
 											</tr>
 
 											<!-- 가격 필드 -->
@@ -190,25 +190,22 @@
 												<td align="left"><input type="number" name="price"
 													id="price" maxlength="15" /></td>
 											</tr>
-
-											<!-- sal 필드 -->
+											<!-- hwp 필드 -->
 											<tr>
-												<td>sal</td>
-												<td align="left"><input type="number" name="sal"
-													id="sal" maxlength="15" /></td>
+												<td>도서 파일</td>
+												<td><input type="file" id="hwp" name="hwp"></td>
 											</tr>
-
 											<!-- img 필드 -->
 											<tr>
-												<td>img</td>
-												<td><input type="file" id="img"></td>
+												<td>표지 사진</td>
+												<td><input type="file" id="img" name="img"></td>
 											</tr>
 
 											<!-- summary 필드 -->
 											<tr>
-												<td>Summary</td>
+												<td>요약정보</td>
 												<td align="left"><textarea name="summary" id="summary"
-														maxlength="15"></textarea>
+														maxlength="50"></textarea>
 											</tr>
 
 										</table>
