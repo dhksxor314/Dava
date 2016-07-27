@@ -9,6 +9,7 @@ import org.springframework.stereotype.Repository;
 
 import com.dava.myapp.domain.BookVO;
 import com.dava.myapp.domain.BuyVO;
+import com.dava.myapp.domain.Criteria;
 import com.dava.myapp.domain.MemberVO;
 import com.dava.myapp.domain.ShopBagVO;
 
@@ -17,6 +18,7 @@ public class BuyDAOImpl implements BuyDAO {
 	@Inject
 	private SqlSession SqlSession;
 	private static final String NAMESPACE = "com.dava.mappers.BuyMapper";
+	private static final String namespace = "mappers.adminMapper";
 
 	@Override
 	public void buy(BuyVO vo) {
@@ -81,5 +83,32 @@ public class BuyDAOImpl implements BuyDAO {
 
 
 
+	@Override
+	public List<BuyVO> listBuy() {
+		
+		return SqlSession.selectList(namespace + ".listBuy");
+	}
+	
+	@Override
+	public BuyVO readBuy(Integer buynum) throws Exception {
+		return SqlSession.selectOne(namespace + ".readBuy", buynum);
+	}
+
+	@Override
+	public void deleteBuy(Integer buynum) throws Exception {
+		SqlSession.delete(namespace + ".deleteBuy", buynum);
+	}
+
+	@Override
+	public List<BuyVO> listPage(int page) throws Exception {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<BuyVO> listCriteria(Criteria cri) throws Exception {
+		// TODO Auto-generated method stub
+		return null;
+	}
 
 }

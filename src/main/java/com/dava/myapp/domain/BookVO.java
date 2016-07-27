@@ -8,7 +8,7 @@ public class BookVO {
 	private String title;
 	private String author;
 	private String publisher;
-	private Date pub_date;
+	private String pub_date;
 	private int price;
 	private int sal;
 	private String img;
@@ -47,11 +47,11 @@ public class BookVO {
 		this.publisher = publisher;
 	}
 
-	public Date getPub_date() {
+	public String getPub_date() {
 		return pub_date;
 	}
 
-	public void setPub_date(Date pub_date) {
+	public void setPub_date(String pub_date) {
 		this.pub_date = pub_date;
 	}
 
