@@ -79,6 +79,12 @@ public class BuyDAOImpl implements BuyDAO {
 		return SqlSession.selectList(NAMESPACE + ".buy_select",memnum);
 	}
 
+	@Override
+	public List<BookVO> mypage_buy(int memnum) throws Exception {
+		// TODO Auto-generated method stub
+		return SqlSession.selectList(NAMESPACE + ".mypage_buy",memnum);
+	}
+
 
 
 

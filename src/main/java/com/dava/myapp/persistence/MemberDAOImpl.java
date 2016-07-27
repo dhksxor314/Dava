@@ -34,4 +34,10 @@ public class MemberDAOImpl implements MemberDAO {
 		return SqlSession.selectOne(namespace+".login",vo);
 	}
 
+	@Override
+	public void editpassword(MemberVO vo) throws Exception {
+		// TODO Auto-generated method stub
+		SqlSession.update(namespace+".editpassword",vo);
+	}
+
 }

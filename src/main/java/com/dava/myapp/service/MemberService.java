@@ -12,4 +12,6 @@ public interface MemberService {
 	public void join(MemberVO vo) throws Exception;
 	
 	  public MemberVO login(MemberVO vo)throws Exception;
+	  
+	  public void editpassword(MemberVO vo) throws Exception;
 }

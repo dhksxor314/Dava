@@ -30,5 +30,5 @@ public interface BuyDAO {
 	
 
 	public List<BuyVO> buy_select(int memnum) throws Exception;
-	
+	public List<BookVO> mypage_buy(int memnum) throws Exception;
 }

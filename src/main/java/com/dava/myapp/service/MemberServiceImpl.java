@@ -31,6 +31,12 @@ public class MemberServiceImpl implements MemberService {
 		return dao.login(vo);
 	}
 
+	@Override
+	public void editpassword(MemberVO vo) throws Exception {
+		// TODO Auto-generated method stub
+		dao.editpassword(vo);
+	}
+
 	
 
 }

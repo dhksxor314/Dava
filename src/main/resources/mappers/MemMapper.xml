@@ -6,7 +6,7 @@
 
 	<select id="mem_info" resultType="com.dava.myapp.domain.MemberVO">
 		select
-		id, NICKNAME , point
+		id, NICKNAME , point, password
 		from
 		member
 		where memnum = #{memnum};
@@ -26,4 +26,9 @@
 		member
 		where id = #{id} and password =#{password};
 	</select>
+	
+	<update id="editpassword" parameterType="com.dava.myapp.domain.MemberVO">
+		update member set password = #{password} where memnum = #{memnum};		
+	</update>
+	
 </mapper>

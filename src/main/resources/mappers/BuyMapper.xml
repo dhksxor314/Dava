@@ -46,19 +46,20 @@
 		update member set point = point - #{use_point} where memnum = #{memnum};		
 	</update>
 	
-	
 	<insert id="total_buy">
 		insert into buy
 		(memnum,booknum,buy_date,p_way,final_pay)
 		values(#{memnum},#{booknum},now(),#{p_way},#{final_pay});
 	</insert>
-
-
 	
 	<select id="buy_select" resultType="com.dava.myapp.domain.BuyVO">
 		SELECT booknum,memnum
 		FROM buy where memnum = #{memnum};
 	</select>
-	
+
+	<select id="mypage_buy" resultType="com.dava.myapp.domain.BookVO">
+		SELECT buy.booknum, book.img, book.title
+		FROM buy, book where book.booknum=buy.booknum and  memnum = #{memnum};
+	</select>
 
 </mapper>

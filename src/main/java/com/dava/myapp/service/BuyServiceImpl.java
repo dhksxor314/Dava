@@ -81,6 +81,12 @@ public class BuyServiceImpl implements BuyService {
 		// TODO Auto-generated method stub
 		 return dao.buy_select(memnum);
 	}
+
+	@Override
+	public List<BookVO> mypage_buy(int memnum) throws Exception {
+		// TODO Auto-generated method stub
+		return dao.mypage_buy(memnum);
+	}
 	
 	
 

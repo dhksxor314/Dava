@@ -26,20 +26,7 @@
 			$("#loginForm").submit();
 
 		});
-
-
-
-		$("#mypage").click(function() {
-
-			alert("마이페이지")
-			alert("페이지 이동 들어갈곳")
-
-		});
-		$("#test").click(function() {
-
-			location.href="/products/shop_bag";			
-
-		});
+		
 		
 		$("#join").click(function() {
 
@@ -111,8 +98,8 @@
 				<div class="col-xs-4" style="text-align: left;">
 					<div class="row" style="margin-top: 5px">${nickname}</div>
 					<div class="row" style="margin-top: 5px">
-						<a href="" id="mypage">me</a> | <a id="logout" href="/logout">로그아웃</a>
-						<button id="test">장바구니</button>
+						<a href="/mypage/mypage_main">me</a> | <a id="logout" href="/logout">로그아웃</a>
+						
 					</div>
 				</div>
 

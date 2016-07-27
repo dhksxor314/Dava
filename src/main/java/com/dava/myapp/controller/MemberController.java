@@ -1,7 +1,5 @@
 package com.dava.myapp.controller;
 
-import java.util.Locale;
-
 import javax.inject.Inject;
 
 import org.springframework.stereotype.Controller;
@@ -10,7 +8,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.dava.myapp.domain.MemberVO;
-import com.dava.myapp.service.BookService;
 import com.dava.myapp.service.MemberService;
 
 @Controller
@@ -18,8 +15,7 @@ import com.dava.myapp.service.MemberService;
 public class MemberController {
    @Inject
    private MemberService mem_service;
-   @Inject
-   private BookService book_service;
+
    
 
    @RequestMapping(value = "/join", method = RequestMethod.GET)
