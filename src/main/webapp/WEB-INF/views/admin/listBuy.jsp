@@ -89,7 +89,7 @@
 										<td align="center"><a
 											href='/admin/readBookBuy?booknum=${BuyVO.booknum}'>
 												${BuyVO.booknum}</a></td>
-										<td align="center">${BuyVO.buy_date}</td>
+										<td align="center">${BuyVO.buydate}</td>
 									</tr>
 
 								</c:forEach>

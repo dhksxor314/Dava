@@ -41,4 +41,7 @@ public interface BuyDAO {
 	public List<BuyVO> listPage(int page) throws Exception;
 
 	public List<BuyVO> listCriteria(Criteria cri) throws Exception;
+
+	public List<BuyVO> buy_select(int memnum) throws Exception;
+
 }

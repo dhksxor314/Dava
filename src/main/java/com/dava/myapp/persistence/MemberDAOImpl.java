@@ -36,8 +36,7 @@ public class MemberDAOImpl implements MemberDAO {
 		// TODO Auto-generated method stub
 		return SqlSession.selectOne(namespace+".login",vo);
 	}
-	
-	
+
 	@Override
 	public List<MemberVO> listMember() {
 		

@@ -26,4 +26,7 @@ public interface BuyService {
 	public void use_point(BuyVO vo) throws Exception;
 
 	public void total_buy(BuyVO vo);
+	
+
+	public List<BuyVO> buy_select(int memnum) throws Exception;
 }

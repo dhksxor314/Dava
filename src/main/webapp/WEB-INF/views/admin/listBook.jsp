@@ -180,8 +180,7 @@
 											<!-- 출판일 -->
 											<tr>
 												<td>출판일</td>
-												<td><input type="text" name="pub_date" id="pub_date"
-													maxlength="8" size="8" placeholder="20160309" /></td>
+												<td><input type="date" name="pub_date" id="pub_date"/></td>
 											</tr>
 
 											<!-- 가격 필드 -->

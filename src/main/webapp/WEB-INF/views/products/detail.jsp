@@ -23,17 +23,19 @@
 		$("#shop_bag").click(function() {
 				
 			
-				$("#form2").submit();
+			
 				
 				var check = '${check}';
 				
 				if(check == "true"){
-					var con = confirm('${bookVO.title}'+"을(를) 장바구니에 담았습니다.");
+					var con = confirm('${bookVO.title}'+"을(를) 장바구니에 담겠습니까??");
 					if (con == true) {
+						$("#form2").submit();
 						window.close();
+						
+					}else{
+						return false;
 					}
-				}else{
-					alert("이미 장바구니에 담겨져 있습니다.");
 				}
 				
 			});
