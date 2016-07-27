@@ -25,14 +25,15 @@
 
 
 	<div class="container" style="">
-		<div class="row" style="text-align: center; border: solid 0.5px silver;">
+		<div class="row"
+			style="text-align: center; border: solid 0.5px silver;">
 			<h2>구매한 책</h2>
 		</div>
-		
-		<div class="row" style="margin-top: 20px;border: solid 0.5px silver;">
+
+		<div class="row" style="margin-top: 20px; border: solid 0.5px silver;">
 
 			<c:forEach items="${list}" var="bookVO">
-			<hr/>
+				<hr />
 				<div class="row">
 					<div class="col-md-offset-1 col-md-5">
 						<img src="/resources/imgs/${bookVO.img}" class="imgs_size" />
@@ -40,13 +41,13 @@
 					</div>
 					<div class="col-md-offset-3 col-md-3 " style="padding-top: 5%">
 						<div class="col-xs-4">
-							<a href="">바로보기</a>
+							<a href="/readbook/read?mybooknum=1">바로보기</a>
 						</div>
 					</div>
 				</div>
-				
+
 			</c:forEach>
-	<hr>
+			<hr>
 
 		</div>
 
