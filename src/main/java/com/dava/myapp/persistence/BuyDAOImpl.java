@@ -10,7 +10,6 @@ import org.springframework.stereotype.Repository;
 import com.dava.myapp.domain.BookVO;
 import com.dava.myapp.domain.BuyVO;
 import com.dava.myapp.domain.Criteria;
-import com.dava.myapp.domain.MemberVO;
 import com.dava.myapp.domain.ShopBagVO;
 
 @Repository
