@@ -103,11 +103,6 @@ public class ProductsController {
 		}
 		
 		
-		
-		
-		
-
-		
 		for (int i = 0; i < size; i++) {
 			vo.setMemnum(memnum);
 			vo.setBooknum(buy_service.my_shop(memnum).get(i).getBooknum());
@@ -128,15 +123,31 @@ public class ProductsController {
 	}
 
 	@RequestMapping(value = "/detail", method = RequestMethod.POST)
-	public void shop_bag(ShopBagVO shop_vo, @RequestParam("booknum") int booknum, Model model) throws Exception {
-
+	public void shop_bag(ShopBagVO shop_vo, @RequestParam("booknum") int booknum, Model model,BuyVO vo,HttpSession session) throws Exception {
+		int memnum = Integer.parseInt(session.getAttribute("memnum").toString());
+		int buy_size = buy_service.buy_select(memnum).size();
+		
+			for(int j=0; j<buy_size; j++){
+				if(	buy_service.buy_select(memnum).get(j).getBooknum()  == booknum){
+					
+					model.addAttribute("msg", "이미 구입한 상품 입니다.");
+					model.addAttribute(book_service.select(booknum));
+					return;
+					
+				}
+			}
+		
+		
+		
 		try {
 			buy_service.shop_bag(shop_vo);
-
 			model.addAttribute(book_service.select(booknum));
+			
 
 		} catch (Exception e) {
 			model.addAttribute(book_service.select(booknum));
+
+			model.addAttribute("msg", "이미 장바구니에 담겨있습니다..");
 
 		}
 	}

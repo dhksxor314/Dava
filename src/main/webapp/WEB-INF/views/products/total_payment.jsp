@@ -60,7 +60,6 @@
 			var point = '${memberVO.point}' * 1;
 			var price = $("#total").text() * 1;
 			
-			alert(point)
 			if ($(this).val() > point) {
 				alert('보유 포인트를 초과하였습니다.');
 				$(this).val("");
@@ -110,7 +109,7 @@
 
 				<div class="row">
 					<div class="col-xs-offset-1 col-xs-6" style="text-align: left;">
-						<h4>[${list[0].genre}] ${list[0].title} 외 ${list.size()}건</h4>
+						<h4>[${list[0].genre}] ${list[0].title} 등 ${list.size()}건</h4>
 					</div>
 					<div class="col-xs-offset-1 col-xs-3 col-xs-offset-1"
 						style="text-align: right;">
