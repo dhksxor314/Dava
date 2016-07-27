@@ -7,7 +7,7 @@ public class BuyVO {
 	private int buynum;
 	private int memnum;
 	private int booknum;
-	private Date buydate;
+	private Date buy_date;
 	private String p_way;
 	private int final_pay;
 	private int use_point;
@@ -45,12 +45,12 @@ public class BuyVO {
 		this.booknum = booknum;
 	}
 
-	public Date getBuydate() {
-		return buydate;
+	public Date getBuy_date() {
+		return buy_date;
 	}
 
-	public void setBuydate(Date buydate) {
-		this.buydate = buydate;
+	public void setBuy_date(Date buy_date) {
+		this.buy_date = buy_date;
 	}
 
 	public String getP_way() {
