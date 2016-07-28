@@ -116,6 +116,9 @@
 					</div>
 				</div>
 		<!--/.col (left) -->
+		<span style="float: right">
+					<button class="btn btn-danger">회원삭제</button>
+				</span>
 </div>
 </div>
 	</div>
