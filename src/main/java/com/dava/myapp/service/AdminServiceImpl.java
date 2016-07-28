@@ -85,6 +85,16 @@ public class AdminServiceImpl implements AdminService {
 	public int MemberlistCountCriteria(Criteria cri) throws Exception{
 		return Mdao.MembercountPaging(cri);
 	}
+	
+	@Override
+	public List<BuyVO> BuylistCriteria(Criteria cri) throws Exception {
+
+		return Buydao.BuylistCriteria(cri);
+	}
+	@Override
+	public int BuylistCountCriteria(Criteria cri) throws Exception{
+		return Buydao.BuycountPaging(cri);
+	}
 
 	@Override
 	public BuyVO readBuy(Integer buynum) throws Exception {

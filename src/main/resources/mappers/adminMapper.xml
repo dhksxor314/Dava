@@ -95,6 +95,26 @@
 	 ]]> 
  	</select>
  	
+ 	<!-- Buy 페이징 -->
+ 	<select id="BuylistPage" resultType="BuyVO">
+	 <![CDATA[
+		select *
+		from buy where buynum >0 order by buynum limit #{page}, 10;
+	 ]]>  
+ 	</select>
+	<select id="BuylistCriteria" resultType="BuyVO">
+	 <![CDATA[
+		select *
+		from buy where buynum > 0 order by buynum limit #{pageStart}, #{perPageNum};
+	 ]]>  
+ 	</select>
+ 	<select id="BuycountPaging" resultType="int">
+ 	 <![CDATA[
+		select count(buynum)
+		from buy where buynum >0
+	 ]]> 
+ 	</select>
+ 	
  	<select id="listBuy" resultType="BuyVO">
  		select * from buy, book where buy.booknum=book.booknum
  	</select>

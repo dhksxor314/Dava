@@ -44,20 +44,25 @@
 					<div class="box-header with-border" >
 						<h3 align="center">결제 내역</h3>
 
-							<!-- 검색  -->
-							<form name="serachBuy" method="post">
-							
-								<select name="keyField">
-									<option value="0">----선택----</option>
-									<option value="buynum">결제번호</option>
-									<option value="memnum">회원번호</option>
-									<option value="title">제 목</option>
-									<option value="booknum">도서번호</option>
-									<option value="buydate">결제날짜</option>
-								</select>
-								<input type="text" id="keyWordBuy" name="keyWordBuy" />
-								<input type="button" value="검색" id="searchBuy" name="searchBuy"/>
-							</form>
+							<!-- 검색 -->
+								<form name="serach" method="post">
+									<select name="searchType">
+										<option value="n"
+											<c:out value="${cri.searchType == null?'selected':''}"/>>
+											-선택-</option>
+										<option value="buynum"
+											<c:out value="${cri.searchType eq 'buynum'?'selected':''}"/>>
+											결제번호</option>
+										<option value="title"
+											<c:out value="${cri.searchType eq 'title'?'selected':''}"/>>
+											책제목</option>
+										<option value="publisher"
+											<c:out value="${cri.searchType eq 'publisher'?'selected':''}"/>>
+											출판사</option>
+									</select> <input type="text" id="keyword" name="keywordInput"
+										value="${cri.keyword }" />
+									<button id="searchBtn">검색</button>
+								</form>
 					</div>
 					
 					
@@ -94,11 +99,34 @@
 						</form>
 
 					</div>
+					<!-- 페이징 부분 -->
 					<!-- /.box-body -->
-					
-				<!-- paging 처리 -->
-					<div style="background-color: #ccccff" class="box-footer">번호
-						목록 및 페이지 이동</div>
+					<div style="background-color: #23b300" class="box-footer">
+						<div class="text-center">
+							<ul class="pagination">
+
+								<c:if test="${pageMaker.prev}">
+									<li><a
+										href="listBuy${pageMaker.makeSearch(pageMaker.startPage - 1) }">&laquo;</a></li>
+								</c:if>
+
+								<c:forEach begin="${pageMaker.startPage }"
+									end="${pageMaker.endPage }" var="idx">
+									<li
+										<c:out value="${pageMaker.cri.page == idx?'class =active':''}"/>>
+										<a href="listBuy${pageMaker.makeQuery(idx)}">${idx}</a>
+									</li>
+								</c:forEach>
+
+								<c:if test="${pageMaker.next && pageMaker.endPage > 0}">
+									<li><a
+										href="listBuy${pageMaker.makeQuery(pageMaker.endPage + 1) }">&raquo;</a></li>
+								</c:if>
+
+							</ul>
+						</div>
+					</div>
+
 					<span style="float: right">
 						<button class="btn btn-danger">환불처리</button>
 					</span>
