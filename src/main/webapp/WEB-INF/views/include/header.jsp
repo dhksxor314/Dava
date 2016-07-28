@@ -120,14 +120,13 @@
 	style="background-color: #23b300; margin-bottom: 5px">
 	<ul class="nav nav-pills col-md-9"
 		style="text-align: center; margin-top: 4px; margin-bottom: -10px">
-		<li role="presentation" class="col-md-2"><a href="#"
-			style="color: #dfef00;">무협</a></li>
-		<li role="presentation" class="col-md-2"><a href="#"
+		<li role="presentation" class="col-md-2"><a href="/contents/contents?contents=1"
+			style="color: #dfef00;">전체</a></li>
+		<li role="presentation" class="col-md-2"><a href="/contents/contents?contents=2"
 			style="color: #dfef00;">판타지</a></li>
-		<li role="presentation" class="col-md-2"><a href="#"
-			style="color: #dfef00;">소설</a></li>
-		<li role="presentation" class="col-md-2"><a href="#"
-			style="color: #dfef00;">기타</a></li>
+		<li role="presentation" class="col-md-2"><a href="/contents/contents?contents=3"
+			style="color: #dfef00;">로맨스</a></li>
+
 	</ul>
 
 	<div class="form-group col-md-3" style="text-align: right;">

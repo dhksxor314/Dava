@@ -10,5 +10,5 @@ public interface BookService {
 
 	  public BookVO select(Integer booknum) throws Exception;
 
-
+	  public List<BookVO> contents(String contents) throws Exception;
 }
