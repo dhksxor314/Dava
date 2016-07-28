@@ -60,7 +60,7 @@
 						<div>
 						<span style="float: right">
 						
-							<form name="serach" method="post">
+							<form name="serachBook" method="post">
 							
 								<select name="keyField">
 									<option value="0">----선택----</option>
@@ -71,8 +71,8 @@
 									<option value="publisher">출판사</option>
 									<option value="pub_date">출판일</option>
 								</select>
-								<input type="text" id="keyWord" name="keyWord" />
-								<input type="button" value="검색" id="search" name="search"/>
+								<input type="text" id="keyWordBook" name="keyWordBook" />
+								<input type="button" value="검색" id="searchBook" name="searchBook"/>
 							</form>
 							
 						</span>
@@ -104,7 +104,8 @@
 											value="${bookVO.booknum}" /></td>
 										<td align="center">${bookVO.booknum}</td>
 										<td align="center"><a
-											href='/admin/readBook?booknum=${bookVO.booknum}'>
+											href='/admin/readBook?${pagerMaker.makeQuery(pageMaker.cri.page)
+											}&booknum=${bookVO.booknum}'>
 												${bookVO.title}</a></td>
 										<td align="center">${bookVO.author}</td>
 										<td align="center">${bookVO.price}</td>
@@ -121,8 +122,29 @@
 
 					<!-- 페이징 부분 -->
 					<!-- /.box-body -->
-					<div style="background-color: #ccccff" class="box-footer">번호목록
-						및 페이지 이동</div>
+					<div style="background-color: #ccccff" class="box-footer">
+						<div class="text-center">
+						<ul class="pagination">
+
+							<c:if test="${pageMaker.prev}">
+								<li><a href="listCri${pageMaker.makeQuery(pageMaker.startPage - 1) }">&laquo;</a></li>
+							</c:if>
+
+							<c:forEach begin="${pageMaker.startPage }"
+								end="${pageMaker.endPage }" var="idx">
+								<li
+									<c:out value="${pageMaker.cri.page == idx?'class =active':''}"/>>
+									<a href="listCri${pageMaker.makeQuery(idx)}">${idx}</a>
+								</li>
+							</c:forEach>
+
+							<c:if test="${pageMaker.next && pageMaker.endPage > 0}">
+								<li><a href="listCri${pageMaker.makeQuery(pageMaker.endPage + 1) }">&raquo;</a></li>
+							</c:if>
+
+						</ul>
+					</div>
+					</div>
 
 
 					<!-- 도서등록 버튼 -->
@@ -180,8 +202,7 @@
 											<!-- 출판일 -->
 											<tr>
 												<td>출판일</td>
-												<td><input type="text" name="pub_date" id="pub_date"
-													maxlength="8" size="8" placeholder="20160309" /></td>
+												<td><input type="date" name="pub_date" id="pub_date" placeholder="20161231" /></td>
 											</tr>
 
 											<!-- 가격 필드 -->

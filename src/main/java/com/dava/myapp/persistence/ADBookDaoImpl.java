@@ -40,17 +40,21 @@ public class ADBookDaoImpl {
 	}
 	
 	
-	public List<BookVO> listPage(int page) throws Exception{
+	public List<BookVO> BooklistPage(int page) throws Exception{
 		if(page <= 0){
 			page =1;
 		}
 		
 		page = (page-1) * 10;
 		
-		return sqlSession.selectList(NAMESPACE + ".listPage", page);
+		return sqlSession.selectList(NAMESPACE + ".BooklistPage", page);
 	}
 	
-	public List<BookVO> listCriteria(Criteria cri) throws Exception{
-		return sqlSession.selectList(NAMESPACE + ".listCriteria", cri);
+	public List<BookVO> BooklistCriteria(Criteria cri) throws Exception{
+		return sqlSession.selectList(NAMESPACE + ".BooklistCriteria", cri);
+	}
+	
+	public int BookcountPaging(Criteria cri) throws Exception{
+		return sqlSession.selectOne(NAMESPACE + ".BookcountPaging", cri);
 	}
 }

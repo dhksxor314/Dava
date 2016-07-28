@@ -1,6 +1,6 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8" isELIgnored="false"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" isELIgnored="false"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@include file="../include/headerAdmin.jsp"%>
 
 <script>
@@ -67,8 +67,7 @@
 						
 						<div class="form-group">
 							<label for="exampleInputPassword1">출 판 일</label> <input
-								type="text" class="form-control" name="pub_date"
-								value="${bookVO.pub_date}" />
+								type="date" class="form-control" name="pub_date" value="${bookVO.pub_date}" />
 						</div>
 						
 						<div class="form-group">

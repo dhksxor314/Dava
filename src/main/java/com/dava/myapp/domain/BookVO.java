@@ -59,6 +59,7 @@ public class BookVO {
 	}
 
 	public void setPub_date(String pub_date) {
+
 		this.pub_date = pub_date;
 	}
 

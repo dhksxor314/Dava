@@ -24,7 +24,8 @@ public interface ADBookDao {
 	public List<BookVO> listBook() throws Exception;
 	
 	//paging
-	public List<BookVO> listPage(int page) throws Exception;
-	public List<BookVO> listCriteria(Criteria cri) throws Exception;
+	public List<BookVO> BooklistPage(int page) throws Exception;
+	public List<BookVO> BooklistCriteria(Criteria cri) throws Exception;
+	public int BookcountPaging(Criteria cri) throws Exception;
 	
 }

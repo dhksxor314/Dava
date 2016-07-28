@@ -38,8 +38,9 @@
 				<div class="form-group">
 					<div class="input-group">
 						<div class="input-group-addon">
+							<div class="col-right-9">
 							<icon class="glyphicon glyphicon-star">Administrator</icon>
-							
+							</div>
 						</div>
 						<input type="submit" value="로그아웃"/>
 					</div>

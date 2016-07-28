@@ -40,34 +40,36 @@
 			<div class="col-md-9">
 				<!-- general form elements -->
 
-				<div style="background-color: #23ff11" class="box">
+				<div class="box">
 					<div class="box-header with-border">
 						<h3 align="center">결제 내역</h3>
+						<div>
 						<span style="float: right">
 						
-						
 						<!-- 검색  -->
-							<div class="dropdown">
-								<button id="searchBuy" type="button" data-toggle="dropdown"
-									aria-haspopup="true" aria-expanded="false">
-									검색옵션 <span class="caret"></span>
-								</button>
-								<ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
-									<li>도서번호</li>
-									<li>회원번호</li>
-								</ul>
-							</div> <input type="text" id="search" /> <input type="button"
-							value="검색" />
+							<form name="serachBuy" method="post">
+							
+								<select name="keyField">
+									<option value="0">----선택----</option>
+									<option value="buynum">결제번호</option>
+									<option value="memnum">회원번호</option>
+									<option value="title">제 목</option>
+									<option value="booknum">도서번호</option>
+									<option value="buydate">결제날짜</option>
+								</select>
+								<input type="text" id="keyWordBuy" name="keyWordBuy" />
+								<input type="button" value="검색" id="searchBuy" name="searchBuy"/>
+							</form>
 						</span>
 					</div>
+				</div>
 					
 					
 				<!-- 메인 결제 목록 출력 -->
 					<div class="box-body">
 
 						<form method="POST" id="delBuy" action="/admin/deleteBuy">
-							<table style="background-color: #bbffbb"
-								class="table table-bordered">
+							<table class="table table-bordered">
 								<tr align="center" style="font-size: 20; font-weight: bold;">
 									<td width="5%"><input type="checkbox" id="checkall"/></td>
 									<td width="10%">구매 번호</td>
@@ -89,7 +91,7 @@
 										<td align="center"><a
 											href='/admin/readBookBuy?booknum=${BuyVO.booknum}'>
 												${BuyVO.booknum}</a></td>
-										<td align="center">${BuyVO.buy_date}</td>
+										<td align="center">${BuyVO.buydate}</td>
 									</tr>
 
 								</c:forEach>

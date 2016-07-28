@@ -14,6 +14,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.util.FileCopyUtils;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -21,6 +22,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.dava.myapp.domain.BookVO;
 import com.dava.myapp.domain.Criteria;
+import com.dava.myapp.domain.PageMaker;
 import com.dava.myapp.service.AdminService;
 
 @Controller
@@ -61,11 +63,15 @@ public class AdminController {
 		return savedName;
 	}
 	
-	// 등록된 도서
+	// 도서 리스트
 	@RequestMapping(value = "/listBook")
-	public String listBook(Model model) throws Exception {
-		model.addAttribute("Blist", service.listBook());
-		return "/admin/listBook";
+	public void listBook(Criteria cri, Model model) throws Exception {
+		model.addAttribute("Blist", service.BooklistCriteria(cri));
+		PageMaker pageMaker = new PageMaker();
+		pageMaker.setCri(cri);
+		pageMaker.setTotalCount(service.BooklistCountCriteria(cri));
+		
+		model.addAttribute("pageMaker", pageMaker);
 	}
 	// 도서 정보 확인
 	@RequestMapping(value = "/readBook")
@@ -101,9 +107,13 @@ public class AdminController {
 	
 	// 회원 리스트
 	@RequestMapping(value = "/listMember")
-	public String listMember(Model model) throws Exception {
-		model.addAttribute("Mlist", service.listMember());
-		return "/admin/listMember";
+	public void listMember(Criteria cri, Model model) throws Exception {
+		model.addAttribute("Mlist", service.MemberlistCriteria(cri));
+		PageMaker pageMaker = new PageMaker();
+		pageMaker.setCri(cri);
+		pageMaker.setTotalCount(service.MemberlistCountCriteria(cri));
+		
+		model.addAttribute("pageMaker", pageMaker);
 	}
 	// 회원 삭제
 	@RequestMapping(value = "/deleteMember")
@@ -147,8 +157,14 @@ public class AdminController {
 	
 	// paging
 	@RequestMapping(value = "/listCri", method = RequestMethod.GET)
-	public void listBook(Criteria cri, Model model) throws Exception {
+	public void listCri(@ModelAttribute("cri")Criteria cri, Model model) throws Exception {
 		logger.info("show list");
-		model.addAttribute("list", service.listCriteria(cri));
+		model.addAttribute("Blist", service.BooklistCriteria(cri));
+		PageMaker pageMaker = new PageMaker();
+		pageMaker.setCri(cri);
+		pageMaker.setTotalCount(service.BooklistCountCriteria(cri));
+		
+		model.addAttribute("pageMaker", pageMaker);
 	}
+
 }

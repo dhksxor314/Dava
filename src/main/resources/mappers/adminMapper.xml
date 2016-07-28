@@ -55,20 +55,47 @@
 	</select>
 	
 	
-	<!-- 페이징 -->
-	<select id="listPage" resultType="BookVO">
+	<!-- 도서 페이징 -->
+	<select id="BooklistPage" resultType="BookVO">
 	 <![CDATA[
 		select *
-		from book order by booknum limit #{page}, 5;
+		from book where booknum >0 order by booknum limit #{page}, 10;
 	 ]]>  
  	</select>
-	<select id="listCriteria" resultType="BookVO">
+	<select id="BooklistCriteria" resultType="BookVO">
 	 <![CDATA[
 		select *
-		from book order by booknum limit #{pageStart}, #{perPageNum};
+		from book where booknum > 0 order by booknum limit #{pageStart}, #{perPageNum};
 	 ]]>  
+ 	</select>
+ 	<select id="BookcountPaging" resultType="int">
+ 	 <![CDATA[
+		select count(booknum)
+		from book where booknum >0
+	 ]]> 
  	</select>
  	
+ 	<!-- 회원 페이징 -->
+ 	<select id="MemberlistPage" resultType="MemberVO">
+	 <![CDATA[
+		select *
+		from member where memnum >0 order by memnum limit #{page}, 10;
+	 ]]>  
+ 	</select>
+	<select id="MemberlistCriteria" resultType="MemberVO">
+	 <![CDATA[
+		select *
+		from member where memnum > 0 order by memnum limit #{pageStart}, #{perPageNum};
+	 ]]>  
+ 	</select>
+ 	<select id="MembercountPaging" resultType="int">
+ 	 <![CDATA[
+		select count(memnum)
+		from member where memnum >0
+	 ]]> 
+ 	</select>
+ 	
+ 	<!-- 결제내역 확인 -->
  	<select id="listBuy" resultType="BuyVO">
  		select * from buy
  	</select>

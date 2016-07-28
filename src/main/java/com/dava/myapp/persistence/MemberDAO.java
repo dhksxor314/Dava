@@ -2,6 +2,7 @@ package com.dava.myapp.persistence;
 
 import java.util.List;
 
+import com.dava.myapp.domain.Criteria;
 import com.dava.myapp.domain.MemberVO;
 
 public interface MemberDAO {
@@ -17,6 +18,11 @@ public interface MemberDAO {
 
 	// 결제 관리에서 회원 번호 클릭시 회원정보 확인만 가능하도록
 	public MemberVO readMember(Integer memnum) throws Exception;
+	
+	//paging
+		public List<MemberVO> MemberlistPage(int page) throws Exception;
+		public List<MemberVO> MemberlistCriteria(Criteria cri) throws Exception;
+		public int MembercountPaging(Criteria cri) throws Exception;
 
 	public MemberVO mem_info(Integer memnum) throws Exception;
 

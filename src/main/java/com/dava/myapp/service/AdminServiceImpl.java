@@ -67,9 +67,23 @@ public class AdminServiceImpl implements AdminService {
 	}
 
 	@Override
-	public List<BookVO> listCriteria(Criteria cri) throws Exception {
+	public List<BookVO> BooklistCriteria(Criteria cri) throws Exception {
 
-		return Bdao.listCriteria(cri);
+		return Bdao.BooklistCriteria(cri);
+	}
+	@Override
+	public int BooklistCountCriteria(Criteria cri) throws Exception{
+		return Bdao.BookcountPaging(cri);
+	}
+	
+	@Override
+	public List<MemberVO> MemberlistCriteria(Criteria cri) throws Exception {
+
+		return Mdao.MemberlistCriteria(cri);
+	}
+	@Override
+	public int MemberlistCountCriteria(Criteria cri) throws Exception{
+		return Mdao.MembercountPaging(cri);
 	}
 
 	@Override

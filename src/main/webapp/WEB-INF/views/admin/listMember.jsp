@@ -42,39 +42,37 @@
 		<div class="col-md-9">
 			<!-- general form elements -->
 
-			<div style="background-color: #23ff11" class="box">
+			<div class="box">
 				<div class="box-header with-border">
 					<h3 align="center" >회원 목록</h3>
 					<span style="float: right">
 					
 					
 						<!-- 검색 구현안됨 -->
-							<div class="dropdown">
-								<button id="dLabel" type="button" data-toggle="dropdown"
-									aria-haspopup="true" aria-expanded="false">
-									검색옵션 <span class="caret"></span>
-								</button>
-								<ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
-									<li>회원번호</li>
-									<li>ID</li>
-									<li>별명</li>
-								</ul>
-							</div> <input type="text" id="search" /> <input type="button"
-							value="검색" />
+							<form name="serachMember" method="post">
+							
+								<select name="keyField">
+									<option value="0">----선택----</option>
+									<option value="memnum">회원번호</option>
+									<option value="id">회원ID</option>
+									<option value="nickname">닉네임</option>
+								</select>
+								<input type="text" id="keyWordMember" name="keyWordMember" />
+								<input type="button" value="검색" id="searchMember" name="searchMember"/>
+							</form>
 						</span>
 				</div>
+				
 				<div class="box-body">
-
-
 			<!-- 메인 회원 출력 -->
 				<form method="POST" id="delMem" action="/admin/deleteMember">
-					<table style="background-color: #bbffbb" class="table table-bordered">
+					<table class="table table-bordered">
 						<tr align="center" style="font-size: 20;font-weight: bold;">
 									<td width="5%"><input type="checkbox" id="checkall"/></td>
 									<td width="10%">번호</td>
 									<td width="30%">E-mail ID</td>
 									<td width="15%">별명</td>
-									<td width="50%">비밀번호</td>
+									<td width="50%">POINT</td>
 						</tr>
 
 						<c:forEach items="${Mlist}" var="memberVO">
@@ -84,7 +82,7 @@
 								<td align="center">${memberVO.memnum}</td>
 								<td align="center">${memberVO.id}</td>
 								<td align="center">${memberVO.nickname}</td>
-								<td align="center">${memberVO.password}</td>
+								<td align="center">${memberVO.point}</td>
 							</tr>
 
 						</c:forEach>
@@ -96,7 +94,29 @@
 			<!-- 페이징  -->
 				</div>
 				<!-- /.box-body -->
-				<div style="background-color: #ccccff" class="box-footer">번호 목록 및 페이지 이동</div>
+				<div class="box-footer">
+					<div class="text-center">
+						<ul class="pagination">
+
+							<c:if test="${pageMaker.prev}">
+								<li><a href="listMember${pageMaker.makeQuery(pageMaker.startPage - 1) }">&laquo;</a></li>
+							</c:if>
+
+							<c:forEach begin="${pageMaker.startPage }"
+								end="${pageMaker.endPage }" var="idx">
+								<li
+									<c:out value="${pageMaker.cri.page == idx?'class =active':''}"/>>
+									<a href="listMember${pageMaker.makeQuery(idx)}">${idx}</a>
+								</li>
+							</c:forEach>
+
+							<c:if test="${pageMaker.next && pageMaker.endPage > 0}">
+								<li><a href="listMember${pageMaker.makeQuery(pageMaker.endPage + 1) }">&raquo;</a></li>
+							</c:if>
+
+						</ul>
+					</div>
+				</div>
 				<span style="float: right">
 					<button class="btn btn-danger">회원삭제</button>
 				</span>
