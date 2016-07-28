@@ -17,8 +17,8 @@ public class MyBookServiceImpl implements MyBookService {
 	}
 
 	@Override
-	public String getTitle(Integer mybooknum) {
-		return dao.getTitle(mybooknum);
+	public String getHwp(Integer mybooknum) {
+		return dao.getHwp(mybooknum);
 	}
 
 	@Override

@@ -16,8 +16,8 @@
 		where bu.buynum=m.buynum and bu.booknum=b.booknum and m.mybooknum=#{mybooknum}
 	</select>
 	
-	<select id="getTitle" resultType="String">
-		select title 
+	<select id="getHwp" resultType="String">
+		select hwp
 		from buy bu, book b, mybook m 
 		where bu.buynum=m.buynum and bu.booknum=b.booknum and m.mybooknum=#{mybooknum}
 	</select>

@@ -10,6 +10,7 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.StringWriter;
 import java.io.Writer;
+import java.util.logging.Logger;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -43,7 +44,7 @@ public class ReadBookController {
 
 		String path = req.getServletContext().getRealPath("resources");
 
-		String title = service.getTitle(mybooknum);
+		String title = service.getHwp(mybooknum);
 		int pageCutline=25;//한 페이지당 라인 수
 		int totalPage = 0;
 		int totalLine=1;

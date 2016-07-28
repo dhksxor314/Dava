@@ -20,8 +20,8 @@ public class MyBookDaoImpl implements MyBookDao {
 	}
 
 	@Override
-	public String getTitle(Integer mybooknum) {
-		return sqlSession.selectOne(namespace+".getTitle", mybooknum);
+	public String getHwp(Integer mybooknum) {
+		return sqlSession.selectOne(namespace+".getHwp", mybooknum);
 	}
 
 	@Override
