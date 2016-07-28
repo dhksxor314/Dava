@@ -5,7 +5,7 @@
 <%@ page session="false"%>
 
 <%@include file="../include/headerAdmin.jsp"%>
-<
+
 <script type="text/javascript">
 	$(document).ready(function() {
 		//환불처리 버튼

@@ -6,6 +6,8 @@
 <%@include file="../include/headerAdmin.jsp"%>
 
 <script>
+	var img = /(\.gif|\.png|\.jpg|\.jpeg)$/i;//이미지 파일 형식만 가능
+	var hwp = /(\.hwp)$/i;
 	$(document).ready(function() {
 
 		//도서 삭제 버튼 동작
@@ -18,6 +20,16 @@
 
 		//도서 등록
 		$(".btn-primary").on("click", function() {
+			//이미지 파일 형식 검사
+			if(!img.test($("#img").val())){
+				alert("표지사진이 이미지 형식의 파일이 아닙니다.");
+				return false;
+			}
+			//한글 파일 형식 검사
+			if(!hwp.test($("#hwp").val())){
+				alert("도서파일이 hwp확장자 파일이 아닙니다.");
+				return false;
+			}
 			$("#registBook").submit();
 			alert("등록 완료");
 			return "redirect:/admin/listBook";
