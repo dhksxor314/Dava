@@ -36,7 +36,7 @@
 				<hr />
 				<div class="row">
 					<div class="col-md-offset-1 col-md-5">
-						<img src="/resources/imgs/${bookVO.img}" class="imgs_size" />
+						<img src="/resources/covers/${bookVO.img}" class="imgs_size" />
 						${bookVO.title}
 					</div>
 					<div class="col-md-offset-3 col-md-3 " style="padding-top: 5%">

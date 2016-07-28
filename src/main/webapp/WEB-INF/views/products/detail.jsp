@@ -59,7 +59,7 @@
 
 			<div class="row" style="margin-top: 20px">
 				<div class="col-md-offset-1 col-md-3">
-					<img src="/resources/imgs/${bookVO.img }"
+					<img src="/resources/covers/${bookVO.img }"
 						style="width: 100%; height: 40%">
 				</div>
 				<div class="col-md-offset-1 col-md-6 col-md-offset-1">
