@@ -126,13 +126,29 @@
 
 
 					<!-- 도서등록 버튼 -->
-					<span style="float: right">
-						<button class="btn btn-danger">삭제</button>
-						<button class="btn btn-default" data-target="#layerpop"
-							data-toggle="modal">도서등록</button>
-					</span>
-
-
+					<div class="col-md-12">
+						<span style="float: right">
+							<button class="btn btn-danger">삭제</button>
+							<button class="btn btn-default" data-target="#layerpop"
+								data-toggle="modal">도서등록</button>
+						</span>
+					</div>
+					<br/>
+					<!-- 검색 -->
+					<form action="/admin/search" id="searchForm" name="searchForm" method="post">
+						<div id="searchDiv" class="col-md-12">
+							<select id="keyfield" class="form-control" style="width: 100px;float:left">
+								<option>제목</option>
+								<option>작가</option>
+								<option>출판사</option>
+							</select>
+							&nbsp;&nbsp;&nbsp;
+							<input type="text" id="keyword" name="keyword" class="form-control" style="width: 300px;float:left"/>
+							&nbsp;&nbsp;&nbsp;
+							<input type="button" id="searchBtn" name="serachBtn" class="form-control" style="width:60px;float:left" value="검색"/>
+						</div>
+					</form>
+					
 					<!-- 도서 등록 modal -->
 					<div class="modal fade" id="layerpop">
 						<div class="modal-dialog">
@@ -155,57 +171,56 @@
 											<tr>
 												<td>제 목</td>
 												<td align="left"><input type="text" id="title"
-													name="title" maxlength="25" /></td>
+													name="title" maxlength="25" class="form-control"/></td>
 											</tr>
-
+											
 											<tr>
 												<td>장 르</td>
 												<td align="left"><input type="text" name="genre"
-													id="genre" maxlength="15" /></td>
+													id="genre" maxlength="15" class="form-control"/></td>
 											</tr>
 
 											<tr>
 												<td>작 가</td>
 												<td align="left"><input type="text" name="author"
-													id="author" maxlength="30" /></td>
+													id="author" maxlength="30" class="form-control"/></td>
 											</tr>
 											
 											<!-- 출판사 입력 필드-->
 											<tr>
 												<td>출판사</td>
 												<td align="left"><input type="text" name="publisher"
-													id="publisher" maxlength="15" /></td>
+													id="publisher" maxlength="15" class="form-control"/></td>
 											</tr>
 
 											<!-- 출판일 -->
 											<tr>
 												<td>출판일</td>
-												<td><input type="date" name="pub_date" id="pub_date"
-													/></td>
+												<td><input type="date" name="pub_date" id="pub_date" class="form-control"/></td>
 											</tr>
 
 											<!-- 가격 필드 -->
 											<tr>
 												<td>가 격</td>
 												<td align="left"><input type="number" name="price"
-													id="price" maxlength="15" /></td>
+													id="price" maxlength="15" class="form-control"/></td>
 											</tr>
 											<!-- hwp 필드 -->
 											<tr>
 												<td>도서 파일</td>
-												<td><input type="file" id="hwp" name="hwp"></td>
+												<td><input type="file" id="hwp" name="hwp" class="form-control"></td>
 											</tr>
 											<!-- img 필드 -->
 											<tr>
 												<td>표지 사진</td>
-												<td><input type="file" id="img" name="img"></td>
+												<td><input type="file" id="img" name="img" class="form-control"></td>
 											</tr>
 
 											<!-- summary 필드 -->
 											<tr>
 												<td>요약정보</td>
 												<td align="left"><textarea name="summary" id="summary"
-														maxlength="50"></textarea>
+														maxlength="50" class="form-control"></textarea>
 											</tr>
 
 										</table>

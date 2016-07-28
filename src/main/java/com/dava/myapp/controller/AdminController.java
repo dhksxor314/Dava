@@ -2,7 +2,6 @@ package com.dava.myapp.controller;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.Date;
 import java.util.UUID;
 
 import javax.inject.Inject;
@@ -52,7 +51,7 @@ public class AdminController {
 		return "redirect:/admin/listBook";
 	}
 	
-	//파일을 업로드 해주는 함수이고 최종적으로 저장되는 파일의 이름을 반환한다.
+	//파일을 업로드 해주는 함수이고 최종적으로 저장되는 파일의 이름을 반환한다. (책등록에서 사용)
 	private String uploadFile(String originalName, byte[] fileData, String path) throws IOException{
 		UUID uid = UUID.randomUUID();//같은 이름의 파일이 올라가지 않도록 해준다. 고유한 값을 생성해준다
 		String savedName = uid.toString()+"_"+originalName;
@@ -63,8 +62,10 @@ public class AdminController {
 	
 	// 등록된 도서
 	@RequestMapping(value = "/listBook")
-	public String listBook(Model model) throws Exception {
-		model.addAttribute("Blist", service.listBook());
+	public String listBook(Model model, String keyfield, String keyword) throws Exception {
+		
+		model.addAttribute("Blist", service.listBook());	
+
 		return "/admin/listBook";
 	}
 	// 도서 정보 확인
@@ -120,20 +121,21 @@ public class AdminController {
 	public void readMember(Model model, @RequestParam("memnum") int memnum) throws Exception {
 		model.addAttribute(service.readMember(memnum));
 	}
-	
-	
-	
+
 	// 구매 리스트
 	@RequestMapping(value = "/listBuy")
 	public String listBuy(Model model) throws Exception {
-		model.addAttribute("Buylist", service.listBuy());
+		System.out.println(service.listBuy().get(0).getTitle());
+		model.addAttribute("Buylist",service.listBuy());
 		return "/admin/listBuy";
 	}
+	
 	// 구매 정보
 	@RequestMapping(value = "/readBuy")
 	public void readBuy(Model model, @RequestParam("buynum") int buynum) throws Exception {
 		model.addAttribute(service.readBuy(buynum));
 	}
+	
 	// 구매 삭제(환불)
 	@RequestMapping(value = "/deleteBuy")
 	public String deleteBuy(HttpServletRequest req) throws Exception {

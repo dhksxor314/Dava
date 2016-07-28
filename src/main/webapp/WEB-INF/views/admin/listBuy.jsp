@@ -34,14 +34,14 @@
 
 	<!-- Main content -->
 	<section class="content">
-		<div class="row">
+		<div class="row" >
 			<!-- left column -->
 			<div class="col-md-2"></div>
 			<div class="col-md-9">
 				<!-- general form elements -->
 
-				<div style="background-color: #23ff11" class="box">
-					<div class="box-header with-border">
+				<div class="box">
+					<div class="box-header with-border" >
 						<h3 align="center">결제 내역</h3>
 						<span style="float: right">
 						
@@ -66,7 +66,7 @@
 					<div class="box-body">
 
 						<form method="POST" id="delBuy" action="/admin/deleteBuy">
-							<table style="background-color: #bbffbb"
+							<table 
 								class="table table-bordered">
 								<tr align="center" style="font-size: 20; font-weight: bold;">
 									<td width="5%"><input type="checkbox" id="checkall"/></td>
@@ -77,8 +77,6 @@
 								</tr>
 
 								<c:forEach items="${Buylist}" var="BuyVO">
-								
-
 									<tr>
 										<td align="center"><input name="chBuy" type="checkbox"
 											value="${BuyVO.buynum }" /></td>
@@ -88,10 +86,9 @@
 												${BuyVO.memnum}</a></td>
 										<td align="center"><a
 											href='/admin/readBookBuy?booknum=${BuyVO.booknum}'>
-												${BuyVO.booknum}</a></td>
-										<td align="center">${BuyVO.buy_date}</td>
+												${BuyVO.title}</a></td>
+										<td align="center"><fmt:formatDate pattern="yyyy-MM-dd" value="${BuyVO.buy_date}"/></td>
 									</tr>
-
 								</c:forEach>
 
 							</table>

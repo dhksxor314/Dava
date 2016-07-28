@@ -70,8 +70,9 @@
  	</select>
  	
  	<select id="listBuy" resultType="BuyVO">
- 		select * from buy
+ 		select * from buy, book where buy.booknum=book.booknum
  	</select>
+ 	
  	<delete id="deleteBuy">
  		delete from buy where buynum = #{buynum}
  	</delete>

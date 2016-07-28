@@ -7,11 +7,28 @@ public class BuyVO {
 	private int buynum;
 	private int memnum;
 	private int booknum;
-	private Date buydate;
+	private Date buy_date;
 	private String p_way;
 	private int final_pay;
 	private int use_point;
-	
+	//필드추가
+	private String title;
+
+	public String getTitle() {
+		return title;
+	}
+
+	public void setTitle(String title) {
+		this.title = title;
+	}
+
+	public Date getBuy_date() {
+		return buy_date;
+	}
+
+	public void setBuy_date(Date buy_date) {
+		this.buy_date = buy_date;
+	}
 
 	public int getUse_point() {
 		return use_point;
@@ -43,14 +60,6 @@ public class BuyVO {
 
 	public void setBooknum(int booknum) {
 		this.booknum = booknum;
-	}
-
-	public Date getBuydate() {
-		return buydate;
-	}
-
-	public void setBuy_date(Date buydate) {
-		this.buydate = buydate;
 	}
 
 	public String getP_way() {

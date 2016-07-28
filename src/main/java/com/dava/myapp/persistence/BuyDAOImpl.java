@@ -90,7 +90,7 @@ public class BuyDAOImpl implements BuyDAO {
 
 	@Override
 	public List<BuyVO> listBuy() {
-		
+		System.out.println("buydaoimpl");
 		return SqlSession.selectList(namespace + ".listBuy");
 	}
 	
