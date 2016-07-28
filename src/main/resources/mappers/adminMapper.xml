@@ -7,8 +7,8 @@
 
 	<!-- 도서 등록 -->
 	<insert id="registBook">
-		insert into book(title, author, publisher, pub_date, price, genre, img, sal, summary)
-		value(#{title}, #{author}, #{publisher}, #{pub_date}, #{price}, #{genre}, #{img}, #{sal}, #{summary})
+		insert into book(title, author, publisher, pub_date, price, genre, img, summary, hwp)
+		value(#{title}, #{author}, #{publisher}, #{pub_date}, #{price}, #{genre}, #{img}, #{summary}, #{hwp})
 	</insert>
 	
 	<!-- 도서관리에서 사용 -->

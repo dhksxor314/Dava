@@ -3,6 +3,7 @@ package com.dava.myapp.controller;
 import java.io.File;
 import java.io.IOException;
 import java.util.Date;
+import java.util.UUID;
 
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
@@ -36,27 +37,28 @@ public class AdminController {
 	// 책 등록
 	@RequestMapping(value = "/registBook", method = RequestMethod.POST)
 	public String registBook(MultipartFile img, MultipartFile hwp, Model model, HttpServletRequest req,
-			String title, String genre, String author, String publisher, String pub_date, String summary) throws Exception {
+			String title, String genre, String author, String publisher, String pub_date, String summary, int price) throws Exception {
 		bvo.setTitle(title);
 		bvo.setAuthor(author);
 		bvo.setGenre(genre);
 		bvo.setPublisher(publisher);
-		//bvo.setPub_date(pub_date);
+		bvo.setPub_date(pub_date);
 		bvo.setSummary(summary);
-		uploadFile(img.getOriginalFilename(), img.getBytes(), req.getServletContext().getRealPath("resources/covers"));
-		uploadFile(hwp.getOriginalFilename(), hwp.getBytes(), req.getServletContext().getRealPath("resources/books"));
-		
-		
-		//service.registBook(bvo);
+		bvo.setImg(uploadFile(img.getOriginalFilename(), img.getBytes(), req.getServletContext().getRealPath("resources/covers")));
+		bvo.setHwp(uploadFile(hwp.getOriginalFilename(), hwp.getBytes(), req.getServletContext().getRealPath("resources/books")));
+					//커버로 쓸 이미지 파일과 책의 내용을 가진 hwp파일을 저장한다.
+		service.registBook(bvo);
 
 		return "redirect:/admin/listBook";
 	}
 	
+	//파일을 업로드 해주는 함수이고 최종적으로 저장되는 파일의 이름을 반환한다.
 	private String uploadFile(String originalName, byte[] fileData, String path) throws IOException{
-		logger.info(path);
-		File target = new File(path, originalName);
+		UUID uid = UUID.randomUUID();//같은 이름의 파일이 올라가지 않도록 해준다. 고유한 값을 생성해준다
+		String savedName = uid.toString()+"_"+originalName;
+		File target = new File(path, savedName);
 		FileCopyUtils.copy(fileData, target);
-		return originalName;
+		return savedName;
 	}
 	
 	// 등록된 도서

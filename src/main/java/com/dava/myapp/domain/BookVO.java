@@ -1,19 +1,26 @@
 package com.dava.myapp.domain;
 
-import java.util.Date;
-
 public class BookVO {
 
 	private Integer booknum;
 	private String title;
 	private String author;
 	private String publisher;
-	private Date pub_date;
+	private String pub_date;
 	private int price;
 	private int sal;
 	private String img;
 	private String summary;
 	private String genre;
+	private String hwp;
+	
+	public String getHwp() {
+		return hwp;
+	}
+
+	public void setHwp(String hwp) {
+		this.hwp = hwp;
+	}
 
 	public Integer getBooknum() {
 		return booknum;
@@ -47,11 +54,11 @@ public class BookVO {
 		this.publisher = publisher;
 	}
 
-	public Date getPub_date() {
+	public String getPub_date() {
 		return pub_date;
 	}
 
-	public void setPub_date(Date pub_date) {
+	public void setPub_date(String pub_date) {
 		this.pub_date = pub_date;
 	}
 
