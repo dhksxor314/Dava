@@ -116,4 +116,10 @@ public class BuyDAOImpl implements BuyDAO {
 		return null;
 	}
 
+	@Override
+	public void sal_update(BuyVO vo) throws Exception {
+		// TODO Auto-generated method stub
+		SqlSession.update(NAMESPACE+".sal_update",vo);
+	}
+
 }

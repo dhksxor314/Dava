@@ -38,9 +38,9 @@
 		<div class="row" style="margin-top: 10px">
 			<div class="col-xs-offset-2 col-xs-8 col-xs-offset-2">
 				
-				<img class="col-xs-6 btn" id="buybook" style="margin-top: 10px" id="paybook" src="/resources/imgs/Chrysanthemum.jpg"  >
-				<img class="col-xs-6 btn" id="shop_bag" style="margin-top: 10px" id="paybook" src="/resources/imgs/Chrysanthemum.jpg">
-				<img class="col-xs-6 btn" id="personal_info" style="margin-top: 10px" id="paybook" src="/resources/imgs/Chrysanthemum.jpg" >		
+				<img class="col-xs-6 btn" id="buybook" style="margin-top: 10px" id="paybook" src="/resources/imgs/my_book.png"  >
+				<img class="col-xs-6 btn" id="shop_bag" style="margin-top: 10px" id="paybook" src="/resources/imgs/cart.png">
+				<img class="col-xs-6 btn" id="personal_info" style="margin-top: 10px" id="paybook" src="/resources/imgs/password.png" >		
 			</div>
 
 		</div>

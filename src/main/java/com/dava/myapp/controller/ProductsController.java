@@ -63,6 +63,9 @@ public class ProductsController {
 			buy_service.use_point(vo);
 
 			buy_service.point_update(vo);
+			System.out.println(vo.getBooknum()+"gggg"+ vo.getMemnum());
+			buy_service.sal_update(vo);
+			
 			
 			buy_service.shop_drop(shop_vo);
 

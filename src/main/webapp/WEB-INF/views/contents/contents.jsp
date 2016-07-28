@@ -44,11 +44,11 @@
 		</div>
 		<div class="row" style="margin-top: 20px;" id="table">
 			<c:set var="doneLoop" value="false" />
-			<c:forEach items="${list}" var="bookVO" begin="1" varStatus="status">
+			<c:forEach items="${list}" var="bookVO" begin="0" varStatus="status">
 				<c:if test="${not doneLoop}">
 					<div class="col-xs-6 col-md-3">
 						<a href="/products/detail?booknum=${bookVO.booknum}"
-							class="thumbnail"> <img src="/resources/imgs/${bookVO.img}">
+							class="thumbnail"> <img src="/resources/covers/${bookVO.img}">
 						</a>
 					</div>
 				</c:if>

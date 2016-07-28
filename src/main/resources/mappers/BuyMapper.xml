@@ -22,44 +22,53 @@
 		FROM shop_bag where booknum = #{booknum} and memnum = #{memnum};
 	</select>
 
-	
+
 	<select id="my_shop" resultType="com.dava.myapp.domain.BookVO">
 		 <![CDATA[
 		 select b.booknum,b.img ,b.title, b.price,b.genre from shop_bag s join book b on s.booknum = b.booknum where s.memnum=#{memnum};
 		 ]]>
 	</select>
-	
+
 	<delete id="shop_drop">
- 		delete from shop_bag where memnum= #{memnum} and booknum =#{booknum};
+		delete from shop_bag where memnum= #{memnum} and booknum =#{booknum};
 	</delete>
-	
+
 	<delete id="shop_drop_all">
- 		delete from shop_bag where memnum= #{memnum};
+		delete from shop_bag where memnum= #{memnum};
 	</delete>
-	
+
 	<update id="point_update" parameterType="com.dava.myapp.domain.BuyVO">
-		update member set point = point + (#{final_pay}/10) where memnum = #{memnum};		
+		update member set point
+		= point + (#{final_pay}/10) where memnum = #{memnum};
 	</update>
-	
+
 
 	<update id="use_point" parameterType="com.dava.myapp.domain.BuyVO">
-		update member set point = point - #{use_point} where memnum = #{memnum};		
+		update member set point =
+		point - #{use_point} where memnum = #{memnum};
 	</update>
-	
+
 	<insert id="total_buy">
 		insert into buy
 		(memnum,booknum,buy_date,p_way,final_pay)
 		values(#{memnum},#{booknum},now(),#{p_way},#{final_pay});
 	</insert>
-	
+
 	<select id="buy_select" resultType="com.dava.myapp.domain.BuyVO">
 		SELECT booknum,memnum
-		FROM buy where memnum = #{memnum};
+		FROM buy
+		where memnum = #{memnum};
 	</select>
 
 	<select id="mypage_buy" resultType="com.dava.myapp.domain.BookVO">
-		SELECT buy.booknum, book.img, book.title
-		FROM buy, book where book.booknum=buy.booknum and  memnum = #{memnum};
+		SELECT buy.booknum, book.img,
+		book.title
+		FROM buy, book where book.booknum=buy.booknum and memnum =
+		#{memnum};
 	</select>
 
+	<update id="sal_update" parameterType="com.dava.myapp.domain.BuyVO">
+		update book set sal = sal + 1 where booknum=#{booknum};
+	</update>
+	
 </mapper>

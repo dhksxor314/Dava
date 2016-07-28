@@ -13,6 +13,7 @@ CREATE TABLE BOOK
     genre varchar(100) not null,
     summary text,
     
+    
     primary key(booknum)
 );
 
@@ -95,12 +96,3 @@ insert into mybook(bookmark, buynum) values(1, 6);
 insert into mybook(bookmark, buynum) values(1, 7);
 insert into mybook(bookmark, buynum) values(1, 8);
 
-
-ALTER TABLE BUY
-ADD CONSTRAINT R_2 FOREIGN KEY (MEMNUM) REFERENCES MEMBER (MEMNUM);
-
-ALTER TABLE BUY
-ADD CONSTRAINT R_3 FOREIGN KEY (BOOKNUM) REFERENCES BOOK (BOOKNUM);
-
-ALTER TABLE MYBOOK
-ADD CONSTRAINT R_4 FOREIGN KEY (BUYNUM) REFERENCES BUY (BUYNUM);

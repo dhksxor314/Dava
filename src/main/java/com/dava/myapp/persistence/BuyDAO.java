@@ -22,6 +22,8 @@ public interface BuyDAO {
 	public void shop_drop_all(ShopBagVO vo);
 
 	public void point_update(BuyVO vo) throws Exception;
+	
+	public void sal_update(BuyVO vo) throws Exception;
 
 	public void use_point(BuyVO vo) throws Exception;
 
