@@ -141,7 +141,7 @@
 
 					<!-- 페이징 부분 -->
 					<!-- /.box-body -->
-					<div style="background-color: #ccccff" class="box-footer">
+					<div style="background-color: #23b300" class="box-footer">
 						<div class="text-center">
 							<ul class="pagination">
 

@@ -92,7 +92,7 @@
 			<!-- 페이징  -->
 				</div>
 				<!-- /.box-body -->
-				<div class="box-footer" style="background-color: #ccccff">
+				<div class="box-footer" style="background-color: silver">
 					<div class="text-center">
 						<ul class="pagination">
 

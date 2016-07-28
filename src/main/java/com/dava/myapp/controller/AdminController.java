@@ -107,9 +107,13 @@ public class AdminController {
 	
 	// 회원 리스트
 	@RequestMapping(value = "/listMember")
-	public String listMember(Model model) throws Exception {
-		model.addAttribute("Mlist", service.listMember());
-		return "/admin/listMember";
+	public void listMember(Model model, Criteria cri) throws Exception {
+		model.addAttribute("Mlist", service.MemberlistCriteria(cri));
+		PageMaker pageMaker = new PageMaker();
+		pageMaker.setCri(cri);
+		pageMaker.setTotalCount(service.MemberlistCountCriteria(cri));
+		
+		model.addAttribute("pageMaker", pageMaker);
 	}
 	// 회원 삭제
 	@RequestMapping(value = "/deleteMember")
@@ -129,10 +133,13 @@ public class AdminController {
 
 	// 구매 리스트
 	@RequestMapping(value = "/listBuy")
-	public String listBuy(Model model) throws Exception {
-		System.out.println(service.listBuy().get(0).getTitle());
-		model.addAttribute("Buylist",service.listBuy());
-		return "/admin/listBuy";
+	public void listBuy(Model model, Criteria cri) throws Exception {
+		model.addAttribute("Buylist", service.BuylistCriteria(cri));
+		PageMaker pageMaker = new PageMaker();
+		pageMaker.setCri(cri);
+		pageMaker.setTotalCount(service.BuylistCountCriteria(cri));
+		
+		model.addAttribute("pageMaker", pageMaker);
 	}
 	
 	// 구매 정보

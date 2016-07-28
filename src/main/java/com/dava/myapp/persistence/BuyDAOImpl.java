@@ -105,15 +105,22 @@ public class BuyDAOImpl implements BuyDAO {
 	}
 
 	@Override
-	public List<BuyVO> listPage(int page) throws Exception {
-		// TODO Auto-generated method stub
-		return null;
+	public List<BuyVO> BuylistPage(int page) throws Exception {
+		if(page <=0){
+			page = 1;
+		}
+		page = (page - 1) * 10;
+		return SqlSession.selectList(namespace + ".BuylistPage", page);
 	}
 
 	@Override
-	public List<BuyVO> listCriteria(Criteria cri) throws Exception {
-		// TODO Auto-generated method stub
-		return null;
+	public List<BuyVO> BuylistCriteria(Criteria cri) throws Exception {
+		return SqlSession.selectList(namespace + ".BuylistCriteria", cri);
+	}
+	
+	@Override
+	public int BuycountPaging(Criteria cri) throws Exception{
+		return SqlSession.selectOne(namespace + ".BuycountPaging", cri);
 	}
 
 	@Override
