@@ -57,7 +57,7 @@ public class AdminController {
 		UUID uid = UUID.randomUUID();//같은 이름의 파일이 올라가지 않도록 해준다. 고유한 값을 생성해준다
 		String savedName = uid.toString()+"_"+originalName;
 		File target = new File(path, savedName);
-		FileCopyUtils.copy(fileData, target);
+		FileCopyUtils.copy(fileData, target);//파일을 저장
 		return savedName;
 	}
 	

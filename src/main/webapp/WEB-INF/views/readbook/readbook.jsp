@@ -40,7 +40,7 @@
 
 		<div id="flipbook" style="margin-left: 5%">
 			<div class="hard" style="border-radius: 20px">
-				<img src="/resources/imgs/${img }" width="100%"
+				<img src="/resources/covers/${img }" width="100%"
 					height="100%" />
 			</div>
 			<c:forEach items="${content }" var="c">
