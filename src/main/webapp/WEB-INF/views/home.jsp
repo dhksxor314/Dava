@@ -10,15 +10,10 @@
 <title>DAVA</title>
 <link rel="shortcut icon" type="image/x-icon" href="/resources/imgs/favicon.ico" />
 </head>
-<body>
-
-	
-
-	<style>
+<style>
 .t_center {
 	text-align: center;
 }
-
 .imgs_size {
 	margin-left: 10px;
 	margin-right: 10px;
@@ -27,7 +22,10 @@
 	width: 110px;
 	height: 140px;
 }
+
 </style>
+<body>
+
 
 
 	<div class="container"
@@ -39,9 +37,9 @@
 
 			<c:forEach items="${list}" var="bookVO">
 
-				<div class="col-xs-6 col-md-3">
+				<div class="col-xs-6 col-md-3 ">
 					<a href="products/detail?booknum=${bookVO.booknum}"
-						class="thumbnail"> <img
+						class="thumbnail"> <img 
 						src="/resources/imgs/${bookVO.img}">
 					</a>
 				</div>
@@ -74,8 +72,8 @@
 							<img src="/resources/imgs/Chrysanthemum.jpg"
 								class="imgs_size">
 						</div>
-
 					</div>
+					
 					<div class="item">
 						<div class="row" style="margin-top: 15px; margin-bottom: 15px;">
 							<img src="/resources/imgs/Chrysanthemum.jpg"

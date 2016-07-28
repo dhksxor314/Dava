@@ -15,14 +15,21 @@
 	$(document).ready(function() {
 
 		$("#payment").click(function(event) {
-			var wsize = 770;
-			var hsize = 550;
-			window.open('payment?booknum=${bookVO.booknum}&memnum=${memnum}','payment','width ='
+			if('${memnum}' == ""){
+				alert("로그인후 이용해주세요")
+			}else{
+				var wsize = 770;
+				var hsize = 550;
+				window.open('payment?booknum=${bookVO.booknum}&memnum=${memnum}','payment','width ='
 					+ wsize+ ',height='+ hsize+ ',top='+ (screen.height - hsize)/ 2+ ', left='+ (screen.width - wsize)/ 2);
+			}
 			});
+		
 		$("#shop_bag").click(function() {
 				
-			
+			if('${memnum}' == ""){
+				alert("로그인후 이용해주세요")
+			}else{
 			
 				
 				var check = '${check}';
@@ -37,8 +44,9 @@
 						return false;
 					}
 				}
-				
+			}
 			});
+
 		
 		});
 </script>
@@ -51,7 +59,7 @@
 
 			<div class="row" style="margin-top: 20px">
 				<div class="col-md-offset-1 col-md-3">
-					<img src="/resources/imgs/Chrysanthemum.jpg"
+					<img src="/resources/imgs/${bookVO.img }"
 						style="width: 100%; height: 40%">
 				</div>
 				<div class="col-md-offset-1 col-md-6 col-md-offset-1">
@@ -66,8 +74,7 @@
 								<p>장 르 : ${bookVO.genre}</p>
 								<p>출 판 사 : ${bookVO.publisher}</p>
 								<p>
-									판 매 일 :
-									<fmt:formatDate pattern="yyyy-MM-dd" value="${bookVO.pub_date}" />
+									판 매 일 :${bookVO.pub_date}
 								</p>
 								<p>가 격 : ${bookVO.price }</p>
 								<p>줄 거 리 : ${bookVO.summary }</p>
@@ -86,9 +93,7 @@
 			<div class="row">
 				<div class="col-md-offset-8 col-md-3" style="text-align: right;">
 					<input type="button" id="payment" value="결제"/>  
-					<input type="button" id="shop_bag" value="장바구니"/>
-					<input type="button" id="now" value="바로보기"/>
-					
+					<input type="button" id="shop_bag" value="장바구니"/>	
 				</div>
 			</div>
 

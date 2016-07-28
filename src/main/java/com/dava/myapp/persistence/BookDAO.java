@@ -9,6 +9,8 @@ public interface BookDAO {
 	  public List<BookVO> issue() throws Exception;
 
 	  public BookVO select(Integer booknum) throws Exception;
+	  
+	  public List<BookVO> contents(String contents) throws Exception;
 
 
 }

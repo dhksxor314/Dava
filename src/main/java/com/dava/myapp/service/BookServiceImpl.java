@@ -25,4 +25,10 @@ public class BookServiceImpl implements BookService, BookDAO {
 		return dao.select(booknum);
 	}
 
+	@Override
+	public List<BookVO> contents(String contents) throws Exception {
+		// TODO Auto-generated method stub
+		return dao.contents(contents);
+	}
+
 }

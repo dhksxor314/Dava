@@ -29,4 +29,11 @@ public class BookDAOImpl implements BookDAO {
 		return SqlSession.selectOne(namespace+".select",booknum);
 	}
 
+	@Override
+	public List<BookVO> contents(String contents) throws Exception {
+		// TODO Auto-generated method stub
+	
+		return SqlSession.selectList(namespace + ".contents", contents);
+	}
+
 }
