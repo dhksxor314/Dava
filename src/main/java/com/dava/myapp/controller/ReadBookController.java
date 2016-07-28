@@ -39,10 +39,11 @@ public class ReadBookController {
 		int startPage=1;
 		
 		if(service.getBookmark(mybooknum)!=1){
-			startPage=service.getBookmark(mybooknum);
+			startPage=service.getBookmark(mybooknum);//책보기를 눌렀을 시 기본 시작페이지는 1이며 책갈피가 등록된 경우에는 책갈피에 등록된 
+													//페이지 부터 시작하게 한다
 		}
 
-		String path = req.getServletContext().getRealPath("resources");
+		String path = req.getServletContext().getRealPath("resources/books");
 
 		String title = service.getHwp(mybooknum);
 		int pageCutline=25;//한 페이지당 라인 수
@@ -50,13 +51,13 @@ public class ReadBookController {
 		int totalLine=1;
 		String[] content=null;
 		
-		File hwp = new File(path+"\\books\\"+title+".hwp"); // 텍스트를 추출할 HWP 파일
+		File hwp = new File(path+"\\"+title); // 텍스트를 추출할 HWP 파일
 	    Writer writer = new StringWriter(); // 추출된 텍스트를 출력할 버퍼
 	    HwpTextExtractor.extract(hwp, writer); // 파일로부터 텍스트 추출
 	    String text = writer.toString(); // 추출된 텍스트
 	    String c="";
 	    int cnt=1;
-	    for(int i=1;i<=text.length();i++){
+	    for(int i=1;i<=text.length();i++){//한라인의 길이가 40이 넘는 문단에 \n을 삽입한다. \n을 기준으로 라인을 분리할것이기때문
 	    	c+=text.charAt(i-1);
 	    	if(text.charAt(i-1)=='\n'){
 	    		c+='\n';
@@ -68,9 +69,9 @@ public class ReadBookController {
 		    if(cnt%40==0){c+="\n";}	    	
 	    }
 	    
-	    String cline[] = c.split("\n");
-	    totalLine=cline.length;
-	    totalPage=(int)Math.ceil(((double)totalLine/(double)pageCutline));
+	    String cline[] = c.split("\n");//위에서 \n을 삽입한 것을 이용하여 한라인씩 나눈다.
+	    totalLine=cline.length;//총 라인수가 된다.
+	    totalPage=(int)Math.ceil(((double)totalLine/(double)pageCutline));//전체페이지 수
 	    content = new String[totalPage];
 
 	    for(int i=0;i<totalPage;i++){
@@ -78,7 +79,7 @@ public class ReadBookController {
 	    }
 	    
 	    int j=0;
-	    for(int i=0;i<totalLine;i++){
+	    for(int i=0;i<totalLine;i++){//content 배열에 한페이지당 들어갈 라인 수 만큼 글자를 삽입한다.
 	    	content[j]+=cline[i]+"<br/>";
 	    	if(((i+1)%pageCutline)==0){j++;}
 	    }

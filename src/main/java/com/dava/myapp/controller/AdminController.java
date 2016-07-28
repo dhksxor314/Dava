@@ -42,6 +42,7 @@ public class AdminController {
 		bvo.setGenre(genre);
 		bvo.setPublisher(publisher);
 		bvo.setPub_date(pub_date);
+		bvo.setPrice(price);
 		bvo.setSummary(summary);
 		bvo.setImg(uploadFile(img.getOriginalFilename(), img.getBytes(), req.getServletContext().getRealPath("resources/covers")));
 		bvo.setHwp(uploadFile(hwp.getOriginalFilename(), hwp.getBytes(), req.getServletContext().getRealPath("resources/books")));
@@ -53,6 +54,7 @@ public class AdminController {
 	
 	//파일을 업로드 해주는 함수이고 최종적으로 저장되는 파일의 이름을 반환한다. (책등록에서 사용)
 	private String uploadFile(String originalName, byte[] fileData, String path) throws IOException{
+		logger.info(path);
 		UUID uid = UUID.randomUUID();//같은 이름의 파일이 올라가지 않도록 해준다. 고유한 값을 생성해준다
 		String savedName = uid.toString()+"_"+originalName;
 		File target = new File(path, savedName);
