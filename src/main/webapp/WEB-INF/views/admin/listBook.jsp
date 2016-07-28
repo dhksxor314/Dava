@@ -8,52 +8,58 @@
 <script>
 	var img = /(\.gif|\.png|\.jpg|\.jpeg)$/i;//이미지 파일 형식만 가능
 	var hwp = /(\.hwp)$/i;
-	$(document).ready(function() {
+	$(document).ready(
+			function() {
 
-		//도서 삭제 버튼 동작
-		$(".btn-danger").on("click", function() {
-			var con = confirm("도서를 삭제하시겠습니까?");
-			if (con == true) {
-				$("#delBook").submit();
-			}
-		});
+				//도서 삭제 버튼 동작
+				$(".btn-danger").on("click", function() {
+					var con = confirm("도서를 삭제하시겠습니까?");
+					if (con == true) {
+						$("#delBook").submit();
+					}
+				});
 
-		//도서 등록
-		$(".btn-primary").on("click", function() {
-			//이미지 파일 형식 검사
-			if(!img.test($("#img").val())){
-				alert("표지사진이 이미지 형식의 파일이 아닙니다.");
-				return false;
-			}
-			//한글 파일 형식 검사
-			if(!hwp.test($("#hwp").val())){
-				alert("도서파일이 hwp확장자 파일이 아닙니다.");
-				return false;
-			}
-			$("#registBook").submit();
-			alert("등록 완료");
-			return "redirect:/admin/listBook";
-		});
-		
-		//검색
-		$("#search").on("click", function(){
+				//도서 등록
+				$(".btn-primary").on("click", function() {
+					//이미지 파일 형식 검사
+					if (!img.test($("#img").val())) {
+						alert("표지사진이 이미지 형식의 파일이 아닙니다.");
+						return false;
+					}
+					//한글 파일 형식 검사
+					if (!hwp.test($("#hwp").val())) {
+						alert("도서파일이 hwp확장자 파일이 아닙니다.");
+						return false;
+					}
+					$("#registBook").submit();
+					alert("등록 완료");
+					return "redirect:/admin/listBook";
+				});
 
-			
-		});
+				//검색
+				$("#searchBtn").on(
+						"click",
+						function(event) {
+							self.location = "listBook"
+									+ '${pageMaker.makeQuery(1)}'
+									+ "&searchType="
+									+ $("select option:selected").val()
+									+ "&keyword=" + $('#keywordInput').val();
+						});
 
-		//최상단 체크박스 클릭 < 전체 checkBox >
-		$("#checkall").click(function() {
-			//클릭되었으면
-			if ($("#checkall").prop("checked")) {
-				//input태그의 name이 chk인 태그들을 찾아서 checked옵션을 true로 정의
-				$("input[name=chBook]").prop("checked", true);
-				//클릭이 안되있으면
-			} else {
-				//input태그의 name이 chk인 태그들을 찾아서 checked옵션을 false로 정의
-				$("input[name=chBook]").prop("checked", false);
-			}
-		});
-	});
+				//최상단 체크박스 클릭 < 전체 checkBox >
+				$("#checkall").click(function() {
+					//클릭되었으면
+					if ($("#checkall").prop("checked")) {
+						//input태그의 name이 chk인 태그들을 찾아서 checked옵션을 true로 정의
+						$("input[name=chBook]").prop("checked", true);
+						//클릭이 안되있으면
+					} else {
+						//input태그의 name이 chk인 태그들을 찾아서 checked옵션을 false로 정의
+						$("input[name=chBook]").prop("checked", false);
+					}
+				});
+			});
 </script>
 
 <div class="container">
@@ -66,29 +72,31 @@
 			<div class="col-md-9">
 				<!-- general form elements -->
 
-				<div style="background-color: #23ff11" class="box">
+				<div class="box">
 					<div class="box-header with-border">
 						<h3 align="center">도서 목록</h3>
 						<div>
-						<span style="float: right">
 						
-							<form name="serach" method="post">
-							
-								<select name="keyField">
-									<option value="0">----선택----</option>
-									<option value="booknum">책번호</option>
-									<option value="title">제목</option>
-									<option value="author">작가</option>
-									<option value="price">가격</option>
-									<option value="publisher">출판사</option>
-									<option value="pub_date">출판일</option>
-								</select>
-								<input type="text" id="keyWord" name="keyWord" />
-								<input type="button" value="검색" id="search" name="search"/>
-							</form>
-							
-						</span>
-								</div>
+						<!-- 검색 -->
+								<form name="serach" method="post">
+									<select name="searchType">
+										<option value="n"
+											<c:out value="${cri.searchType == null?'selected':''}"/>>
+											-선택-</option>
+										<option value="title"
+											<c:out value="${cri.searchType eq 'title'?'selected':''}"/>>
+											책제목</option>
+										<option value="author"
+											<c:out value="${cri.searchType eq 'author'?'selected':''}"/>>
+											작 가</option>
+										<option value="publisher"
+											<c:out value="${cri.searchType eq 'publisher'?'selected':''}"/>>
+											출판사</option>
+									</select> <input type="text" id="keyword" name="keywordInput"
+										value="${cri.keyword }" />
+									<button id="searchBtn">검색</button>
+								</form>
+						</div>
 					</div>
 
 
@@ -96,8 +104,7 @@
 					<div class="box-body">
 
 						<form method="post" id="delBook" action="/admin/deleteBook">
-							<table style="background-color: #bbffbb"
-								class="table table-bordered">
+							<table class="table table-bordered">
 								<tr align="center" style="font-size: 20; font-weight: bold;">
 									<td width="5%"><input type="checkbox" id="checkall" /></td>
 									<td width="10%">번호</td>
@@ -116,7 +123,8 @@
 											value="${bookVO.booknum}" /></td>
 										<td align="center">${bookVO.booknum}</td>
 										<td align="center"><a
-											href='/admin/readBook?booknum=${bookVO.booknum}'>
+											href='/admin/readBook?${pagerMaker.makeSearch(pageMaker.cri.page)
+											}&booknum=${bookVO.booknum}'>
 												${bookVO.title}</a></td>
 										<td align="center">${bookVO.author}</td>
 										<td align="center">${bookVO.price}</td>
@@ -133,8 +141,31 @@
 
 					<!-- 페이징 부분 -->
 					<!-- /.box-body -->
-					<div style="background-color: #ccccff" class="box-footer">번호목록
-						및 페이지 이동</div>
+					<div style="background-color: #ccccff" class="box-footer">
+						<div class="text-center">
+							<ul class="pagination">
+
+								<c:if test="${pageMaker.prev}">
+									<li><a
+										href="listBook${pageMaker.makeSearch(pageMaker.startPage - 1) }">&laquo;</a></li>
+								</c:if>
+
+								<c:forEach begin="${pageMaker.startPage }"
+									end="${pageMaker.endPage }" var="idx">
+									<li
+										<c:out value="${pageMaker.cri.page == idx?'class =active':''}"/>>
+										<a href="listBook${pageMaker.makeSearch(idx)}">${idx}</a>
+									</li>
+								</c:forEach>
+
+								<c:if test="${pageMaker.next && pageMaker.endPage > 0}">
+									<li><a
+										href="listBook${pageMaker.makeSearch(pageMaker.endPage + 1) }">&raquo;</a></li>
+								</c:if>
+
+							</ul>
+						</div>
+					</div>
 
 
 					<!-- 도서등록 버튼 -->
@@ -145,22 +176,9 @@
 								data-toggle="modal">도서등록</button>
 						</span>
 					</div>
-					<br/>
-					<!-- 검색 -->
-					<form action="/admin/search" id="searchForm" name="searchForm" method="post">
-						<div id="searchDiv" class="col-md-12">
-							<select id="keyfield" class="form-control" style="width: 100px;float:left">
-								<option>제목</option>
-								<option>작가</option>
-								<option>출판사</option>
-							</select>
-							&nbsp;&nbsp;&nbsp;
-							<input type="text" id="keyword" name="keyword" class="form-control" style="width: 300px;float:left"/>
-							&nbsp;&nbsp;&nbsp;
-							<input type="button" id="searchBtn" name="serachBtn" class="form-control" style="width:60px;float:left" value="검색"/>
-						</div>
-					</form>
-					
+					<br />
+
+
 					<!-- 도서 등록 modal -->
 					<div class="modal fade" id="layerpop">
 						<div class="modal-dialog">
@@ -183,49 +201,52 @@
 											<tr>
 												<td>제 목</td>
 												<td align="left"><input type="text" id="title"
-													name="title" maxlength="25" class="form-control"/></td>
+													name="title" maxlength="25" class="form-control" /></td>
 											</tr>
-											
+
 											<tr>
 												<td>장 르</td>
 												<td align="left"><input type="text" name="genre"
-													id="genre" maxlength="15" class="form-control"/></td>
+													id="genre" maxlength="15" class="form-control" /></td>
 											</tr>
 
 											<tr>
 												<td>작 가</td>
 												<td align="left"><input type="text" name="author"
-													id="author" maxlength="30" class="form-control"/></td>
+													id="author" maxlength="30" class="form-control" /></td>
 											</tr>
-											
+
 											<!-- 출판사 입력 필드-->
 											<tr>
 												<td>출판사</td>
 												<td align="left"><input type="text" name="publisher"
-													id="publisher" maxlength="15" class="form-control"/></td>
+													id="publisher" maxlength="15" class="form-control" /></td>
 											</tr>
 
 											<!-- 출판일 -->
 											<tr>
 												<td>출판일</td>
-												<td><input type="date" name="pub_date" id="pub_date" class="form-control"/></td>
+												<td><input type="date" name="pub_date" id="pub_date"
+													class="form-control" /></td>
 											</tr>
 
 											<!-- 가격 필드 -->
 											<tr>
 												<td>가 격</td>
 												<td align="left"><input type="number" name="price"
-													id="price" maxlength="15" class="form-control"/></td>
+													id="price" maxlength="15" class="form-control" /></td>
 											</tr>
 											<!-- hwp 필드 -->
 											<tr>
 												<td>도서 파일</td>
-												<td><input type="file" id="hwp" name="hwp" class="form-control"></td>
+												<td><input type="file" id="hwp" name="hwp"
+													class="form-control"></td>
 											</tr>
 											<!-- img 필드 -->
 											<tr>
 												<td>표지 사진</td>
-												<td><input type="file" id="img" name="img" class="form-control"></td>
+												<td><input type="file" id="img" name="img"
+													class="form-control"></td>
 											</tr>
 
 											<!-- summary 필드 -->

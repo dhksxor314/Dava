@@ -8,6 +8,7 @@ import org.springframework.stereotype.Repository;
 
 import com.dava.myapp.domain.BookVO;
 import com.dava.myapp.domain.Criteria;
+import com.dava.myapp.domain.SearchCriteria;
 
 
 @Repository
@@ -40,7 +41,7 @@ public class ADBookDaoImpl {
 	}
 	
 	
-	public List<BookVO> listPage(int page) throws Exception{
+	public List<BookVO> BooklistPage(int page) throws Exception{
 		if(page <= 0){
 			page =1;
 		}
@@ -50,7 +51,19 @@ public class ADBookDaoImpl {
 		return sqlSession.selectList(NAMESPACE + ".listPage", page);
 	}
 	
-	public List<BookVO> listCriteria(Criteria cri) throws Exception{
-		return sqlSession.selectList(NAMESPACE + ".listCriteria", cri);
+	public List<BookVO> BooklistCriteria(Criteria cri) throws Exception{
+		return sqlSession.selectList(NAMESPACE + ".BooklistCriteria", cri);
+	}
+	
+	public int BookcountPaging(Criteria cri) throws Exception{
+		return sqlSession.selectOne(NAMESPACE + ".BookcountPaging", cri);
+	}
+	
+	//°Ë»ö
+	public List<BookVO> listSearch(SearchCriteria cri) throws Exception{
+		return sqlSession.selectOne(NAMESPACE + ".listSearch", cri);
+	}
+	public int listSearchCount(SearchCriteria cri) throws Exception{
+		return sqlSession.selectOne(NAMESPACE + ".listSearchCount", cri);
 	}
 }

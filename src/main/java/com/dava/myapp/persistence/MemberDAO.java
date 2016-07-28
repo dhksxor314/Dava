@@ -2,6 +2,7 @@ package com.dava.myapp.persistence;
 
 import java.util.List;
 
+import com.dava.myapp.domain.Criteria;
 import com.dava.myapp.domain.MemberVO;
 
 public interface MemberDAO {
@@ -23,5 +24,10 @@ public interface MemberDAO {
 	public void join(MemberVO vo) throws Exception;
 
 	public MemberVO login(MemberVO vo) throws Exception;
+	
+	//paging
+	public List<MemberVO> MemberlistPage(int page) throws Exception;
+	public List<MemberVO> MemberlistCriteria(Criteria cri) throws Exception;
+	public int MembercountPaging(Criteria cri) throws Exception;
 
 }

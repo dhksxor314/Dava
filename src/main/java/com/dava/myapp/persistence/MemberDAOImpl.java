@@ -7,6 +7,7 @@ import javax.inject.Inject;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
+import com.dava.myapp.domain.Criteria;
 import com.dava.myapp.domain.MemberVO;
 
 @Repository
@@ -59,4 +60,22 @@ public class MemberDAOImpl implements MemberDAO {
 		SqlSession.update(namespace+".editpassword",vo);
 	}
 
+	@Override
+	public List<MemberVO> MemberlistPage(int page) throws Exception{
+		if(page <= 0){
+			page =1;
+		}
+		
+		page = (page-1) * 10;
+		
+		return SqlSession.selectList(NAMESPACE + ".MemberlistPage", page);
+	}
+	@Override
+	public List<MemberVO> MemberlistCriteria(Criteria cri) throws Exception{
+		return SqlSession.selectList(NAMESPACE + ".MemberlistCriteria", cri);
+	}
+	@Override
+	public int MembercountPaging(Criteria cri) throws Exception{
+		return SqlSession.selectOne(NAMESPACE + ".MembercountPaging", cri);
+	}
 }

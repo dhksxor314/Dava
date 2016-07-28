@@ -20,6 +20,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.dava.myapp.domain.BookVO;
 import com.dava.myapp.domain.Criteria;
+import com.dava.myapp.domain.PageMaker;
 import com.dava.myapp.service.AdminService;
 
 @Controller
@@ -64,11 +65,13 @@ public class AdminController {
 	
 	// 등록된 도서
 	@RequestMapping(value = "/listBook")
-	public String listBook(Model model, String keyfield, String keyword) throws Exception {
+	public void listBook(Model model, Criteria cri) throws Exception {
+		model.addAttribute("Blist", service.BooklistSearchCriteria(cri));
+		PageMaker pageMaker = new PageMaker();
+		pageMaker.setCri(cri);
+		pageMaker.setTotalCount(service.BooklistSearchCountCriteria(cri));
 		
-		model.addAttribute("Blist", service.listBook());	
-
-		return "/admin/listBook";
+		model.addAttribute("pageMaker", pageMaker);
 	}
 	// 도서 정보 확인
 	@RequestMapping(value = "/readBook")
@@ -148,11 +151,11 @@ public class AdminController {
 		return "redirect:/admin/listBuy";
 	}
 
-	
+	/*
 	// paging
 	@RequestMapping(value = "/listCri", method = RequestMethod.GET)
 	public void listBook(Criteria cri, Model model) throws Exception {
 		logger.info("show list");
 		model.addAttribute("list", service.listCriteria(cri));
-	}
+	}*/
 }
