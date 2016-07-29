@@ -30,19 +30,18 @@
 			if('${memnum}' == ""){
 				alert("로그인후 이용해주세요")
 			}else{
-			
-				
 				var check = '${check}';
 				
 				if(check == "true"){
 					var con = confirm('${bookVO.title}'+"을(를) 장바구니에 담겠습니까??");
 					if (con == true) {
 						$("#form2").submit();
-						window.close();
 						
 					}else{
 						return false;
 					}
+				}else{
+					alert('${msg}')
 				}
 			}
 			});

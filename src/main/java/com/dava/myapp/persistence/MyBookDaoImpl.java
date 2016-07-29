@@ -38,6 +38,13 @@ public class MyBookDaoImpl implements MyBookDao {
 		sqlSession.selectOne(namespace+".setBookmark", paramMap);
 	}
 
+	@Override
+	public void mybook_insert() {
+		// TODO Auto-generated method stub
+
+		sqlSession.selectOne(namespace+".mybook_insert");
+	}
+
 
 
 }

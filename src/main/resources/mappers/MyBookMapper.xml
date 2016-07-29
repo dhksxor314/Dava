@@ -22,4 +22,16 @@
 		where bu.buynum=m.buynum and bu.booknum=b.booknum and m.mybooknum=#{mybooknum}
 	</select>
 	
+	
+	
+	
+	
+	<insert id="mybook_insert">
+		insert 
+		into 
+		mybook(bookmark)
+		values(1);
+	</insert>
+	
+	
 </mapper>

@@ -66,39 +66,48 @@
 				<!-- Wrapper for slides -->
 				<div class="carousel-inner t_center" role="listbox">
 
-					<!--  
-               <div class="item active">
-                  <div class="row" style="margin-top: 15px; margin-bottom: 15px;">
-                     <img src="/resources/imgs/Chrysanthemum.jpg" class="imgs_size">
-                     <img src="/resources/imgs/Chrysanthemum.jpg" class="imgs_size">
-                     <img src="/resources/imgs/Chrysanthemum.jpg" class="imgs_size">
-                  </div>
-               </div>
+					<c:forEach items="${newstlist}" var="BookVO" varStatus="status"
+						begin="0" end="${newstlist.size()}">
 
-               <div class="item">
-                  <div class="row" style="margin-top: 15px; margin-bottom: 15px;">
-                     <img src="/resources/imgs/Chrysanthemum.jpg" class="imgs_size">
-                     <img src="/resources/imgs/Chrysanthemum.jpg" class="imgs_size">
-                     <img src="/resources/imgs/Chrysanthemum.jpg" class="imgs_size">
-
-                  </div>
-               </div> -->
+						<c:if test="${status.count eq 1  || status.count % 3 eq 1}">
+							<c:if test="${status.count eq 1}">
+								<div class="item active">
+							</c:if>
+							<c:if test="${status.count != 1}">
+								<div class="item">
+							</c:if>
+							<div class="row" style="margin-top: 15px; margin-bottom: 15px;">
+						</c:if>
+						<a href="products/detail?booknum=${BookVO.booknum}"> <img
+							src="/resources/covers/${BookVO.img}" class="imgs_size">
+						</a>
 
 
-
+						<c:if
+							test="${status.count % 3 eq 0 || status.count eq newstlist.size() }">
+				</div>
 			</div>
+			</c:if>
 
-			<!-- Controls -->
-			<a class="left carousel-control" href="#carousel-example-generic"
-				role="button" data-slide="prev"> <span
-				class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-				<span class="sr-only">Previous</span>
-			</a> <a class="right carousel-control" href="#carousel-example-generic"
-				role="button" data-slide="next"> <span
-				class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-				<span class="sr-only">Next</span>
-			</a>
+
+
+			</c:forEach>
+
+
+
 		</div>
+
+		<!-- Controls -->
+		<a class="left carousel-control" href="#carousel-example-generic"
+			role="button" data-slide="prev"> <span
+			class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span> <span
+			class="sr-only">Previous</span>
+		</a> <a class="right carousel-control" href="#carousel-example-generic"
+			role="button" data-slide="next"> <span
+			class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+			<span class="sr-only">Next</span>
+		</a>
+	</div>
 
 	</div>
 	</div>

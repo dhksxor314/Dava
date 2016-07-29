@@ -72,16 +72,5 @@ CREATE TABLE MYBOOK
 (
 	MYBOOKNUM            INTEGER NOT NULL auto_increment,
 	BOOKMARK             INTEGER NULL,
-	BUYNUM               INTEGER NOT NULL,
 	primary key(mybooknum)
 );
-
-insert into mybook(bookmark, buynum) values(1, 1);
-insert into mybook(bookmark, buynum) values(1, 2);
-insert into mybook(bookmark, buynum) values(1, 3);
-insert into mybook(bookmark, buynum) values(1, 4);
-insert into mybook(bookmark, buynum) values(1, 5);
-insert into mybook(bookmark, buynum) values(1, 6);
-insert into mybook(bookmark, buynum) values(1, 7);
-insert into mybook(bookmark, buynum) values(1, 8);
-

@@ -5,4 +5,6 @@ public interface MyBookService {
 	public String getHwp(Integer mybooknum);
 	public String getImage(Integer mybooknum);
 	public void setBookmark(Integer bookmark, Integer mybooknum);
+
+	public void mybook_insert();
 }

@@ -17,6 +17,7 @@ import com.dava.myapp.domain.ShopBagVO;
 import com.dava.myapp.service.BookService;
 import com.dava.myapp.service.BuyService;
 import com.dava.myapp.service.MemberService;
+import com.dava.myapp.service.MyBookService;
 
 /**
  * Handles requests for the application home page.
@@ -30,6 +31,9 @@ public class ProductsController {
 	private MemberService mem_service;
 	@Inject
 	private BuyService buy_service;
+	@Inject
+	private MyBookService mubook_service;
+	
 
 	@RequestMapping(value = "/detail", method = RequestMethod.GET)
 	public void detail(@RequestParam("booknum") int booknum, Model model, ShopBagVO shop_vo) throws Exception {
@@ -59,11 +63,10 @@ public class ProductsController {
 
 		try {
 			buy_service.buy(vo);
-
+			mubook_service.mybook_insert();
 			buy_service.use_point(vo);
 
 			buy_service.point_update(vo);
-			System.out.println(vo.getBooknum()+"gggg"+ vo.getMemnum());
 			buy_service.sal_update(vo);
 			
 			
@@ -113,6 +116,9 @@ public class ProductsController {
 			vo.setP_way(p_way);
 			vo.setUse_point(use_point);
 			buy_service.buy(vo);
+			buy_service.sal_update(vo);
+
+			mubook_service.mybook_insert();
 
 		}
 
@@ -143,14 +149,16 @@ public class ProductsController {
 		
 		
 		try {
+			
 			buy_service.shop_bag(shop_vo);
 			model.addAttribute(book_service.select(booknum));
-			
 
 		} catch (Exception e) {
+			System.err.println("2");
 			model.addAttribute(book_service.select(booknum));
-
 			model.addAttribute("msg", "이미 장바구니에 담겨있습니다..");
+
+			
 
 		}
 	}

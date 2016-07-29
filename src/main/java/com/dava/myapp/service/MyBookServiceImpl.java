@@ -33,4 +33,10 @@ public class MyBookServiceImpl implements MyBookService {
 		dao.setBookmark(bookmark, mybooknum);
 	}
 
+	@Override
+	public void mybook_insert() {
+		// TODO Auto-generated method stub
+		dao.mybook_insert();
+	}
+
 }
