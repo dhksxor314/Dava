@@ -112,7 +112,6 @@ public class AdminServiceImpl implements AdminService {
 
 	@Override
 	public List<BuyVO> listBuy() throws Exception {
-		System.out.println("buyserviceimpl");
 
 		return Buydao.listBuy();
 	}

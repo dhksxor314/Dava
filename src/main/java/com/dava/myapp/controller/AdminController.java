@@ -70,6 +70,30 @@ public class AdminController {
 		FileCopyUtils.copy(fileData, target);//파일을 저장
 		return savedName;
 	}
+	// 도서 삭제
+	@RequestMapping(value = "/deleteBook")
+	public String deleteBook(HttpServletRequest req) throws Exception {
+		String[] chBook = req.getParameterValues("chBook");
+	
+		String bookpath =req.getServletContext().getRealPath("resources/books");
+		String coverpath = req.getServletContext().getRealPath("resources/covers");
+		for (int i = 0; i < chBook.length; i++) {
+			service.deleteBook(Integer.parseInt(chBook[i]));
+			deleteFile(bookpath+"/"+service.readBook(Integer.parseInt(chBook[i])).getHwp(), coverpath+"/"+service.readBook(Integer.parseInt(chBook[i])).getHwp());
+		}
+		return "redirect:/admin/listBook";
+	}
+	//등록된 도서를 삭제할 시에 업로드된 파일들을 삭제한다.
+	private void deleteFile(String bookpath, String coverpath){
+		File bookdel = new File(bookpath);
+		File coverdel = new File(coverpath);
+		if(bookdel.exists()){
+			bookdel.delete();
+		}
+		if(coverdel.exists()){
+			coverdel.delete();
+		}
+	}
 	
 	// 등록된 도서
 	@RequestMapping(value = "/listBook")
@@ -102,15 +126,7 @@ public class AdminController {
 		service.updateBook(bvo);
 		return "redirect:/admin/listBook";
 	}
-	// 도서 삭제
-	@RequestMapping(value = "/deleteBook")
-	public String deleteBook(HttpServletRequest req) throws Exception {
-		String[] chBook = req.getParameterValues("chBook");
-		for (int i = 0; i < chBook.length; i++) {
-			service.deleteBook(Integer.parseInt(chBook[i]));
-		}
-		return "redirect:/admin/listBook";
-	}
+	
 
 	
 	// 회원 리스트
