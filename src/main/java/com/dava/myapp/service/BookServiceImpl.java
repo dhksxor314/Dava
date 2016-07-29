@@ -30,5 +30,11 @@ public class BookServiceImpl implements BookService, BookDAO {
 		// TODO Auto-generated method stub
 		return dao.contents(contents);
 	}
+	
+	@Override
+	   public List<BookVO> newstbook() throws Exception {
+	      // TODO Auto-generated method stub
+	      return dao.newstbook();
+	   }
 
 }

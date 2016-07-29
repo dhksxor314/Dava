@@ -35,5 +35,11 @@ public class BookDAOImpl implements BookDAO {
 	
 		return SqlSession.selectList(namespace + ".contents", contents);
 	}
+	
+	@Override
+	   public List<BookVO> newstbook() throws Exception {
+	      // TODO Auto-generated method stub
+	      return SqlSession.selectList(namespace + ".newstbook");
+	   }
 
 }

@@ -48,7 +48,7 @@ public class HomeController {
 
 		model.addAttribute("serverTime", formattedDate);
 		model.addAttribute("list", book_service.issue());
-
+		model.addAttribute("newstlist", book_service.newstbook());
 		return "home";
 	}
 
@@ -76,6 +76,7 @@ public class HomeController {
 		
 		
 		model.addAttribute("list", book_service.issue());
+		model.addAttribute("newstlist", book_service.newstbook());
 		return "home";
 	}
 

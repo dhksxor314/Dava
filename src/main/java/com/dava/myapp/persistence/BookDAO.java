@@ -11,6 +11,7 @@ public interface BookDAO {
 	  public BookVO select(Integer booknum) throws Exception;
 	  
 	  public List<BookVO> contents(String contents) throws Exception;
-
+	  
+	  public List<BookVO> newstbook() throws Exception;
 
 }
