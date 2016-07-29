@@ -39,10 +39,10 @@ public class MyBookDaoImpl implements MyBookDao {
 	}
 
 	@Override
-	public void mybook_insert() {
+	public void mybook_insert(Integer memnum) {
 		// TODO Auto-generated method stub
 
-		sqlSession.selectOne(namespace+".mybook_insert");
+		sqlSession.selectOne(namespace+".mybook_insert",memnum);
 	}
 
 

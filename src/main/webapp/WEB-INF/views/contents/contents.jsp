@@ -30,6 +30,7 @@
 	<form id="form" e method="post" action="/contents/contents">
 		<input type="hidden" name="contents" value="${choise}" /> <input
 			type="hidden" name="limit" value="${limit}" />
+			<input type="hidden" name="search" value="${contents}"/>
 	</form>
 	<%@ include file="../include/header.jsp"%>
 	<div class="container" style="border: solid 0.5px silver;">

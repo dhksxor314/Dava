@@ -34,9 +34,9 @@ public class MyBookServiceImpl implements MyBookService {
 	}
 
 	@Override
-	public void mybook_insert() {
+	public void mybook_insert(Integer memnum) {
 		// TODO Auto-generated method stub
-		dao.mybook_insert();
+		dao.mybook_insert(memnum);
 	}
 
 }

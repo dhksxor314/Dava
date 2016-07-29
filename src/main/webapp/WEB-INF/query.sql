@@ -72,5 +72,6 @@ CREATE TABLE MYBOOK
 (
 	MYBOOKNUM            INTEGER NOT NULL auto_increment,
 	BOOKMARK             INTEGER NULL,
+	memnum				 integer not null,
 	primary key(mybooknum)
 );

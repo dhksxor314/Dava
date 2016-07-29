@@ -29,8 +29,8 @@
 	<insert id="mybook_insert">
 		insert 
 		into 
-		mybook(bookmark)
-		values(1);
+		mybook(bookmark,memnum)
+		values(1,#{memnum});
 	</insert>
 	
 	

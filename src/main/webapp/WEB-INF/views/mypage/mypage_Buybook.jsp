@@ -8,7 +8,7 @@
 
 <script>
 	$(document).ready(function() {
-
+		
 	});
 </script>
 <style>
@@ -31,7 +31,7 @@
 		</div>
 
 		<div class="row" style="margin-top: 20px; border: solid 0.5px silver;">
-
+		
 			<c:forEach items="${list}" var="bookVO">
 				<hr />
 				<div class="row">
@@ -41,7 +41,10 @@
 					</div>
 					<div class="col-md-offset-3 col-md-3 " style="padding-top: 5%">
 						<div class="col-xs-4">
-							<a href="/readbook/read?mybooknum=1">바로보기</a>
+						<form method ="post" action="/readbook/read">
+							<input type="hidden"  id="mybooknum" vlaue=""/>
+							<a href="mybooknum=1">바로보기</a>
+						</form>
 						</div>
 					</div>
 				</div>

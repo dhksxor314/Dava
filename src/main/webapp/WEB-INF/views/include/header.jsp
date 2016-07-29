@@ -36,6 +36,11 @@
 					+ wsize+ ',height='+ hsize+ ',top='+ (screen.height - hsize)/ 2+ ', left='+ (screen.width - wsize)/ 2);
 
 		});
+		
+		$("#search").click(function(){
+			var search = $("#content").val();
+			location.href="/contents/contents?contents=4&search="+search;
+		})
 
 	});
 </script>
@@ -131,8 +136,8 @@
 
 	<div class="form-group col-md-3" style="text-align: right;">
 		<div class="input-group" style="margin-top: 8px; margin-bottom: -10px">
-			<input type="text" class="form-control">
-			<div class="input-group-addon">
+			<input type="text" class="form-control" id="content">
+			<div class="input-group-addon btn" id="search">
 				<icon class="glyphicon glyphicon-search" />
 			</div>
 		</div>

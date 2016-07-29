@@ -28,6 +28,8 @@ public class HomeController {
 	private BookService book_service;
 	@Inject
 	private MemberService mem_service;
+	@Inject
+	private BookService service;
 
 	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
 
@@ -88,4 +90,8 @@ public class HomeController {
 		model.addAttribute("list", book_service.issue());
 		return "home";
 	}
+	
+	
+
+	
 }
