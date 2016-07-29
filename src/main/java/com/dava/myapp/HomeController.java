@@ -63,7 +63,7 @@ public class HomeController {
 			session.setAttribute("nickname", nickname);
 			session.setAttribute("memnum", memnum);
 			if(mem_service.login(vo).getId().equals("admin@dava")){
-				return "/admin/listBook";
+				return "redirect:/admin/listBook";
 			}
 
 		} catch (Exception e) {

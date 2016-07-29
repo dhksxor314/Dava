@@ -39,7 +39,7 @@ public class AdminController {
 	@RequestMapping(value="/logout", method = RequestMethod.POST)
 	public String logout(HttpSession session, HttpServletRequest req){
 		session.invalidate();
-		return "redirect:/home";
+		return "redirect:/";
 	}
 	
 	// Ã¥ µî·Ï
