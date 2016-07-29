@@ -59,8 +59,13 @@ public class HomeController {
 		try {
 			String nickname = mem_service.login(vo).getNickname();
 			int memnum = mem_service.login(vo).getmemnum();
+			
 			session.setAttribute("nickname", nickname);
 			session.setAttribute("memnum", memnum);
+			if(mem_service.login(vo).getId().equals("admin@dava")){
+				return "/admin/listBook";
+			}
+
 		} catch (Exception e) {
 			// TODO: handle exception
 			

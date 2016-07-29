@@ -68,17 +68,6 @@ create table shop_bag
 
 
 
-CREATE TABLE MANAGER
-(
-	MANAGERNUM           INTEGER NOT NULL auto_increment,
-	ID                   VARCHAR(20) NULL,
-	PASSWORD             VARCHAR(20) NULL,
-	NICKNAME             VARCHAR(20) NULL,
-
-	primary key(managernum)
-);
-
-
 CREATE TABLE MYBOOK
 (
 	MYBOOKNUM            INTEGER NOT NULL auto_increment,
