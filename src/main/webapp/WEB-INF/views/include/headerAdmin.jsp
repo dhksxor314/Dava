@@ -34,7 +34,7 @@
 		<div class="row">
 
 
-			<form class="form-inline">
+			<form class="form-inline pull-right" action="/admin/logout" method="post" id="logoutForm" name="logoutForm">
 				<div class="form-group">
 					<div class="input-group">
 						<div class="input-group-addon">

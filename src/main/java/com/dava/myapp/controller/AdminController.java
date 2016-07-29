@@ -6,6 +6,7 @@ import java.util.UUID;
 
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -33,6 +34,13 @@ public class AdminController {
 	
 	@Inject
 	private BookVO bvo;
+	
+	//관리자 로그아웃
+	@RequestMapping(value="/logout", method = RequestMethod.POST)
+	public String logout(HttpSession session, HttpServletRequest req){
+		session.invalidate();
+		return "redirect:/home";
+	}
 	
 	// 책 등록
 	@RequestMapping(value = "/registBook", method = RequestMethod.POST)
