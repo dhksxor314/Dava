@@ -66,6 +66,7 @@
 				<!-- Wrapper for slides -->
 				<div class="carousel-inner t_center" role="listbox">
 
+					
 					<!--  
                <div class="item active">
                   <div class="row" style="margin-top: 15px; margin-bottom: 15px;">
@@ -83,6 +84,7 @@
 
                   </div>
                </div> -->
+               <!--  
 					<c:forEach begin="0" end="${newstlist.size()/4}" varStatus="status">
 						<c:if test="${status.count eq 1}">
 							<div class="item active">
@@ -91,13 +93,59 @@
 							<div class="item">
 						</c:if>
 
+							<c:set var="start" value="${ }"></c:set>
+							<c:set var="end" value="${ }"></c:set>
 						<div class="row" style="margin-top: 15px; margin-bottom: 15px;">
+							<c:forEach items="${newslist}" var="BookVO" begin="${start }" end="${end }">
+								
+								<a href="products/detail?booknum=${bookVO.booknum}"
+									class="thumbnail"> <img
+									src="/resources/covers/${bookVO.img}">
+								</a>
+									<c:set var="loop" value="true"></c:set>
+							</c:forEach>
 							<img src="/resources/imgs/Chrysanthemum.jpg" class="imgs_size">
 							<img src="/resources/imgs/Chrysanthemum.jpg" class="imgs_size">
 							<img src="/resources/imgs/Chrysanthemum.jpg" class="imgs_size">
 						</div>
 				</div>
 				</c:forEach>
+				
+				-->
+				
+				
+				<c:forEach begin="0" end="${newstlist.size()}" varStatus="status">
+						<c:if test="${status.count eq 1}">
+							<div class="item active">
+						</c:if>
+						<c:if test="${status.count != 1}">
+							<div class="item">
+						</c:if>
+						
+						<c:if test="${status.count % 3 eq 0}">
+								<div class="row" style="margin-top: 15px; margin-bottom: 15px;">	
+						</c:if>
+
+									
+										<a href="products/detail?booknum=${bookVO.booknum}"
+											class="thumbnail"> <img
+											src="/resources/covers/${bookVO.img}">
+										</a>
+							
+						<c:if test="${status.count % 3 eq 0}">
+								</div>
+						</c:if>
+					</div>
+				</c:forEach>
+				
+				
+			   <div class="item active">
+                  <div class="row" style="margin-top: 15px; margin-bottom: 15px;">
+                     <img src="/resources/imgs/Chrysanthemum.jpg" class="imgs_size">
+                     <img src="/resources/imgs/Chrysanthemum.jpg" class="imgs_size">
+                     <img src="/resources/imgs/Chrysanthemum.jpg" class="imgs_size">
+                  </div>
+               </div>
 
 
 			</div>
