@@ -105,6 +105,10 @@ public class AdminServiceImpl implements AdminService {
 	public void deleteBuy(Integer buynum) throws Exception {
 		Buydao.deleteBuy(buynum);
 	}
+	
+	public void deleteMy(Integer buynum) throws Exception {
+		Buydao.deleteMy(buynum);
+	}
 
 	@Override
 	public List<BuyVO> listBuy() throws Exception {

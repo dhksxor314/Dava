@@ -25,6 +25,8 @@ public interface AdminService {
 
 	public BuyVO readBuy(Integer buynum) throws Exception;
 	public void deleteBuy(Integer buynum) throws Exception;
+	public void deleteMy(Integer buynum) throws Exception;
+	
 	public List<BuyVO> listBuy() throws Exception;
 	
 	public List<BookVO> BooklistSearchCriteria(Criteria cri) throws Exception;

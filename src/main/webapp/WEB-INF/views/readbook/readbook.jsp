@@ -59,16 +59,14 @@
 		<div class="row">
 			<div class="col-md-3"></div>
 			<div class="btn-group col-md-3" role="group" aria-label="...">
-				<button type="button" class="btn btn-default" id="prev">이전
+				<button type="button" class="btn btn-success" id="prev">이전
 					페이지</button>
-				<button type="button" class="btn btn-default" id="next">다음
+				<button type="button" class="btn btn-success" id="next">다음
 					페이지</button>
 			</div>
 			<div class="btn-group col-md-3" role="group" aria-label="...">
-				<button type="button" class="btn btn-default" 
+				<button type="button" class="btn btn-danger" 
 					data-target="#myModal1" data-toggle="modal">책갈피 등록</button>
-				<button type="button" class="btn btn-default" 
-					data-target="#myModal2" data-toggle="modal">책갈피 이동</button>
 			</div>
 		</div>
 

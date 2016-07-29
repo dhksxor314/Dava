@@ -76,7 +76,7 @@
 									<td width="5%"><input type="checkbox" id="checkall"/></td>
 									<td width="10%">구매 번호</td>
 									<td width="15%">회원 번호</td>
-									<td width="20%">도서 번호</td>
+									<td width="20%">도서 제목</td>
 									<td width="20%">구매일</td>
 								</tr>
 

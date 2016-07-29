@@ -99,13 +99,13 @@
  	<select id="BuylistPage" resultType="BuyVO">
 	 <![CDATA[
 		select *
-		from buy where buynum >0 order by buynum limit #{page}, 10;
+		from buy, book where buy.booknum=book.booknum and buynum >0 order by buynum limit #{page}, 10;
 	 ]]>  
  	</select>
 	<select id="BuylistCriteria" resultType="BuyVO">
 	 <![CDATA[
 		select *
-		from buy where buynum > 0 order by buynum limit #{pageStart}, #{perPageNum};
+		from buy, book where buy.booknum=book.booknum and buynum > 0 order by buynum limit #{pageStart}, #{perPageNum};
 	 ]]>  
  	</select>
  	<select id="BuycountPaging" resultType="int">
@@ -114,13 +114,13 @@
 		from buy where buynum >0
 	 ]]> 
  	</select>
- 	
- 	<select id="listBuy" resultType="BuyVO">
- 		select * from buy, book where buy.booknum=book.booknum
- 	</select>
- 	
+
  	<delete id="deleteBuy">
  		delete from buy where buynum = #{buynum}
+ 	</delete>
+ 	
+ 	<delete id="deleteMy">
+ 		delete from mybook where buynum = #{buynum}
  	</delete>
 
 </mapper>

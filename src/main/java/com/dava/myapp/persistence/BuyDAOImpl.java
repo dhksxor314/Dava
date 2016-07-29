@@ -103,6 +103,11 @@ public class BuyDAOImpl implements BuyDAO {
 	public void deleteBuy(Integer buynum) throws Exception {
 		SqlSession.delete(namespace + ".deleteBuy", buynum);
 	}
+	
+	@Override
+	public void deleteMy(Integer buynum) throws Exception {
+		SqlSession.delete(namespace + ".deleteMy", buynum);
+	}
 
 	@Override
 	public List<BuyVO> BuylistPage(int page) throws Exception {

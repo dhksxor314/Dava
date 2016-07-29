@@ -142,6 +142,7 @@ public class AdminController {
 	// 구매 리스트
 	@RequestMapping(value = "/listBuy")
 	public void listBuy(Model model, Criteria cri) throws Exception {
+		System.out.println(service.BuylistCriteria(cri).get(0).getTitle());
 		model.addAttribute("Buylist", service.BuylistCriteria(cri));
 		PageMaker pageMaker = new PageMaker();
 		pageMaker.setCri(cri);
@@ -162,6 +163,7 @@ public class AdminController {
 		String[] chBuy = req.getParameterValues("chBuy");
 		for (int i = 0; i < chBuy.length; i++) {
 			service.deleteBuy(Integer.parseInt(chBuy[i]));
+			service.deleteMy(Integer.parseInt(chBuy[i]));
 		}
 		return "redirect:/admin/listBuy";
 	}

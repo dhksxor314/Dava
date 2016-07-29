@@ -40,7 +40,7 @@ public interface BuyDAO {
 
 	// 결제관리 삭제
 	public void deleteBuy(Integer booknum) throws Exception;
-
+	public void deleteMy(Integer buynum) throws Exception;
 	// 결제관리 메인 페이지에서 출력 List
 	public List<BuyVO> listBuy() throws Exception;
 
