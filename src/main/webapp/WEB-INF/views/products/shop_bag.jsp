@@ -77,8 +77,7 @@
 			<input type="hidden" id="booknum_${total}" value="${bookVO.booknum}">
 			<div class="row" >
 				<div class="col-md-offset-1 col-md-5">
-				<img src="/resources/imgs/Chrysanthemum.jpg"
-								class="imgs_size"/> ${bookVO.title}
+				<img src="/resources/covers/${bookVO.img}" class="imgs_size"> ${bookVO.title}
 				</div>
 				<div class="col-md-offset-3 col-md-3 " style="padding-top: 5%" >
 					<div class="col-xs-offset-4 col-xs-4"><span style="color: green">${bookVO.price}</span> 원 </div>

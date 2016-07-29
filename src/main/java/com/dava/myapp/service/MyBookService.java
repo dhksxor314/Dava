@@ -6,5 +6,5 @@ public interface MyBookService {
 	public String getImage(Integer mybooknum);
 	public void setBookmark(Integer bookmark, Integer mybooknum);
 
-	public void mybook_insert();
+	public void mybook_insert(Integer memnum);
 }

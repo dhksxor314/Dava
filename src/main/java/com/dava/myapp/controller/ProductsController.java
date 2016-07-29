@@ -59,11 +59,11 @@ public class ProductsController {
 	}
 
 	@RequestMapping(value = "/payment", method = RequestMethod.POST)
-	public void buy(BuyVO vo, Model model,ShopBagVO shop_vo) throws Exception {
-
+	public void buy(BuyVO vo, Model model,ShopBagVO shop_vo, HttpSession session) throws Exception {
+		int memnum = Integer.parseInt(session.getAttribute("memnum").toString());
 		try {
 			buy_service.buy(vo);
-			mubook_service.mybook_insert();
+			mubook_service.mybook_insert(memnum);
 			buy_service.use_point(vo);
 
 			buy_service.point_update(vo);
@@ -118,7 +118,7 @@ public class ProductsController {
 			buy_service.buy(vo);
 			buy_service.sal_update(vo);
 
-			mubook_service.mybook_insert();
+			mubook_service.mybook_insert(memnum);
 
 		}
 

@@ -5,5 +5,5 @@ public interface MyBookDao {
 	public String getHwp(Integer mybooknum);
 	public String getImage(Integer mybooknum);
 	public void setBookmark(Integer bookmark, Integer mybooknum);
-	public void mybook_insert();
+	public void mybook_insert(Integer memnum);
 }
