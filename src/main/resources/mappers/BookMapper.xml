@@ -6,11 +6,13 @@
 
 	<select id="select" resultType="com.dava.myapp.domain.BookVO">
 		select
-		booknum , title, author , publisher , pub_date , price , sal , img , summary
+		booknum , title, author ,
+		publisher , pub_date , price , sal , img , summary
 		,genre
 		from
 		book
-		where booknum = #{booknum}
+		where
+		booknum = #{booknum}
 	</select>
 
 
@@ -27,13 +29,17 @@ order by sal desc,rand() limit 8 ;
 
 	<select id="contents" resultType="com.dava.myapp.domain.BookVO">
 		select
-		booknum , title, author , publisher , pub_date , price , sal , img , summary,genre
+		booknum , title, author ,
+		publisher , pub_date , price , sal , img , summary,genre
 		from
 		book
-		where genre like "%"#{contents}"%" 
+		where
+		genre like "%"#{contents}"%"
 		order by title desc
 	</select>
 
 
-
+	<select id="newstbook" resultType="com.dava.myapp.domain.BookVO">
+		select * from book where pub_date>date_sub(curdate(),INTERVAL 1 MONTH);
+	</select>
 </mapper>
