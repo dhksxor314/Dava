@@ -10,6 +10,7 @@ import com.dava.myapp.domain.BookVO;
 import com.dava.myapp.domain.BuyVO;
 import com.dava.myapp.domain.Criteria;
 import com.dava.myapp.domain.MemberVO;
+import com.dava.myapp.domain.SearchCriteria;
 import com.dava.myapp.persistence.ADBookDaoImpl;
 import com.dava.myapp.persistence.BuyDAOImpl;
 import com.dava.myapp.persistence.MemberDAO;
@@ -67,13 +68,22 @@ public class AdminServiceImpl implements AdminService {
 	}
 
 	@Override
-	public List<BookVO> BooklistSearchCriteria(Criteria cri) throws Exception {
+	public List<BookVO> BooklistCriteria(Criteria cri) throws Exception {
 
 		return Bdao.BooklistCriteria(cri);
 	}
 	@Override
-	public int BooklistSearchCountCriteria(Criteria cri) throws Exception{
+	public int BooklistCountCriteria(Criteria cri) throws Exception{
 		return Bdao.BookcountPaging(cri);
+	}
+	@Override
+	public List<BookVO> BooklistSearchCriteria(SearchCriteria cri) throws Exception {
+
+		return Bdao.BooklistSearch(cri);
+	}
+	@Override
+	public int BooklistSearchCount(SearchCriteria cri) throws Exception{
+		return Bdao.BooklistSearchCount(cri);
 	}
 	
 	@Override

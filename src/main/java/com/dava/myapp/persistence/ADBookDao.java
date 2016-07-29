@@ -29,7 +29,7 @@ public interface ADBookDao {
 	public List<BookVO> BooklistCriteria(Criteria cri) throws Exception;
 	public int BookcountPaging(Criteria cri) throws Exception;
 	
-	public List<BookVO> listSearch(SearchCriteria cri) throws Exception;
-	public int listSearchCount(SearchCriteria cri) throws Exception;
+	public List<BookVO> BooklistSearch(SearchCriteria cri) throws Exception;
+	public int BooklistSearchCount(SearchCriteria cri) throws Exception;
 	
 }

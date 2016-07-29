@@ -7,120 +7,159 @@
 
 	<!-- 도서 등록 -->
 	<insert id="registBook">
-		insert into book(title, author, publisher, pub_date, price, genre, img, summary, hwp)
-		value(#{title}, #{author}, #{publisher}, #{pub_date}, #{price}, #{genre}, #{img}, #{summary}, #{hwp})
+		insert into book(title, author, publisher, pub_date,
+		price, genre, img, summary, hwp)
+		value(#{title}, #{author},
+		#{publisher}, #{pub_date}, #{price}, #{genre}, #{img}, #{summary},
+		#{hwp})
 	</insert>
-	
+
 	<!-- 도서관리에서 사용 -->
 	<select id="readBook" resultType="BookVO">
-		select * from book where booknum=#{booknum}
+		select * from book where
+		booknum=#{booknum}
 	</select>
-	
+
 	<!-- 도서 수정 -->
 	<update id="updateBook">
-		update book set 
-		title=#{title}, 
+		update book set
+		title=#{title},
 		genre=#{genre},
-		author=#{author}, 
-		publisher=#{publisher}, 
-		pub_date=#{pub_date}, 
+		author=#{author},
+		publisher=#{publisher},
+		pub_date=#{pub_date},
 		price=#{price},
 		img=#{img},
 		summary=#{summary} where booknum=#{booknum}
 	</update>
-	
+
 	<!-- 도서 삭제 -->
 	<delete id="deleteBook">
 		delete from book where booknum = #{booknum}
 	</delete>
-	
+
 	<!-- 회원삭제 -->
 	<delete id="deleteMember">
 		delete from member where memnum = #{memnum}
 	</delete>
-	
+
 	<!-- 회원목록 -->
 	<select id="listMember" resultType="MemberVO">
 		select * from member
 	</select>
-	
+
 	<!-- 도서목록 -->
 	<select id="listBook" resultType="BookVO">
 		select * from book
 	</select>
-	
+
 	<!-- 결제관리에서 사용하는 회원 정보확인 -->
 	<select id="readMember" resultType="MemberVO">
-		select * from member where memnum=#{memnum}
+		select * from member where
+		memnum=#{memnum}
 	</select>
-	
-	
+
+
 	<!-- 도서 페이징 -->
 	<select id="BooklistPage" resultType="BookVO">
 	 <![CDATA[
 		select *
 		from book where booknum >0 order by booknum limit #{page}, 10;
-	 ]]>  
- 	</select>
+	 ]]>
+	</select>
 	<select id="BooklistCriteria" resultType="BookVO">
 	 <![CDATA[
 		select *
 		from book where booknum > 0 order by booknum limit #{pageStart}, #{perPageNum};
-	 ]]>  
- 	</select>
- 	<select id="BookcountPaging" resultType="int">
+	 ]]>
+	</select>
+	<select id="BookcountPaging" resultType="int">
  	 <![CDATA[
 		select count(booknum)
 		from book where booknum >0
-	 ]]> 
- 	</select>
- 	
- 	<!-- 회원 페이징 -->
- 	<select id="MemberlistPage" resultType="MemberVO">
+	 ]]>
+	</select>
+	
+	<!-- 책검색 -->
+	<sql id="search">
+		<if test="searchType != null">
+			<if test="searchType == 'title'.toString()">
+				and title like CONCAT('%', #{keyword}, '%')
+			</if>
+			<if test="searchType == 'author'.toString()">
+				and author like CONCAT('%', #{keyword}, '%')
+			</if>
+			<if test="searchType == 'publisher'.toString()">
+				and publisher like CONCAT('%', #{keyword}, '%')
+			</if>
+		</if>
+	</sql>
+	
+	<select id="BooklistSearch" resultType="BookVO">
+	 <![CDATA[
+		select *
+		from book where booknum > 0
+	 ]]>
+		<include refid="search"></include>
+	 <![CDATA[
+	 	order by booknum limit #{pageStart}, #{perPageNum};
+	  ]]>
+	</select>
+	
+	<select id="BooklistSearchCount" resultType="int">
+	 <![CDATA[
+		select count(booknum)
+		from book where booknum > 0
+	 ]]>
+	 	<include refid="search"></include>
+	</select>
+
+	<!-- 회원 페이징 -->
+	<select id="MemberlistPage" resultType="MemberVO">
 	 <![CDATA[
 		select *
 		from member where memnum >0 order by memnum limit #{page}, 10;
-	 ]]>  
- 	</select>
+	 ]]>
+	</select>
 	<select id="MemberlistCriteria" resultType="MemberVO">
 	 <![CDATA[
 		select *
 		from member where memnum > 0 order by memnum limit #{pageStart}, #{perPageNum};
-	 ]]>  
- 	</select>
- 	<select id="MembercountPaging" resultType="int">
+	 ]]>
+	</select>
+	<select id="MembercountPaging" resultType="int">
  	 <![CDATA[
-		select count(memnum)
-		from member where memnum >0
-	 ]]> 
- 	</select>
- 	
- 	<!-- Buy 페이징 -->
- 	<select id="BuylistPage" resultType="BuyVO">
+		select count(booknum)
+		from book where booknum >0
+	 ]]>
+	</select>
+
+	<!-- Buy 페이징 -->
+	<select id="BuylistPage" resultType="BuyVO">
 	 <![CDATA[
 		select *
 		from buy where buynum >0 order by buynum limit #{page}, 10;
-	 ]]>  
- 	</select>
+	 ]]>
+	</select>
 	<select id="BuylistCriteria" resultType="BuyVO">
 	 <![CDATA[
 		select *
 		from buy where buynum > 0 order by buynum limit #{pageStart}, #{perPageNum};
-	 ]]>  
- 	</select>
- 	<select id="BuycountPaging" resultType="int">
+	 ]]>
+	</select>
+	<select id="BuycountPaging" resultType="int">
  	 <![CDATA[
 		select count(buynum)
 		from buy where buynum >0
-	 ]]> 
- 	</select>
- 	
- 	<select id="listBuy" resultType="BuyVO">
- 		select * from buy, book where buy.booknum=book.booknum
- 	</select>
- 	
- 	<delete id="deleteBuy">
- 		delete from buy where buynum = #{buynum}
- 	</delete>
+	 ]]>
+	</select>
+
+	<select id="listBuy" resultType="BuyVO">
+		select * from buy, book where buy.booknum=book.booknum
+	</select>
+
+	<delete id="deleteBuy">
+		delete from buy where buynum = #{buynum}
+	</delete>
 
 </mapper>

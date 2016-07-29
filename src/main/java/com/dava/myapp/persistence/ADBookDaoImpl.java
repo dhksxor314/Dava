@@ -60,10 +60,10 @@ public class ADBookDaoImpl {
 	}
 	
 	//°Ë»ö
-	public List<BookVO> listSearch(SearchCriteria cri) throws Exception{
-		return sqlSession.selectOne(NAMESPACE + ".listSearch", cri);
+	public List<BookVO> BooklistSearch(SearchCriteria cri) throws Exception{
+		return sqlSession.selectList(NAMESPACE + ".BooklistSearch", cri);
 	}
-	public int listSearchCount(SearchCriteria cri) throws Exception{
-		return sqlSession.selectOne(NAMESPACE + ".listSearchCount", cri);
+	public int BooklistSearchCount(SearchCriteria cri) throws Exception{
+		return sqlSession.selectOne(NAMESPACE + ".BooklistSearchCount", cri);
 	}
 }
