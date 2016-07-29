@@ -7,15 +7,21 @@
 
 <script>
 	var img = /(\.gif|\.png|\.jpg|\.jpeg)$/i;//이미지 파일 형식만 가능
-	var hwp = /(\.hwp)$/i;
+	var hwp = /(\.hwp)$/i;//한글파일 형식만 가능
 	$(document).ready(
 			function() {
 
 				//도서 삭제 버튼 동작
 				$(".btn-danger").on("click", function() {
-					var con = confirm("도서를 삭제하시겠습니까?");
-					if (con == true) {
-						$("#delBook").submit();
+					//체크된 것이 있을 때에만 삭제를 진행
+					if($("input[name=chBook]:checked").length>0){
+						var con = confirm("도서를 삭제하시겠습니까?");
+						if (con == true) {
+							$("#delBook").submit();
+						}
+					}
+					else{
+						alert("삭제할 책을 선택하세요");
 					}
 				});
 
