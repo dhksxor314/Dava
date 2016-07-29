@@ -155,7 +155,6 @@ public class ProductsController {
 			model.addAttribute("msg", " 장바구니에 담았습니다.");
 
 		} catch (Exception e) {
-			System.err.println("2");
 			model.addAttribute(book_service.select(booknum));
 			model.addAttribute("msg", "이미 장바구니에 담겨있습니다..");
 

@@ -34,9 +34,11 @@ order by sal desc,rand() limit 8 ;
 		from
 		book
 		where
-		genre like "%"#{contents}"%"
+		genre like "%"#{contents}"%" or title like "%"#{contents}"%" or author like "%"#{contents}"%" or publisher like "%"#{contents}"%" or genre like "%"#{contents}"%"
 		order by title desc
 	</select>
+
+
 
 
 	<select id="newstbook" resultType="com.dava.myapp.domain.BookVO">

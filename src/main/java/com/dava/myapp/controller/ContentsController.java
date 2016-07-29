@@ -16,7 +16,7 @@ public class ContentsController {
 	private BookService service;
 
 	@RequestMapping(value = "/contents", method = RequestMethod.GET)
-	public String contents(String contents, Model model) throws Exception {
+	public String contents(String contents, Model model,String search) throws Exception {
 		int choise =  Integer.parseInt(contents);
 		if(contents.equals("1")){
 			contents ="";
@@ -24,6 +24,8 @@ public class ContentsController {
 			contents ="판타지";
 		}else if(contents.equals("3")){
 			contents ="로맨스";
+		}else if(contents.equals("4")){
+			contents =search;
 		}
 		model.addAttribute("contents", contents);
 		model.addAttribute("get","get");
@@ -35,8 +37,7 @@ public class ContentsController {
 	
 	
 	@RequestMapping(value = "/contents", method = RequestMethod.POST)
-	public String contents_POST(String contents, Model model,int limit) throws Exception {
-		System.out.println(limit);
+	public String contents_POST(String contents, Model model,int limit,String search) throws Exception {
 		int choise =  Integer.parseInt(contents);
 		if(contents.equals("1")){
 			contents ="";
@@ -44,9 +45,10 @@ public class ContentsController {
 			contents ="판타지";
 		}else if(contents.equals("3")){
 			contents ="로맨스";
+		}else if(contents.equals("4")){
+			contents =search;
 		}
 		limit = limit +8;
-		
 		
 		model.addAttribute("contents", contents);
 		model.addAttribute("list",service.contents(contents));
@@ -56,4 +58,6 @@ public class ContentsController {
 		
 		return "/contents/contents";
 	}
+	
+
 }
