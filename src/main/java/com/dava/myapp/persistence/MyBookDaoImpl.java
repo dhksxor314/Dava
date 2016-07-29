@@ -1,6 +1,7 @@
 package com.dava.myapp.persistence;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
@@ -45,6 +46,13 @@ public class MyBookDaoImpl implements MyBookDao {
 		sqlSession.selectOne(namespace+".mybook_insert",memnum);
 	}
 
+	@Override
+	public List select_mybooknum(Integer memnum) {
+		// TODO Auto-generated method stub
+		return  sqlSession.selectList(namespace+".select_mybooknum", memnum);
+		
+	}
+	
 
 
 }

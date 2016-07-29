@@ -33,5 +33,8 @@
 		values(1,#{memnum});
 	</insert>
 	
+	<select id="select_mybooknum" resultType="int" >
+		select mybooknum from mybook where memnum = #{memnum};
+	</select>
 	
 </mapper>

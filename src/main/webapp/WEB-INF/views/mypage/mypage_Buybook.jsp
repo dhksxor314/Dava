@@ -8,7 +8,11 @@
 
 <script>
 	$(document).ready(function() {
-		
+		$("#view").click(function(){
+			var title = $(this).title();
+			$("#form"+title).submit();
+			
+		});
 	});
 </script>
 <style>
@@ -31,8 +35,10 @@
 		</div>
 
 		<div class="row" style="margin-top: 20px; border: solid 0.5px silver;">
-		
-			<c:forEach items="${list}" var="bookVO">
+
+
+			<c:forEach items="${list}" var="bookVO" varStatus="status">
+
 				<hr />
 				<div class="row">
 					<div class="col-md-offset-1 col-md-5">
@@ -40,16 +46,18 @@
 						${bookVO.title}
 					</div>
 					<div class="col-md-offset-3 col-md-3 " style="padding-top: 5%">
-						<div class="col-xs-4">
-						<form method ="post" action="/readbook/read">
-							<input type="hidden"  id="mybooknum" vlaue=""/>
-							<a href="mybooknum=1">바로보기</a>
+						<form method="post" action="/readbook/read" id="form${mybooknum.get(status.count-1)}">
+							<div class="col-xs-4">
+								<input type="hidden" id="mybooknum"
+									value="${mybooknum.get(status.count-1)}" /> 
+									<a name="view" id="view" title="${mybooknum.get(status.count-1)}" >바로보기</a>
+							</div>
 						</form>
-						</div>
 					</div>
 				</div>
 
 			</c:forEach>
+
 			<hr>
 
 		</div>

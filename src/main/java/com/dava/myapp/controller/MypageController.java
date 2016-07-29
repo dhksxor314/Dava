@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.dava.myapp.domain.MemberVO;
 import com.dava.myapp.service.BuyService;
 import com.dava.myapp.service.MemberService;
+import com.dava.myapp.service.MyBookService;
 
 @Controller
 @RequestMapping("/mypage/*")
@@ -20,11 +21,17 @@ public class MypageController {
 	private BuyService Buy_service;
 	@Inject
 	private MemberService mem_service;
+	
+
+	@Inject
+	private MyBookService mybook_service;
 
 	@RequestMapping(value = "/mypage_main", method = RequestMethod.GET)
 	public String mypage_main(HttpSession session, Model model) throws Exception {
 		int memnum = Integer.parseInt(session.getAttribute("memnum").toString());
 		model.addAttribute("meminfo", mem_service.mem_info(memnum));
+		
+		
 		return "/mypage/mypage_main";
 	}
 
@@ -32,6 +39,7 @@ public class MypageController {
 	public String mypage_buybook(HttpSession session, Model model) throws Exception {
 		int memnum = Integer.parseInt(session.getAttribute("memnum").toString());
 		model.addAttribute("list", Buy_service.mypage_buy(memnum));
+		model.addAttribute("mybooknum", mybook_service.select_mybooknum(memnum));
 
 		return "/mypage/mypage_Buybook";
 	}
