@@ -152,6 +152,7 @@ public class ProductsController {
 			
 			buy_service.shop_bag(shop_vo);
 			model.addAttribute(book_service.select(booknum));
+			model.addAttribute("msg", " 장바구니에 담았습니다.");
 
 		} catch (Exception e) {
 			System.err.println("2");
