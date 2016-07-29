@@ -78,8 +78,9 @@ public class AdminController {
 		String bookpath =req.getServletContext().getRealPath("resources/books");
 		String coverpath = req.getServletContext().getRealPath("resources/covers");
 		for (int i = 0; i < chBook.length; i++) {
+			logger.info(service.readBook(Integer.parseInt(chBook[i])).getHwp());
+			deleteFile(bookpath+"/"+service.readBook(Integer.parseInt(chBook[i])).getHwp(), coverpath+"/"+service.readBook(Integer.parseInt(chBook[i])).getImg());
 			service.deleteBook(Integer.parseInt(chBook[i]));
-			deleteFile(bookpath+"/"+service.readBook(Integer.parseInt(chBook[i])).getHwp(), coverpath+"/"+service.readBook(Integer.parseInt(chBook[i])).getHwp());
 		}
 		return "redirect:/admin/listBook";
 	}
