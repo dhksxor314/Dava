@@ -91,8 +91,9 @@
 
 			<div class="row">
 				<div class="col-md-offset-8 col-md-3" style="text-align: right;">
-					<input type="button" id="payment" value="결제"/>  
-					<input type="button" id="shop_bag" value="장바구니"/>	
+					<input type="button" id="payment"  class="btn btn-success" value="결제"/>  
+
+					<input type="button" id="shop_bag" value="장바구니" class="btn btn-default"/>	
 				</div>
 			</div>
 

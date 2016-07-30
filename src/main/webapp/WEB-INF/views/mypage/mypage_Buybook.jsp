@@ -61,7 +61,7 @@
 							<div class="col-xs-4" id="2">
 									<form action="/readbook/read" method="post">
 									<input type="hidden" value="${mybooknum.get(status.count-1)}" name="mybooknum">
-										<input type="submit" value="바로보기">
+										<input type="submit" value="바로보기" class="btn btn-success">
 									</form>
 							</div>
 						</form>
