@@ -30,14 +30,6 @@ CREATE TABLE BUY
     unique key (MEMNUM,BOOKNUM)
 );
 
-insert into buy(memnum, booknum, buy_date, p_way, final_pay) values(1, 1, curdate(), '³óÇù', 4000);
-insert into buy(memnum, booknum, buy_date, p_way, final_pay) values(1, 2, curdate(), '¹«ÅëÀåÀÔ±İ', 5000);
-insert into buy(memnum, booknum, buy_date, p_way, final_pay) values(1, 3, curdate(), '°èÁÂÀÌÃ¼', 2000);
-insert into buy(memnum, booknum, buy_date, p_way, final_pay) values(1, 4, curdate(), '±¹¹Î', 3000);
-insert into buy(memnum, booknum, buy_date, p_way, final_pay) values(2, 1, curdate(), '¿ÜÈ¯', 4000);
-insert into buy(memnum, booknum, buy_date, p_way, final_pay) values(2, 4, curdate(), '³óÇù', 5500);
-insert into buy(memnum, booknum, buy_date, p_way, final_pay) values(2, 6, curdate(), 'ÇÏ³ª', 6000);
-insert into buy(memnum, booknum, buy_date, p_way, final_pay) values(2, 3, curdate(), '±¹¹Î', 5000);
 
 
 CREATE TABLE MEMBER
@@ -52,11 +44,7 @@ CREATE TABLE MEMBER
     unique key (ID)
 );
 
-insert into member(id, nickname, password, point) values('user00@naver.com', 'dava0', 'user00', 0);
-insert into member(id, nickname, password, point) values('user11@naver.com', 'dava1', 'user11', 10);
-insert into member(id, nickname, password, point) values('user22@naver.com', 'dava2', 'user22', 20);
-insert into member(id, nickname, password, point) values('user33@naver.com', 'dava3', 'user33', 30);
-
+insert into member(id, nickname, password, point) values('admin@dava', '°ü¸®ÀÚ', 'admin', 0);
 create table shop_bag
 (
 	bagnum integer not null auto_increment,
