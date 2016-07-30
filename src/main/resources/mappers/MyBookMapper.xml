@@ -13,13 +13,13 @@
 	<select id="getImage" resultType="String">
 		select img 
 		from buy bu, book b, mybook m 
-		where bu.buynum=m.buynum and bu.booknum=b.booknum and m.mybooknum=#{mybooknum}
+		where bu.buynum=#{mybooknum} and bu.booknum=b.booknum and m.mybooknum=#{mybooknum}
 	</select>
 	
 	<select id="getHwp" resultType="String">
 		select hwp
 		from buy bu, book b, mybook m 
-		where bu.buynum=m.buynum and bu.booknum=b.booknum and m.mybooknum=#{mybooknum}
+		where bu.buynum=#{mybooknum} and bu.booknum=b.booknum and m.mybooknum=#{mybooknum}
 	</select>
 	
 	

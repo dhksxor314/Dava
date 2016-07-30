@@ -8,9 +8,20 @@
 
 <script>
 	$(document).ready(function() {
-		$("#view").click(function(){
-			var title = $(this).title();
-			$("#form"+title).submit();
+		$("a[href='']").click(function(event){
+			
+			var target = event.target.id;
+			
+			
+		     var $form = $('<form></form>');
+		     $form.attr('action', '/readbook/read');
+		     $form.attr('method', 'post');
+		     $form.appendTo('body');
+		     
+		     var mybooknum = $('<input type="hidden" value="+target+" name="mybooknum">');
+		 
+		     $form.append(mybooknum);
+		     $form.submit();
 			
 		});
 	});
@@ -46,11 +57,12 @@
 						${bookVO.title}
 					</div>
 					<div class="col-md-offset-3 col-md-3 " style="padding-top: 5%">
-						<form method="post" action="/readbook/read" id="form${mybooknum.get(status.count-1)}">
-							<div class="col-xs-4">
-								<input type="hidden" id="mybooknum"
-									value="${mybooknum.get(status.count-1)}" /> 
-									<a name="view" id="view" title="${mybooknum.get(status.count-1)}" >바로보기</a>
+
+							<div class="col-xs-4" id="2">
+									<form action="/readbook/read" method="post">
+									<input type="hidden" value="${mybooknum.get(status.count-1)}" name="mybooknum">
+										<input type="submit" value="바로보기">
+									</form>
 							</div>
 						</form>
 					</div>
