@@ -35,16 +35,13 @@ public class ReadBookController {
 	//구매한 책에서 보기를 선택했을 시에 책을 보여주기 위한 로직을 가진 핸들러
 	@RequestMapping(value = "/readbook/read", method = RequestMethod.POST)
 	public String home(@RequestParam("mybooknum") int mybooknum, HttpServletRequest req, Model model) throws FileNotFoundException, IOException {
-		System.out.println("?");
+
 		int startPage=service.getBookmark(mybooknum);//책보기를 눌렀을 시 기본 시작페이지는 1이며 책갈피가 등록된 경우에는 책갈피에 등록된 
-													//페이지 부터 시작하게 한다
-		System.out.println("1");
+									
 		String path = req.getServletContext().getRealPath("resources/books");
 
-		System.out.println("2");
 		String title = service.getHwp(mybooknum);
 
-		System.out.println("3");
 		int pagePerLine=25;//한 페이지당 라인 수
 		int charPerLine=40;//
 		int totalPage = 0;
@@ -84,9 +81,7 @@ public class ReadBookController {
 	    	if(((i+1)%pagePerLine)==0){j++;}
 	    }
 
-		System.out.println("4");
 		model.addAttribute("img", service.getImage(mybooknum));
-		System.out.println("5");
 		model.addAttribute("startPage", startPage);
 		model.addAttribute("totalPage", totalPage);
 		model.addAttribute("content", content);
