@@ -78,4 +78,10 @@ public class MemberDAOImpl implements MemberDAO {
 	public int MembercountPaging(Criteria cri) throws Exception{
 		return SqlSession.selectOne(NAMESPACE + ".MembercountPaging", cri);
 	}
+
+	@Override
+	public String pwsearch(String id) throws Exception {
+		// TODO Auto-generated method stub
+		return SqlSession.selectOne(namespace+".pwsearch", id);
+	}
 }

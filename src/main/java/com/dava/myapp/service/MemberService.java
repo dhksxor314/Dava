@@ -14,4 +14,6 @@ public interface MemberService {
 	  public MemberVO login(MemberVO vo)throws Exception;
 	  
 	  public void editpassword(MemberVO vo) throws Exception;
+	  
+	  public String pwsearch(String id) throws Exception;
 }

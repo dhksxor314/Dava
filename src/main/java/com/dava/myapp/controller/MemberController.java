@@ -6,6 +6,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.dava.myapp.domain.MemberVO;
 import com.dava.myapp.service.MemberService;
@@ -61,6 +62,27 @@ public class MemberController {
       //
 
       return "/member/join";
+   }
+   @RequestMapping(value = "/pwsearch", method = RequestMethod.GET)
+   public String pwsearch_GET() throws Exception {
+
+      return "/member/pwsearch";
+   }
+   
+   @RequestMapping(value = "/pwsearch", method = RequestMethod.POST)
+   public String pwsearch_POST(@RequestParam("id") String id, Model model) throws Exception {
+	   
+	   String input = mem_service.pwsearch(id);
+	   
+	   if(input == null){
+		   model.addAttribute("msg","등록되지않은 아이디입니다.");
+		  
+	   }else{
+		   model.addAttribute("msg","등록된 아아디  입니다.<br><a href='#' id='check'>비밀번호를 이메일로 받으시려면 여기를 클릭하세요</a>");
+		   model.addAttribute("id", id);
+	   }
+	   
+      return "/member/pwsearch";
    }
 
    

@@ -41,6 +41,12 @@
 			var search = $("#content").val();
 			location.href="/contents/contents?contents=4&search="+search;
 		})
+		$("#pwsearch").click(function(){
+			var wsize = 350;
+			var hsize = 280;
+			window.open('/member/pwsearch','search','width ='
+					+ wsize+ ',height='+ hsize+ ',top='+ (screen.height - hsize)/ 2+ ', left='+ (screen.width - wsize)/ 2);
+		})
 
 	});
 </script>
@@ -85,8 +91,8 @@
 			</div>
 			<div class="row" style="text-align: right;">
 				
-				<a href="" id="join">회원가입</a><a href="#" class="col-md-offset-1"
-					style="margin-right: 30px;">아이디 / 비밀번호 찾기</a>
+				<a href="" id="join">회원가입</a><a href="" id="pwsearch" class="col-md-offset-1"
+					style="margin-right: 30px;">비밀번호 찾기</a>
 			</div>
 		</div>
 	</c:if>
