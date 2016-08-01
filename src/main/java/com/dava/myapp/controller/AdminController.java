@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.dava.myapp.domain.BookVO;
 import com.dava.myapp.domain.Criteria;
@@ -76,7 +77,7 @@ public class AdminController {
 	}
 
 	// 도서 삭제
-	@RequestMapping(value = "/deleteBook")
+	@RequestMapping(value = "/deleteBook", method=RequestMethod.POST)
 	public String deleteBook(HttpServletRequest req) throws Exception {
 		String[] chBook = req.getParameterValues("chBook");
 
@@ -88,6 +89,7 @@ public class AdminController {
 					coverpath + "/" + service.readBook(Integer.parseInt(chBook[i])).getImg());
 			service.deleteBook(Integer.parseInt(chBook[i]));
 		}
+
 		return "redirect:/admin/listBook";
 	}
 
@@ -129,13 +131,17 @@ public class AdminController {
 
 	// 도서 정보 수정
 	@RequestMapping(value = "/updateBook", method = RequestMethod.GET)
-	public void updateG(Model model, @RequestParam("booknum") int booknum) throws Exception {
+	public void updateG(Model model, @RequestParam("booknum") int booknum, @ModelAttribute("cri") Criteria cri) throws Exception {
 		model.addAttribute(service.readBook(booknum));
 	}
 
 	@RequestMapping(value = "/updateBook", method = RequestMethod.POST)
-	public String updateP(BookVO bvo) throws Exception {
+	public String updateP(BookVO bvo, Criteria cri, RedirectAttributes rttr) throws Exception {
 		service.updateBook(bvo);
+		
+		rttr.addAttribute("page", cri.getPage());
+		rttr.addAttribute("perPageNum", cri.getPerPageNum());
+		rttr.addFlashAttribute("msg", "SUCCESS");
 		return "redirect:/admin/listBook";
 	}
 

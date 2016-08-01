@@ -85,9 +85,9 @@
 								<tr align="center" style="font-size: 20; font-weight: bold;">
 									<td width="5%"><input type="checkbox" id="checkall" /></td>
 									<td width="10%">번호</td>
-									<td width="30%">E-mail ID</td>
-									<td width="15%">별명</td>
-									<td width="50%">비밀번호</td>
+									<td width="50%">E-mail ID</td>
+									<td width="15%">닉네임</td>
+									<td width="30%">POINT</td>
 								</tr>
 
 								<c:forEach items="${Mlist}" var="memberVO">
@@ -98,7 +98,7 @@
 										<td align="center">${memberVO.memnum}</td>
 										<td align="center">${memberVO.id}</td>
 										<td align="center">${memberVO.nickname}</td>
-										<td align="center">${memberVO.password}</td>
+										<td align="center">${memberVO.point}</td>
 									</tr>
 
 								</c:forEach>

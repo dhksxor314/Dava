@@ -27,7 +27,8 @@
 <section class="content">
 	<div class="row">
 		<!-- left column -->
-		<div class="col-md-12">
+		<div class="col-md-4"></div>
+		<div class="col-md-5">
 			<!-- general form elements -->
 			<div class="box box-primary">
 				<div class="box-header">
