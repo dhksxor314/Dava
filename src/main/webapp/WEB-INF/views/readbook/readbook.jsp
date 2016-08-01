@@ -107,27 +107,6 @@
 			</div>
 		</div>
 
-		<div class="modal fade" id="myModal2" tabindex="-1" role="dialog"
-			aria-labelledby="myModalLabel">
-			<div class="modal-dialog" role="document">
-				<div class="modal-content">
-					<div class="modal-header">
-						<button type="button" class="close" data-dismiss="modal"
-							aria-label="Close">
-							<span aria-hidden="true">&times;</span>
-						</button>
-						<h4 class="modal-title" id="myModalLabel">Modal title</h4>
-					</div>
-					<div class="modal-body">책갈피로 저장된 페이지(${markedPage}페이지)로
-						이동하시겠습니까?</div>
-					<div class="modal-footer">
-						<button type="button" class="btn btn-default" data-dismiss="modal">취소</button>
-						<button type="button" class="btn btn-primary" id="move">이동</button>
-					</div>
-				</div>
-			</div>
-		</div>
-
 		<script type="text/javascript">
 			var numberOfPages = '${totalPage+2}';
 			if (numberOfPages % 2 != 0) {//페이지가 짝수가 아닐경우 커버페이지를 하나 더 추가했으므로 페이지 수 추가

@@ -10,7 +10,6 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.StringWriter;
 import java.io.Writer;
-import java.util.logging.Logger;
 
 import javax.servlet.http.HttpServletRequest;
 
