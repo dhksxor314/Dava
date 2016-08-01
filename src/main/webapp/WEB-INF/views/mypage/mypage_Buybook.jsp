@@ -6,26 +6,7 @@
 <title>Mypage</title>
 </head>
 
-<script>
-	$(document).ready(function() {
-		$("a[href='']").click(function(event){
-			
-			var target = event.target.id;
-			
-			
-		     var $form = $('<form></form>');
-		     $form.attr('action', '/readbook/read');
-		     $form.attr('method', 'post');
-		     $form.appendTo('body');
-		     
-		     var mybooknum = $('<input type="hidden" value="+target+" name="mybooknum">');
-		 
-		     $form.append(mybooknum);
-		     $form.submit();
-			
-		});
-	});
-</script>
+
 <style>
 .imgs_size {
 	margin-left: 10px;

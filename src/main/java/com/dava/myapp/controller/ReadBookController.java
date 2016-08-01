@@ -92,11 +92,10 @@ public class ReadBookController {
 	
 	//책갈피 등록을 처리하는 핸들러
 	@RequestMapping(value = "/readbook/setmark", method = RequestMethod.POST)
-	public String markHandler(@RequestParam("page_number") int page_number, @RequestParam("mybooknum") int mybooknum, Model model){
+	public void markHandler(@RequestParam("page_number") int page_number, @RequestParam("mybooknum") int mybooknum, Model model){
 		
 		model.addAttribute("mybooknum", mybooknum);
 		service.setBookmark(page_number, mybooknum);
-		return "redirect:/readbook/read";
 	}
 	
 
