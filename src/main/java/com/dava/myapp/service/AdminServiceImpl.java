@@ -98,6 +98,8 @@ public class AdminServiceImpl implements AdminService {
 		return Mdao.MemberlistCriteria(cri);
 	}
 
+	
+	//회원 페이징
 	@Override
 	public int MemberlistCountCriteria(Criteria cri) throws Exception {
 		return Mdao.MembercountPaging(cri);

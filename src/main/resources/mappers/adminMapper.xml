@@ -96,9 +96,13 @@
 			<if test="searchType == 'memnum'.toString()">
 				and memnum like CONCAT('%', #{keyword}, '%')
 			</if>
+			<if test="searchType == 'buynum'.toString()">
+				and buynum like CONCAT('%', #{keyword}, '%')
+			</if>
 		</if>
 	</sql>
 	
+	<!-- 도서검색 -->
 	<select id="BooklistSearch" resultType="BookVO">
 	 <![CDATA[
 		select *
@@ -178,6 +182,27 @@
 		from buy where buynum >0
 	 ]]> 
  	</select>
+ 	
+ 	
+ 	<!-- 구매검색
+	<select id="ADBuylistSearch" resultType="BuyVO">
+	 <![CDATA[
+		select *
+		from buy where buynum > 0
+	 ]]>
+		<include refid="search"></include>
+	 <![CDATA[
+	 	order by buynum limit #{pageStart}, #{perPageNum};
+	  ]]>
+	</select>
+	
+	<select id="BuylistSearchCount" resultType="int">
+	 <![CDATA[
+		select count(buynum)
+		from buy where buynum > 0
+	 ]]>
+	 	<include refid="search"></include>
+	</select> -->
 
  	<delete id="deleteBuy">
  		delete from buy where buynum = #{buynum}

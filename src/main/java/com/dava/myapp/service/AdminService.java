@@ -49,6 +49,6 @@ public interface AdminService {
 	public List<BuyVO> listBuy() throws Exception;
 	public List<BuyVO> BuylistCriteria(Criteria cri) throws Exception;
 	public int BuylistCountCriteria(Criteria cri) throws Exception;
-
+	
 	public MemberVO readMember(Integer memnum) throws Exception;
 }
