@@ -46,7 +46,7 @@
 				<img class="col-xs-6 btn" id="buybook" style="margin-top: 10px" src="/resources/imgs/my_book.png"  >
 				<img class="col-xs-6 btn" id="shop_bag" style="margin-top: 10px" src="/resources/imgs/cart.png">
 				<img class="col-xs-6 btn" id="personal_info" style="margin-top: 10px" src="/resources/imgs/password.png" >		
-				<img class="col-xs-6 btn" id="buylist" style="margin-top: 10px" src="/resources/imgs/password.png" >		
+				<img class="col-xs-6 btn" id="buylist" style="margin-top: 10px" src="/resources/imgs/purchase.png" >		
 			</div>
 
 		</div>
