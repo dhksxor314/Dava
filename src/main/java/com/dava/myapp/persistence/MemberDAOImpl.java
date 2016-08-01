@@ -9,6 +9,7 @@ import org.springframework.stereotype.Repository;
 
 import com.dava.myapp.domain.Criteria;
 import com.dava.myapp.domain.MemberVO;
+import com.dava.myapp.domain.SearchCriteria;
 
 @Repository
 public class MemberDAOImpl implements MemberDAO {
@@ -27,20 +28,20 @@ public class MemberDAOImpl implements MemberDAO {
 	@Override
 	public void join(MemberVO vo) throws Exception {
 		// TODO Auto-generated method stub
-		
-		SqlSession.insert(namespace+".join",vo);
-		
+
+		SqlSession.insert(namespace + ".join", vo);
+
 	}
 
 	@Override
 	public MemberVO login(MemberVO vo) throws Exception {
 		// TODO Auto-generated method stub
-		return SqlSession.selectOne(namespace+".login",vo);
+		return SqlSession.selectOne(namespace + ".login", vo);
 	}
-	
+
 	@Override
 	public List<MemberVO> listMember() {
-		
+
 		return SqlSession.selectList(NAMESPACE + ".listMember");
 	}
 
@@ -57,31 +58,44 @@ public class MemberDAOImpl implements MemberDAO {
 	@Override
 	public void editpassword(MemberVO vo) throws Exception {
 		// TODO Auto-generated method stub
-		SqlSession.update(namespace+".editpassword",vo);
+		SqlSession.update(namespace + ".editpassword", vo);
 	}
 
 	@Override
-	public List<MemberVO> MemberlistPage(int page) throws Exception{
-		if(page <= 0){
-			page =1;
+	public List<MemberVO> MemberlistPage(int page) throws Exception {
+		if (page <= 0) {
+			page = 1;
 		}
-		
-		page = (page-1) * 10;
-		
+
+		page = (page - 1) * 10;
+
 		return SqlSession.selectList(NAMESPACE + ".MemberlistPage", page);
 	}
+
 	@Override
-	public List<MemberVO> MemberlistCriteria(Criteria cri) throws Exception{
+	public List<MemberVO> MemberlistCriteria(Criteria cri) throws Exception {
 		return SqlSession.selectList(NAMESPACE + ".MemberlistCriteria", cri);
 	}
+
 	@Override
-	public int MembercountPaging(Criteria cri) throws Exception{
+	public int MembercountPaging(Criteria cri) throws Exception {
 		return SqlSession.selectOne(NAMESPACE + ".MembercountPaging", cri);
+	}
+
+	// °Ë»ö
+	@Override
+	public List<MemberVO> MemberlistSearch(SearchCriteria cri) throws Exception {
+		return SqlSession.selectList(NAMESPACE + ".MemberlistSearch", cri);
+	}
+
+	@Override
+	public int MemberlistSearchCount(SearchCriteria cri) throws Exception {
+		return SqlSession.selectOne(NAMESPACE + ".MemberlistSearchCount", cri);
 	}
 
 	@Override
 	public String pwsearch(String id) throws Exception {
 		// TODO Auto-generated method stub
-		return SqlSession.selectOne(namespace+".pwsearch", id);
+		return SqlSession.selectOne(namespace + ".pwsearch", id);
 	}
 }

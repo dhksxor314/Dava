@@ -32,21 +32,22 @@ public class AdminController {
 
 	@Inject
 	private AdminService service;
-	
+
 	@Inject
 	private BookVO bvo;
-	
-	//관리자 로그아웃
-	@RequestMapping(value="/logout", method = RequestMethod.POST)
-	public String logout(HttpSession session, HttpServletRequest req){
+
+	// 관리자 로그아웃
+	@RequestMapping(value = "/logout", method = RequestMethod.POST)
+	public String logout(HttpSession session, HttpServletRequest req) {
 		session.invalidate();
 		return "redirect:/";
 	}
-	
+
 	// 책 등록
 	@RequestMapping(value = "/registBook", method = RequestMethod.POST)
-	public String registBook(MultipartFile img, MultipartFile hwp, Model model, HttpServletRequest req,
-			String title, String genre, String author, String publisher, String pub_date, String summary, int price) throws Exception {
+	public String registBook(MultipartFile img, MultipartFile hwp, Model model, HttpServletRequest req, String title,
+			String genre, String author, String publisher, String pub_date, String summary, int price)
+			throws Exception {
 		bvo.setTitle(title);
 		bvo.setAuthor(author);
 		bvo.setGenre(genre);
@@ -54,92 +55,101 @@ public class AdminController {
 		bvo.setPub_date(pub_date);
 		bvo.setPrice(price);
 		bvo.setSummary(summary);
-		bvo.setImg(uploadFile(img.getOriginalFilename(), img.getBytes(), req.getServletContext().getRealPath("resources/covers")));
-		bvo.setHwp(uploadFile(hwp.getOriginalFilename(), hwp.getBytes(), req.getServletContext().getRealPath("resources/books")));
-					//커버로 쓸 이미지 파일과 책의 내용을 가진 hwp파일을 저장한다.
+		bvo.setImg(uploadFile(img.getOriginalFilename(), img.getBytes(),
+				req.getServletContext().getRealPath("resources/covers")));
+		bvo.setHwp(uploadFile(hwp.getOriginalFilename(), hwp.getBytes(),
+				req.getServletContext().getRealPath("resources/books")));
+		// 커버로 쓸 이미지 파일과 책의 내용을 가진 hwp파일을 저장한다.
 		service.registBook(bvo);
 
 		return "redirect:/admin/listBook";
 	}
-	
-	//파일을 업로드 해주는 함수이고 최종적으로 저장되는 파일의 이름을 반환한다. (책등록에서 사용)
-	private String uploadFile(String originalName, byte[] fileData, String path) throws IOException{
+
+	// 파일을 업로드 해주는 함수이고 최종적으로 저장되는 파일의 이름을 반환한다. (책등록에서 사용)
+	private String uploadFile(String originalName, byte[] fileData, String path) throws IOException {
 		logger.info(path);
-		UUID uid = UUID.randomUUID();//같은 이름의 파일이 올라가지 않도록 해준다. 고유한 값을 생성해준다
-		String savedName = uid.toString()+"_"+originalName;
+		UUID uid = UUID.randomUUID();// 같은 이름의 파일이 올라가지 않도록 해준다. 고유한 값을 생성해준다
+		String savedName = uid.toString() + "_" + originalName;
 		File target = new File(path, savedName);
-		FileCopyUtils.copy(fileData, target);//파일을 저장
+		FileCopyUtils.copy(fileData, target);// 파일을 저장
 		return savedName;
 	}
+
 	// 도서 삭제
 	@RequestMapping(value = "/deleteBook")
 	public String deleteBook(HttpServletRequest req) throws Exception {
 		String[] chBook = req.getParameterValues("chBook");
-	
-		String bookpath =req.getServletContext().getRealPath("resources/books");
+
+		String bookpath = req.getServletContext().getRealPath("resources/books");
 		String coverpath = req.getServletContext().getRealPath("resources/covers");
 		for (int i = 0; i < chBook.length; i++) {
 			logger.info(service.readBook(Integer.parseInt(chBook[i])).getHwp());
-			deleteFile(bookpath+"/"+service.readBook(Integer.parseInt(chBook[i])).getHwp(), coverpath+"/"+service.readBook(Integer.parseInt(chBook[i])).getImg());
+			deleteFile(bookpath + "/" + service.readBook(Integer.parseInt(chBook[i])).getHwp(),
+					coverpath + "/" + service.readBook(Integer.parseInt(chBook[i])).getImg());
 			service.deleteBook(Integer.parseInt(chBook[i]));
 		}
 		return "redirect:/admin/listBook";
 	}
-	//등록된 도서를 삭제할 시에 업로드된 파일들을 삭제한다.
-	private void deleteFile(String bookpath, String coverpath){
+
+	// 등록된 도서를 삭제할 시에 업로드된 파일들을 삭제한다.
+	private void deleteFile(String bookpath, String coverpath) {
 		File bookdel = new File(bookpath);
 		File coverdel = new File(coverpath);
-		if(bookdel.exists()){
+		if (bookdel.exists()) {
 			bookdel.delete();
 		}
-		if(coverdel.exists()){
+		if (coverdel.exists()) {
 			coverdel.delete();
 		}
 	}
-	
+
 	// 등록된 도서
 	@RequestMapping(value = "/listBook")
-	public void listBook(Model model, @ModelAttribute("cri")Criteria cri) throws Exception {
+	public void listBook(Model model, @ModelAttribute("cri") Criteria cri) throws Exception {
 		model.addAttribute("Blist", service.BooklistCriteria(cri));
 		PageMaker pageMaker = new PageMaker();
 		pageMaker.setCri(cri);
 		pageMaker.setTotalCount(service.BooklistCountCriteria(cri));
-		
+
 		model.addAttribute("pageMaker", pageMaker);
 	}
+
 	// 도서 정보 확인
 	@RequestMapping(value = "/readBook")
-	public void readBook(Model model, @RequestParam("booknum") int booknum, @ModelAttribute("cri") Criteria cri) throws Exception {
+	public void readBook(Model model, @RequestParam("booknum") int booknum, @ModelAttribute("cri") Criteria cri)
+			throws Exception {
 		model.addAttribute(service.readBook(booknum));
 	}
+
 	// 구매내역에서 도서정보를 확인만 가능 하도록
 	@RequestMapping(value = "/readBookBuy")
 	public void readBookBuy(Model model, @RequestParam("booknum") int booknum) throws Exception {
 		model.addAttribute(service.readBook(booknum));
 	}
+
 	// 도서 정보 수정
 	@RequestMapping(value = "/updateBook", method = RequestMethod.GET)
 	public void updateG(Model model, @RequestParam("booknum") int booknum) throws Exception {
 		model.addAttribute(service.readBook(booknum));
 	}
+
 	@RequestMapping(value = "/updateBook", method = RequestMethod.POST)
 	public String updateP(BookVO bvo) throws Exception {
 		service.updateBook(bvo);
 		return "redirect:/admin/listBook";
 	}
-	
 
-	
 	// 회원 리스트
 	@RequestMapping(value = "/listMember")
-	public void listMember(Model model, Criteria cri) throws Exception {
+	public void listMember(Model model, @ModelAttribute("cri") Criteria cri) throws Exception {
 		model.addAttribute("Mlist", service.MemberlistCriteria(cri));
 		PageMaker pageMaker = new PageMaker();
 		pageMaker.setCri(cri);
 		pageMaker.setTotalCount(service.MemberlistCountCriteria(cri));
-		
+
 		model.addAttribute("pageMaker", pageMaker);
 	}
+
 	// 회원 삭제
 	@RequestMapping(value = "/deleteMember")
 	public String deleteMember(HttpServletRequest req) throws Exception {
@@ -150,6 +160,7 @@ public class AdminController {
 		}
 		return "redirect:/admin/listMember";
 	}
+
 	// Buy에서 회원 정보 확인만 하도록
 	@RequestMapping(value = "/readMember")
 	public void readMember(Model model, @RequestParam("memnum") int memnum) throws Exception {
@@ -164,16 +175,16 @@ public class AdminController {
 		PageMaker pageMaker = new PageMaker();
 		pageMaker.setCri(cri);
 		pageMaker.setTotalCount(service.BuylistCountCriteria(cri));
-		
+
 		model.addAttribute("pageMaker", pageMaker);
 	}
-	
+
 	// 구매 정보
 	@RequestMapping(value = "/readBuy")
 	public void readBuy(Model model, @RequestParam("buynum") int buynum) throws Exception {
 		model.addAttribute(service.readBuy(buynum));
 	}
-	
+
 	// 구매 삭제(환불)
 	@RequestMapping(value = "/deleteBuy")
 	public String deleteBuy(HttpServletRequest req) throws Exception {
@@ -186,10 +197,10 @@ public class AdminController {
 	}
 
 	/*
-	// paging
-	@RequestMapping(value = "/listCri", method = RequestMethod.GET)
-	public void listBook(Criteria cri, Model model) throws Exception {
-		logger.info("show list");
-		model.addAttribute("list", service.listCriteria(cri));
-	}*/
+	 * // paging
+	 * 
+	 * @RequestMapping(value = "/listCri", method = RequestMethod.GET) public
+	 * void listBook(Criteria cri, Model model) throws Exception { logger.info(
+	 * "show list"); model.addAttribute("list", service.listCriteria(cri)); }
+	 */
 }

@@ -87,9 +87,22 @@
 			<if test="searchType == 'publisher'.toString()">
 				and publisher like CONCAT('%', #{keyword}, '%')
 			</if>
+			<if test="searchType == 'id'.toString()">
+				and id like CONCAT('%', #{keyword}, '%')
+			</if>
+			<if test="searchType == 'nickname'.toString()">
+				and nickname like CONCAT('%', #{keyword}, '%')
+			</if>
+			<if test="searchType == 'memnum'.toString()">
+				and memnum like CONCAT('%', #{keyword}, '%')
+			</if>
+			<if test="searchType == 'buynum'.toString()">
+				and buynum like CONCAT('%', #{keyword}, '%')
+			</if>
 		</if>
 	</sql>
 	
+	<!-- 도서검색 -->
 	<select id="BooklistSearch" resultType="BookVO">
 	 <![CDATA[
 		select *
@@ -129,6 +142,27 @@
 	 ]]> 
  	</select>
  	
+ 	<!-- 회원검색 -->
+ 	<select id="MemberlistSearch" resultType="MemberVO">
+	 <![CDATA[
+		select *
+		from member where memnum > 0
+	 ]]>
+		<include refid="search"></include>
+	 <![CDATA[
+	 	order by memnum limit #{pageStart}, #{perPageNum};
+	  ]]>
+	</select>
+	
+	<select id="MemberlistSearchCount" resultType="int">
+	 <![CDATA[
+		select count(memnum)
+		from member where memnum > 0
+	 ]]>
+	 	<include refid="search"></include>
+	</select>
+	
+ 	
  	<!-- Buy 페이징 -->
  	<select id="BuylistPage" resultType="BuyVO">
 	 <![CDATA[
@@ -148,6 +182,27 @@
 		from buy where buynum >0
 	 ]]> 
  	</select>
+ 	
+ 	
+ 	<!-- 구매검색
+	<select id="ADBuylistSearch" resultType="BuyVO">
+	 <![CDATA[
+		select *
+		from buy where buynum > 0
+	 ]]>
+		<include refid="search"></include>
+	 <![CDATA[
+	 	order by buynum limit #{pageStart}, #{perPageNum};
+	  ]]>
+	</select>
+	
+	<select id="BuylistSearchCount" resultType="int">
+	 <![CDATA[
+		select count(buynum)
+		from buy where buynum > 0
+	 ]]>
+	 	<include refid="search"></include>
+	</select> -->
 
  	<delete id="deleteBuy">
  		delete from buy where buynum = #{buynum}

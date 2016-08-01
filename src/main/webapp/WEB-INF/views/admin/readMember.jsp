@@ -15,7 +15,10 @@
 
 		//목록으로 돌아가기
 		$(".btn-primary").on("click", function() {
-			self.location = "/admin/listBuy";
+			//self.location = "/admin/listBuy";
+			formObj.attr("method", "get");
+			formObj.attr("action", "/admin/listMember");
+			formObj.submit();
 		});
 
 	});
@@ -36,6 +39,8 @@
 				<form role="form" method="post">
 
 					<input type='hidden' name='memnum' value="${memberVO.memnum}">
+					<input type='hidden' name='page' value="${cri.page}">
+					<input type='hidden' name='perPageNum' value="${cri.perPageNum}">
 
 				</form>
 

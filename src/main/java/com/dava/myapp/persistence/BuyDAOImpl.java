@@ -10,6 +10,7 @@ import org.springframework.stereotype.Repository;
 import com.dava.myapp.domain.BookVO;
 import com.dava.myapp.domain.BuyVO;
 import com.dava.myapp.domain.Criteria;
+import com.dava.myapp.domain.SearchCriteria;
 import com.dava.myapp.domain.ShopBagVO;
 
 @Repository
@@ -41,7 +42,7 @@ public class BuyDAOImpl implements BuyDAO {
 	@Override
 	public List<BookVO> my_shop(int memnum) throws Exception {
 		// TODO Auto-generated method stub
-		return SqlSession.selectList(NAMESPACE + ".my_shop",memnum);
+		return SqlSession.selectList(NAMESPACE + ".my_shop", memnum);
 	}
 
 	@Override
@@ -53,13 +54,13 @@ public class BuyDAOImpl implements BuyDAO {
 	@Override
 	public void point_update(BuyVO vo) throws Exception {
 		// TODO Auto-generated method stub
-		SqlSession.update(NAMESPACE+".point_update",vo);
+		SqlSession.update(NAMESPACE + ".point_update", vo);
 	}
 
 	@Override
 	public void use_point(BuyVO vo) throws Exception {
 		// TODO Auto-generated method stub
-		SqlSession.update(NAMESPACE+".use_point",vo);
+		SqlSession.update(NAMESPACE + ".use_point", vo);
 	}
 
 	@Override
@@ -77,23 +78,21 @@ public class BuyDAOImpl implements BuyDAO {
 	@Override
 	public List<BuyVO> buy_select(int memnum) throws Exception {
 		// TODO Auto-generated method stub
-		return SqlSession.selectList(NAMESPACE + ".buy_select",memnum);
+		return SqlSession.selectList(NAMESPACE + ".buy_select", memnum);
 	}
 
 	@Override
 	public List<BookVO> mypage_buy(int memnum) throws Exception {
 		// TODO Auto-generated method stub
-		return SqlSession.selectList(NAMESPACE + ".mypage_buy",memnum);
+		return SqlSession.selectList(NAMESPACE + ".mypage_buy", memnum);
 	}
-
-
 
 	@Override
 	public List<BuyVO> listBuy() {
 		System.out.println("buydaoimpl");
 		return SqlSession.selectList(namespace + ".listBuy");
 	}
-	
+
 	@Override
 	public BuyVO readBuy(Integer buynum) throws Exception {
 		return SqlSession.selectOne(namespace + ".readBuy", buynum);
@@ -103,7 +102,7 @@ public class BuyDAOImpl implements BuyDAO {
 	public void deleteBuy(Integer buynum) throws Exception {
 		SqlSession.delete(namespace + ".deleteBuy", buynum);
 	}
-	
+
 	@Override
 	public void deleteMy(Integer buynum) throws Exception {
 		SqlSession.delete(namespace + ".deleteMy", buynum);
@@ -111,7 +110,7 @@ public class BuyDAOImpl implements BuyDAO {
 
 	@Override
 	public List<BuyVO> BuylistPage(int page) throws Exception {
-		if(page <=0){
+		if (page <= 0) {
 			page = 1;
 		}
 		page = (page - 1) * 10;
@@ -122,22 +121,22 @@ public class BuyDAOImpl implements BuyDAO {
 	public List<BuyVO> BuylistCriteria(Criteria cri) throws Exception {
 		return SqlSession.selectList(namespace + ".BuylistCriteria", cri);
 	}
-	
+
 	@Override
-	public int BuycountPaging(Criteria cri) throws Exception{
+	public int BuycountPaging(Criteria cri) throws Exception {
 		return SqlSession.selectOne(namespace + ".BuycountPaging", cri);
 	}
 
 	@Override
 	public void sal_update(BuyVO vo) throws Exception {
 		// TODO Auto-generated method stub
-		SqlSession.update(NAMESPACE+".sal_update",vo);
+		SqlSession.update(NAMESPACE + ".sal_update", vo);
 	}
 
 	@Override
 	public List<BookVO> mypage_buylist(int memnum) throws Exception {
 		// TODO Auto-generated method stub
-		return SqlSession.selectList(NAMESPACE+".buylist", memnum);
+		return SqlSession.selectList(NAMESPACE + ".buylist", memnum);
 	}
 
 }

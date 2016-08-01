@@ -5,7 +5,7 @@ import java.util.List;
 import com.dava.myapp.domain.BookVO;
 import com.dava.myapp.domain.BuyVO;
 import com.dava.myapp.domain.Criteria;
-import com.dava.myapp.domain.MemberVO;
+import com.dava.myapp.domain.SearchCriteria;
 import com.dava.myapp.domain.ShopBagVO;
 
 public interface BuyDAO {
@@ -50,6 +50,5 @@ public interface BuyDAO {
 	public List<BuyVO> BuylistPage(int page) throws Exception;
 	public List<BuyVO> BuylistCriteria(Criteria cri) throws Exception;
 	public int BuycountPaging(Criteria cri) throws Exception;
-
 
 }

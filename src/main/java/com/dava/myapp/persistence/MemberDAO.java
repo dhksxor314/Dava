@@ -4,14 +4,13 @@ import java.util.List;
 
 import com.dava.myapp.domain.Criteria;
 import com.dava.myapp.domain.MemberVO;
+import com.dava.myapp.domain.SearchCriteria;
 
 public interface MemberDAO {
 	// 회원 삭제
 	public void deleteMember(Integer memnum) throws Exception;
 
-
-
-	  public void editpassword(MemberVO vo) throws Exception;
+	public void editpassword(MemberVO vo) throws Exception;
 
 	// 회원관리 메인 화면 출력 List
 	public List<MemberVO> listMember() throws Exception;
@@ -31,5 +30,8 @@ public interface MemberDAO {
 	public List<MemberVO> MemberlistPage(int page) throws Exception;
 	public List<MemberVO> MemberlistCriteria(Criteria cri) throws Exception;
 	public int MembercountPaging(Criteria cri) throws Exception;
+	
+	public List<MemberVO> MemberlistSearch(SearchCriteria cri) throws Exception;
+	public int MemberlistSearchCount(SearchCriteria cri) throws Exception;
 
 }
