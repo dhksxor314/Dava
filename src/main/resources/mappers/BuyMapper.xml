@@ -71,4 +71,9 @@
 		update book set sal = sal + 1 where booknum=#{booknum};
 	</update>
 	
+	<select id="buylist" resultType="com.dava.myapp.domain.BuylistVO">
+		SELECT buy.buy_date, buy.p_way, buy.final_pay, book.title, book.genre, book.img
+		FROM buy, book
+		where buy.booknum=book.booknum and buy.memnum = #{memnum};
+	</select>
 </mapper>

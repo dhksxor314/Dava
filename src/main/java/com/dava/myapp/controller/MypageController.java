@@ -34,6 +34,13 @@ public class MypageController {
 		
 		return "/mypage/mypage_main";
 	}
+	@RequestMapping(value = "/mypage_buylist", method = RequestMethod.GET)
+	public String mypage_buylist(HttpSession session, Model model) throws Exception {
+		int memnum = Integer.parseInt(session.getAttribute("memnum").toString());
+		model.addAttribute("buylist", Buy_service.mypage_buylist(memnum));
+		
+		return "/mypage/mypage_Buylist";
+	}
 
 	@RequestMapping(value = "/mypage_Buybook", method = RequestMethod.GET)
 	public String mypage_buybook(HttpSession session, Model model) throws Exception {

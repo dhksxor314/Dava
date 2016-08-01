@@ -2,6 +2,9 @@
 <%@ page contentType="text/html; charset=UTF-8" isELIgnored="false"%>
 <%@ page session="true"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ taglib prefix="fn"  uri="http://java.sun.com/jsp/jstl/functions" %>
+<% pageContext.setAttribute("enter","\n"); %> 
+
 
 
 <script src="https://code.jquery.com/jquery-1.9.1.min.js"></script>
@@ -18,8 +21,8 @@
 			if('${memnum}' == ""){
 				alert("로그인후 이용해주세요")
 			}else{
-				var wsize = 770;
-				var hsize = 550;
+				var wsize = 800;
+				var hsize = 600;
 				window.open('payment?booknum=${bookVO.booknum}&memnum=${memnum}','payment','width ='
 					+ wsize+ ',height='+ hsize+ ',top='+ (screen.height - hsize)/ 2+ ', left='+ (screen.width - wsize)/ 2);
 			}
@@ -76,7 +79,7 @@
 									판 매 일 :${bookVO.pub_date}
 								</p>
 								<p>가 격 : ${bookVO.price }</p>
-								<p>줄 거 리 : ${bookVO.summary }</p>
+								<p>줄 거 리 :<br>${fn:replace(bookVO.summary ,enter,"<br/>")}</p>
 							</div>
 						</div>
 

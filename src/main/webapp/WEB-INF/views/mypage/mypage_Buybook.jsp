@@ -64,7 +64,6 @@
 										<input type="submit" value="바로보기" class="btn btn-success">
 									</form>
 							</div>
-						</form>
 					</div>
 				</div>
 

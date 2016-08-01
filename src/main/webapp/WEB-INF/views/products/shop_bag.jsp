@@ -12,8 +12,8 @@
 	$(document).ready(function() {
 		$("#total_payment").click(function(){
 			
-			var wsize = 770;
-			var hsize = 550;
+			var wsize = 800;
+			var hsize = 600;
 			window.open('total_payment','total_payment','width ='
 					+ wsize+ ',height='+ hsize+ ',top='+ (screen.height - hsize)/ 2+ ', left='+ (screen.width - wsize)/ 2);
 
