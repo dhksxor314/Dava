@@ -16,12 +16,6 @@
 			formObj.submit();
 		});
 
-		//삭제 버튼
-		$(".btn-danger").on("click", function() {
-			formObj.attr("action", "/admin/deleteBook");
-			formObj.submit();
-		});
-
 		//목록 버튼
 		$(".btn-primary").on("click", function() {
 			//self.location = "/admin/listBuy";
@@ -38,7 +32,8 @@
 <section class="content">
 	<div class="row">
 		<!-- left column -->
-		<div class="col-md-12">
+		<div class="col-md-4"></div>
+		<div class="col-md-5">
 			<!-- general form elements -->
 			<div class="box box-primary">
 				<div class="box-header">
@@ -115,7 +110,6 @@
 
 				<div class="box-footer">
 					<button type="submit" class="btn btn-warning">수정</button>
-					<button type="submit" class="btn btn-danger">삭제</button>
 					<button type="submit" class="btn btn-primary">목록</button>
 				</div>
 

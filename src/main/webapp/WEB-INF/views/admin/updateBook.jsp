@@ -12,7 +12,7 @@
 
 		//취소 버튼
 		$(".btn-warning").on("click", function() {
-			self.location = "/admin/listBook";
+			self.location = "/admin/listBook?page=${cri.page}&perPageNum=${cri.perPageNum}";
 		});
 
 		//수정 저장 버튼
@@ -27,7 +27,8 @@
 <section class="content">
 	<div class="row">
 		<!-- left column -->
-		<div class="col-md-9">
+		<div class="col-md-4"></div>
+		<div class="col-md-5">
 			<!-- general form elements -->
 			<div class="box box-primary">
 				<div class="box-header">
@@ -35,7 +36,9 @@
 				</div>
 				<!-- /.box-header -->
 
-				<form role="form" method="post">
+				<form role="form" method="post" action="updateBook">
+					<input type="hidden" name="page" value="${cri.page }">
+					<input type="hidden" name="perPageNum" value="${cri.perPageNum }">
 					<div class="box-body">
 					
 						<div class="form-group">
