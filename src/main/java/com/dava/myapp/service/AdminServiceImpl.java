@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.dava.myapp.domain.BookVO;
 import com.dava.myapp.domain.BuyVO;
+import com.dava.myapp.domain.BuylistVO;
 import com.dava.myapp.domain.Criteria;
 import com.dava.myapp.domain.MemberVO;
 import com.dava.myapp.domain.SearchCriteria;
@@ -98,8 +99,7 @@ public class AdminServiceImpl implements AdminService {
 		return Mdao.MemberlistCriteria(cri);
 	}
 
-	
-	//회원 페이징
+	// 회원 페이징
 	@Override
 	public int MemberlistCountCriteria(Criteria cri) throws Exception {
 		return Mdao.MembercountPaging(cri);
@@ -115,21 +115,27 @@ public class AdminServiceImpl implements AdminService {
 		return Mdao.MemberlistSearchCount(cri);
 	}
 
+	// 구매페이징
 	@Override
-	public List<BuyVO> BuylistCriteria(Criteria cri) throws Exception {
+	public List<BuylistVO> BuylistCriteria(Criteria cri) throws Exception {
 
 		return Buydao.BuylistCriteria(cri);
 	}
 
+	// 구매검색
 	@Override
 	public int BuylistCountCriteria(Criteria cri) throws Exception {
 		return Buydao.BuycountPaging(cri);
 	}
 
 	@Override
-	public BuyVO readBuy(Integer buynum) throws Exception {
+	public List<BuylistVO> BuylistSearchCriteria(SearchCriteria cri) throws Exception {
+		return Buydao.BuylistSearch(cri);
+	}
 
-		return Buydao.readBuy(buynum);
+	@Override
+	public int BuylistSearchCount(SearchCriteria cri) throws Exception {
+		return Buydao.BuylistSearchCount(cri);
 	}
 
 	@Override
@@ -142,7 +148,7 @@ public class AdminServiceImpl implements AdminService {
 	}
 
 	@Override
-	public List<BuyVO> listBuy() throws Exception {
+	public List<BuylistVO> listBuy() throws Exception {
 
 		return Buydao.listBuy();
 	}

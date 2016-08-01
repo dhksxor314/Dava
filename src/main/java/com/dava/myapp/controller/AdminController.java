@@ -163,26 +163,19 @@ public class AdminController {
 
 	// Buy에서 회원 정보 확인만 하도록
 	@RequestMapping(value = "/readMember")
-	public void readMember(Model model, @RequestParam("memnum") int memnum) throws Exception {
+	public void readMember(Model model, @RequestParam("memnum") int memnum, @ModelAttribute("cri")Criteria cri) throws Exception {
 		model.addAttribute(service.readMember(memnum));
 	}
 
 	// 구매 리스트
 	@RequestMapping(value = "/listBuy")
-	public void listBuy(Model model, Criteria cri) throws Exception {
-		System.out.println(service.BuylistCriteria(cri).get(0).getTitle());
+	public void listBuy(Model model,@ModelAttribute("cri") Criteria cri) throws Exception {
 		model.addAttribute("Buylist", service.BuylistCriteria(cri));
 		PageMaker pageMaker = new PageMaker();
 		pageMaker.setCri(cri);
 		pageMaker.setTotalCount(service.BuylistCountCriteria(cri));
 
 		model.addAttribute("pageMaker", pageMaker);
-	}
-
-	// 구매 정보
-	@RequestMapping(value = "/readBuy")
-	public void readBuy(Model model, @RequestParam("buynum") int buynum) throws Exception {
-		model.addAttribute(service.readBuy(buynum));
 	}
 
 	// 구매 삭제(환불)
@@ -195,12 +188,4 @@ public class AdminController {
 		}
 		return "redirect:/admin/listBuy";
 	}
-
-	/*
-	 * // paging
-	 * 
-	 * @RequestMapping(value = "/listCri", method = RequestMethod.GET) public
-	 * void listBook(Criteria cri, Model model) throws Exception { logger.info(
-	 * "show list"); model.addAttribute("list", service.listCriteria(cri)); }
-	 */
 }

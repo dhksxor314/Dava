@@ -17,7 +17,7 @@
 		$(".btn-primary").on("click", function() {
 			//self.location = "/admin/listBuy";
 			formObj.attr("method", "get");
-			formObj.attr("action", "/admin/listMember");
+			formObj.attr("action", "/admin/listBuy");
 			formObj.submit();
 		});
 

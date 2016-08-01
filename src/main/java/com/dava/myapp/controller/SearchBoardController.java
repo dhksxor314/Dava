@@ -60,7 +60,6 @@ public class SearchBoardController {
     model.addAttribute("pageMaker", pageMaker);
   }
   
-  /*
   @RequestMapping(value = "/listBuy", method = RequestMethod.GET)
   public void listBuy(@ModelAttribute("cri") SearchCriteria cri, Model model) throws Exception {
 
@@ -77,7 +76,7 @@ public class SearchBoardController {
 
     model.addAttribute("pageMaker", pageMaker);
   }
-  */
+  
 /*
   @RequestMapping(value = "/readBook", method = RequestMethod.GET)
   public void read(@RequestParam("booknum") int booknum, @ModelAttribute("cri") SearchCriteria cri, Model model)

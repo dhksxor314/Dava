@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.dava.myapp.domain.BookVO;
 import com.dava.myapp.domain.BuyVO;
+import com.dava.myapp.domain.BuylistVO;
 import com.dava.myapp.domain.Criteria;
 import com.dava.myapp.domain.MemberVO;
 import com.dava.myapp.domain.SearchCriteria;
@@ -20,8 +21,6 @@ public interface AdminService {
 	public void deleteBook(Integer booknum) throws Exception;
 
 	public void deleteMember(Integer memnum) throws Exception;
-
-	public BuyVO readBuy(Integer buynum) throws Exception;
 
 	public void deleteBuy(Integer buynum) throws Exception;
 
@@ -46,9 +45,13 @@ public interface AdminService {
 	public int MemberlistSearchCount(SearchCriteria cri) throws Exception;
 
 	//구매 페이징
-	public List<BuyVO> listBuy() throws Exception;
-	public List<BuyVO> BuylistCriteria(Criteria cri) throws Exception;
+	public List<BuylistVO> listBuy() throws Exception;
+	public List<BuylistVO> BuylistCriteria(Criteria cri) throws Exception;
 	public int BuylistCountCriteria(Criteria cri) throws Exception;
+	
+	//구매 검색
+	public List<BuylistVO> BuylistSearchCriteria(SearchCriteria cri) throws Exception;
+	public int BuylistSearchCount(SearchCriteria cri) throws Exception;
 	
 	public MemberVO readMember(Integer memnum) throws Exception;
 }

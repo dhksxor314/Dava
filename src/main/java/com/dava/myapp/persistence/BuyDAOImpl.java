@@ -9,6 +9,7 @@ import org.springframework.stereotype.Repository;
 
 import com.dava.myapp.domain.BookVO;
 import com.dava.myapp.domain.BuyVO;
+import com.dava.myapp.domain.BuylistVO;
 import com.dava.myapp.domain.Criteria;
 import com.dava.myapp.domain.SearchCriteria;
 import com.dava.myapp.domain.ShopBagVO;
@@ -88,14 +89,8 @@ public class BuyDAOImpl implements BuyDAO {
 	}
 
 	@Override
-	public List<BuyVO> listBuy() {
-		System.out.println("buydaoimpl");
+	public List<BuylistVO> listBuy() {
 		return SqlSession.selectList(namespace + ".listBuy");
-	}
-
-	@Override
-	public BuyVO readBuy(Integer buynum) throws Exception {
-		return SqlSession.selectOne(namespace + ".readBuy", buynum);
 	}
 
 	@Override
@@ -109,7 +104,7 @@ public class BuyDAOImpl implements BuyDAO {
 	}
 
 	@Override
-	public List<BuyVO> BuylistPage(int page) throws Exception {
+	public List<BuylistVO> BuylistPage(int page) throws Exception {
 		if (page <= 0) {
 			page = 1;
 		}
@@ -118,7 +113,7 @@ public class BuyDAOImpl implements BuyDAO {
 	}
 
 	@Override
-	public List<BuyVO> BuylistCriteria(Criteria cri) throws Exception {
+	public List<BuylistVO> BuylistCriteria(Criteria cri) throws Exception {
 		return SqlSession.selectList(namespace + ".BuylistCriteria", cri);
 	}
 
@@ -126,6 +121,17 @@ public class BuyDAOImpl implements BuyDAO {
 	public int BuycountPaging(Criteria cri) throws Exception {
 		return SqlSession.selectOne(namespace + ".BuycountPaging", cri);
 	}
+
+	@Override
+	public List<BuylistVO> BuylistSearch(SearchCriteria cri) throws Exception {
+		return SqlSession.selectList(namespace + ".BuylistSearch", cri);
+	}
+
+	@Override
+	public int BuylistSearchCount(SearchCriteria cri) throws Exception {
+		return SqlSession.selectOne(namespace + ".BuylistSearchCount", cri);
+	}
+
 
 	@Override
 	public void sal_update(BuyVO vo) throws Exception {

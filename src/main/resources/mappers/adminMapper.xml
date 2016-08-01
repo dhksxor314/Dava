@@ -75,7 +75,7 @@
 	 ]]> 
  	</select>
  	
- 	<!-- 책검색 -->
+ 	<!-- 검색조건 -->
 	<sql id="search">
 		<if test="searchType != null">
 			<if test="searchType == 'title'.toString()">
@@ -164,16 +164,16 @@
 	
  	
  	<!-- Buy 페이징 -->
- 	<select id="BuylistPage" resultType="BuyVO">
+ 	<select id="BuylistPage" resultType="BuylistVO">
 	 <![CDATA[
 		select *
-		from buy, book where buy.booknum=book.booknum and buynum >0 order by buynum limit #{page}, 10;
+		from buy buynum >0 order by buynum limit #{page}, 10;
 	 ]]>  
  	</select>
-	<select id="BuylistCriteria" resultType="BuyVO">
+	<select id="BuylistCriteria" resultType="BuylistVO">
 	 <![CDATA[
 		select *
-		from buy, book where buy.booknum=book.booknum and buynum > 0 order by buynum limit #{pageStart}, #{perPageNum};
+		from buy buynum > 0 order by buynum limit #{pageStart}, #{perPageNum};
 	 ]]>  
  	</select>
  	<select id="BuycountPaging" resultType="int">
@@ -184,8 +184,8 @@
  	</select>
  	
  	
- 	<!-- 구매검색
-	<select id="ADBuylistSearch" resultType="BuyVO">
+ 	<!-- 구매검색 -->
+	<select id="BuylistSearch" resultType="BuylistVO">
 	 <![CDATA[
 		select *
 		from buy where buynum > 0
@@ -202,7 +202,7 @@
 		from buy where buynum > 0
 	 ]]>
 	 	<include refid="search"></include>
-	</select> -->
+	</select>
 
  	<delete id="deleteBuy">
  		delete from buy where buynum = #{buynum}
