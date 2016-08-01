@@ -6,6 +6,7 @@ import com.dava.myapp.domain.BookVO;
 import com.dava.myapp.domain.BuyVO;
 import com.dava.myapp.domain.Criteria;
 import com.dava.myapp.domain.MemberVO;
+import com.dava.myapp.domain.SearchCriteria;
 
 
 public interface AdminService {
@@ -27,10 +28,13 @@ public interface AdminService {
 	public void deleteBuy(Integer buynum) throws Exception;
 	public void deleteMy(Integer buynum) throws Exception;
 	
+	//ÆäÀÌÂ¡
 	public List<BuyVO> listBuy() throws Exception;
-	
-	public List<BookVO> BooklistSearchCriteria(Criteria cri) throws Exception;
-	public int BooklistSearchCountCriteria(Criteria cri) throws Exception;
+	public List<BookVO> BooklistCriteria(Criteria cri) throws Exception;
+	public int BooklistCountCriteria(Criteria cri) throws Exception;
+	//°Ë»ö
+	public List<BookVO> BooklistSearchCriteria(SearchCriteria cri) throws Exception;
+	public int BooklistSearchCount(SearchCriteria cri) throws Exception;
 	
 	public List<MemberVO> MemberlistCriteria(Criteria cri) throws Exception;
 	public int MemberlistCountCriteria(Criteria cri) throws Exception;

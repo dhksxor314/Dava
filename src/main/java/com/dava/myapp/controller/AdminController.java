@@ -14,6 +14,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.util.FileCopyUtils;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -98,19 +99,18 @@ public class AdminController {
 	
 	// 등록된 도서
 	@RequestMapping(value = "/listBook")
-	public void listBook(Model model, Criteria cri) throws Exception {
-		model.addAttribute("Blist", service.BooklistSearchCriteria(cri));
+	public void listBook(Model model, @ModelAttribute("cri")Criteria cri) throws Exception {
+		model.addAttribute("Blist", service.BooklistCriteria(cri));
 		PageMaker pageMaker = new PageMaker();
 		pageMaker.setCri(cri);
-		pageMaker.setTotalCount(service.BooklistSearchCountCriteria(cri));
+		pageMaker.setTotalCount(service.BooklistCountCriteria(cri));
 		
 		model.addAttribute("pageMaker", pageMaker);
 	}
 	// 도서 정보 확인
 	@RequestMapping(value = "/readBook")
-	public String readP(Model model, @RequestParam("booknum") int booknum) throws Exception {
+	public void readBook(Model model, @RequestParam("booknum") int booknum, @ModelAttribute("cri") Criteria cri) throws Exception {
 		model.addAttribute(service.readBook(booknum));
-		return "/admin/readBook";
 	}
 	// 구매내역에서 도서정보를 확인만 가능 하도록
 	@RequestMapping(value = "/readBookBuy")

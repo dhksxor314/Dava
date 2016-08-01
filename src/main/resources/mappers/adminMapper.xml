@@ -75,6 +75,40 @@
 	 ]]> 
  	</select>
  	
+ 	<!-- 책검색 -->
+	<sql id="search">
+		<if test="searchType != null">
+			<if test="searchType == 'title'.toString()">
+				and title like CONCAT('%', #{keyword}, '%')
+			</if>
+			<if test="searchType == 'author'.toString()">
+				and author like CONCAT('%', #{keyword}, '%')
+			</if>
+			<if test="searchType == 'publisher'.toString()">
+				and publisher like CONCAT('%', #{keyword}, '%')
+			</if>
+		</if>
+	</sql>
+	
+	<select id="BooklistSearch" resultType="BookVO">
+	 <![CDATA[
+		select *
+		from book where booknum > 0
+	 ]]>
+		<include refid="search"></include>
+	 <![CDATA[
+	 	order by booknum limit #{pageStart}, #{perPageNum};
+	  ]]>
+	</select>
+	
+	<select id="BooklistSearchCount" resultType="int">
+	 <![CDATA[
+		select count(booknum)
+		from book where booknum > 0
+	 ]]>
+	 	<include refid="search"></include>
+	</select>
+ 	
  	<!-- 회원 페이징 -->
  	<select id="MemberlistPage" resultType="MemberVO">
 	 <![CDATA[

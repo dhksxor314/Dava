@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8" isELIgnored="false"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" isELIgnored="false"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ page session="false"%>
@@ -7,21 +6,15 @@
 
 <script>
 	var img = /(\.gif|\.png|\.jpg|\.jpeg)$/i;//이미지 파일 형식만 가능
-	var hwp = /(\.hwp)$/i;//한글파일 형식만 가능
+	var hwp = /(\.hwp)$/i;
 	$(document).ready(
 			function() {
 
 				//도서 삭제 버튼 동작
 				$(".btn-danger").on("click", function() {
-					//체크된 것이 있을 때에만 삭제를 진행
-					if($("input[name=chBook]:checked").length>0){
-						var con = confirm("도서를 삭제하시겠습니까?");
-						if (con == true) {
-							$("#delBook").submit();
-						}
-					}
-					else{
-						alert("삭제할 책을 선택하세요");
+					var con = confirm("도서를 삭제하시겠습니까?");
+					if (con == true) {
+						$("#delBook").submit();
 					}
 				});
 
@@ -44,13 +37,14 @@
 
 				//검색
 				$("#searchBtn").on(
+						
 						"click",
 						function(event) {
 							self.location = "listBook"
 									+ '${pageMaker.makeQuery(1)}'
 									+ "&searchType="
 									+ $("select option:selected").val()
-									+ "&keyword=" + $('#keywordInput').val();
+									+ "&keyword=" + $('#keyword').val();
 						});
 
 				//최상단 체크박스 클릭 < 전체 checkBox >
@@ -81,33 +75,30 @@
 				<div class="box">
 					<div class="box-header with-border">
 						<h3 align="center">도서 목록</h3>
-						<div>
-						
-						<!-- 검색 -->
-								<form name="serach" method="post">
-									<select name="searchType">
-										<option value="n"
-											<c:out value="${cri.searchType == null?'selected':''}"/>>
-											-선택-</option>
-										<option value="title"
-											<c:out value="${cri.searchType eq 'title'?'selected':''}"/>>
-											책제목</option>
-										<option value="author"
-											<c:out value="${cri.searchType eq 'author'?'selected':''}"/>>
-											작 가</option>
-										<option value="publisher"
-											<c:out value="${cri.searchType eq 'publisher'?'selected':''}"/>>
-											출판사</option>
-									</select> <input type="text" id="keyword" name="keywordInput"
-										value="${cri.keyword }" />
-									<button id="searchBtn">검색</button>
-								</form>
-						</div>
 					</div>
 
 
 					<!-- main 출력 부분  -->
 					<div class="box-body">
+
+						<!-- 검색 -->
+							<select name="searchType">
+								<option value="n"
+									<c:out value="${cri.searchType == null?'selected':''}"/>>
+										-선택-</option>
+									<option value="title"
+									<c:out value="${cri.searchType eq 'title'?'selected':''}"/>>
+										책제목</option>
+									<option value="author"
+										<c:out value="${cri.searchType eq 'author'?'selected':''}"/>>
+										작 가</option>
+									<option value="publisher"
+										<c:out value="${cri.searchType eq 'publisher'?'selected':''}"/>>
+										출판사</option>
+							</select>
+									<input type="text" id="keyword" name="keyword" value="${cri.keyword }" />
+									<button id="searchBtn">검색</button>
+
 
 						<form method="post" id="delBook" action="/admin/deleteBook">
 							<table class="table table-bordered">
@@ -129,7 +120,7 @@
 											value="${bookVO.booknum}" /></td>
 										<td align="center">${bookVO.booknum}</td>
 										<td align="center"><a
-											href='/admin/readBook?${pagerMaker.makeSearch(pageMaker.cri.page)
+											href='/admin/readBook${pageMaker.makeSearch(pageMaker.cri.page)
 											}&booknum=${bookVO.booknum}'>
 												${bookVO.title}</a></td>
 										<td align="center">${bookVO.author}</td>
@@ -153,11 +144,10 @@
 
 								<c:if test="${pageMaker.prev}">
 									<li><a
-										href="listBook${pageMaker.makeSearch(pageMaker.startPage - 1) }">&laquo;</a></li>
+										href="listBook${pageMaker.makeSearch(pageMaker.startPage -1) }">&laquo;</a></li>
 								</c:if>
 
-								<c:forEach begin="${pageMaker.startPage }"
-									end="${pageMaker.endPage }" var="idx">
+								<c:forEach begin="${pageMaker.startPage }" end="${pageMaker.endPage }" var="idx">
 									<li
 										<c:out value="${pageMaker.cri.page == idx?'class =active':''}"/>>
 										<a href="listBook${pageMaker.makeSearch(idx)}">${idx}</a>

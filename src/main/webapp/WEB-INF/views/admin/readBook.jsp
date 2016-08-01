@@ -24,7 +24,10 @@
 
 		//목록 버튼
 		$(".btn-primary").on("click", function() {
-			self.location = "/admin/listBook";
+			//self.location = "/admin/listBuy";
+			formObj.attr("method", "get");
+			formObj.attr("action", "/admin/listBook");
+			formObj.submit();
 		});
 
 	});
@@ -46,6 +49,8 @@
 				<form role="form" method="post">
 
 					<input type='hidden' name='booknum' value="${bookVO.booknum}">
+					<input type='hidden' name='page' value="${cri.page}">
+					<input type='hidden' name='perPageNum' value="${cri.perPageNum}">
 
 				</form>
 
