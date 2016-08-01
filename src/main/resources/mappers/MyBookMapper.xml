@@ -19,7 +19,7 @@
 	<select id="getHwp" resultType="String">
 		select hwp
 		from buy bu, book b, mybook m 
-		where bu.buynum=#{mybooknum} and bu.booknum=b.booknum and m.mybooknum=#{mybooknum}
+		where bu.buynum=m.mybooknum and bu.booknum=b.booknum and m.mybooknum=#{mybooknum}
 	</select>
 	
 	
