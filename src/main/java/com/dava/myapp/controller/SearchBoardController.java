@@ -42,6 +42,23 @@ public class SearchBoardController {
 
     model.addAttribute("pageMaker", pageMaker);
   }
+  
+  @RequestMapping(value = "/listMember", method = RequestMethod.GET)
+  public void listMember(@ModelAttribute("cri") SearchCriteria cri, Model model) throws Exception {
+
+    logger.info(cri.toString());
+
+    //model.addAttribute("Mlist", service.MemberlistCriteria(cri));
+    model.addAttribute("Mlist", service.MemberlistSearchCriteria(cri));
+
+    PageMaker pageMaker = new PageMaker();
+    pageMaker.setCri(cri);
+
+    //pageMaker.setTotalCount(service.MemberlistCountCriteria(cri));
+    pageMaker.setTotalCount(service.MemberlistSearchCount(cri));
+
+    model.addAttribute("pageMaker", pageMaker);
+  }
 /*
   @RequestMapping(value = "/readBook", method = RequestMethod.GET)
   public void read(@RequestParam("booknum") int booknum, @ModelAttribute("cri") SearchCriteria cri, Model model)
