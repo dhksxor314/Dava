@@ -90,21 +90,21 @@
 									<td width="20%">구매일</td>
 								</tr>
 
-								<c:forEach items="${Buylist}" var="BuyVO">
+								<c:forEach items="${Buylist}" var="BuylistVO">
 									<tr>
 										<td align="center"><input name="chBuy" type="checkbox"
-											value="${BuyVO.buynum }" /></td>
-										<td align="center">${BuyVO.buynum}</td>
+											value="${BuylistVO.buynum }" /></td>
+										<td align="center">${BuylistVO.buynum}</td>
 										<td align="center"><a
 											href='/admin/readMember${pageMaker.makeSearch(pageMaker.cri.page)
-											}&memnum=${BuyVO.memnum}'>
-												${BuyVO.memnum}</a></td>
+											}&memnum=${BuylistVO.memnum}'>
+												${BuylistVO.memnum}</a></td>
 										<td align="center"><a
 											href='/admin/readBookBuy${pageMaker.makeSearch(pageMaker.cri.page)
-											}&booknum=${BuyVO.booknum}'>
-												${BuyVO.title}</a></td>
+											}&title=${BuylistVO.title}'>
+												${BuylistVO.title}</a></td>
 										<td align="center"><fmt:formatDate pattern="yyyy-MM-dd"
-												value="${BuyVO.buy_date}" /></td>
+												value="${BuylistVO.buy_date}" /></td>
 									</tr>
 								</c:forEach>
 
