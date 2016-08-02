@@ -58,7 +58,7 @@
 					</div>
 
 					<div class="form-group">
-						<label for="exampleInputPassword1">장 르</label> <input type="text"
+						<label for="exampleInputPassword1">-장르-</label> <input type="text"
 							class="form-control" name="genre" readonly="readonly"
 							value="${bookVO.genre}" />
 					</div>
@@ -70,7 +70,7 @@
 					</div>
 
 					<div class="form-group">
-						<label for="exampleInputPassword1">작 가</label> <input type="text"
+						<label for="exampleInputPassword1">-작가-</label> <input type="text"
 							class="form-control" name="author" readonly="readonly"
 							value="${bookVO.author}" />
 					</div>
@@ -91,12 +91,6 @@
 						<label for="exampleInputPassword1">도서가격</label> <input type="text"
 							class="form-control" name="price" readonly="readonly"
 							value="${bookVO.price}" />
-					</div>
-
-					<div class="form-group">
-						<label for="exampleInputPassword1">img</label> <input type="text"
-							class="form-control" name="img" readonly="readonly"
-							value="${bookVO.img}" />
 					</div>
 
 					<div class="form-group">

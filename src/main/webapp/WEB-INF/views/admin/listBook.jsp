@@ -74,7 +74,7 @@
 
 				<div class="box">
 					<div class="box-header with-border">
-						<h3 align="center">도서 목록</h3>
+						<h1 align="center">도서 목록</h1>
 					</div>
 
 
@@ -85,16 +85,19 @@
 							<select name="searchType">
 								<option value="n"
 									<c:out value="${cri.searchType == null?'selected':''}"/>>
-										-선택-</option>
-									<option value="title"
+										전체보기</option>
+								<option value="title"
 									<c:out value="${cri.searchType eq 'title'?'selected':''}"/>>
-										책제목</option>
-									<option value="author"
-										<c:out value="${cri.searchType eq 'author'?'selected':''}"/>>
-										작 가</option>
-									<option value="publisher"
-										<c:out value="${cri.searchType eq 'publisher'?'selected':''}"/>>
-										출판사</option>
+										도서제목</option>
+								<option value="booknum"
+									<c:out value="${cri.searchType eq 'booknum'?'selected':''}"/>>
+										도서번호</option>
+								<option value="author"
+									<c:out value="${cri.searchType eq 'author'?'selected':''}"/>>
+									&nbsp;&nbsp;작&nbsp; 가</option>
+								<option value="publisher"
+									<c:out value="${cri.searchType eq 'publisher'?'selected':''}"/>>
+										출 판 사</option>
 							</select>
 									<input type="text" id="keyword" name="keyword" value="${cri.keyword }" />
 									<button id="searchBtn">검색</button>
@@ -104,11 +107,11 @@
 							<table class="table table-bordered">
 								<tr align="center" style="font-size: 20; font-weight: bold;">
 									<td width="5%"><input type="checkbox" id="checkall" /></td>
-									<td width="10%">번호</td>
-									<td width="20%">제목</td>
-									<td width="10%">작가</td>
-									<td width="10%">가격</td>
-									<td width="15%">SAL</td>
+									<td width="12%">도서번호</td>
+									<td width="20%">도서제목</td>
+									<td width="9%">작가</td>
+									<td width="9%">가격</td>
+									<td width="15%">판매부수</td>
 									<td width="15%">출판사</td>
 									<td width="15%">출판일</td>
 								</tr>
