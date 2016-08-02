@@ -167,13 +167,15 @@
  	<select id="BuylistPage" resultType="BuylistVO">
 	 <![CDATA[
 		select *
-		from buy buynum >0 order by buynum limit #{page}, 10;
+		FROM buy, book
+		where buy.booknum=book.booknum and buynum >0 order by buynum limit #{page}, 10;
 	 ]]>  
  	</select>
 	<select id="BuylistCriteria" resultType="BuylistVO">
 	 <![CDATA[
-		select *
-		from buy buynum > 0 order by buynum limit #{pageStart}, #{perPageNum};
+		select buy_date, p_way, final_pay, title, genre, img
+		FROM buy, book
+		where buy.booknum=book.booknum and buynum > 0 order by buynum limit #{pageStart}, #{perPageNum};
 	 ]]>  
  	</select>
  	<select id="BuycountPaging" resultType="int">
@@ -188,7 +190,8 @@
 	<select id="BuylistSearch" resultType="BuylistVO">
 	 <![CDATA[
 		select *
-		from buy where buynum > 0
+		FROM buy, book
+		where buy.booknum=book.booknum and buynum > 0
 	 ]]>
 		<include refid="search"></include>
 	 <![CDATA[

@@ -62,16 +62,11 @@ public class SearchBoardController {
   
   @RequestMapping(value = "/listBuy", method = RequestMethod.GET)
   public void listBuy(@ModelAttribute("cri") SearchCriteria cri, Model model) throws Exception {
+    System.out.println(service.BuylistSearchCriteria(cri).get(0).getTitle());
 
-    logger.info(cri.toString());
-
-    //model.addAttribute("Buylist", service.MemberlistCriteria(cri));
     model.addAttribute("Buylist", service.BuylistSearchCriteria(cri));
-
     PageMaker pageMaker = new PageMaker();
     pageMaker.setCri(cri);
-
-    //pageMaker.setTotalCount(service.BuylistCountCriteria(cri));
     pageMaker.setTotalCount(service.BuylistSearchCount(cri));
 
     model.addAttribute("pageMaker", pageMaker);

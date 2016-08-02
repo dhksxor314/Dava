@@ -49,6 +49,7 @@ public class AdminController {
 	public String registBook(MultipartFile img, MultipartFile hwp, Model model, HttpServletRequest req, String title,
 			String genre, String author, String publisher, String pub_date, String summary, int price)
 			throws Exception {
+		
 		bvo.setTitle(title);
 		bvo.setAuthor(author);
 		bvo.setGenre(genre);
@@ -105,17 +106,6 @@ public class AdminController {
 		}
 	}
 
-	// 등록된 도서
-	@RequestMapping(value = "/listBook")
-	public void listBook(Model model, @ModelAttribute("cri") Criteria cri) throws Exception {
-		model.addAttribute("Blist", service.BooklistCriteria(cri));
-		PageMaker pageMaker = new PageMaker();
-		pageMaker.setCri(cri);
-		pageMaker.setTotalCount(service.BooklistCountCriteria(cri));
-
-		model.addAttribute("pageMaker", pageMaker);
-	}
-
 	// 도서 정보 확인
 	@RequestMapping(value = "/readBook")
 	public void readBook(Model model, @RequestParam("booknum") int booknum, @ModelAttribute("cri") Criteria cri)
@@ -145,16 +135,6 @@ public class AdminController {
 		return "redirect:/admin/listBook";
 	}
 
-	// 회원 리스트
-	@RequestMapping(value = "/listMember")
-	public void listMember(Model model, @ModelAttribute("cri") Criteria cri) throws Exception {
-		model.addAttribute("Mlist", service.MemberlistCriteria(cri));
-		PageMaker pageMaker = new PageMaker();
-		pageMaker.setCri(cri);
-		pageMaker.setTotalCount(service.MemberlistCountCriteria(cri));
-
-		model.addAttribute("pageMaker", pageMaker);
-	}
 
 	// 회원 삭제
 	@RequestMapping(value = "/deleteMember")
@@ -173,16 +153,6 @@ public class AdminController {
 		model.addAttribute(service.readMember(memnum));
 	}
 
-	// 구매 리스트
-	@RequestMapping(value = "/listBuy")
-	public void listBuy(Model model,@ModelAttribute("cri") Criteria cri) throws Exception {
-		model.addAttribute("Buylist", service.BuylistCriteria(cri));
-		PageMaker pageMaker = new PageMaker();
-		pageMaker.setCri(cri);
-		pageMaker.setTotalCount(service.BuylistCountCriteria(cri));
-
-		model.addAttribute("pageMaker", pageMaker);
-	}
 
 	// 구매 삭제(환불)
 	@RequestMapping(value = "/deleteBuy")
