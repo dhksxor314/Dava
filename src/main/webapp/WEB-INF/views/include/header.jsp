@@ -91,7 +91,7 @@
 			</div>
 			<div class="row" style="text-align: right;">
 				
-				<a href="" id="join">회원가입</a><a href="" id="pwsearch" class="col-md-offset-1"
+				<a href="#" id="join">회원가입</a><a href="#" id="pwsearch" class="col-md-offset-1"
 					style="margin-right: 30px;">비밀번호 찾기</a>
 			</div>
 		</div>
