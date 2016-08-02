@@ -12,9 +12,9 @@
 
 
 <script>
-   $(document).ready(function() {
-
-   });
+	$(document).ready(function(){
+		
+	});
 </script>
 <style>
 .margin {
@@ -25,22 +25,20 @@
 </head>
 
 <body>
-<form method="post" id="joinform">
-   <div class="container">
-      <div class="row"> <h1>비밀번호찾기</h1></div>
-      <div class="row margin">   
-         <input type="email" class="form-control" placeholder="Enter email" name="id" id="id" value="${id}">
-      </div>
-         <div class="row">
-      		<div>${msg}</div>
-      	</div>
-      <div class="row margin">
-            <input type="submit" id="join" class="col-xs-offset-3 col-xs-6 col-xs-offset-3 btn btn-success" value="가입하기" style="height: 53px">
-      </div>
-   </div>
-</form>
-   
-
+	<form method="post" id="findform">
+	   <div class="container">
+	      <div class="row"> <h1>비밀번호찾기</h1></div>
+	      <div class="row margin">   
+	         <input type="email" class="form-control" placeholder="Enter email" name="id" id="id" value=${id }><br/>	         
+	      </div>
+	         <div class="row">
+	      		<div>${msg}</div>
+	      	</div>
+	      <div class="row margin">
+	            <input type="submit" id="find" class="col-xs-offset-3 col-xs-6 col-xs-offset-3 btn btn-success" value="찾기" style="height: 53px">
+	      </div>
+	   </div>
+	</form>
 </body>
 <script src="/resources/bootstrap/js/bootstrap.min.js"></script>
 </html>

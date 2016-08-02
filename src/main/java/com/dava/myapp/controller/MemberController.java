@@ -1,7 +1,17 @@
 package com.dava.myapp.controller;
 
-import javax.inject.Inject;
+import java.util.Properties;
 
+import javax.inject.Inject;
+import javax.mail.Address;
+import javax.mail.Authenticator;
+import javax.mail.Message;
+import javax.mail.Session;
+import javax.mail.Transport;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeMessage;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -9,6 +19,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.dava.myapp.domain.MemberVO;
+import com.dava.myapp.mail.SMTPAuthenticatior;
+import com.dava.myapp.service.FindPwService;
 import com.dava.myapp.service.MemberService;
 
 @Controller
@@ -17,6 +29,8 @@ public class MemberController {
    @Inject
    private MemberService mem_service;
 
+   @Autowired
+ 	private FindPwService service;
    
 
    @RequestMapping(value = "/join", method = RequestMethod.GET)
@@ -63,6 +77,7 @@ public class MemberController {
 
       return "/member/join";
    }
+   
    @RequestMapping(value = "/pwsearch", method = RequestMethod.GET)
    public String pwsearch_GET() throws Exception {
 
@@ -76,14 +91,67 @@ public class MemberController {
 	   
 	   if(input == null){
 		   model.addAttribute("msg","등록되지않은 아이디입니다.");
-		  
 	   }else{
-		   model.addAttribute("msg","등록된 아아디  입니다.<br><a href='#' id='check'>비밀번호를 이메일로 받으시려면 여기를 클릭하세요</a>");
+		   model.addAttribute("msg","등록된 아아디  입니다.<br><a href='/member/findPw?id="+id+"' id='check'>비밀번호를 이메일로 받으시려면 여기를 클릭하세요</a>");
+		   
 		   model.addAttribute("id", id);
 	   }
 	   
       return "/member/pwsearch";
    }
+   
+ 
+	
+	@RequestMapping("/findPw")
+	public String findPwHandler(String id, Model model){
+		System.out.println("11111");
+		System.out.println(id);
+		String from = "hyeon454";
+		String to = id;
+		String subject = "다봐 비밀번호 찾기";
+		String content = "당신의 비밀번호는 <b>"+service.findPw(id)+"입니다";
+		
+		try{
+			
+			Properties p = new Properties();
+			System.out.println(1);
+			p.put("mail.smtp.host", "smtp.naver.com");
+			p.put("mail.smtp.port", "465");
+			p.put("mail.smtp.starttls.enable", "true");
+			p.put("mail.smtp.auth", "true");
+			p.put("mail.smtp.debug", "true");
+			p.put("mail.smtp.socketFactory.port", "465");
+			p.put("mail.smtp.socketFactory.class", "javax.net.ssl.SSLSocketFactory");
+			p.put("mail.smtp.socketFactory.fallback", "false");
+			System.out.println(2);
+		    Authenticator auth = new SMTPAuthenticatior();
+		    System.out.println(3);
+		    Session ses = Session.getInstance(p, auth);
+		    System.out.println(4);
+		     
+		    ses.setDebug(true);
+		    System.out.println(5); 
+		    MimeMessage msg = new MimeMessage(ses); // 메일의 내용을 담을 객체
+		    msg.setSubject(subject); // 제목
+
+		    System.out.println(6); 
+		    Address fromAddr = new InternetAddress(from);
+		    msg.setFrom(fromAddr); // 보내는 사람
+
+		    System.out.println(7); 
+		    Address toAddr = new InternetAddress(to);
+		    msg.addRecipient(Message.RecipientType.TO, toAddr); // 받는 사람
+
+		    System.out.println(8); 
+		    msg.setContent(content, "text/html;charset=UTF-8"); // 내용과 인코딩
+
+		    System.out.println(9); 
+		    Transport.send(msg); // 전송
+		} catch(Exception e){
+		    System.out.println("전송 실패");
+		}
+		return "/member/pwsearch";
+	}
 
    
 
