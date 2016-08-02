@@ -54,13 +54,13 @@
 					</div>
 					
 					<div class="form-group">
-						<label for="exampleInputPassword1">아이디</label> <input type="text"
+						<label for="exampleInputPassword1">아 이 디</label> <input type="text"
 							class="form-control" name="id" readonly="readonly"
 							value="${memberVO.id}" />
 					</div>
 					
 					<div class="form-group">
-						<label for="exampleInputEmail1">닉네임</label> <input type="text"
+						<label for="exampleInputEmail1">닉 네 임</label> <input type="text"
 							name='nickname' class="form-control" value="${memberVO.nickname}"
 							readonly="readonly" />
 					</div>

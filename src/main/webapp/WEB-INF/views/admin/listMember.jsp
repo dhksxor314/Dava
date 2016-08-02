@@ -56,7 +56,7 @@
 
 				<div class="box">
 					<div class="box-header with-border">
-						<h3 align="center">회원 목록</h3>
+						<h1 align="center">회원 목록</h1>
 
 					</div>
 					<div class="box-body">
@@ -65,16 +65,16 @@
 						<select name="searchType">
 								<option value="n"
 									<c:out value="${cri.searchType == null?'selected':''}"/>>
-										-선택-</option>
+										전체보기</option>
 									<option value="memnum"
 									<c:out value="${cri.searchType eq 'memnum'?'selected':''}"/>>
 										회원번호</option>
 									<option value="nickname"
 										<c:out value="${cri.searchType eq 'nickname'?'selected':''}"/>>
-										닉네임</option>
+										닉 네 임</option>
 									<option value="id"
 										<c:out value="${cri.searchType eq 'id'?'selected':''}"/>>
-										아이디</option>
+										아 이 디</option>
 							</select>
 									<input type="text" id="keyword" name="keyword" value="${cri.keyword }" />
 									<button id="searchBtn">검색</button>
@@ -84,10 +84,10 @@
 							<table class="table table-bordered">
 								<tr align="center" style="font-size: 20; font-weight: bold;">
 									<td width="5%"><input type="checkbox" id="checkall" /></td>
-									<td width="10%">번호</td>
-									<td width="50%">E-mail ID</td>
-									<td width="15%">닉네임</td>
-									<td width="30%">POINT</td>
+									<td width="15%">회원번호</td>
+									<td width="40%">E-mail ID</td>
+									<td width="25%">닉네임</td>
+									<td width="25%">POINT</td>
 								</tr>
 
 								<c:forEach items="${Mlist}" var="memberVO">
