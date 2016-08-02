@@ -23,7 +23,8 @@
 		genre=#{genre},
 		author=#{author}, 
 		publisher=#{publisher}, 
-		pub_date=#{pub_date}, 
+		pub_date=#{pub_date},
+		hwp=#{hwp},
 		price=#{price},
 		img=#{img},
 		summary=#{summary} where booknum=#{booknum}
@@ -80,6 +81,9 @@
 		<if test="searchType != null">
 			<if test="searchType == 'title'.toString()">
 				and title like CONCAT('%', #{keyword}, '%')
+			</if>
+			<if test="searchType == 'booknum'.toString()">
+				and booknum like CONCAT('%', #{keyword}, '%')
 			</if>
 			<if test="searchType == 'author'.toString()">
 				and author like CONCAT('%', #{keyword}, '%')

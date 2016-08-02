@@ -81,11 +81,6 @@
 						</div>
 						
 						<div class="form-group">
-							<label for="exampleInputPassword1">img</label> <input type="text"
-								class="form-control" name="img" value="${bookVO.img}" />
-						</div>
-						
-						<div class="form-group">
 							<label for="exampleInputPassword1">summary</label>
 							<textarea class="form-control" name="summary" rows="3">${bookVO.summary}</textarea>
 						</div>
@@ -96,8 +91,8 @@
 
 
 				<div class="box-footer">
-					<button type="submit" class="btn btn-primary">SAVE</button>
-					<button type="submit" class="btn btn-warning">CANCEL</button>
+					<button type="submit" class="btn btn-primary">저장</button>
+					<button type="submit" class="btn btn-warning">취소</button>
 				</div>
 
 			</div>

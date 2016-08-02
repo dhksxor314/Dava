@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8" isELIgnored="false"%>
 
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
@@ -30,26 +30,23 @@
 		<a href="/"><img src="/resources/imgs/logo.png" width="80%"></a>
 	</div>
 
-	<div class="col-md-6 col-md-offset-3">
-		<div class="row">
+				<div class="col-md-6 col-md-offset-3">
 
-
-			<form class="form-inline pull-right" action="/admin/logout" method="post" id="logoutForm" name="logoutForm">
-				<div class="form-group">
-					<div class="input-group">
-						<div class="input-group-addon">
-							<icon class="glyphicon glyphicon-star">Administrator</icon>
-							
-						</div>
-						<input type="submit" value="로그아웃"/>
+				<div class="col-xs-offset-6 col-xs-2">
+					<img src="/resources/imgs/login.png" class="img-circle"
+						style="width: 50px; height: 50px">
+				</div>
+				<div class="col-xs-4" style="text-align: left;">
+					<div class="row" style="margin-top: 5px">관리자</div>
+					<div class="row" style="margin-top: 5px">
+							<a href="/mypage/mypage_main">me</a> | <a id="logout" href="/logout">로그아웃</a><br/>
+							<a href="/admin/listBook">관리자페이지</a>
 					</div>
 				</div>
-				
-			</form>
-		</div>
-	</div>
 
-</div>
+
+		</div>
+		</div>
 
 <div class="container" style="background-color: #23b300;">
 	<ul class="nav nav-pills col-md-9"

@@ -55,7 +55,7 @@
 
 				<div class="box">
 					<div class="box-header with-border">
-						<h3 align="center">결제 내역</h3>
+						<h1 align="center">결제 내역</h1>
 					</div>
 
 
@@ -66,16 +66,16 @@
 						<select name="searchType">
 							<option value="n"
 								<c:out value="${cri.searchType == null?'selected':''}"/>>
-								-선택-</option>
+								전체보기</option>
 							<option value="buynum"
 								<c:out value="${cri.searchType eq 'buynum'?'selected':''}"/>>
-								구매번호</option>
-							<option value="title"
-								<c:out value="${cri.searchType eq 'title'?'selected':''}"/>>
-								도서이름</option>
+								결제번호</option>
 							<option value="memnum"
 								<c:out value="${cri.searchType eq 'memnum'?'selected':''}"/>>
 								회원번호</option>
+							<option value="title"
+								<c:out value="${cri.searchType eq 'title'?'selected':''}"/>>
+								도서제목</option>
 						</select> <input type="text" id="keyword" name="keyword"
 							value="${cri.keyword }" />
 						<button id="searchBtn">검색</button>
@@ -84,10 +84,10 @@
 							<table class="table table-bordered">
 								<tr align="center" style="font-size: 20; font-weight: bold;">
 									<td width="5%"><input type="checkbox" id="checkall" /></td>
-									<td width="10%">구매 번호</td>
-									<td width="15%">회원 번호</td>
-									<td width="20%">도서 제목</td>
-									<td width="20%">구매일</td>
+									<td width="20%">결제번호</td>
+									<td width="20%">회원번호</td>
+									<td width="35%">도서제목</td>
+									<td width="20%">구 매 일</td>
 								</tr>
 
 								<c:forEach items="${Buylist}" var="BuylistVO">
