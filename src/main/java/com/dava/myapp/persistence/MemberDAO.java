@@ -24,7 +24,7 @@ public interface MemberDAO {
 
 	public MemberVO login(MemberVO vo) throws Exception;
 	
-	public String pwsearch(String id) throws Exception;
+	public MemberVO pwsearch(String id) throws Exception;
 	
 	//paging
 	public List<MemberVO> MemberlistPage(int page) throws Exception;

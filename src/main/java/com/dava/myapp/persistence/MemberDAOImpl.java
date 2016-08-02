@@ -94,7 +94,7 @@ public class MemberDAOImpl implements MemberDAO {
 	}
 
 	@Override
-	public String pwsearch(String id) throws Exception {
+	public MemberVO pwsearch(String id) throws Exception {
 		// TODO Auto-generated method stub
 		return SqlSession.selectOne(namespace + ".pwsearch", id);
 	}

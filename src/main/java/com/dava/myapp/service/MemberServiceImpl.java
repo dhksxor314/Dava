@@ -38,7 +38,7 @@ public class MemberServiceImpl implements MemberService {
 	}
 
 	@Override
-	public String pwsearch(String id) throws Exception {
+	public MemberVO pwsearch(String id) throws Exception {
 		// TODO Auto-generated method stub
 		return dao.pwsearch(id);
 	}

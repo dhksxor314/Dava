@@ -31,9 +31,9 @@
 		update member set password = #{password} where memnum = #{memnum};		
 	</update>
 	
-	<select id="pwsearch" resultType="String">
+	<select id="pwsearch" resultType="com.dava.myapp.domain.MemberVO">
 		select
-		password
+		password,memnum
 		from
 		member
 		where id = #{id};

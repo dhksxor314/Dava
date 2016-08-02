@@ -1,6 +1,7 @@
 package com.dava.myapp.controller;
 
 import java.util.Properties;
+import java.util.Random;
 
 import javax.inject.Inject;
 import javax.mail.Address;
@@ -31,6 +32,7 @@ public class MemberController {
 
    @Autowired
  	private FindPwService service;
+   
    
 
    @RequestMapping(value = "/join", method = RequestMethod.GET)
@@ -87,7 +89,7 @@ public class MemberController {
    @RequestMapping(value = "/pwsearch", method = RequestMethod.POST)
    public String pwsearch_POST(@RequestParam("id") String id, Model model) throws Exception {
 	   
-	   String input = mem_service.pwsearch(id);
+	   String input = mem_service.pwsearch(id).getPassword();
 	   
 	   if(input == null){
 		   model.addAttribute("msg","등록되지않은 아이디입니다.");
@@ -103,18 +105,29 @@ public class MemberController {
  
 	
 	@RequestMapping("/findPw")
-	public String findPwHandler(String id, Model model){
-		System.out.println("11111");
+	public String findPwHandler(String id, Model model,	MemberVO vo) throws Exception{
+		Random random = new Random();
+		int rand =random.nextInt(9000)+1000;
+		
+		
 		System.out.println(id);
+		
+		int memnum = mem_service.pwsearch(id).getmemnum();
+		System.out.println(memnum);
+		vo.setmemnum(memnum);
+		vo.setPassword(rand+"");
+		mem_service.editpassword(vo);
+		
+		
+		
 		String from = "hyeon454";
 		String to = id;
 		String subject = "다봐 비밀번호 찾기";
-		String content = "당신의 비밀번호는 <b>"+service.findPw(id)+"입니다";
+		String content = "당신의 비밀번호가 <b>"+rand+"로 변경되었습니다. <br/>비밀번호를 변경해 주세요.";
 		
 		try{
 			
 			Properties p = new Properties();
-			System.out.println(1);
 			p.put("mail.smtp.host", "smtp.naver.com");
 			p.put("mail.smtp.port", "465");
 			p.put("mail.smtp.starttls.enable", "true");
@@ -123,29 +136,21 @@ public class MemberController {
 			p.put("mail.smtp.socketFactory.port", "465");
 			p.put("mail.smtp.socketFactory.class", "javax.net.ssl.SSLSocketFactory");
 			p.put("mail.smtp.socketFactory.fallback", "false");
-			System.out.println(2);
 		    Authenticator auth = new SMTPAuthenticatior();
-		    System.out.println(3);
 		    Session ses = Session.getInstance(p, auth);
-		    System.out.println(4);
 		     
 		    ses.setDebug(true);
-		    System.out.println(5); 
 		    MimeMessage msg = new MimeMessage(ses); // 메일의 내용을 담을 객체
 		    msg.setSubject(subject); // 제목
-
-		    System.out.println(6); 
+		    
 		    Address fromAddr = new InternetAddress(from);
 		    msg.setFrom(fromAddr); // 보내는 사람
 
-		    System.out.println(7); 
 		    Address toAddr = new InternetAddress(to);
 		    msg.addRecipient(Message.RecipientType.TO, toAddr); // 받는 사람
 
-		    System.out.println(8); 
 		    msg.setContent(content, "text/html;charset=UTF-8"); // 내용과 인코딩
 
-		    System.out.println(9); 
 		    Transport.send(msg); // 전송
 		} catch(Exception e){
 		    System.out.println("전송 실패");
