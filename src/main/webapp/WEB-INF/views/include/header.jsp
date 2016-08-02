@@ -31,7 +31,7 @@
 		$("#join").click(function() {
 
 			var wsize = 350;
-			var hsize = 280;
+			var hsize = 300;
 			window.open('/member/join','join','width ='
 					+ wsize+ ',height='+ hsize+ ',top='+ (screen.height - hsize)/ 2+ ', left='+ (screen.width - wsize)/ 2);
 
@@ -43,7 +43,7 @@
 		})
 		$("#pwsearch").click(function(){
 			var wsize = 350;
-			var hsize = 300;
+			var hsize = 220;
 			window.open('/member/pwsearch','search','width ='
 					+ wsize+ ',height='+ hsize+ ',top='+ (screen.height - hsize)/ 2+ ', left='+ (screen.width - wsize)/ 2);
 		})

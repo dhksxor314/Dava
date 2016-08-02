@@ -154,14 +154,5 @@ public class AdminController {
 	}
 
 
-	// 구매 삭제(환불)
-	@RequestMapping(value = "/deleteBuy")
-	public String deleteBuy(HttpServletRequest req) throws Exception {
-		String[] chBuy = req.getParameterValues("chBuy");
-		for (int i = 0; i < chBuy.length; i++) {
-			service.deleteBuy(Integer.parseInt(chBuy[i]));
-			service.deleteMy(Integer.parseInt(chBuy[i]));
-		}
-		return "redirect:/admin/listBuy";
-	}
+
 }

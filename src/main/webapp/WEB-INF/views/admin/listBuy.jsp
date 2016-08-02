@@ -9,13 +9,6 @@
 <script type="text/javascript">
 	$(document).ready(
 			function() {
-				//환불처리 버튼
-				$(".btn-danger").on("click", function() {
-					var con = confirm("환불처리 하시겠습니까?");
-					if (con == true) {
-						$("#delBuy").submit();
-					}
-				});
 
 				//검색
 				$("#searchBtn").on(
@@ -29,18 +22,7 @@
 									+ "&keyword=" + $('#keyword').val();
 						});
 
-				//최상단 체크박스 클릭
-				$("#checkall").click(function() {
-					//클릭되었으면
-					if ($("#checkall").prop("checked")) {
-						//input태그의 name이 chk인 태그들을 찾아서 checked옵션을 true로 정의
-						$("input[name=chBuy]").prop("checked", true);
-						//클릭이 안되있으면
-					} else {
-						//input태그의 name이 chk인 태그들을 찾아서 checked옵션을 false로 정의
-						$("input[name=chBuy]").prop("checked", false);
-					}
-				});
+
 			});
 </script>
 <div class="container">
@@ -83,7 +65,7 @@
 						<form method="POST" id="delBuy" action="/admin/deleteBuy">
 							<table class="table table-bordered">
 								<tr align="center" style="font-size: 20; font-weight: bold;">
-									<td width="5%"><input type="checkbox" id="checkall" /></td>
+								
 									<td width="20%">결제번호</td>
 									<td width="20%">회원번호</td>
 									<td width="35%">도서제목</td>
@@ -92,8 +74,7 @@
 
 								<c:forEach items="${Buylist}" var="BuylistVO">
 									<tr>
-										<td align="center"><input name="chBuy" type="checkbox"
-											value="${BuylistVO.buynum }" /></td>
+										
 										<td align="center">${BuylistVO.buynum}</td>
 										<td align="center"><a
 											href='/admin/readMember${pageMaker.makeSearch(pageMaker.cri.page)
@@ -140,9 +121,7 @@
 						</div>
 					</div>
 
-					<span style="float: right">
-						<button class="btn btn-danger">환불처리</button>
-					</span>
+	
 					<!-- /.box-footer-->
 				</div>
 			</div>
