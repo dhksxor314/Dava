@@ -39,8 +39,8 @@
 				<div class="col-xs-4" style="text-align: left;">
 					<div class="row" style="margin-top: 5px">관리자</div>
 					<div class="row" style="margin-top: 5px">
-							<a href="/mypage/mypage_main">me</a> | <a id="logout" href="/logout">로그아웃</a><br/>
-							<a href="/admin/listBook">관리자페이지</a>
+							<a href="/admin/listBook">관리자페이지</a> | <a id="logout" href="/logout">로그아웃</a><br/>
+							
 					</div>
 				</div>
 
