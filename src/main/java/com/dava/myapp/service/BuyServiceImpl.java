@@ -99,6 +99,13 @@ public class BuyServiceImpl implements BuyService {
 		// TODO Auto-generated method stub
 		return dao.mypage_buylist(memnum);
 	}
+
+	@Override
+	public BuyVO buycheck(BuyVO vo) throws Exception {
+		// TODO Auto-generated method stub
+		
+		return dao.buycheck(vo);
+	}
 	
 	
 

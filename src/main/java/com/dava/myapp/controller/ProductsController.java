@@ -61,7 +61,11 @@ public class ProductsController {
 	@RequestMapping(value = "/payment", method = RequestMethod.POST)
 	public void buy(BuyVO vo, Model model,ShopBagVO shop_vo, HttpSession session) throws Exception {
 		int memnum = Integer.parseInt(session.getAttribute("memnum").toString());
-		try {
+
+		
+		
+		if( buy_service.buycheck(vo) == null){
+				
 			buy_service.buy(vo);
 			mubook_service.mybook_insert(memnum);
 			buy_service.use_point(vo);
@@ -71,11 +75,12 @@ public class ProductsController {
 			
 			
 			buy_service.shop_drop(shop_vo);
-
-		} catch (Exception e) {
-			// TODO: handle exception
+		}else{
+			
 			model.addAttribute("msg", "이미 구입한 물품입니다.");
 		}
+		
+		
 
 	}
 

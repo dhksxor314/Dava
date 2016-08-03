@@ -51,5 +51,10 @@ public interface BuyDAO {
 	//검색
 	public List<BuylistVO> BuylistSearch(SearchCriteria cri) throws Exception;
 	public int BuylistSearchCount(SearchCriteria cri) throws Exception;
+	
+	
+	//구입시 검사
+
+	public BuyVO buycheck(BuyVO vo) throws Exception;
 
 }

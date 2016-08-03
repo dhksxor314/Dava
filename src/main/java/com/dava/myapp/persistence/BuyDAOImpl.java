@@ -145,4 +145,10 @@ public class BuyDAOImpl implements BuyDAO {
 		return SqlSession.selectList(NAMESPACE + ".buylist", memnum);
 	}
 
+	@Override
+	public BuyVO buycheck(BuyVO vo) throws Exception {
+		// TODO Auto-generated method stub
+		return SqlSession.selectOne(NAMESPACE + ".buycheck", vo);
+	}
+
 }

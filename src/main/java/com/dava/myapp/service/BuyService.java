@@ -35,4 +35,9 @@ public interface BuyService {
 	public List<BookVO> mypage_buy(int memnum) throws Exception;
 	
 	public List<BookVO> mypage_buylist(int memnum) throws Exception;
+	
+	//구입시 검사ㅣ
+
+	public BuyVO buycheck(BuyVO vo) throws Exception;
+
 }
