@@ -37,9 +37,9 @@ public class ReadBookController {
 
 		int startPage=service.getBookmark(mybooknum);//책보기를 눌렀을 시 기본 시작페이지는 1이며 책갈피가 등록된 경우에는 책갈피에 등록된 
 									
-		String path = req.getServletContext().getRealPath("resources/books");
+		String path = req.getServletContext().getRealPath("resources/books");//책이 저장되어 있는 폴더의 경로를 받음
 
-		String title = service.getHwp(mybooknum);
+		String title = service.getHwp(mybooknum);//디비에 저장된 책의 hwp파일의 이름을 가져온다
 
 		int pagePerLine=25;//한 페이지당 라인 수
 		int charPerLine=40;//
@@ -51,7 +51,7 @@ public class ReadBookController {
 	    Writer writer = new StringWriter(); // 추출된 텍스트를 출력할 버퍼
 	    HwpTextExtractor.extract(hwp, writer); // 파일로부터 텍스트 추출
 	    String text = writer.toString(); // 추출된 텍스트
-	    String c="";
+	    String c="";//아래의 알고리즘으로 만들어진 텍스트를 저장할 공간
 	    int cnt=0;//한 라인에 현재까지 삽입한 글자 수를 저장
 	    for(int i=1;i<=text.length();i++){//charPerLine(한라인의 길이)가 넘는 문단에 \n을 삽입한다. \n을 기준으로 라인을 분리할것이기때문
 	    	c+=text.charAt(i-1);
@@ -68,15 +68,15 @@ public class ReadBookController {
 	    String cline[] = c.split("\n");//위에서 \n을 삽입한 것을 이용하여 한라인씩 나눈다.
 	    totalLine=cline.length;//총 라인수가 된다.
 	    totalPage=(int)Math.ceil(((double)totalLine/(double)pagePerLine));//전체페이지 수
-	    content = new String[totalPage];
+	    content = new String[totalPage];//페이지 만큼의 배열 공간을 생성
 
-	    for(int i=0;i<totalPage;i++){
+	    for(int i=0;i<totalPage;i++){//+=로 값을 넣어주므로 초기에 null값이 들어가는 것을 막기위해 공백으로초기화
 	    	content[i]="";
 	    }
 	    
-	    int j=0;
+	    int j=0;//j는 현재페이지 i은 현재 라인
 	    for(int i=0;i<totalLine;i++){//content 배열에 한페이지당 들어갈 라인 수 만큼 글자를 삽입한다.
-	    	content[j]+=cline[i]+"<br/>";
+	    	content[j]+=cline[i]+"<br/>";//html에 넣을 것이므로 \n대신 한라인 마다 br태그를 삽입
 	    	if(((i+1)%pagePerLine)==0){j++;}
 	    }
 
@@ -94,8 +94,8 @@ public class ReadBookController {
 	@RequestMapping(value = "/readbook/setmark", method = RequestMethod.POST)
 	public void markHandler(@RequestParam("page_number") int page_number, @RequestParam("mybooknum") int mybooknum, Model model){
 		
-		model.addAttribute("mybooknum", mybooknum);
-		service.setBookmark(page_number, mybooknum);
+		model.addAttribute("mybooknum", mybooknum);//저장 후 다시 책보기 화면으로 돌아가기 위해 값을 넘겨줌
+		service.setBookmark(page_number, mybooknum);//북마크를 저장
 	}
 	
 

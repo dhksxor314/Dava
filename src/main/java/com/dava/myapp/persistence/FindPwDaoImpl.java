@@ -1,3 +1,8 @@
+/*
+ * 작성자 : 전현영
+ * 설명 : 비밀번호 찾기 시 사용
+ */
+
 package com.dava.myapp.persistence;
 
 import javax.inject.Inject;

@@ -24,9 +24,7 @@
 		author=#{author}, 
 		publisher=#{publisher}, 
 		pub_date=#{pub_date},
-		hwp=#{hwp},
 		price=#{price},
-		img=#{img},
 		summary=#{summary} where booknum=#{booknum}
 	</update>
 	

@@ -1,3 +1,10 @@
+/*
+ * 설명 : 관리자가 하는 작업(도서등록 및 삭제, 회원관리)들을 모아둔 컨트롤러
+ * 작성자 : 전현영
+ * 작성부분 : 도서 등록 및 삭제(파일까지)
+ * 
+ */
+
 package com.dava.myapp.controller;
 
 import java.io.File;
@@ -82,13 +89,14 @@ public class AdminController {
 	public String deleteBook(HttpServletRequest req) throws Exception {
 		String[] chBook = req.getParameterValues("chBook");
 
-		String bookpath = req.getServletContext().getRealPath("resources/books");
+		String bookpath = req.getServletContext().getRealPath("resources/books");//경로를 가져오고
 		String coverpath = req.getServletContext().getRealPath("resources/covers");
-		for (int i = 0; i < chBook.length; i++) {
+		for (int i = 0; i < chBook.length; i++) {//선택된 책의 파일을 모두 삭제
 			logger.info(service.readBook(Integer.parseInt(chBook[i])).getHwp());
 			deleteFile(bookpath + "/" + service.readBook(Integer.parseInt(chBook[i])).getHwp(),
 					coverpath + "/" + service.readBook(Integer.parseInt(chBook[i])).getImg());
-			service.deleteBook(Integer.parseInt(chBook[i]));
+			//
+			service.deleteBook(Integer.parseInt(chBook[i]));//파일을 삭제한 후에 디비를 삭제
 		}
 
 		return "redirect:/admin/listBook";
@@ -98,7 +106,7 @@ public class AdminController {
 	private void deleteFile(String bookpath, String coverpath) {
 		File bookdel = new File(bookpath);
 		File coverdel = new File(coverpath);
-		if (bookdel.exists()) {
+		if (bookdel.exists()) {//파일이 존재할 경우 삭제
 			bookdel.delete();
 		}
 		if (coverdel.exists()) {
