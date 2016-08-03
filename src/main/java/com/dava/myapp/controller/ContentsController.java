@@ -17,6 +17,7 @@ public class ContentsController {
 
 	@RequestMapping(value = "/contents", method = RequestMethod.GET)
 	public String contents(String contents, Model model,String search) throws Exception {
+		//컨텐츠 GET접근시.
 		int choise =  Integer.parseInt(contents);
 		if(contents.equals("1")){
 			contents ="";
@@ -28,16 +29,17 @@ public class ContentsController {
 			contents =search;
 		}
 		model.addAttribute("contents", contents);
-		model.addAttribute("get","get");
-		model.addAttribute("list",service.contents(contents));
-		model.addAttribute("choise", choise);
-		model.addAttribute("limit",8);
+		model.addAttribute("get","get"); //get방식 으로접근하는지 post방식으로 접근하는지 jsp파일에서 알기위해 임의로 준값.
+		model.addAttribute("list",service.contents(contents)); //선택 컨텐츠 리스트
+		model.addAttribute("choise", choise); 
+		model.addAttribute("limit",8);//기본적으로 8개 책만 보여줌.
 		return "/contents/contents";
 	}
 	
 	
 	@RequestMapping(value = "/contents", method = RequestMethod.POST)
 	public String contents_POST(String contents, Model model,int limit,String search) throws Exception {
+		//더보기를 눌렀을 시.
 		int choise =  Integer.parseInt(contents);
 		if(contents.equals("1")){
 			contents ="";
