@@ -15,7 +15,7 @@
 	$(document).ready(function() {
 		var get='${get}'
 		if(get != "get"){
-			$("#more").focus();
+			$("#more").focus();//POST로 접근시 버튼에 포커스하기
 		}
 		
 		$("#more").click(function() {

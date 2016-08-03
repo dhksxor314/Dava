@@ -17,7 +17,7 @@
 			alert('${msg}')	
 		}
 
-		$("li[role='presentation']").click(function(event) {
+		$("li[role='presentation']").click(function(event) {//버튼 클릭시 색 변경
 			$("li[role='presentation']").removeClass("active");
 			$(this).attr('class', 'active col-md-2');
 		});

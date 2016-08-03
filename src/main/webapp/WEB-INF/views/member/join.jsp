@@ -16,7 +16,7 @@
       
       var get ='${get}'
       
-      if(get != "get"){
+      if(get != "get"){//회원가입시 데이터 입력안했을대 border 색을 red 변경
          var msg ='${msg}'
          var id='${id}';
          var nickname='${nickname}';
@@ -39,7 +39,7 @@
       }
       
       
-      $("input[group='join']").click(function(){
+      $("input[group='join']").click(function(){//red인 border생을 다시 silber로 변경
          $(this).attr("style","border-color: silver");
       });
    });
