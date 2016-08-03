@@ -38,7 +38,7 @@
 
 				<form role="form" method="post">
 
-					<input type='hidden' name='booknum' value="${bookVO.booknum}">
+					<input type='hidden' name='buynum' value="${buylistVO.buynum}">
 					<input type='hidden' name='page' value="${cri.page}">
 					<input type='hidden' name='perPageNum' value="${cri.perPageNum}">
 

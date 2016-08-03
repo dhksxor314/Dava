@@ -82,7 +82,7 @@
 												${BuylistVO.memnum}</a></td>
 										<td align="center"><a
 											href='/admin/readBookBuy${pageMaker.makeSearch(pageMaker.cri.page)
-											}&title=${BuylistVO.title}'>
+											}&booknum=${BuylistVO.booknum}'>
 												${BuylistVO.title}</a></td>
 										<td align="center"><fmt:formatDate pattern="yyyy-MM-dd"
 												value="${BuylistVO.buy_date}" /></td>

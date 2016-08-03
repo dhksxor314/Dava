@@ -123,7 +123,7 @@ public class AdminController {
 
 	// 구매내역에서 도서정보를 확인만 가능 하도록
 	@RequestMapping(value = "/readBookBuy")
-	public void readBookBuy(Model model, @RequestParam("booknum") int booknum) throws Exception {
+	public void readBookBuy(Model model, @RequestParam("booknum") int booknum, @ModelAttribute("cri") Criteria cri) throws Exception {
 		model.addAttribute(service.readBook(booknum));
 	}
 
