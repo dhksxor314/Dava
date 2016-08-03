@@ -14,6 +14,11 @@
 <script>
 	$(document).ready(function(){
 		
+		if('${close}' == "close"){
+			alert("변경된 비밀번호를 메일로 보냈습니다.");
+			window.close();
+		}
+		
 	});
 </script>
 <style>

@@ -43,7 +43,7 @@
 		})
 		$("#pwsearch").click(function(){
 			var wsize = 350;
-			var hsize = 220;
+			var hsize = 250;
 			window.open('/member/pwsearch','search','width ='
 					+ wsize+ ',height='+ hsize+ ',top='+ (screen.height - hsize)/ 2+ ', left='+ (screen.width - wsize)/ 2);
 		})

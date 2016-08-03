@@ -94,7 +94,7 @@ public class MemberController {
 	   if(input == null){
 		   model.addAttribute("msg","등록되지않은 아이디입니다.");
 	   }else{
-		   model.addAttribute("msg","등록된 아아디  입니다.<br><a href='/member/findPw?id="+id+"' id='check'>비밀번호를 이메일로 받으시려면 여기를 클릭하세요</a>");
+		   model.addAttribute("msg","등록된 아아디  입니다.<br><a href='/member/findPw?id="+id+"'>비밀번호를 이메일로 받으시려면 여기를 클릭하세요</a>");
 		   
 		   model.addAttribute("id", id);
 	   }
@@ -108,9 +108,6 @@ public class MemberController {
 	public String findPwHandler(String id, Model model,	MemberVO vo) throws Exception{
 		Random random = new Random();
 		int rand =random.nextInt(9000)+1000;
-		
-		
-		System.out.println(id);
 		
 		int memnum = mem_service.pwsearch(id).getmemnum();
 		System.out.println(memnum);
@@ -152,6 +149,7 @@ public class MemberController {
 		    msg.setContent(content, "text/html;charset=UTF-8"); // 내용과 인코딩
 
 		    Transport.send(msg); // 전송
+		    model.addAttribute("close","close");
 		} catch(Exception e){
 		    System.out.println("전송 실패");
 		}
