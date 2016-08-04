@@ -56,16 +56,6 @@
 		<li role="presentation" class="col-md-2"><a href="/admin/listBuy" style="color: #dfef00;">결제내역</a></li>
 	</ul>
 
-
-	<div class="form-group col-md-3" style="text-align: right;">
-		<div class="input-group" style="margin-top: 8px; margin-bottom: -10px">
-			<input type="text" class="form-control">
-			<div class="input-group-addon">
-				<icon class="glyphicon glyphicon-search" />
-			</div>
-		</div>
-	</div>
-
 </div>
 
 
