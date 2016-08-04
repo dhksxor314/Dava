@@ -27,7 +27,7 @@ public class SearchBoardController {
   private AdminService service;
 
   @RequestMapping(value = "/listBook", method = RequestMethod.GET)
-  public void listPage(@ModelAttribute("cri") SearchCriteria cri, Model model) throws Exception {
+  public void listBook(@ModelAttribute("cri") SearchCriteria cri, Model model) throws Exception {
 
     logger.info(cri.toString());
 
