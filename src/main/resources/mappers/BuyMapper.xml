@@ -64,7 +64,7 @@
 		SELECT buy.booknum, book.img,
 		book.title
 		FROM buy, book where book.booknum=buy.booknum and memnum =
-		#{memnum};
+		#{memnum} order by buynum desc;
 	</select>
 
 	<update id="sal_update" parameterType="com.dava.myapp.domain.BuyVO">
