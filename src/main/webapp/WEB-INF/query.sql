@@ -44,7 +44,6 @@ CREATE TABLE MEMBER
     unique key (ID)
 );
 
-insert into member(id, nickname, password, point) values('admin@dava', '°ü¸®ÀÚ', 'admin', 0);
 create table shop_bag
 (
 	bagnum integer not null auto_increment,

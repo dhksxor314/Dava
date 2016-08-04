@@ -6,7 +6,7 @@
 
 	<select id="mem_info" resultType="com.dava.myapp.domain.MemberVO">
 		select
-		id, NICKNAME , point, AES_DECRYPT(UNHEX(PASSWORD), '0000') as password
+		id, NICKNAME , point, AES_DECRYPT(UNHEX(PASSWORD), 'dava') as password
 		from
 		member
 		where memnum = #{memnum};
@@ -15,7 +15,7 @@
 	<insert id="join">
 		insert into member
 		(id,nickname,password,point)
-		values(#{id},#{nickname},HEX(AES_ENCRYPT(#{password}, '0000')),0);
+		values(#{id},#{nickname},HEX(AES_ENCRYPT(#{password}, 'dava')),0);
 	</insert>
 
 
@@ -24,16 +24,16 @@
 		MEMNUM,id, NICKNAME,PASSWORD , point
 		from
 		member
-		where id = #{id} and password =HEX(AES_ENCRYPT(#{password}, '0000'));
+		where id = #{id} and password =HEX(AES_ENCRYPT(#{password}, 'dava'));
 	</select>
 	
 	<update id="editpassword" parameterType="com.dava.myapp.domain.MemberVO">
-		update member set password = HEX(AES_ENCRYPT(#{password}, '0000')) where memnum = #{memnum};		
+		update member set password = HEX(AES_ENCRYPT(#{password}, 'dava')) where memnum = #{memnum};		
 	</update>
 	
 	<select id="pwsearch" resultType="com.dava.myapp.domain.MemberVO">
 		select
-		AES_DECRYPT(UNHEX(PASSWORD), '0000') as password,memnumv
+		AES_DECRYPT(UNHEX(PASSWORD), 'dava') as password,memnumv
 		from
 		member
 		where id = #{id};
