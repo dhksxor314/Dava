@@ -37,7 +37,7 @@ CREATE TABLE MEMBER
 	MEMNUM               INTEGER NOT NULL auto_increment,
 	ID                   VARCHAR(20) NULL,
 	NICKNAME             VARCHAR(20) NULL,
-	PASSWORD             VARCHAR(20) NULL,
+	PASSWORD             VARCHAR(200) NULL,
 	POINT				INTEGER NOT NULL,
 	
 	primary key(memnum),
