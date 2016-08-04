@@ -34,8 +34,6 @@ public class FindController {
 		
 		try{
 			
-		
-			
 			Properties p = new Properties();
 			
 			p.put("mail.smtp.host", "smtp.naver.com");

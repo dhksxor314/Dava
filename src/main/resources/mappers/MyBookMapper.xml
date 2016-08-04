@@ -31,7 +31,7 @@
 	</insert>
 	
 	<select id="select_mybooknum" resultType="int" >
-		select mybooknum from mybook where memnum = #{memnum} order by desc;
+		select mybooknum from mybook where memnum = #{memnum} order by mybooknum desc;
 	</select>
 	
 </mapper>
