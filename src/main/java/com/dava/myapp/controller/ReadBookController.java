@@ -41,8 +41,8 @@ public class ReadBookController {
 
 		String title = service.getHwp(mybooknum);//디비에 저장된 책의 hwp파일의 이름을 가져온다
 
-		int pagePerLine=25;//한 페이지당 라인 수
-		int charPerLine=40;//
+		int linePerPage=30;//한 페이지당 라인 수
+		int charPerLine=35;//
 		int totalPage = 0;
 		int totalLine=1;
 		String[] content=null;
@@ -62,12 +62,16 @@ public class ReadBookController {
 	    	else{	    		
 	    		cnt++;
 	    	}
-		    if(cnt%charPerLine==0){c+="\n";cnt=0;}//한라인에 40글자가 채워졌을 때 \n을 삽입하고 cnt를 0으로 초기화	
+		    if(cnt%charPerLine==0){
+		    	if(cnt!=0){
+		    		c+="\n";cnt=0;
+		    	}
+		    }//한라인에 40글자가 채워졌을 때 \n을 삽입하고 cnt를 0으로 초기화	
 	    }
 	    
 	    String cline[] = c.split("\n");//위에서 \n을 삽입한 것을 이용하여 한라인씩 나눈다.
 	    totalLine=cline.length;//총 라인수가 된다.
-	    totalPage=(int)Math.ceil(((double)totalLine/(double)pagePerLine));//전체페이지 수
+	    totalPage=(int)Math.ceil(((double)totalLine/(double)linePerPage));//전체페이지 수
 	    content = new String[totalPage];//페이지 만큼의 배열 공간을 생성
 
 	    for(int i=0;i<totalPage;i++){//+=로 값을 넣어주므로 초기에 null값이 들어가는 것을 막기위해 공백으로초기화
@@ -77,7 +81,7 @@ public class ReadBookController {
 	    int j=0;//j는 현재페이지 i은 현재 라인
 	    for(int i=0;i<totalLine;i++){//content 배열에 한페이지당 들어갈 라인 수 만큼 글자를 삽입한다.
 	    	content[j]+=cline[i]+"<br/>";//html에 넣을 것이므로 \n대신 한라인 마다 br태그를 삽입
-	    	if(((i+1)%pagePerLine)==0){j++;}
+	    	if(((i+1)%linePerPage)==0){j++;}
 	    }
 
 		model.addAttribute("img", service.getImage(mybooknum));
