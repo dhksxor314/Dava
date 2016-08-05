@@ -88,6 +88,7 @@ public class HomeController {
 		session.removeAttribute("nickname");
 		session.removeAttribute("memnum");
 		model.addAttribute("list", book_service.issue());
+		model.addAttribute("newstlist", book_service.newstbook());
 		return "home";
 	}
 	
