@@ -26,7 +26,6 @@ public class FindController {
 	
 	@RequestMapping("/member/pwsearch")
 	public String findPwHandler(String id, Model model){
-		System.out.println("11111");
 		String from = "hyeon454";
 		String to = id;
 		String subject = "다봐 비밀번호 찾기";

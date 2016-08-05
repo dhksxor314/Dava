@@ -33,7 +33,7 @@
 	
 	<select id="pwsearch" resultType="com.dava.myapp.domain.MemberVO">
 		select
-		AES_DECRYPT(UNHEX(PASSWORD), 'dava') as password,memnumv
+		AES_DECRYPT(UNHEX(PASSWORD), 'dava') as password,memnum
 		from
 		member
 		where id = #{id};
