@@ -48,14 +48,14 @@
 		</div>
 		</div>
 
-<div class="container" style="background-color: #23b300;">
+<div class="container"
+	style="background-color: #23b300; margin-bottom: 5px">
 	<ul class="nav nav-pills col-md-9"
-		style="text-align: center; margin-top: 4px; margin-bottom: -10px">
+		style="text-align: center; margin-top: 4px;">
 		<li role="presentation" class="col-md-2"><a href="/admin/listBook" style="color: #dfef00;">도서관리</a></li>
 		<li role="presentation" class="col-md-2"><a href="/admin/listMember" style="color: #dfef00;">회원관리</a></li>
 		<li role="presentation" class="col-md-2"><a href="/admin/listBuy" style="color: #dfef00;">결제내역</a></li>
 	</ul>
-
 </div>
 
 
