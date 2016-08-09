@@ -10,15 +10,19 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.StringWriter;
 import java.io.Writer;
+import java.util.logging.Logger;
 
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.argo.hwp.HwpTextExtractor;
 import com.dava.myapp.service.MyBookService;
@@ -93,7 +97,7 @@ public class ReadBookController {
 		
 	}
 	
-	
+	/*
 	//책갈피 등록을 처리하는 핸들러
 	@RequestMapping(value = "/readbook/setmark", method = RequestMethod.POST)
 	public void markHandler(@RequestParam("page_number") int page_number, @RequestParam("mybooknum") int mybooknum, Model model){
@@ -101,8 +105,15 @@ public class ReadBookController {
 		model.addAttribute("mybooknum", mybooknum);//저장 후 다시 책보기 화면으로 돌아가기 위해 값을 넘겨줌
 		service.setBookmark(page_number, mybooknum);//북마크를 저장
 	}
-	
+	*/
+	@ResponseBody
+	@RequestMapping(value = "/readbook/setmark", method = RequestMethod.POST, produces = "text/plain;charset=UTF-8")
+	public void markHandler(@RequestParam("page_number") int page_number, @RequestParam("mybooknum") int mybooknum, Model model){
 
+		model.addAttribute("mybooknum", mybooknum);//저장 후 다시 책보기 화면으로 돌아가기 위해 값을 넘겨줌
+		service.setBookmark(page_number, mybooknum);//북마크를 저장
+
+	}
 
 	
 }

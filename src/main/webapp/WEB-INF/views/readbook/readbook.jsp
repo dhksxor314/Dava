@@ -109,7 +109,7 @@
 					</div>
 					<div class="modal-footer">
 						<button type="button" class="btn btn-default" data-dismiss="modal">취소</button>
-						<button type="button" class="btn btn-primary" id="mark">등록</button>
+						<button type="button" class="btn btn-primary" data-dismiss="modal" id="mark">등록</button>
 					</div>
 				</div>
 			</div>
@@ -167,10 +167,30 @@
 					$('#bookmark').val($('#flipbook').turn("page"));
 					$('#page_number').val($('#flipbook').turn("page"));
 				});
-				
+				/*
 				//책갈피 등록
 				$("#mark").click(function(){
 					$('#markForm').submit();
+				});
+				*/
+				$("#mark").click(function(){
+					
+					var formData = new FormData();
+					formData.append("page_number", $('#page_number').val());
+					formData.append("mybooknum", $('#mybooknum').val());
+					
+					$.ajax({
+						type:'POST',
+						url:"/readbook/setmark",
+						data: formData,
+						processData:false,
+						contentType:false,						
+						success:function(){
+							alert("책갈피가 저장되었습니다.");
+						}
+					});
+					
+					
 				});
 				
 			});
