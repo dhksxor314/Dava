@@ -37,7 +37,6 @@
 </style>
 </head>
 <body>
-
 	
 	<div class="container" style="margin-top: 50px;">
 
@@ -211,8 +210,9 @@
 			});
 		</script>
 	</div>
-	<script src="/resources/bootstrap/js/bootstrap.min.js"></script>
+	
 
+<script src="/resources/bootstrap/js/bootstrap.min.js"></script>
 </body>
 </html>
 

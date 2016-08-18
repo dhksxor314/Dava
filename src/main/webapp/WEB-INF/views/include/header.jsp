@@ -143,6 +143,8 @@
 			style="color: #dfef00;">판타지</a></li>
 		<li role="presentation" class="col-md-2"><a href="/contents/contents?contents=3"
 			style="color: #dfef00;">로맨스</a></li>
+		<li role="presentation" class="col-md-2"><a href="/board/list"
+			style="color: #dfef00;">게시판</a></li>
 
 	</ul>
 

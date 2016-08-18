@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 마음대로. 단 파일 경로-이름으로하면 겹칠일이 없음 -->
+<mapper namespace="mappers.boardMapper">
+	<select id="list" resultType="BoardVO">
+		select * from board where bno>0 order by bno desc;
+	</select>
+</mapper>
