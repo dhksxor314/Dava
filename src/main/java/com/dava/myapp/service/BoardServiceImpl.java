@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.dava.myapp.domain.BoardVO;
 import com.dava.myapp.persistence.BoardDao;
+import com.dava.myapp.util.Criteria;
 
 @Service
 public class BoardServiceImpl implements BoardService {
@@ -16,32 +17,38 @@ public class BoardServiceImpl implements BoardService {
 	
 	@Override
 	public void delete(Integer bno) {
-		
+		dao.delete(bno);
 	}
 
 	@Override
 	public BoardVO read(Integer bno) {
-		return null;
+		return dao.read(bno);
 	}
 
 	@Override
 	public void insert(BoardVO vo) {
-
+		dao.insert(vo);
 	}
 
 	@Override
 	public void update(BoardVO vo) {
-
+		dao.update(vo);
 	}
 
 	@Override
-	public List<BoardVO> list() {
-		return dao.list();
+	public List<BoardVO> list(Criteria cri) {
+		return dao.list(cri);
 	}
 
 	@Override
 	public int totalCount() {
-		return 0;
+		return dao.totalCount();
+	}
+
+	@Override
+	public void addViewCount(Integer bno) {
+		dao.addViewCount(bno);
+		
 	}
 
 }

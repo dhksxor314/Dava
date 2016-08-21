@@ -5,10 +5,18 @@ import java.util.Date;
 public class BoardVO {
 	private int bno;
 	private String title;
+	private String content;
 	private String writer;
 	private int viewcnt;
 	private Date regdate;
 	
+
+	public String getContent() {
+		return content;
+	}
+	public void setContent(String content) {
+		this.content = content;
+	}
 	public int getBno() {
 		return bno;
 	}
