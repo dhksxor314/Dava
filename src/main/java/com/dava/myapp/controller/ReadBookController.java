@@ -87,7 +87,7 @@ public class ReadBookController {
 	    	content[j]+=cline[i]+"<br/>";//html에 넣을 것이므로 \n대신 한라인 마다 br태그를 삽입
 	    	if(((i+1)%linePerPage)==0){j++;}
 	    }
-
+	    
 		model.addAttribute("img", service.getImage(mybooknum));
 		model.addAttribute("startPage", startPage);
 		model.addAttribute("totalPage", totalPage);

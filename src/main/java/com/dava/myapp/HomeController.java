@@ -73,9 +73,6 @@ public class HomeController {
 			
 			model.addAttribute("msg", "아이디 혹은 비밀번호를 확인해 주세요");
 		}
-
-		
-		
 		
 		model.addAttribute("list", book_service.issue());
 		model.addAttribute("newstlist", book_service.newstbook());

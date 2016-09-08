@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mappers.boardMapper">
+	<select id="list" resultType="BoardVO">
+		<![CDATA[
+			select * 
+			from tbl_board 
+			where bno>0 
+		]]>
+		<if test="search.keyfield!=null or search.keyfield!=''">
+			<if test="search.keyword=='t'.toString()">
+				and title like concat('%', #{search.keyfield}, '%')
+			</if>
+			<if test="search.keyword=='c'.toString()">
+				and content like concat('%', #{search.keyfield}, '%')
+			</if>
+			<if test="search.keyword=='w'.toString()">
+				and writer like concat('%', #{search.keyfield}, '%')			
+			</if>
+			<if test="search.keyword=='tc'.toString()">
+				and title like concat('%', #{search.keyfield}, '%') or content like concat('%', #{search.keyfield}, '%')		
+			</if>
+		</if>
+		<![CDATA[
+			order by bno desc, regdate desc limit #{start}, #{recordPerPage}
+		]]>
+	</select>
+	
+	<sql id="search">
+		<if test="keyfield!=null or keyfield!=''">
+			<if test="keyword=='t'.toString()">
+				and title like concat('%', #{keyfield}, '%')
+			</if>
+			<if test="keyword=='c'.toString()">
+				and content like concat('%', #{keyfield}, '%')
+			</if>
+			<if test="keyword=='w'.toString()">
+				and writer like concat('%', #{keyfield}, '%')			
+			</if>
+			<if test="keyword=='tc'.toString()">
+				and title like concat('%', #{keyfield}, '%') or content like concat('%', #{keyfield}, '%')		
+			</if>
+		</if>
+	</sql>
+	
+	<select id="count" resultType="int">
+		select count(*) from tbl_board where bno>0 <include refid="search"></include>
+	</select>
+	
+	<select id="read" resultType="BoardVO">
+		select * from tbl_board where bno=#{bno}
+	</select>
+	
+	<update id="update">
+		update tbl_board set title=#{title}, content=#{content} where bno=#{bno};
+	</update>
+	
+	<insert id="write">
+		insert into tbl_board(title, writer, content) values(#{title}, #{writer}, #{content})
+	</insert>
+	
+	<delete id="delete">
+		delete from tbl_board where bno=#{bno}
+	</delete>
+	
+	
+</mapper>
