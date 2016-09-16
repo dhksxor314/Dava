@@ -12,5 +12,6 @@ public interface BoardService {
 	public BoardVO read(Integer bno);
 	public List<BoardVO> list(int start, int recordPerPage, Search search);
 	public int count(Search search);
+	public void addviewcnt(Integer bno);
 	
 }

@@ -45,4 +45,9 @@ public class BoardServiceImpl implements BoardService {
 		return dao.count(search);
 	}
 
+	@Override
+	public void addviewcnt(Integer bno) {
+		dao.addviewcnt(bno);
+	}
+
 }

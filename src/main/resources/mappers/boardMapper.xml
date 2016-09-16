@@ -64,6 +64,8 @@
 	<delete id="delete">
 		delete from tbl_board where bno=#{bno}
 	</delete>
-	
+	<update id="addviewcnt">
+		update tbl_board set viewcnt=viewcnt+1 where bno=#{bno};
+	</update>
 	
 </mapper>

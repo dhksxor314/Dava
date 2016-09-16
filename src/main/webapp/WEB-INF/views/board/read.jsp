@@ -15,16 +15,22 @@
 </style>
 <script>
 	getAllList();
-	
+	var max=3;
+	var totalreply;
 	function getAllList(){
 		var str="";
 		var bno='${boardVO.bno }';
 		$.getJSON("/replies/all/"+bno, function(data){
-			$(data).each(function(){
-				str+="<div style='border: 1px solid black'>"
-					+"<p>작성자 : "+this.replyer+"</p><br/>"
-					+"<textarea style='width:100%' readonly='readonly'>"+this.replytext+"</textarea>"
-					+"</div>";
+			totalreply=data.length;
+			if(totalreply==0){$('#more').hide();}
+			if(totalreply!=0&&max<totalreply){$('#more').show();}
+			$(data).each(function(i){
+				if(i<max){
+					str+="<div style='border: 1px solid black'>"
+						+"<p>작성자 : "+this.replyer+"</p><br/>"
+						+"<textarea style='width:100%' readonly='readonly'>"+this.replytext+"</textarea>"
+						+"</div>";
+				}
 			});
 
 			$('#replies').html(str);
@@ -32,6 +38,15 @@
 	}
 	
 	$(document).ready(function(){
+		
+		$('#more').click(function(){
+			max+=2;
+			if(max>=totalreply){
+				$('#more').hide();
+			}
+			getAllList();
+		});
+		
 		var form = $('#form');
 		$('#delete').click(function(){
 			form.attr("action", "/board/delete");
@@ -80,6 +95,9 @@
 
 				<table class="table">
 					<tr>
+						<td>글번호 : ${boardVO.bno }</td>
+					</tr>
+					<tr>
 						<td>제목</td>
 					</tr>
 					<tr>
@@ -107,7 +125,9 @@
 				<div id="replies">
 					
 				</div>
-
+				<div id="replymore">
+					<button id="more">더보기(2개씩)</button>
+				</div>
 		</div>
 	</div>
 </div>

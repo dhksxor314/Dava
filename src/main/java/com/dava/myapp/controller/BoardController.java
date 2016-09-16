@@ -52,6 +52,7 @@ public class BoardController {
 	@RequestMapping(value="/read", method=RequestMethod.GET)
 	public String dowrite(Model model, int bno){
 		model.addAttribute(service.read(bno));
+		service.addviewcnt(bno);
 		return "/board/read";
 	}
 	

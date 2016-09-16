@@ -57,4 +57,10 @@ public class BoardDaoImpl implements BoardDao {
 		return session.selectOne(NAMESPACE+".count", search);
 	}
 
+	@Override
+	public void addviewcnt(Integer bno) {
+		session.update(NAMESPACE+".addviewcnt", bno);
+		
+	}
+
 }
