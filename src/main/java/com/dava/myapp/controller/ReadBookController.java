@@ -55,6 +55,7 @@ public class ReadBookController {
 	    Writer writer = new StringWriter(); // 추출된 텍스트를 출력할 버퍼
 	    HwpTextExtractor.extract(hwp, writer); // 파일로부터 텍스트 추출
 	    String text = writer.toString(); // 추출된 텍스트
+	    System.out.println(text);
 	    String c="";//아래의 알고리즘으로 만들어진 텍스트를 저장할 공간
 	    int cnt=0;//한 라인에 현재까지 삽입한 글자 수를 저장
 	    for(int i=1;i<=text.length();i++){//charPerLine(한라인의 길이)가 넘는 문단에 \n을 삽입한다. \n을 기준으로 라인을 분리할것이기때문
